@@ -1,7 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import React from "react"
+import { render } from "react-dom"
+import { ApolloProvider } from "react-apollo"
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+import App from './components'
+import client from './client'
+
+const BytesizedStreaming = () => (
+    <ApolloProvider client={client}>
+        <App />
+    </ApolloProvider>
+);
+
+render(<BytesizedStreaming />, document.getElementById("root"));
