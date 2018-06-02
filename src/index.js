@@ -2,9 +2,9 @@ import React from "react"
 import { render } from "react-dom"
 import { ApolloProvider } from "react-apollo"
 
-import './app.css';
-import App from './components'
-import client from './client'
+import './App.css';
+import App from './Components'
+import client from './Client'
 
 const BytesizedStreaming = () => (
     <ApolloProvider client={client}>

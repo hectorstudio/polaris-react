@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
-import GetMovies from '../../querys/Movies'
+import GetMovies from '../../Querys/Movies'
 
 const MovieListWrapper = styled.section`
     display:flex;
