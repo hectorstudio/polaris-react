@@ -2,9 +2,9 @@ import React from 'react'
 import gql from "graphql-tag"
 import { Query } from "react-apollo"
 
-import MovieCard from '../Components/Movies/MovieCard'
+import MovieCard from '../Components/MovieList/MovieCard'
 
-const GET_MOVIES = gql `
+const FETCH_MOVIES = gql `
     {
         movies {
             title,
@@ -14,9 +14,9 @@ const GET_MOVIES = gql `
     }
 `
 
-const GetMovies = () => (
+const FetchMovies = () => (
     <Query 
-        query={ GET_MOVIES }
+        query={ FETCH_MOVIES }
     >
 
         {({ loading, error, data }) => {
@@ -37,4 +37,4 @@ const GetMovies = () => (
     </Query>
 );
 
-export default GetMovies
+export default FetchMovies

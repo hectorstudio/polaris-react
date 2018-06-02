@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
-import GetMovies from '../../Querys/Movies'
+import FetchMovies from '../../Querys/Movies'
 
 const MovieListWrapper = styled.section`
     display:flex;
@@ -12,7 +12,7 @@ class Movies extends Component {
     render() {
         return (
             <MovieListWrapper>
-                <GetMovies />
+                <FetchMovies />
             </MovieListWrapper>
         );
     }

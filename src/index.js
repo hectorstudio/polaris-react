@@ -4,7 +4,7 @@ import { ApolloProvider } from "react-apollo"
 
 import './App.css';
 import App from './Components'
-import client from './Client'
+import client from './client'
 
 const BytesizedStreaming = () => (
     <ApolloProvider client={client}>
@@ -12,4 +12,4 @@ const BytesizedStreaming = () => (
     </ApolloProvider>
 );
 
-render(<BytesizedStreaming />, document.getElementById("root"));
+render(<BytesizedStreaming />, document.getElementById("root"));``
