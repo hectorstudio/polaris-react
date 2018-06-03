@@ -1,9 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Switch, Route } from 'react-router-dom'
-
-import MediaList from '../Components/Media'
+import Routes from './Routes'
 
 const ContentWrap = styled.section`
     flex: 1 1 auto;
@@ -14,9 +12,7 @@ const ContentWrap = styled.section`
 
 const Content = () => (
     <ContentWrap>
-        <Switch>
-            <Route exact path='/library/:name' component={MediaList} />
-        </Switch>
+        <Routes />
     </ContentWrap>
 )
 

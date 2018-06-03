@@ -4,7 +4,7 @@ import { ApolloProvider } from "react-apollo"
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import './App.css';
-import App from './Containers/App'
+import App from './Components/App'
 import client from './client'
 
 const BytesizedStreaming = () => (

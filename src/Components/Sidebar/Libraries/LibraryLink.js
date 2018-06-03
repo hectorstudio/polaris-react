@@ -7,17 +7,16 @@ const activeClassName = 'selected'
 const NavItem = styled(NavLink).attrs({
     activeClassName
 }) `
-    color: blue;
+    color: black;
 
     &.${activeClassName} {
-        color: black;
+        color: red;
+        font-weight: bold;
     }
 `;
 
 const LibraryLink = ({name}) => (
-    <li>
-        <NavItem to={`/library/${name.toLowerCase()}`} activeClassName={activeClassName}>{name}</NavItem>
-    </li>
+    <NavItem to={`/library/${name.toLowerCase()}`} activeClassName={activeClassName}>{name}</NavItem>
 )
 
 export default LibraryLink

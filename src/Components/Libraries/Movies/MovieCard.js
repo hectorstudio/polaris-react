@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 const MovieWrap = styled.article`
-    flex: 1 1 12.5%;
-    max-width: 12.5%;
+    flex: 1 1 20%;
+    max-width: 20%;
     padding: 10px;
     box-sizing:border-box;
 `;

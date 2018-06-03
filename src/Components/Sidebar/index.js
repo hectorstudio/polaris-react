@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import LibraryList from '../Components/Librarys'
+import LibraryList from './Libraries'
 
 const SidebarWrapper = styled.section`
     flex: 1 1 250px;

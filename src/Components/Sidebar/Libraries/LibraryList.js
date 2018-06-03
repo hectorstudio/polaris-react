@@ -1,18 +1,10 @@
 import React from 'react'
-import gql from "graphql-tag"
 import { Query } from "react-apollo"
+import { FETCH_LIBRARIES } from 'Queries'
 
 import LibraryLink from './LibraryLink'
 
-const FETCH_LIBRARIES = gql`
-    {
-        libraries {
-            name
-        }
-    }
-`
-
-const QueryLibraries = () => (
+const LibraryList = () => (
     <Query
         query={ FETCH_LIBRARIES }
     >
@@ -27,7 +19,9 @@ const QueryLibraries = () => (
                 }
 
                 return (
-                    <LibraryLink key={i} {...library_details} />
+                    <li>
+                        <LibraryLink key={i} {...library_details} />
+                    </li>
                 );
             });
         }}
@@ -35,4 +29,4 @@ const QueryLibraries = () => (
     </Query>
 );
 
-export default QueryLibraries
+export default LibraryList
