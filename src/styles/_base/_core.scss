@@ -4,8 +4,6 @@ html, body {
 
 body {
     margin:0;
-    font-family: 'Muli', sans-serif;
-    font-weight:600;
     background: color(light);
     font-size: 1.6rem;
 }
@@ -16,3 +14,12 @@ body {
     box-sizing: border-box;
 }
 
+input, textarea, button, body {
+    font-family: 'Muli', sans-serif;
+    font-weight:600;
+}
+
+a, button {
+    cursor:pointer;
+    text-decoration:none;
+}
