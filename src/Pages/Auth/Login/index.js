@@ -17,7 +17,6 @@ export default class Login extends Component {
     
     _handleLogin = e => {
         e.preventDefault();
-        
         Auth(this.state.username, this.state.password);
     }
 

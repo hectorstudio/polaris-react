@@ -12,24 +12,19 @@ import axios from 'axios'
 //     }
 // }
 
-const LOGIN_REQUEST = (email, password) => {
-    let url = 'http://atalanta.bysh.me:8080/m/v1/auth';
+const LOGIN_REQUEST = (username, password) => {
+    let url = `http://atalanta.bysh.me:8080/m/v1/auth?login=${username}&password=${password}`;
 
-    let data = JSON.stringify({
-        username: email,
+    let data = {
+        username: username,
         password: password
-    })
-
-    return axios.post(url, data, {
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        }
-    )
+    }
+    
+    return axios.get(url)
 }
 
-const Auth = props => {
-    LOGIN_REQUEST(props.email, props.password).then(response => {
+const Auth = (username, password) => {
+    LOGIN_REQUEST(username, password).then(response => {
         console.log(response);
     }).catch(error => {
         console.log(error);
