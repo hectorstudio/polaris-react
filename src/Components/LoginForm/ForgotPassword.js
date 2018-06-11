@@ -2,9 +2,9 @@ import React from 'react'
 
 import { ForgotPasswordLink } from './Styles';
 
-const ForgotPassword = () => (
-    <ForgotPasswordLink href="" title="Forgot Password">
-        Forgot Password?
+const ForgotPassword = (props) => (
+    <ForgotPasswordLink to={props.to} value={props.value}>
+        {props.value}
     </ForgotPasswordLink>
 )
 
