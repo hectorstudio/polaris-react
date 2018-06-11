@@ -3,9 +3,7 @@ import { Redirect } from 'react-router'
 
 import { LoginWrap } from './Styles'
 
-import { AUTH_TOKEN } from './token'
-
-import Auth from 'Actions/Auth'
+import { AUTH_REQUEST } from 'Actions/Auth'
 import LoginForm from 'Components/LoginForm'
 
 export default class Login extends Component {
@@ -17,21 +15,16 @@ export default class Login extends Component {
     
     _handleLogin = e => {
         e.preventDefault();
-        Auth(this.state.username, this.state.password);
+
+        AUTH_REQUEST(this.state.username, this.state.password).then(response => {
+            this.setState({ redirectToReferrer: true });
+        })
     }
 
     _handleChange = e => {
         this.setState({ 
             [e.target.name]: e.target.value 
         });
-    }
-
-    _confirm = async () => {
-        // ... you'll implement this in a bit
-    }
-
-    _saveUserData = token => {
-        localStorage.setItem(AUTH_TOKEN, token)
     }
 
     render() { 
