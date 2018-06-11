@@ -1,9 +1,14 @@
 import axios from 'axios'
 
 export const AUTH_REQUEST = (username, password) => {
-    let url = `http://atalanta.bysh.me:8080/m/v1/auth?login=${username}&password=${password}`;
+    let url = `http://atalanta.bysh.me:8080/m/v1/auth`;
 
-    return axios.get(url).then(response => {
+    let data = {
+        login: username,
+        password: password
+    }
+
+    return axios.post(url, data).then(response => {
         Auth.authenticate();
     })
 }
