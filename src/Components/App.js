@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withAlert } from 'react-alert'
 import styled from 'styled-components'
 
 import Routes from 'Routes'
@@ -18,4 +19,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default withAlert(App)
