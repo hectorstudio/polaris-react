@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import Routes from 'Routes'
 
 const AppWrap = styled.main`
-    display:flex;
+    display: flex;
     height: 100vh;
 `;
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom' 
 import PrivateRoute from './Helper/PrivateRoute'
 
@@ -11,24 +11,34 @@ import Register from 'Pages/Auth/Register'
 import Dashboard from 'Pages/Dashboard'
 
 // Auth
-import { Auth } from 'Actions/Auth'
+import { Auth, checkAuth } from 'Actions/Auth'
 
-const Routes = () => (
-    <Switch>
-        <Route exact path="/" render={() => (
-            Auth.isAuthenticated ? (
-                <Redirect to="/dashboard" />
-            ) : (
-                <Redirect to="/login" />
-                )
-        )} />
+export default class Routes extends Component {
+    componentWillMount() {
+        checkAuth();
+    }
+    
+    componentDidMount() {
+        console.log(Auth.isAuthenticated);
+    }
 
-        <Route exact path='/login' component={Login} />
-        <Route exact path='/forgot' component={ForgotPassword} />
-        <Route exact path='/register' component={Register} />
+    render() { 
+        return ( 
+            <Switch>
+                <Route exact path="/" render={() => (
+                    Auth.isAuthenticated ? (
+                        <Redirect to="/dashboard" />
+                    ) : (
+                            <Redirect to="/login" />
+                        )
+                )} />
 
-        <PrivateRoute path="/dashboard" component={Dashboard} />
-    </Switch>
-)
+                <Route exact path='/login' component={Login} />
+                <Route exact path='/forgot' component={ForgotPassword} />
+                <Route exact path='/register' component={Register} />
 
-export default Routes
+                <PrivateRoute path="/dashboard" component={Dashboard} />
+            </Switch>
+        )
+    }
+}

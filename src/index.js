@@ -13,10 +13,10 @@ import Theme from 'Components/Theme'
 import AlertTemplate from 'Components/Alert'
 
 const AlertOptions = {
-    position: 'bottom center',
+    position: 'bottom right',
     timeout: 5000,
-    offset: '30px',
-    transition: 'scale'
+    transition: 'fade',
+    offset: '30'
 }
 
 const BytesizedStreaming = () => (

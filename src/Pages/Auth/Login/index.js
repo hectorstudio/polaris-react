@@ -3,7 +3,7 @@ import { Redirect } from 'react-router'
 
 import { LoginWrap } from './Styles'
 
-import { AUTH_REQUEST } from 'Actions/Auth'
+import { AUTH_REQUEST, Auth } from 'Actions/Auth'
 import LoginForm from 'Components/LoginForm'
 
 export default class Login extends Component {
@@ -11,6 +11,10 @@ export default class Login extends Component {
         redirectToReferrer: false,
         username: '',
         password: ''
+    }
+
+    componentWillMount() {
+        if (Auth.isAuthenticated) this.setState({ redirectToReferrer: true });
     }
     
     _handleLogin = e => {

@@ -8,6 +8,11 @@ const Theme = {
     light: `#F5F7FA`,
     darken: {
         primary: darken(0.2, '#5683C6')
+    },
+    alerts: {
+        success: `#81A35A`,
+        error: `#E83C50`,
+        info: `#4C6EAC`
     }
 }
 
