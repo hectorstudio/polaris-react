@@ -18,10 +18,6 @@ export default class Routes extends Component {
     componentWillMount() {
         checkAuth();
     }
-    
-    componentDidMount() {
-        console.log(Auth.isAuthenticated);
-    }
 
     render() { 
         return ( 

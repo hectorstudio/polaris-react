@@ -6,7 +6,9 @@ import { LoginWrap } from './Styles'
 import { AUTH_REQUEST, Auth } from 'Actions/Auth'
 import LoginForm from 'Components/LoginForm'
 
-export default class Login extends Component {
+import { withAlert } from 'react-alert'
+
+class Login extends Component {
     state = {
         redirectToDashboard: false,
         error: false,
@@ -21,7 +23,14 @@ export default class Login extends Component {
     _handleLogin = e => {
         e.preventDefault();
 
-        if (this.props.username || this.props.password) this.setState({error: true});
+        let empty = (this.state.username.length < 1 || this.state.password.length < 1);
+
+        if (empty) { 
+            this.setState({error: true});
+            this.props.alert.error('Please ensure a valid Username & Password has been entered');
+
+            return false;
+        }
 
         AUTH_REQUEST(this.state.username, this.state.password).then(response => {
             this.setState({ redirectToDashboard: true });
@@ -47,7 +56,7 @@ export default class Login extends Component {
         let LoginProps = {
             handleLogin: this._handleLogin,
             handleChange: this._handleChange,
-            error: false
+            error: this.state.error
         }
 
         return ( 
@@ -57,3 +66,5 @@ export default class Login extends Component {
         )
     }
 }
+
+export default withAlert(Login)

@@ -1,5 +1,8 @@
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
+import { headShake } from 'react-animations';
+
+const loginError = keyframes`${headShake}`;
 
 // Containers
 export const FormWrap = styled.form`
@@ -7,7 +10,10 @@ export const FormWrap = styled.form`
     background:#FFF;
     box-shadow: 0 10px 60px rgba(0,0,0, 0.05);
     margin:0 0 3rem;
-    border:3px solid transparent;
+    transition: .2s border;
+    border:2px solid;
+    border-color: ${(props => props.error ? props.theme.alerts.error : 'transparent')};
+    animation: ${(props => props.error ? `.5s ${loginError} alternate` : 'none')};
 `;
 
 // Heading
@@ -45,7 +51,7 @@ export const LoginInputWrap = styled.div`
     }
 
     &:after {
-        background: ${props => props.theme.light};
+        background: ${(props => props.error ? props.theme.alerts.error : props.theme.light)};
     }
 
     &:before {
