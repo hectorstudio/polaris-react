@@ -1,4 +1,7 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { fadeIn } from 'react-animations';
+
+const aFadeIn = keyframes`${fadeIn}`;
 
 export const LoginWrap = styled.section`
     display: flex;
@@ -7,4 +10,5 @@ export const LoginWrap = styled.section`
     align-self: center;
     margin: 0 auto;
     flex-direction: column;
+    animation: .75s ${aFadeIn} alternate;
 `;

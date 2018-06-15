@@ -4,8 +4,10 @@ import { RegisterLink, RegisterPara } from './Styles';
 
 const Register = (props) => (
     <RegisterPara>
-        Dont have an account? 
-        <RegisterLink to={props.to} title={props.value}>{props.value}</RegisterLink>
+        Don't have an account?
+        <RegisterLink to={props.to} title={props.value}>
+            {props.value}
+        </RegisterLink>
     </RegisterPara>
 )
 

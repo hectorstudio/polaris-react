@@ -6,6 +6,7 @@ import PrivateRoute from './Helper/PrivateRoute'
 import Login from 'Pages/Auth/Login'
 import ForgotPassword from 'Pages/Auth/ForgotPassword'
 import Register from 'Pages/Auth/Register'
+import Setup from 'Pages/Auth/Setup'
 
 // App
 import Dashboard from 'Pages/Dashboard'
@@ -36,6 +37,7 @@ export default class Routes extends Component {
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/forgot' component={ForgotPassword} />
                 <Route exact path='/register' component={Register} />
+                <Route exact path='/setup' component={Setup} />
 
                 <PrivateRoute path="/dashboard" component={Dashboard} />
             </Switch>

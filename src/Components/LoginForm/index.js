@@ -11,15 +11,15 @@ import ForgotPassword from './ForgotPassword'
 
 const LoginForm = (props) => (
     <React.Fragment>
-        <FormWrap>
+        <FormWrap error={props.error}>
             <LogoIcon alt="Bytesized Streaming" width="30"/>
             <Title heading="Welcome Back!" sub="Login to get started" />
 
-            <Input type="text" name="username" placeholder="Enter Username" handleChange={props.handleChange}/>
-            <Input type="password" name="password" placeholder="Enter Password" handleChange={props.handleChange}/>
+            <Input type="text" name="username" placeholder="Enter Username" handleChange={props.handleChange} />
+            <Input type="password" name="password" placeholder="Enter Password" handleChange={props.handleChange} />
             <Button handleLogin={props.handleLogin} value="Login" />
 
-            <Register to="/register" value="Sign Up"/> 
+            <Register to="/register" value="Sign Up" setup={false}/> 
         </FormWrap>
 
         <ForgotPassword to='/forgot' value="Forgot Password?"/>

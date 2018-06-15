@@ -8,20 +8,25 @@ import LoginForm from 'Components/LoginForm'
 
 export default class Login extends Component {
     state = {
-        redirectToReferrer: false,
+        redirectToDashboard: false,
+        error: false,
         username: '',
         password: ''
     }
 
     componentWillMount() {
-        if (Auth.isAuthenticated) this.setState({ redirectToReferrer: true });
+        if (Auth.isAuthenticated) this.setState({ redirectToDashboard: true });
     }
     
     _handleLogin = e => {
         e.preventDefault();
 
+        if (this.props.username || this.props.password) this.setState({error: true});
+
         AUTH_REQUEST(this.state.username, this.state.password).then(response => {
-            this.setState({ redirectToReferrer: true });
+            this.setState({ redirectToDashboard: true });
+        }).catch(error => {
+            this.setState({ error: true })
         })
     }
 
@@ -33,15 +38,16 @@ export default class Login extends Component {
 
     render() { 
         const { from } = this.props.location.state || { from: { pathname: "/dashboard" } };
-        const { redirectToReferrer } = this.state;
+        const { redirectToDashboard } = this.state;
 
-        if (redirectToReferrer) {
+        if (redirectToDashboard) {
             return <Redirect to={from} />;
         }
 
         let LoginProps = {
             handleLogin: this._handleLogin,
-            handleChange: this._handleChange
+            handleChange: this._handleChange,
+            error: false
         }
 
         return ( 

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 // Containers
@@ -7,6 +7,7 @@ export const FormWrap = styled.form`
     background:#FFF;
     box-shadow: 0 10px 60px rgba(0,0,0, 0.05);
     margin:0 0 3rem;
+    border:3px solid transparent;
 `;
 
 // Heading
@@ -80,7 +81,7 @@ export const LoginButton = styled.button`
     width:100%;
     text-align:center;
     border:0;
-    background-image: linear-gradient(-135deg, #5683C6 0%, #6D9CE3 50%, #4678C3 100%);
+    background: ${props => props.theme.primary};
     font-size:2rem;
     font-weight:700;
     box-shadow:0 10px 15px rgba(0,0,0, .1);
@@ -88,6 +89,10 @@ export const LoginButton = styled.button`
 
     &:hover {
         box-shadow:0 10px 15px rgba(0,0,0, .25);
+    }
+
+    &:focus {
+        outline: none;
     }
 `
 
