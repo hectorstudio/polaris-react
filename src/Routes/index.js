@@ -11,6 +11,10 @@ import Setup from 'Pages/Auth/Setup'
 // App
 import Dashboard from 'Pages/Dashboard'
 
+// Libraries
+import Movies from 'Pages/Libraries/Movies'
+import Series from 'Pages/Libraries/Series'
+
 // Auth
 import { Auth, checkAuth } from 'Actions/Auth'
 
@@ -36,6 +40,8 @@ export default class Routes extends Component {
                 <Route exact path='/setup' component={Setup} />
 
                 <PrivateRoute path="/dashboard" component={Dashboard} />
+                <PrivateRoute path="/libraries/movies" component={Movies} />
+                <PrivateRoute path="/libraries/series" component={Series} />
             </Switch>
         )
     }

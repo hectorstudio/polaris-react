@@ -17,7 +17,7 @@ const LoginForm = (props) => (
 
             <Input type="text" name="username" placeholder="Enter Username" handleChange={props.handleChange} />
             <Input type="password" name="password" placeholder="Enter Password" handleChange={props.handleChange} />
-            <Button handleLogin={props.handleLogin} value="Login" />
+            <Button handleLogin={props.handleLogin} value="Login" disabled={props.disabled}/>
 
             <Register to="/register" value="Sign Up" setup={false}/> 
         </FormWrap>

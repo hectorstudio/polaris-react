@@ -11,7 +11,7 @@ export const FormWrap = styled.form`
     box-shadow: 0 10px 60px rgba(0,0,0, 0.05);
     margin:0 0 3rem;
     transition: .2s border;
-    border:2px solid;
+    border:1px solid;
     border-color: ${(props => props.error ? props.theme.alerts.error : 'transparent')};
     animation: ${(props => props.error ? `.5s ${loginError} alternate` : 'none')};
 `;
@@ -91,7 +91,18 @@ export const LoginButton = styled.button`
     font-size:2rem;
     font-weight:700;
     box-shadow:0 10px 15px rgba(0,0,0, .1);
-    transition:.3s box-shadow;
+    transition:.2s all;
+    cursor: pointer;
+
+    &:disabled {
+        filter: grayscale(75%);
+        opacity:.5;
+        cursor: initial;
+
+        &:hover {
+            box-shadow:0 10px 15px rgba(0,0,0, .1);
+        }
+    }
 
     &:hover {
         box-shadow:0 10px 15px rgba(0,0,0, .25);

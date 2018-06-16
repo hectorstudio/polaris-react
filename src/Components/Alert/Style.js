@@ -16,10 +16,10 @@ const getColor = (props) => {
 export const AlertWrap = styled.div`
     background: #FFF;
     margin:0 3rem 3rem;
-    padding: 3rem 4rem 4rem 3rem;
+    padding: 3rem;
     box-shadow: 0 10px 30px rgba(0,0,0, 0.05);
     position:relative;
-    max-width:35rem;
+    max-width:40rem;
 `;
 
 export const AlertType = styled.strong`
@@ -38,15 +38,16 @@ export const AlertMessage = styled.p`
     font-weight:700;
     line-height: 1.75;
     display:inline-block;
-    padding-right:1.5rem;
+    padding-left:5rem;
     font-size:1.4rem;
     letter-spacing:.05rem;
 `;
 
 export const IconWrap = styled.span`
     position:absolute;
-    bottom:3rem;
-    right:3rem;
+    top:50%;
+    left:3rem;
+    margin-top: -1.6rem;
 `;
 
 export const Close = styled.span`
@@ -56,9 +57,11 @@ export const Close = styled.span`
     font-size:1.4rem;
     cursor:pointer;
     color: ${props => props.theme.secondary};
-    transition:.2s color;
+    transition:.2s all;
+    opacity: .5;
 
     &:hover {
+        opacity:1;
         color: rgba(0,0,0, 1);
     }
 `;

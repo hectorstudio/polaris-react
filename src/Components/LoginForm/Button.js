@@ -1,9 +1,35 @@
-import React from 'react'
+import React, { Component } from 'react';
 
 import { LoginButton } from './Styles'
 
-const Button = ({ handleLogin, value}) => (
-    <LoginButton type="submit" onClick={handleLogin}>{value}</LoginButton>
-)
+export default class Button  extends Component {
+    state = {
+        disabled: false
+    }
 
-export default Button
+    _handleLogin = e => {
+        e.preventDefault();
+
+        if(!this.state.disabled) {
+            this.props.handleLogin();
+
+            this.setState({ disabled: true });
+
+            setTimeout(() => {
+                this.setState({ disabled: false });
+            }, 1000);
+        }
+    }
+
+    render() { 
+        console.log(this.props.disabled);
+        return (
+            <LoginButton 
+                type="submit" 
+                onClick={ this._handleLogin } 
+                disabled={ (this.state.disabled || this.props.disabled ? true : false) }>
+                    {this.props.value}
+            </LoginButton> 
+        )
+    }
+}
