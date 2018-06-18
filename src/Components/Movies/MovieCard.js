@@ -1,25 +1,19 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
-const MovieWrap = styled.article`
-    flex: 1 1 20%;
-    max-width: 20%;
-    padding: 10px;
-    box-sizing:border-box;
-`;
+import { CardWrap, CardPoster } from './Styles'
 
-const Poster = styled.img`
-    width: 100%;
-    float: left;
-`;
+class MovieCard extends Component {
+    render() { 
+        const { title, poster_path, imdb_id, uuid, history } = this.props;
 
-const MovieCard = ({ title, poster_path, imdb_id }) => {
-    return (
-        <MovieWrap data-tmdb-id={imdb_id}>
-            <Poster src={`http://atalanta.bysh.me:8080/m/images/tmdb/w342/${poster_path}`} alt={title} />
-            <h5>{title}</h5>
-        </MovieWrap>
-    )
+        return ( 
+            <CardWrap data-tmdb-id={imdb_id} onClick={() => { history.push(`/movies/${uuid}`) }}>
+                <CardPoster src={`http://atalanta.bysh.me:8080/m/images/tmdb/w342/${poster_path}`} alt={title} />
+                <h5>{title}</h5>
+            </CardWrap>
+        )
+    }
 }
-
-export default MovieCard
+ 
+export default withRouter(MovieCard);

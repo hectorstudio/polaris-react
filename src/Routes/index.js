@@ -13,6 +13,8 @@ import Dashboard from 'Pages/Dashboard'
 
 // Libraries
 import Movies from 'Pages/Libraries/Movies'
+import MovieFull from 'Pages/Libraries/Movies/MovieFull'
+
 import Series from 'Pages/Libraries/Series'
 
 // Auth
@@ -39,9 +41,12 @@ export default class Routes extends Component {
                 <Route exact path='/register' component={Register} />
                 <Route exact path='/setup' component={Setup} />
 
-                <PrivateRoute path="/dashboard" component={Dashboard} />
-                <PrivateRoute path="/libraries/movies" component={Movies} />
-                <PrivateRoute path="/libraries/series" component={Series} />
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+
+                <PrivateRoute exact path="/movies" component={Movies} />
+                <PrivateRoute exact path='/movies/:uuid' component={MovieFull} />
+
+                <PrivateRoute exact path="/series" component={Series} />
             </Switch>
         )
     }
