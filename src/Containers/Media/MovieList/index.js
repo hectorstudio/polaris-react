@@ -1,10 +1,9 @@
 import React from 'react';
 
 import { LibraryWrap, LibraryListWrap, LibraryHeading } from '../Styles'
+import FetchMovies from 'Queries/fetchMovies'
 
-import FetchMovies from 'Actions/fetchMovies'
-
-const Movies = () => (
+const MovieList = () => (
     <LibraryWrap>
         <LibraryHeading>Movies</LibraryHeading>
         
@@ -14,4 +13,4 @@ const Movies = () => (
     </LibraryWrap>
 )
 
-export default Movies
+export default MovieList

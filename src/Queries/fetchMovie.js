@@ -2,7 +2,7 @@ import React from 'react'
 import gql from "graphql-tag"
 import { Query } from "react-apollo"
 
-import Movie from 'Components/Movie'
+import Movie from 'Components/Media/Movie'
 
 const FETCH_MOVIE = uuid => gql`
     {

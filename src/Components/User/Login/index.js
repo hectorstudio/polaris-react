@@ -2,7 +2,7 @@ import React from 'react'
 
 import { FormWrap } from './Styles'
 
-import LogoIcon from 'Components/Logos/LogoIcon'
+import LogoIcon from './LogoIcon'
 import Title from './Title'
 import Input from './Input' 
 import Button from './Button' 

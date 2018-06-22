@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-import Logout from 'Pages/Auth/Logout'
+import Logout from 'Components/User/Logout'
 import { DashboardWrap } from './Styles'
 
 export default class Dashboard extends Component {

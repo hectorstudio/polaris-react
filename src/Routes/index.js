@@ -3,22 +3,21 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import PrivateRoute from './Helper/PrivateRoute'
 
 // Auth
-import Login from 'Pages/Auth/Login'
-import ForgotPassword from 'Pages/Auth/ForgotPassword'
-import Register from 'Pages/Auth/Register'
-import Setup from 'Pages/Auth/Setup'
+import Login from 'Containers/User/Login'
+import ForgotPassword from 'Containers/User/ForgotPassword'
+import Register from 'Containers/User/Register'
 
 // App
-import Dashboard from 'Pages/Dashboard'
+import Dashboard from 'Containers/Dashboard'
 
 // Libraries
-import Movies from 'Pages/Libraries/Movies'
-import MovieFull from 'Pages/Libraries/Movies/MovieFull'
+import MovieList from 'Containers/Media/MovieList'
+import Movie from 'Containers/Media/Movies'
 
-import Series from 'Pages/Libraries/Series'
+import SeriesList from 'Containers/Media/SeriesList'
 
 // Auth
-import { Auth, checkAuth } from 'Actions/Auth'
+import { Auth, checkAuth } from 'Components/Auth'
 
 export default class Routes extends Component {
     componentWillMount() {
@@ -39,14 +38,13 @@ export default class Routes extends Component {
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/forgot' component={ForgotPassword} />
                 <Route exact path='/register' component={Register} />
-                <Route exact path='/setup' component={Setup} />
 
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
 
-                <PrivateRoute exact path="/movies" component={Movies} />
-                <PrivateRoute exact path='/movies/:uuid/:name' component={MovieFull} />
+                <PrivateRoute exact path="/movies" component={MovieList} />
+                <PrivateRoute exact path='/movies/:uuid/:name' component={Movie} />
 
-                <PrivateRoute exact path="/series" component={Series} />
+                <PrivateRoute exact path="/series" component={SeriesList} />
             </Switch>
         )
     }

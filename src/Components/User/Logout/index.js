@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Cookies from 'universal-cookie';
 import { withRouter } from "react-router-dom";
 
-import { Auth } from 'Actions/Auth'
+import { Auth } from 'Components/Auth'
 
 class Logout extends Component {
     _handleLogout = () => {

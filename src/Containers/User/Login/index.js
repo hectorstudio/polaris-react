@@ -4,8 +4,8 @@ import { withAlert } from 'react-alert'
 
 import { LoginWrap } from './Styles'
 
-import { AUTH_REQUEST, Auth } from 'Actions/Auth'
-import LoginForm from 'Components/LoginForm'
+import { AUTH_REQUEST, Auth } from 'Components/Auth'
+import LoginForm from 'Components/User/Login'
 
 class Login extends Component {
     state = {

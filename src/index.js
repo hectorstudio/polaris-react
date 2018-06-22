@@ -7,10 +7,10 @@ import { Provider as AlertProvider } from 'react-alert'
 
 import 'App.css';
 
-import App from 'Components/App'
-import Client from 'Components/Client'
-import Theme from 'Components/Theme'
-import AlertTemplate from 'Components/Alert'
+import Client from './Client'
+import Theme from 'Styles/Theme'
+import App from 'Containers/App'
+import AlertTemplate from 'Components/Alerts'
 
 const AlertOptions = {
     position: 'bottom right',
