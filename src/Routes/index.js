@@ -44,7 +44,7 @@ export default class Routes extends Component {
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
 
                 <PrivateRoute exact path="/movies" component={Movies} />
-                <PrivateRoute exact path='/movies/:uuid' component={MovieFull} />
+                <PrivateRoute exact path='/movies/:uuid/:name' component={MovieFull} />
 
                 <PrivateRoute exact path="/series" component={Series} />
             </Switch>

@@ -5,7 +5,7 @@ import jwtDecode from 'jwt-decode'
 const cookies = new Cookies();
 
 export const AUTH_REQUEST = (username, password) => {
-    let url = `http://atalanta.bysh.me:8080/m/v1/auth`;
+    let url = `http://d31r5.bysh.me:9090/m/v1/auth`;
 
     let data = {
         login: username,
@@ -36,7 +36,6 @@ export const checkAuth = () => {
         current_time = Date.now() / 1000;
 
     if (jwt.exp < current_time) {
-        console.log('expired');
         return false
     }
 

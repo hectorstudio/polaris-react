@@ -8,7 +8,7 @@ import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
 const httpLink = createHttpLink({
-    uri: 'http://atalanta.bysh.me:8080/m/query',
+    uri: 'http://d31r5.bysh.me:9090/m/query',
 });
 
 const authLink = setContext((_, { headers }) => {

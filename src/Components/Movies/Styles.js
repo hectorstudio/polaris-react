@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 export const CardWrap = styled.article`
     flex: 1 1 16.6667%;

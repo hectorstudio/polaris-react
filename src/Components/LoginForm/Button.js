@@ -22,7 +22,6 @@ export default class Button  extends Component {
     }
 
     render() { 
-        console.log(this.props.disabled);
         return (
             <LoginButton 
                 type="submit" 
