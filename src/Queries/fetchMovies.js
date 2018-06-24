@@ -2,7 +2,7 @@ import React from 'react'
 import gql from "graphql-tag"
 import { Query } from "react-apollo"
 
-import MovieCard from 'Components/Media/MovieCard'
+import MediaCard from 'Components/Media/Card'
 
 const FETCH_MOVIES = gql`
     {
@@ -32,7 +32,7 @@ const FetchMovies = () => (
                     uuid
                 }
 
-                return (<MovieCard key={i} {...movie_details} />);
+                return (<MediaCard type="movie" key={i} {...movie_details} />);
             });
         }}
 

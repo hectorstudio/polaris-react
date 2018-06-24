@@ -1,9 +1,16 @@
-import React from 'react';
+import React from 'react'
 
-const SeriesList = (
-    <div>
-        <h1>TV Series</h1>
-    </div>
+import { LibraryWrap, LibraryListWrap, LibraryHeading } from '../Styles'
+import FetchSeries from 'Queries/fetchSeries'
+
+const SeriesList = () => (
+    <LibraryWrap>
+        <LibraryHeading>Television Series</LibraryHeading>
+
+        <LibraryListWrap>
+            <FetchSeries />
+        </LibraryListWrap>
+    </LibraryWrap>
 )
 
 export default SeriesList

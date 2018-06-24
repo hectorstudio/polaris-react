@@ -12,7 +12,7 @@ import Dashboard from 'Containers/Dashboard'
 
 // Libraries
 import MovieList from 'Containers/Media/MovieList'
-import Movie from 'Containers/Media/Movies'
+import Movie from 'Containers/Media/Movie'
 
 import SeriesList from 'Containers/Media/SeriesList'
 
