@@ -25,8 +25,6 @@ const FetchSeriesList = () => (
             if (loading) return "Loading...";
             if (error) return `Error! ${error.message}`;
 
-            console.log(data);
-
             return data.tvseries.map(({ name, seasons, poster_path, tmdb_id, uuid }, i) => {
                 let series_details = {
                     name,
