@@ -2,41 +2,46 @@ import React from 'react'
 import gql from "graphql-tag"
 import { Query } from "react-apollo"
 
-import MediaCard from 'Components/Media/Card'
+import Series from 'Components/Media/Series'
 
-const FETCH_SERIES = gql`
+const FETCH_MOVIE = uuid => gql`
     {
-        tvseries {
+        tvseries(uuid: "${uuid}") {
             name,
-            poster_path,
-            tmdb_id,
-            uuid
+            seasons {
+                name,
+                poster_path,
+                tmdb_id,
+                uuid
+                episodes {
+                    name,
+                    tmdb_id,
+                    uuid
+                }
+            }
         }
     }
 `
 
-const FetchSeries = () => (
-    <Query
-        query={FETCH_SERIES}
-    >
+const FetchSeries = ({ uuid }) => {
+    return (
+        <Query
+            query={FETCH_MOVIE(uuid)}
+        >
 
-        {({ loading, error, data }) => {
-            if (loading) return "Loading...";
-            if (error) return `Error! ${error.message}`;
+            {({ loading, error, data }) => {
+                if (loading) return "Loading...";
+                if (error) return `Error! ${error.message}`;
 
-            return data.tvseries.map(({ name, poster_path, tmdb_id, uuid }, i) => {
-                let series_details = {
-                    name,
-                    poster_path,
-                    tmdb_id,
-                    uuid
-                }
+                let series = data.tvseries[0];
 
-                return (<MediaCard key={i} {...series_details} />);
-            });
-        }}
+                return (
+                    <Series {...series} />
+                );
+            }}
 
-    </Query>
-);
+        </Query>
+    )
+};
 
 export default FetchSeries

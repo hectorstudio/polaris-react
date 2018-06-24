@@ -1,14 +1,14 @@
 import React from 'react'
 
 import { LibraryWrap, LibraryListWrap, LibraryHeading } from '../Styles'
-import FetchSeries from 'Queries/fetchSeries'
+import FetchSeriesList from 'Queries/fetchSeriesList'
 
 const SeriesList = () => (
     <LibraryWrap>
         <LibraryHeading>Television Series</LibraryHeading>
 
         <LibraryListWrap>
-            <FetchSeries />
+            <FetchSeriesList />
         </LibraryListWrap>
     </LibraryWrap>
 )

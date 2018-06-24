@@ -15,7 +15,7 @@ const FETCH_MOVIES = gql`
     }
 `
 
-const FetchMovies = () => (
+const FetchMovieList = () => (
     <Query
         query={FETCH_MOVIES}
     >
@@ -39,4 +39,4 @@ const FetchMovies = () => (
     </Query>
 );
 
-export default FetchMovies
+export default FetchMovieList

@@ -15,6 +15,7 @@ import MovieList from 'Containers/Media/MovieList'
 import Movie from 'Containers/Media/Movie'
 
 import SeriesList from 'Containers/Media/SeriesList'
+import Series from 'Containers/Media/Series'
 
 // Auth
 import { Auth, checkAuth } from 'Components/Auth'
@@ -45,6 +46,7 @@ export default class Routes extends Component {
                 <PrivateRoute exact path='/movies/:uuid/:name' component={Movie} />
 
                 <PrivateRoute exact path="/series" component={SeriesList} />
+                <PrivateRoute exact path="/series/:uuid/:name" component={Series} />
             </Switch>
         )
     }

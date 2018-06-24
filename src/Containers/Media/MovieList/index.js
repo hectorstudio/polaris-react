@@ -1,14 +1,14 @@
 import React from 'react';
 
 import { LibraryWrap, LibraryListWrap, LibraryHeading } from '../Styles'
-import FetchMovies from 'Queries/fetchMovies'
+import FetchMovieList from 'Queries/fetchMovieList'
 
 const MovieList = () => (
     <LibraryWrap>
         <LibraryHeading>Movies</LibraryHeading>
         
         <LibraryListWrap>
-            <FetchMovies />
+            <FetchMovieList />
         </LibraryListWrap>
     </LibraryWrap>
 )
