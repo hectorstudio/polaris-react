@@ -14,11 +14,18 @@ class Login extends Component {
         error: false,
         disabled: true,
         username: '',
-        password: ''
+        password: '',
+        isMounted: false
     }
 
     componentWillMount() {
         if (Auth.isAuthenticated) this.setState({ redirectToDashboard: true });
+
+        this.setState({ isMounted: true })
+    }
+
+    componentWillUnmount() {
+        this.setState({ isMounted: false })
     }
     
     _handleLogin = () => {
@@ -28,8 +35,8 @@ class Login extends Component {
 
             // Allow Successful Login Fade Out
             setTimeout(() => {
-                this.setState({ redirectToDashboard: true });
-            }, 500);
+                    this.setState({ redirectToDashboard: true });
+            }, 750);
         }).catch(error => {
             this.setState({ error: true }, () => {
                 this.props.alert.error('Looks like your Username and Password dont match, Please Try Again');
@@ -40,10 +47,12 @@ class Login extends Component {
     _handleChange = e => {
         let emptyInput = (this.state.username.length < 1 || this.state.password.length < 1);
 
-        this.setState({ 
-            [e.target.name]: e.target.value,
-            disabled: (!emptyInput ? false : true)
-        });
+        if(this.state.isMounted) {
+            this.setState({ 
+                [e.target.name]: e.target.value,
+                disabled: (!emptyInput ? false : true)
+            });
+        }
     }
 
     render() { 

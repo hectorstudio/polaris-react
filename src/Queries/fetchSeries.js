@@ -32,7 +32,7 @@ const FetchSeries = ({ uuid }) => {
             {({ loading, error, data }) => {
                 if (loading) return "Loading...";
                 if (error) return `Error! ${error.message}`;
-
+                    
                 let series = data.tvseries[0];
 
                 return (

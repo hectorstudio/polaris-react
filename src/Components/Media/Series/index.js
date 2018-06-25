@@ -7,10 +7,10 @@ class Series extends Component {
         const { name, seasons } = this.props;
 
         return (
-            <article>
+            <React.Fragment>
                 <h1>{name}</h1>
                 <SeasonList seasons={seasons}/>
-            </article>
+            </React.Fragment>
         )
     }
 }

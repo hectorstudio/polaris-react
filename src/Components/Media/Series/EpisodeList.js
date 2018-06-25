@@ -13,9 +13,7 @@ const EpisodeList = props => (
                 }
 
                 return ( 
-                    <section key={i}>
-                        <MediaCard {...episode_details} /> 
-                    </section>
+                    <MediaCard key={i} {...episode_details} /> 
                 );
             })
         }

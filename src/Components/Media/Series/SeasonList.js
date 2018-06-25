@@ -4,7 +4,7 @@ import MediaCard from 'Components/Media/Card'
 import EpisodeList from './EpisodeList'
 
 const SeasonList = props => (
-    <div>
+    <React.Fragment>
         {
             props.seasons.map(({ name, episodes, poster_path, tmdb_id }, i) => {
                 let season_details = {
@@ -15,14 +15,14 @@ const SeasonList = props => (
                 }
 
                 return ( 
-                    <section key={i}>
+                    <React.Fragment key={i}>
                         <MediaCard {...season_details} /> 
                         <EpisodeList episodes={episodes} poster_path={poster_path} />
-                    </section>
+                    </React.Fragment>
                 );
             })
         }
-    </div>
+    </React.Fragment>
 )
 
 export default SeasonList

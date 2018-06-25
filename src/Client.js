@@ -2,13 +2,14 @@ import { ApolloClient } from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
 import { setContext } from 'apollo-link-context';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-
 import Cookies from 'universal-cookie';
+
+import base_url from 'Helpers/getBaseUrl'
 
 const cookies = new Cookies();
 
 const httpLink = createHttpLink({
-    uri: 'http://d31r5.bysh.me:9090/m/query',
+    uri: `${base_url()}/m/query`,
 });
 
 const authLink = setContext((_, { headers }) => {

@@ -2,10 +2,12 @@ import axios from 'axios'
 import Cookies from 'universal-cookie';
 import jwtDecode from 'jwt-decode'
 
+import base_url from 'Helpers/getBaseUrl'
+
 const cookies = new Cookies();
 
 export const AUTH_REQUEST = (username, password) => {
-    let url = `http://d31r5.bysh.me:9090/m/v1/auth`;
+    let url = `${base_url()}/m/v1/auth`;
 
     let data = {
         login: username,
