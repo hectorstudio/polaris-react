@@ -8,13 +8,20 @@ const FETCH_MOVIE = uuid => gql`
     {
         movies(uuid: "${uuid}") {
             title,
-            file_name,
-            file_path,
             year,
             overview,
             imdb_id,
             backdrop_path,
-            uuid
+            uuid,
+
+            files {
+                file_name
+                uuid
+                streams{
+                    codec_mime
+                    stream_type
+                }
+            }
         }
     }
 `

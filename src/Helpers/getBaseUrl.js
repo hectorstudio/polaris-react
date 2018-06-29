@@ -1,5 +1,5 @@
 const base_url = () => {
-    let url = 'http://atalanta.bysh.me:8080';
+    let url = 'http://d31r5.bysh.me:9090';
 
     return url
 }
