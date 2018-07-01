@@ -2,7 +2,7 @@ import React from 'react'
 
 import { FormWrap } from './Styles'
 
-import LogoIcon from './LogoIcon'
+import Logo from 'Components/Logo'
 import Title from './Title'
 import Input from './Input' 
 import Button from './Button' 
@@ -12,7 +12,7 @@ import ForgotPassword from './ForgotPassword'
 const LoginForm = (props) => (
     <React.Fragment>
         <FormWrap error={props.error}>
-            <LogoIcon alt="Bytesized Streaming" width="30"/>
+            <Logo alt="Bytesized Streaming" height="30"/>
             <Title heading="Welcome Back!" sub="Login to get started" />
 
             <Input type="text" name="username" placeholder="Enter Username" handleChange={props.handleChange} />

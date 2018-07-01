@@ -19,8 +19,6 @@ class Series extends Component {
             );
         });
 
-        console.log(this.props);
-
         return ( 
             <div>
                 <h1>{ name }</h1>

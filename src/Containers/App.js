@@ -1,22 +1,20 @@
 import React, { Component } from 'react'
-import { withAlert } from 'react-alert'
-import styled from 'styled-components'
 
+import { Auth, checkAuth } from 'Components/Auth'
+import { AppWrap } from './Styles'
+
+import Header from 'Components/Header'
 import Routes from 'Routes'
 
-const AppWrap = styled.main`
-    display: flex;
-    height: 100vh;
-`;
-
-class App extends Component {
+export default class App extends Component {
     render() {
+        checkAuth();
+
         return (
             <AppWrap id="bytesized-streaming">
+                {(Auth.isAuthenticated ? <Header /> : null)}
                 <Routes />
             </AppWrap>
         );
     }
 }
-
-export default withAlert(App)
