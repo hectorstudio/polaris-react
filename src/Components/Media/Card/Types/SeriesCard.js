@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import base_url from 'Helpers/getBaseUrl'
+import { getBaseUrl } from 'Helpers'
 
-import { CardPoster, CardWrap } from './Styles';
+import { CardPoster, CardWrap } from '../Styles';
 
-class Movie extends Component {
+class SeriesCard extends Component {
     state = {
         url: ''
     }
@@ -21,11 +21,11 @@ class Movie extends Component {
 
         return (
             <CardWrap data-tmdb-id={tmdb_id} onClick={() => { history.push(this.state.url) }}>
-                <CardPoster src={`${base_url()}/m/images/tmdb/w342/${poster_path}`} alt={name} />
+                <CardPoster src={`${getBaseUrl()}/m/images/tmdb/w342/${poster_path}`} alt={name} />
                 <h5>{name}</h5>
             </CardWrap>
         )
     }
 }
 
-export default Movie;
+export default SeriesCard;

@@ -4,11 +4,10 @@ import { Query } from "react-apollo"
 
 import MediaCard from 'Components/Media/Card'
 
-const FETCH_SERIES = gql`
+const FETCH_SERIES_LIST = gql`
     {
         tvseries {
             name,
-            status,
             poster_path,
             tmdb_id,
             uuid
@@ -18,7 +17,7 @@ const FETCH_SERIES = gql`
 
 const FetchSeriesList = () => (
     <Query
-        query={FETCH_SERIES}
+        query={FETCH_SERIES_LIST}
     >
 
         {({ loading, error, data }) => {
@@ -34,7 +33,7 @@ const FetchSeriesList = () => (
                     uuid
                 }
 
-                return (<MediaCard key={i} {...series_details} />);
+                return (<MediaCard type="series" key={i} {...series_details} />);
             });
         }}
 

@@ -1,16 +1,11 @@
 import React from 'react'
 
-import { LibraryWrap, LibraryListWrap, LibraryHeading } from '../Styles'
 import FetchSeriesList from 'Queries/fetchSeriesList'
 
-const SeriesList = () => (
-    <LibraryWrap>
-        <LibraryHeading>Television Series</LibraryHeading>
-
-        <LibraryListWrap>
-            <FetchSeriesList />
-        </LibraryListWrap>
-    </LibraryWrap>
-)
+const SeriesList = props => {
+    return (
+        <FetchSeriesList />
+    )
+}
 
 export default SeriesList

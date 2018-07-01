@@ -2,12 +2,12 @@ import axios from 'axios'
 import Cookies from 'universal-cookie';
 import jwtDecode from 'jwt-decode'
 
-import base_url from 'Helpers/getBaseUrl'
+import { getBaseUrl } from 'Helpers'
 
 const cookies = new Cookies();
 
 export const AUTH_REQUEST = (username, password) => {
-    let url = `${base_url()}/m/v1/auth`;
+    let url = `${getBaseUrl()}/m/v1/auth`;
 
     let data = {
         login: username,

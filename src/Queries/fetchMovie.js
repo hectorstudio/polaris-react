@@ -7,12 +7,12 @@ import Movie from 'Components/Media/Movie'
 const FETCH_MOVIE = uuid => gql`
     {
         movies(uuid: "${uuid}") {
-            title,
-            year,
-            overview,
-            imdb_id,
-            backdrop_path,
-            uuid,
+            title
+            year
+            overview
+            imdb_id
+            backdrop_path
+            uuid
 
             files {
                 file_name
