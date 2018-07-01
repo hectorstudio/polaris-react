@@ -2,19 +2,20 @@ import React from 'react'
 import gql from "graphql-tag"
 import { Query } from "react-apollo"
 
-import MediaCard from 'Components/Media/Card'
+import Series from 'Components/Media/Series'
 
 const FETCH_SERIES = uuid => gql`
     {
         tvseries(uuid: "${uuid}") {
-            name,
-            poster_path,
-            tmdb_id,
-            uuid,
+            name
+            tmdb_id
+            uuid
+            overview
+            
             seasons {
-                name,
-                poster_path,
-                uuid,
+                name
+                poster_path
+                uuid
                 tmdb_id
             }
         }
@@ -30,16 +31,9 @@ const FetchSeries = ({ uuid }) => (
             if (loading) return "Loading...";
             if (error) return `Error! ${error.message}`;
 
-            return data.tvseries[0].seasons.map(({ name, poster_path, tmdb_id, uuid }, i) => {
-                let season = {
-                    name,
-                    poster_path,
-                    tmdb_id,
-                    uuid
-                }
-
-                return (<MediaCard type="season" key={i} {...season} />);
-            });
+            return (
+                <Series {...data.tvseries[0]} />
+            )
         }}
 
     </Query>
