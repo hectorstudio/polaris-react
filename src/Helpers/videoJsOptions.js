@@ -3,11 +3,13 @@ let videoJsOptions = (source, title) => {
         autoplay: true,
         controls: true,
         enableLowInitialPlaylist: true,
-
+        
         sources: [{
             src: source,
             type: 'application/x-mpegURL',
-            name: title
+            name: title,
+            overrideNative: true,
+            withCredentials: true
         }]
     }
 }

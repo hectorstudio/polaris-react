@@ -6,6 +6,7 @@
         "@fortawesome/fontawesome": "^1.1.8",
         "@fortawesome/fontawesome-pro-regular": "^5.0.13",
         "@fortawesome/react-fontawesome": "0.0.20",
+        "@videojs/http-streaming": "^1.1.0",
         "apollo-boost": "^0.1.7",
         "apollo-cache-inmemory": "^1.2.4",
         "apollo-link-context": "^1.0.8",

@@ -6,7 +6,7 @@ import Series from 'Components/Media/Series'
 
 const FETCH_SERIES = uuid => gql`
     {
-        tvseries(uuid: "${uuid}") {
+        series(uuid: "${uuid}") {
             name
             tmdb_id
             uuid
@@ -32,7 +32,7 @@ const FetchSeries = ({ uuid }) => (
             if (error) return `Error! ${error.message}`;
 
             return (
-                <Series {...data.tvseries[0]} />
+                <Series {...data.series[0]} />
             )
         }}
 

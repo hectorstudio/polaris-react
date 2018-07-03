@@ -6,7 +6,7 @@ import MediaCard from 'Components/Media/Card'
 
 const FETCH_SERIES_LIST = gql`
     {
-        tvseries {
+        series {
             name,
             poster_path,
             tmdb_id,
@@ -24,7 +24,7 @@ const FetchSeriesList = () => (
             if (loading) return "Loading...";
             if (error) return `Error! ${error.message}`;
 
-            return data.tvseries.map(({ name, seasons, poster_path, tmdb_id, uuid }, i) => {
+            return data.series.map(({ name, seasons, poster_path, tmdb_id, uuid }, i) => {
                 let series_details = {
                     name,
                     seasons,

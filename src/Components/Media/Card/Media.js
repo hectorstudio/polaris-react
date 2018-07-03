@@ -18,10 +18,6 @@ class Media extends Component {
         });
     }
 
-    _autoPlay = () => {
-        let autoplay_url = `${this.state.url}/true`
-    }
-
     render() {
         const { poster_path, imdb_id, history } = this.props;
         const { name } = this.state;
@@ -30,7 +26,6 @@ class Media extends Component {
             <CardWrap data-tmdb-id={imdb_id} onClick={() => { history.push(this.state.url) }}>
                 <CardPoster src={`${getBaseUrl()}/m/images/tmdb/w342/${poster_path}`} alt={name} />
                 <h5>{name}</h5>
-                <p onClick={ this._autoPlay() }>Play Movie</p>
             </CardWrap>
         )
     }

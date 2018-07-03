@@ -6,7 +6,7 @@ import Season from 'Components/Media/Season'
 
 const FETCH_SEASON = uuid => gql`
     {
-        tvseason(uuid: "${uuid}") {
+        season(uuid: "${uuid}") {
             name
             overview
             season_number
@@ -33,7 +33,7 @@ const FetchSeason = ({ uuid }) => {
                 if (error) return `Error! ${error.message}`;
 
                 return (
-                    <Season { ...data.tvseason } />
+                    <Season { ...data.season } />
                 )
             }}
 

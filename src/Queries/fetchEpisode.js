@@ -6,7 +6,7 @@ import Episode from 'Components/Media/Episode'
 
 const FETCH_EPISODE = uuid => gql`
     {
-        tvepisode(uuid: "${uuid}") {
+        episode(uuid: "${uuid}") {
             name
             
             files {
@@ -31,7 +31,7 @@ const FetchEpisode = ({ uuid }) => {
                 if (loading) return "Loading...";
                 if (error) return `Error! ${error.message}`;
                 
-                let episode = data.tvepisode;
+                let episode = data.episode;
 
                 return (<Episode type="episode" {...episode} />);
             }}
