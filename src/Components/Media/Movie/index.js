@@ -14,6 +14,14 @@ class Movie extends Component {
     state = {
         source: ''
     }
+
+    componentDidMount() {
+        let urlParams = new URLSearchParams(window.location.search),
+            autoplay = urlParams.get('autoplay');
+
+        // Trigger Autoplay
+        if (autoplay) this._playMedia()
+    }
      
     _playMedia() {
         this.props.mutate({

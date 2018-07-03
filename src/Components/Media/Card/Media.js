@@ -9,12 +9,17 @@ class Media extends Component {
     }
 
     componentDidMount() {
-        let url = this.state.name.replace(/\s+/g, '-').toLowerCase();
         const { type, uuid } = this.props;
+
+        let url = this.state.name.replace(/\s+/g, '-').toLowerCase();
 
         this.setState({
             url: `/${type}/${uuid}/${url}`
-        })
+        });
+    }
+
+    _autoPlay = () => {
+        let autoplay_url = `${this.state.url}/true`
     }
 
     render() {
@@ -25,6 +30,7 @@ class Media extends Component {
             <CardWrap data-tmdb-id={imdb_id} onClick={() => { history.push(this.state.url) }}>
                 <CardPoster src={`${getBaseUrl()}/m/images/tmdb/w342/${poster_path}`} alt={name} />
                 <h5>{name}</h5>
+                <p onClick={ this._autoPlay() }>Play Movie</p>
             </CardWrap>
         )
     }

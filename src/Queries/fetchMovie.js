@@ -26,7 +26,7 @@ const FETCH_MOVIE = uuid => gql`
     }
 `
 
-const FetchMovie = ({ uuid }) => {
+const FetchMovie = ({ uuid, autoplay }) => {
     return (
         <Query
             query={FETCH_MOVIE(uuid)}

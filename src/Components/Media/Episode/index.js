@@ -15,21 +15,29 @@ class Episode extends Component {
         source: ''
     }
 
+    componentDidMount() {
+        let urlParams = new URLSearchParams(window.location.search),
+            autoplay = urlParams.get('autoplay');
+        
+        // Trigger Autoplay
+        if (autoplay) this._playMedia()
+    }
+
     _playMedia() {
         this.props.mutate({
             variables: { uuid: this.props.files[0].uuid }
         })
-            .then(({ data }) => {
-                let mime_types = generateMimeTypes(this.props.files[0].streams),
-                    stream_path = data.createStreamingTicket.streamingPath;
+        .then(({ data }) => {
+            let mime_types = generateMimeTypes(this.props.files[0].streams),
+                stream_path = data.createStreamingTicket.streamingPath;
 
-                this.setState({
-                    source: `${getBaseUrl()}${stream_path}?${mime_types}`
-                });
-            })
-            .catch((error) => {
-                console.log('there was an error Playing the Episode', error);
+            this.setState({
+                source: `${getBaseUrl()}${stream_path}?${mime_types}`
             });
+        })
+        .catch((error) => {
+            console.log('there was an error Playing the Episode', error);
+        });
     }
 
     render() {
