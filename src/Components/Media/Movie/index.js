@@ -4,9 +4,9 @@ import { graphql } from 'react-apollo';
 import { 
     generateMimeTypes, 
     getBaseUrl
- } from 'Helpers'
+} from 'Helpers'
 
- import { VideoWrap } from './Styles'
+import { VideoWrap } from './Styles'
 
 import REQUEST_STREAM from 'Mutations/requestStream'
 import Video from '../Video'

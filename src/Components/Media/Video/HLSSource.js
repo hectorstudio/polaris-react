@@ -8,11 +8,8 @@ export default class HLSSource extends Component {
     }
 
     componentDidMount() {
-        // `src` is the property get from this component
-        // `video` is the property insert from `Video` component
-        // `video` is the html5 video element
         const { src, video } = this.props;
-        // load hls video source base on hls.js
+
         if (Hls.isSupported()) {
             this.hls.loadSource(src);
             this.hls.attachMedia(video);
@@ -21,7 +18,6 @@ export default class HLSSource extends Component {
             });
         }
     }
-
 
     componentWillUnmount() {
         // destroy hls video source

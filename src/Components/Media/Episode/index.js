@@ -3,9 +3,10 @@ import { graphql } from 'react-apollo';
 
 import {
     generateMimeTypes,
-    getBaseUrl,
-    videoJsOptions
+    getBaseUrl
 } from 'Helpers'
+
+import { VideoWrap } from './Styles'
 
 import REQUEST_STREAM from 'Mutations/requestStream'
 import Video from '../Video'
@@ -49,7 +50,9 @@ class Episode extends Component {
                 <div onClick={this._playMedia.bind(this)}>Play Episode</div>
     
                 {this.state.source !== '' ?
-                    <Video {...videoJsOptions(this.state.source, name)} /> :
+                    <VideoWrap>
+                        <Video source={this.state.source} />
+                    </VideoWrap> :
                     null
                 }
 

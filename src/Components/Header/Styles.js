@@ -7,15 +7,14 @@ export const HeaderWrap = styled.header`
     height: 6rem;
     background: #FFF;
     box-shadow: 0 10px 60px rgba(0,0,0, 0.05);
-    align-items: center;
-    justify-content: center;
 `;
 
 export const HomeLink = styled(Link)`
-    flex:0 0 6rem;
     width: 6rem;
     height:6rem;
     padding:1.5rem;
+    align-self: center;
+    margin: auto;
 `;
 
 export const BackButton = styled.button`
@@ -25,5 +24,4 @@ export const BackButton = styled.button`
     background:none;
     border:0;
     border-right:1px solid #F2F2F2;
-    align-self:flex-start;
 `;
