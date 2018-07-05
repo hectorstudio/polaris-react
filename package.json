@@ -14,6 +14,7 @@
         "axios": "^0.18.0",
         "graphql": "^0.13.2",
         "graphql-tag": "^2.9.2",
+        "hls.js": "^0.10.1",
         "jwt-decode": "^2.2.0",
         "polished": "^1.9.2",
         "react": "^16.4.0",
@@ -27,6 +28,7 @@
         "save": "^2.3.2",
         "styled-components": "^3.3.0",
         "universal-cookie": "^2.1.5",
+        "video-react": "^0.11.2",
         "video.js": "^7.0.3"
     },
     "devDependencies": {
