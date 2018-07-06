@@ -6,6 +6,10 @@ export default class Button  extends Component {
     state = {
         disabled: false
     }
+    
+    componentWillUnmount() {
+        clearTimeout(this.throttle);
+    }
 
     _handleLogin = e => {
         e.preventDefault();
@@ -13,9 +17,10 @@ export default class Button  extends Component {
         if(!this.state.disabled) {
             this.props.handleLogin();
 
+            // Throttle Login Attempts 
             this.setState({ disabled: true });
 
-            setTimeout(() => {
+            this.throttle = setTimeout(() => {
                 this.setState({ disabled: false });
             }, 1000);
         }

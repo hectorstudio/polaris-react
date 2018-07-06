@@ -1,5 +1,5 @@
 const getBaseUrl = () => {
-    let url = 'http://d31r5.bysh.me:9090';
+    let url = 'http://atalanta.bysh.me:8080';
 
     return url
 }
