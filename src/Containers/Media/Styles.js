@@ -6,7 +6,7 @@ const aFadeIn = keyframes`${fadeIn}`;
 export const LibraryWrap = styled.div`
     width: 100%;
     float:left;
-    padding:5rem;
+    padding:2.5rem;
     animation: ${`.5s ${aFadeIn} alternate`};
 `;
 

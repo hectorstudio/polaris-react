@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
-import GoBack from './GoBack'
+import Back from './Back'
+import Logout from './Logout'
 import Logo from 'Components/Logo'
 
 import {
@@ -12,12 +13,13 @@ export default class Header extends Component {
     render() { 
         return ( 
             <HeaderWrap>
-                <GoBack prevLocation={this.props.prevLocation} />
+                <Back prevLocation={this.props.prevLocation} />
 
                 <HomeLink to="/dashboard">
                     <Logo alt="Bytesized Streaming" height="100%" />
                 </HomeLink>
 
+                <Logout />
             </HeaderWrap>
         )
     }
