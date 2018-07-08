@@ -1,22 +1,26 @@
 import styled from 'styled-components';
 
 export const CardWrap = styled.article`
-    flex: 1 1 100%;
-    max-width: 100%;
-    padding:.5rem;
+    flex: 1;
+    min-width:22rem;
     box-sizing:border-box;
-    margin:0 0 1rem;
-
-    @media (min-width: 425px) {
-        flex: 1 1 50%;
-        max-width: 50%;
-    }
+    margin:0 1rem 2rem;
 `;
 
 export const CardPoster = styled.img`
     width: 100%;
     float: left;
-    border: 3px solid #FFF;
-    border-radius:5px;
-    box-shadow: 0 0 60px rgba(0,0,0, 0.15);
+    border-radius:3px;
+    display:block;
+    border:4px solid #FFF;
+    box-shadow: 0 5px 60px rgba(0,0,0, 0.1);
 `;
+
+export const CardTitle = styled.h3`
+    width: 100%;
+    float: left;
+    text-align: center;
+    margin:1rem 0 0;
+    font-size:1.2rem;
+    font-weight:800;
+`

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { LibraryWrap, LibraryListWrap, LibraryHeading } from './Styles'
+
 import MediaCard from 'Components/Media/Card'
 
 class Series extends Component {
@@ -21,8 +23,13 @@ class Series extends Component {
 
         return (
             <div>
-                <h1>{ name }</h1>
-                { episodeList }
+                <LibraryWrap>
+                    <LibraryHeading>{name}</LibraryHeading>
+
+                    <LibraryListWrap>
+                        {episodeList}
+                    </LibraryListWrap>
+                </LibraryWrap>
             </div>
         )
     }

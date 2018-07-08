@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { getBaseUrl } from 'Helpers'
 
-import { CardPoster, CardWrap } from './Styles';
+import { CardPoster, CardWrap, CardTitle} from './Styles';
 
 class Media extends Component {
     state = {
@@ -25,7 +25,7 @@ class Media extends Component {
         return (
             <CardWrap data-tmdb-id={imdb_id} onClick={() => { history.push(this.state.url) }}>
                 <CardPoster src={`${getBaseUrl()}/m/images/tmdb/w342/${poster_path}`} alt={name} />
-                <h5>{name}</h5>
+                <CardTitle>{name}</CardTitle>
             </CardWrap>
         )
     }

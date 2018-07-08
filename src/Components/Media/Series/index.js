@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 import MediaCard from 'Components/Media/Card'
 
+import { LibraryWrap, LibraryListWrap, LibraryHeading } from './Styles'
+
 class Series extends Component {
     render() { 
         const { name, seasons, overview } = this.props;
@@ -20,11 +22,13 @@ class Series extends Component {
         });
 
         return ( 
-            <div>
-                <h1>{ name }</h1>
-                <p>{ overview }</p>
-                { seasonList }
-            </div>
+            <LibraryWrap>
+                <LibraryHeading>{name}</LibraryHeading>
+                <p>{overview}</p>
+                <LibraryListWrap>
+                    {seasonList}
+                </LibraryListWrap>
+            </LibraryWrap>
         )
     }
 }

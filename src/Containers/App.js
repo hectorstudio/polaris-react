@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
 import { Auth, checkAuth } from 'Components/Auth'
-import { AppWrap } from './Styles'
+import { AppWrap, ContentWrap } from './Styles'
 
-import Header from 'Components/Header'
+import Sidebar from 'Components/Sidebar'
 import Routes from 'Routes'
 
 export default class App extends Component {
@@ -12,8 +12,10 @@ export default class App extends Component {
 
         return (
             <AppWrap id="bytesized-streaming">
-                {(Auth.isAuthenticated ? <Header /> : null)}
-                <Routes />
+                {(Auth.isAuthenticated ? <Sidebar /> : null)}
+                <ContentWrap>
+                    <Routes />
+                </ContentWrap>
             </AppWrap>
         );
     }

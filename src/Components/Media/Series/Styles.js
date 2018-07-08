@@ -1,10 +1,5 @@
 import styled from 'styled-components';
 
-export const Invis = styled.div`
-    display:block;
-    flex:100000;
-`;
-
 export const LibraryWrap = styled.div`
     width:100%;
 `;
@@ -12,7 +7,8 @@ export const LibraryWrap = styled.div`
 export const LibraryListWrap = styled.section`
     width: 100%;
     display: flex;
-    flex-flow: row wrap;
+    flex-wrap: wrap;
+    justify-content: inbetween;
 `;
 
 export const LibraryHeading = styled.h1`
