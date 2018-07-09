@@ -57,7 +57,7 @@ export const LoginInputWrap = styled.div`
     &:before {
         z-index:4;
         width:${props => props.isFocused ? 100 : 0}%;
-        background-image: linear-gradient(-135deg, #5683C6 0%, #6D9CE3 50%, #4678C3 100%);
+        background-image: linear-gradient(-135deg, ${props => props.theme.primary} 0%, ${props => props.theme.darken.primary} 50%, ${props => props.theme.primary} 100%);
     }    
 `;
 

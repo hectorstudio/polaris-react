@@ -1,20 +1,21 @@
-import styled, { keyframes } from 'styled-components';
-import { fadeIn } from 'react-animations';
+import styled from 'styled-components';
 
-const aFadeIn = keyframes`${fadeIn}`;
+// Animations
+import { aFadeIn } from 'Helpers/Animations'
 
 export const AppWrap = styled.main`
     display: flex;
     height: 100vh;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     flex-direction: column;
+    justify-content: ${props => props.authed ? 'initial' : 'center'};
 `;
 
 export const ContentWrap = styled.div`
-    flex: 1 1 calc(100% - 28rem);
-    max-width: calc(100% - 28rem);
+    flex: 1 1 auto;
+    max-width:  calc(100% - ${props => props.theme.layout.sidebar});
+    height:calc(100vh - ${props => props.theme.layout.header});
     float:left;
-    padding:5rem 5rem 5rem 4rem;
     animation: ${`.5s ${aFadeIn} alternate`};
-    margin-left: 28rem;
+    margin: 0 0 0 ${props => props.theme.layout.sidebar};
 `

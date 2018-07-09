@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 
 import { DashboardWrap } from './Styles'
+import { PageHeading } from 'Helpers/Styles'
 
 export default class Dashboard extends Component {
     render() { 
         return ( 
             <DashboardWrap>
-                <h1>Dashboard</h1>
+                <PageHeading>Dashboard</PageHeading>
             </DashboardWrap>
          )
     }

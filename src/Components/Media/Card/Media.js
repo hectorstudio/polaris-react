@@ -22,6 +22,7 @@ class Media extends Component {
         const { poster_path, imdb_id, history } = this.props;
         const { name } = this.state;
 
+
         return (
             <CardWrap data-tmdb-id={imdb_id} onClick={() => { history.push(this.state.url) }}>
                 <CardPoster src={`${getBaseUrl()}/m/images/tmdb/w342/${poster_path}`} alt={name} />

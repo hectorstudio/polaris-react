@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const CardWrap = styled.article`
     flex: 1;
-    min-width:22rem;
+    min-width:20rem;
     box-sizing:border-box;
     margin:0 1rem 2rem;
 `;
@@ -23,4 +23,5 @@ export const CardTitle = styled.h3`
     margin:1rem 0 0;
     font-size:1.2rem;
     font-weight:800;
+    color: #FFF;
 `

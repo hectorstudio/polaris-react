@@ -1,14 +1,18 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { Link } from 'react-router-dom'
 
-export const SidebarWrap = styled.header`
+// Animations
+import { aFadeIn } from 'Helpers/Animations'
+
+export const SidebarWrap = styled.nav`
+    width: ${props => props.theme.layout.sidebar};
     position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
-    background: #FFF;
-    width: 24rem;
+    background-color: rgba(0,0,0,.5);
+    animation: ${`.5s ${aFadeIn} alternate`};
+    padding:3rem;
 `;
 
 export const HomeLink = styled(Link)`
@@ -19,23 +23,36 @@ export const HomeLink = styled(Link)`
     margin: auto;
 `;
 
-export const LogoutIcon = styled(FontAwesomeIcon)`
-    color:#93A4B6;
-    font-size:1.6rem;
-    transition:.2s all;
-`;
-
-export const LogoutButton = styled.button`
-    width: 6rem;
-    height:6rem;
-    padding:1.5rem;
-    background:none;
-    border:0;
-    position:absolute;
-    bottom:0;
-    right:0;
-
-    &:hover ${LogoutIcon} {
-        color: ${(props => props.theme.alerts.error)}
+export const NavItemWrap = styled.section`
+    float:left;
+    width:100%;
+    margin:0 0 3rem;
+    &:first-of-type {
+        margin-top:5rem;
     }
-`;
+`
+
+export const NavItemHeading = styled.h5`
+    font-size:1rem;
+    letter-spacing:.2rem;
+    font-weight:800;
+    margin:0 0 1.5rem;
+    text-transform:uppercase;
+    color: ${props => props.theme.secondary};
+    opacity: .5;
+`
+
+export const NavItemLink = styled(Link)`
+    font-size:1.6rem;
+    line-height: 1.5;
+    font-weight:700;
+    margin:0 0 1rem;
+    color: ${props => props.theme.secondary};
+    float:left;
+    width:100%;
+    transition:.2s all;
+
+    &:hover {
+        color: #FFF;
+    }
+`

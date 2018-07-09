@@ -4,18 +4,26 @@ import { Auth, checkAuth } from 'Components/Auth'
 import { AppWrap, ContentWrap } from './Styles'
 
 import Sidebar from 'Components/Sidebar'
+import Header from 'Components/Header'
 import Routes from 'Routes'
 
 export default class App extends Component {
     render() {
         checkAuth();
 
-        return (
-            <AppWrap id="bytesized-streaming">
-                {(Auth.isAuthenticated ? <Sidebar /> : null)}
+        const LoggedIn = () => (
+            <React.Fragment>
+                <Sidebar />
                 <ContentWrap>
+                    <Header />
                     <Routes />
                 </ContentWrap>
+            </React.Fragment>
+        )
+
+        return (
+            <AppWrap id="bytesized-streaming" authed={Auth.isAuthenticated}>
+                {(Auth.isAuthenticated ? <LoggedIn /> : <Routes />)}
             </AppWrap>
         );
     }
