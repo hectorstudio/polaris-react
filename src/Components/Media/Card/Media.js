@@ -25,7 +25,7 @@ class Media extends Component {
 
         return (
             <CardWrap data-tmdb-id={imdb_id} onClick={() => { history.push(this.state.url) }}>
-                <CardPoster src={`${getBaseUrl()}/m/images/tmdb/w342/${poster_path}`} alt={name} />
+                <CardPoster bgimg={`${getBaseUrl()}/m/images/tmdb/w342/${poster_path}`} alt={name} />
                 <CardTitle>{name}</CardTitle>
             </CardWrap>
         )

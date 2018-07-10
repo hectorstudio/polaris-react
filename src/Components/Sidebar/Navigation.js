@@ -6,7 +6,7 @@ import NavItem from './NavItem'
 class Navigation extends Component {
     render() {
         let renderNavigation = navigationArr.map((item, i) =>
-            <NavItem {...item} />
+            <NavItem {...item} key={i}/>
         );
 
         return (

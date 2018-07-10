@@ -8,7 +8,8 @@ const Theme = {
     light: `#F5F7FA`,
     background: `#171B32`,
     darken: {
-        primary: darken(0.2, '#6b5697')
+        primary: darken(0.2, '#6b5697'),
+        dark: darken(0.2, '#282137'),
     },
     alerts: {
         success: `#81A35A`,

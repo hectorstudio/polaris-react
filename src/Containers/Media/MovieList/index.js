@@ -1,5 +1,6 @@
-import React from 'react';
+import React from 'react'
 import FetchMovieList from 'Queries/fetchMovieList'
+import Empty from 'Components/Media/Card/Empty'
 
 // Local Styles
 import { LibraryWrap, LibraryListWrap } from '../Styles'
@@ -12,6 +13,7 @@ const MovieList = () => (
         
         <LibraryListWrap>
             <FetchMovieList />
+            <Empty length="10"/>
         </LibraryListWrap>
     </LibraryWrap>
 )
