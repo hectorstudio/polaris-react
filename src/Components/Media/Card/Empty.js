@@ -9,7 +9,6 @@ const EmptyArticle = styled.article`
 
 class EmptyArticles extends Component {
     render() { 
-        console.log(this.props.length);
         const EmptyArticleList = [...Array(10)].map((_, i) => 
             <EmptyArticle key={i}></EmptyArticle>
         );
