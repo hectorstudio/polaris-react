@@ -2,7 +2,7 @@ import React from "react"
 import { render } from "react-dom"
 import { LastLocationProvider } from 'react-router-last-location';
 import { ApolloProvider } from "react-apollo"
-import { BrowserRouter as Router } from 'react-router-dom'
+import { HashRouter as Router } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { Provider as AlertProvider } from 'react-alert'
 
