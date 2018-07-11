@@ -31,7 +31,7 @@ export default class Routes extends Component {
     render() { 
         return ( 
             <Switch>
-                <Route exact path="/app" render={() => (
+                <Route exact path="/" render={() => (
                     Auth.isAuthenticated ? (
                         <Redirect to="/app/dashboard" />
                     ) : (
