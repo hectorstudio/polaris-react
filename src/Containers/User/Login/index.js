@@ -56,7 +56,7 @@ class Login extends Component {
     }
 
     render() { 
-        const { from } = this.props.location.state || { from: { pathname: "/dashboard" } };
+        const { from } = this.props.location.state || { from: { pathname: "/app/dashboard" } };
         const { redirectToDashboard } = this.state;
 
         if (redirectToDashboard) {

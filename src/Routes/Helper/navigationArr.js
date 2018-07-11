@@ -4,15 +4,15 @@ let navigationArr = [
         links: [
             {
                 name: 'Dashboard',
-                to: '/'
+                to: '/app/dashboard'
             },
             {
                 name: 'Movies',
-                to: '/movies'
+                to: '/app/movies'
             },
             {
                 name: 'Series',
-                to: '/series'
+                to: '/app/series'
             }
         ]
     },
@@ -21,11 +21,11 @@ let navigationArr = [
         links: [
             {
                 name: 'Account',
-                to: '/'
+                to: '/app'
             },
             {
                 name: 'App Settings',
-                to: '/'
+                to: '/app'
             }
         ]
     }
