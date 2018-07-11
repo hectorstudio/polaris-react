@@ -19,10 +19,10 @@ const LoginForm = (props) => (
             <Input type="password" name="password" placeholder="Enter Password" handleChange={props.handleChange} />
             <Button handleLogin={props.handleLogin} value="Login" disabled={props.disabled}/>
 
-            <Register to="/app/register" value="Sign Up" setup={false}/> 
+            <Register to="/register" value="Sign Up" setup={false}/> 
         </FormWrap>
 
-        <ForgotPassword to='/app/forgot' value="Forgot Password?"/>
+        <ForgotPassword to='/forgot' value="Forgot Password?"/>
     </React.Fragment>
 )
 

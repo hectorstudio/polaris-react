@@ -33,25 +33,25 @@ export default class Routes extends Component {
             <Switch>
                 <Route exact path="/" render={() => (
                     Auth.isAuthenticated ? (
-                        <Redirect to="/app/dashboard" />
+                        <Redirect to="/dashboard" />
                     ) : (
-                            <Redirect to="/app/login" />
+                            <Redirect to="/login" />
                         )
                 )} />
 
-                <Route exact path='/app/login' component={Login} />
-                <Route exact path='/app/forgot' component={ForgotPassword} />
-                <Route exact path='/app/register' component={Register} />
+                <Route exact path='/login' component={Login} />
+                <Route exact path='/forgot' component={ForgotPassword} />
+                <Route exact path='/register' component={Register} />
 
-                <PrivateRoute exact path="/app/dashboard" component={Dashboard} />
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
 
-                <PrivateRoute exact path="/app/movies" component={MovieList} />
-                <PrivateRoute exact path='/app/movie/:uuid/:name' component={Movie} />
+                <PrivateRoute exact path="/movies" component={MovieList} />
+                <PrivateRoute exact path='/movie/:uuid/:name' component={Movie} />
 
-                <PrivateRoute exact path="/app/series" component={SeriesList} />
-                <PrivateRoute exact path="/app/series/:uuid/:name" component={Series} />
-                <PrivateRoute exact path="/app/season/:uuid/:name" component={Season} />
-                <PrivateRoute exact path="/app/episode/:uuid/:name" component={Episode} />
+                <PrivateRoute exact path="/series" component={SeriesList} />
+                <PrivateRoute exact path="/series/:uuid/:name" component={Series} />
+                <PrivateRoute exact path="/season/:uuid/:name" component={Season} />
+                <PrivateRoute exact path="/episode/:uuid/:name" component={Episode} />
             </Switch>
         )
     }

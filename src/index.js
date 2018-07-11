@@ -21,7 +21,7 @@ const AlertOptions = {
 }
 
 const BytesizedStreaming = () => (
-    <Router>
+    <Router basename="/app">
         <LastLocationProvider>
             <ApolloProvider client={Client}>
                 <ThemeProvider theme={Theme}>

@@ -13,7 +13,7 @@ class Logout extends Component {
         cookies.remove('jwt', { path: '/' });
 
         Auth.logout();
-        this.props.history.push("/app/login");
+        this.props.history.push("/login");
     }
 
     render() {
