@@ -5,7 +5,7 @@ import { graphql } from 'react-apollo'
 
 import FETCH_SEARCH from 'Queries/fetchSearch'
 
-import { getSuggestionValue, renderSuggestion, updateSuggestions } from './Helpers'
+import { getSuggestionValue, renderSuggestion, updateSuggestions, renderSectionTitle, getSectionSuggestions } from './Helpers'
 
 class Search extends Component {
     constructor() {
@@ -33,16 +33,14 @@ class Search extends Component {
     loadSuggestions = () => {
         let suggest = (typeof this.props.data === 'undefined' ? [] : this.props.data.search);
 
-        updateSuggestions(suggest);
-
         this.setState({
-            suggestions: (typeof this.props.data === 'undefined' ? [] : this.props.data.search)
+            suggestions: (typeof this.props.data === 'undefined' ? [] : updateSuggestions(suggest))
         });
     }
 
     onSuggestionsFetchRequested = ({ value }) => {
         this.debouncedLoadSuggestions(value);
-    };
+    }
 
     onSuggestionsClearRequested = () => {
         this.setState({
@@ -65,12 +63,15 @@ class Search extends Component {
 
         return (
             <Autosuggest
+                multiSection={true}
                 suggestions={suggestions}
                 onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
                 onSuggestionsClearRequested={this.onSuggestionsClearRequested}
                 getSuggestionValue={getSuggestionValue}
                 renderSuggestion={renderSuggestion}
                 shouldRenderSuggestions={this.shouldRenderSuggestions}
+                renderSectionTitle={renderSectionTitle}
+                getSectionSuggestions={getSectionSuggestions}
                 inputProps={inputProps}
             />
         );
