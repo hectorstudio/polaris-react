@@ -1,15 +1,29 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 import Back from './Back'
 import Logout from './Logout'
+import Search from './Search'
 
 import { HeaderWrap } from './Styles'
 
-const Header = () => (
-    <HeaderWrap>
-        <Back />
-        <Logout />
-    </HeaderWrap>
-)
+export default class Header extends Component {
+    state = {
+        value: ''
+    }
 
-export default Header
+    _updateSearch = value => {
+        this.setState({
+            value: value
+        });
+    };
+
+    render() { 
+        return ( 
+            <HeaderWrap>
+                <Back />
+                <Search value={this.state.value} updateSearch={ this._updateSearch } />
+                <Logout />
+            </HeaderWrap>
+        );
+    }
+}

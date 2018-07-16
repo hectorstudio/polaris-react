@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from "graphql-tag"
 
 const REQUEST_STREAM = gql`
     mutation createStreamingTicket($uuid: String!){
@@ -11,6 +11,6 @@ const REQUEST_STREAM = gql`
             jwt
         }
     }
-`;
+`
 
 export default REQUEST_STREAM;

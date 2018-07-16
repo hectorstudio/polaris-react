@@ -4,6 +4,7 @@ import { setContext } from 'apollo-link-context';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import Cookies from 'universal-cookie';
 
+import fragmentMatcher from './fragmentMatcher'
 import { getBaseUrl } from 'Helpers'
 
 const cookies = new Cookies();
@@ -23,9 +24,11 @@ const authLink = setContext((_, { headers }) => {
     }
 });
 
+const cache = new InMemoryCache({ fragmentMatcher })
+
 const client = new ApolloClient({
-    link: authLink.concat(httpLink),
-    cache: new InMemoryCache()
+    cache,
+    link: authLink.concat(httpLink)
 });
 
 export default client;

@@ -33,4 +33,14 @@ const AlertTemplate = ({ message, options, style, close }) => {
     )
 }
 
-export default AlertTemplate
+const AlertOptions = {
+    position: 'bottom right',
+    timeout: 5000,
+    transition: 'fade',
+    offset: '30'
+}
+
+export {
+    AlertTemplate,
+    AlertOptions
+} 

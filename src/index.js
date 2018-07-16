@@ -8,17 +8,10 @@ import { Provider as AlertProvider } from 'react-alert'
 
 import 'App.css';
 
-import Client from './Client'
+import Client from 'Client'
 import Theme from 'Styles/Theme'
 import App from 'Containers/App'
-import AlertTemplate from 'Components/Alerts'
-
-const AlertOptions = {
-    position: 'bottom right',
-    timeout: 5000,
-    transition: 'fade',
-    offset: '30'
-}
+import { AlertTemplate, AlertOptions } from 'Components/Alerts'
 
 const BytesizedStreaming = () => (
     <Router>
