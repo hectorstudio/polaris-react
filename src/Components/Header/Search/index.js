@@ -5,7 +5,23 @@ import { graphql } from 'react-apollo'
 
 import FETCH_SEARCH from 'Queries/fetchSearch'
 
-import { getSuggestionValue, renderSuggestion, updateSuggestions, renderSectionTitle, getSectionSuggestions } from './Helpers'
+import SearchInput from './SearchInput'
+
+import { 
+    getSuggestionValue, 
+    renderSuggestion, 
+    updateSuggestions, 
+    renderSectionTitle, 
+    getSectionSuggestions 
+} from './Helpers'
+
+const renderSuggestionsContainer = ({ containerProps, children, query }) => {
+    return (
+        <div {...containerProps}>
+            {children}
+        </div>
+    );
+}
 
 class Search extends Component {
     constructor() {
@@ -13,7 +29,8 @@ class Search extends Component {
 
         this.state = {
             value: '',
-            suggestions: []
+            suggestions: [],
+            loading: false
         };
 
         this.debouncedLoadSuggestions = debounce(this.loadSuggestions, 500);
@@ -24,7 +41,6 @@ class Search extends Component {
     }
 
     onChange = (event, {newValue}) => {
-
         this.setState({ value: newValue }, () => {
             this.props.updateSearch(this.state.value);
         });
@@ -34,12 +50,14 @@ class Search extends Component {
         let suggest = (typeof this.props.data === 'undefined' ? [] : this.props.data.search);
 
         this.setState({
-            suggestions: (typeof this.props.data === 'undefined' ? [] : updateSuggestions(suggest))
+            suggestions: (typeof this.props.data === 'undefined' ? [] : updateSuggestions(suggest)),
+            loading: false
         });
     }
 
     onSuggestionsFetchRequested = ({ value }) => {
         this.debouncedLoadSuggestions(value);
+        this.setState({loading: true});
     }
 
     onSuggestionsClearRequested = () => {
@@ -60,14 +78,20 @@ class Search extends Component {
             value,
             onChange: this.onChange
         };
+        
+        const renderInputComponent = inputProps => {
+            return <SearchInput inputProps={inputProps} loading={this.state.loading} />;
+        };
 
         return (
             <Autosuggest
                 multiSection={true}
                 suggestions={suggestions}
+                renderInputComponent={renderInputComponent}
                 onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
                 onSuggestionsClearRequested={this.onSuggestionsClearRequested}
                 getSuggestionValue={getSuggestionValue}
+                renderSuggestionsContainer={renderSuggestionsContainer}
                 renderSuggestion={renderSuggestion}
                 shouldRenderSuggestions={this.shouldRenderSuggestions}
                 renderSectionTitle={renderSectionTitle}

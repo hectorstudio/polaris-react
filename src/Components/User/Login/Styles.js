@@ -69,7 +69,6 @@ export const LoginInput = styled.input`
     font-size:1.8rem;
     font-weight:700;
     color: ${props => props.theme.darken.primary};
-    
 
     &::placeholder {
         color: ${props => props.theme.text};

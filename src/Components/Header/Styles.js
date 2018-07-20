@@ -9,6 +9,7 @@ export const HeaderWrap = styled.header`
     width:calc(100% - 6rem);
     animation: ${`.5s ${aFadeIn} alternate`};
     margin:3rem auto;
+    display:flex;
 `;
 
 export const LogoutIcon = styled(FontAwesomeIcon)`
@@ -23,6 +24,8 @@ export const LogoutButton = styled.button`
     float:right;
     background:none;
     border:none;
+    align-self: flex-end;
+    margin-left: auto;
 
     &:hover ${LogoutIcon} {
         color: #FFF;
@@ -41,10 +44,11 @@ export const BackButton = styled.button`
     padding:1.5rem;
     background:none;
     border:0;
+    float:left;
     opacity: ${(props => props.visible ? '1' : '.2')};
     pointer-events: ${(props => props.visible ? 'initial' : 'none')};
 
     &:hover ${BackIcon} {
-        color: ${(props => props.visible ? '#FFF' : '#93A4B6')};
+        color: ${(props => props.visible ? '#FFF' : props.theme.secondary)};
     }
 `;

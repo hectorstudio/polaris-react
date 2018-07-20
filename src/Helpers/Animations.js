@@ -1,8 +1,10 @@
 import { keyframes } from 'styled-components'
-import { fadeIn } from 'react-animations'
+import { fadeIn, rotateIn } from 'react-animations'
 
 const aFadeIn = keyframes`${fadeIn}`;
+const aRotate = keyframes`${rotateIn}`;
 
 export {
-    aFadeIn
+    aFadeIn,
+    aRotate
 }
