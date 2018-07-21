@@ -1,0 +1,8 @@
+.react-autosuggest__section-container {
+
+
+    &:first-of-type {
+        border-bottom:1px solid color(light);
+        padding-bottom:1.5rem;
+    }
+}

@@ -8,8 +8,8 @@ const Theme = {
     light: `#F5F7FA`,
     background: `#171B32`,
     darken: {
-        primary: darken(0.2, '#6b5697'),
-        dark: darken(0.2, '#282137'),
+        primary: darken(.2, '#6b5697'),
+        dark: darken(.1, '#282137'),
     },
     alerts: {
         success: `#81A35A`,
@@ -18,7 +18,8 @@ const Theme = {
     },
     layout: {
         header: '6rem',
-        sidebar: '25rem'
+        sidebar: '25rem',
+        search: '30rem'
     }
 }
 

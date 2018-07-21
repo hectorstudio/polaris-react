@@ -1,19 +1,3 @@
-import React from 'react'
-
-const getSuggestionValue = suggestion => suggestion.name;
-const getSectionSuggestions = section => section.suggestions;
-
-
-const renderSuggestion = suggestion => (
-    <div>
-        {suggestion.name}
-    </div>
-);
-
-const renderSectionTitle = section => (
-    <strong>{section.title}</strong>
-);
-
 const updateSuggestions = arr => {
     let updatedSuggestions = [
         {
@@ -34,15 +18,11 @@ const updateSuggestions = arr => {
         }
     });
 
+    // Remove Uneeded Object(s)
+    if (updatedSuggestions[0].suggestions.length === 0) updatedSuggestions.shift();
+    if (updatedSuggestions[1].suggestions.length === 0) updatedSuggestions.pop();
+
     return updatedSuggestions
 }
 
-export {
-    getSuggestionValue,
-    getSectionSuggestions,
-    renderSuggestion,
-    updateSuggestions,
-    renderSectionTitle
-}
-
-
+export default updateSuggestions

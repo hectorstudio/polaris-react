@@ -8,11 +8,13 @@ const FETCH_SEARCH = gql`
                 __typename
                 name
                 poster_path
+                year
             }
             ... on Series {
                 __typename
                 name
                 poster_path
+                first_air_date
             }
         }
     }

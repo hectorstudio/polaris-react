@@ -2,7 +2,12 @@ import React, { Component } from 'react'
 import faSpinner from '@fortawesome/fontawesome-pro-regular/faSpinner'
 import faSearch from '@fortawesome/fontawesome-pro-regular/faSearch'
 
-import { Input, InputWrap, LoadingIcon, SearchIcon } from './Styles'
+import { 
+    Input,
+    InputWrap, 
+    LoadingIcon, 
+    SearchIcon 
+} from './Styles'
 
 export default class SearchInput extends Component {
     state = {
@@ -11,7 +16,8 @@ export default class SearchInput extends Component {
 
     setFocus = (e, hasFocus) => {
         this.setState({ hasFocus }, () => {
-            (hasFocus ? this.props.inputProps.onFocus(e) : this.props.inputProps.onBlur(e) )
+            this.props.toggleFocus(hasFocus);
+            (hasFocus ? this.props.inputProps.onFocus(e) : this.props.inputProps.onBlur(e))
         });
     }
 

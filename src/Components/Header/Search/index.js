@@ -6,22 +6,15 @@ import { graphql } from 'react-apollo'
 import FETCH_SEARCH from 'Queries/fetchSearch'
 
 import SearchInput from './SearchInput'
-
 import { 
-    getSuggestionValue, 
-    renderSuggestion, 
-    updateSuggestions, 
-    renderSectionTitle, 
-    getSectionSuggestions 
-} from './Helpers'
+    Dropdown,
+    getSuggestionValue,
+    getSectionSuggestions,
+    renderSuggestion,
+    renderSectionTitle
+} from './Dropdown'
 
-const renderSuggestionsContainer = ({ containerProps, children, query }) => {
-    return (
-        <div {...containerProps}>
-            {children}
-        </div>
-    );
-}
+import { updateSuggestions } from 'Helpers'
 
 class Search extends Component {
     constructor() {
@@ -30,7 +23,8 @@ class Search extends Component {
         this.state = {
             value: '',
             suggestions: [],
-            loading: false
+            loading: false,
+            hasFocus: false
         };
 
         this.debouncedLoadSuggestions = debounce(this.loadSuggestions, 500);
@@ -44,6 +38,10 @@ class Search extends Component {
         this.setState({ value: newValue }, () => {
             this.props.updateSearch(this.state.value);
         });
+    }
+
+    toggleFocus = (hasFocus) => {
+        this.setState({ hasFocus });
     }
 
     loadSuggestions = () => {
@@ -71,32 +69,51 @@ class Search extends Component {
     }
 
     render() {
-        const { value, suggestions } = this.state;
+        const { value, suggestions, loading, hasFocus } = this.state;
 
         const inputProps = {
             placeholder: 'Search...',
             value,
             onChange: this.onChange
-        };
+        };  
         
-        const renderInputComponent = inputProps => {
-            return <SearchInput inputProps={inputProps} loading={this.state.loading} />;
+        const renderInputComponent = inputProps => (
+            <SearchInput inputProps={inputProps} loading={loading} toggleFocus={this.toggleFocus}/>
+        );
+
+        const renderSuggestionsContainer = ({ containerProps, children }) => {
+            let activeDropdown = (
+                suggestions.length > 0
+                    ? (suggestions[0].suggestions.length > 0 || suggestions[1].suggestions.length > 0)
+                    : false
+            ) 
+
+            return (
+                <Dropdown
+                    containerProps={containerProps}
+                    results={activeDropdown}
+                    children={children}
+                    value={value}
+                    loading={loading}
+                    hasFocus={hasFocus}
+                />
+            )
         };
 
         return (
             <Autosuggest
                 multiSection={true}
                 suggestions={suggestions}
-                renderInputComponent={renderInputComponent}
                 onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
                 onSuggestionsClearRequested={this.onSuggestionsClearRequested}
                 getSuggestionValue={getSuggestionValue}
-                renderSuggestionsContainer={renderSuggestionsContainer}
-                renderSuggestion={renderSuggestion}
-                shouldRenderSuggestions={this.shouldRenderSuggestions}
+                inputProps={inputProps}
+                renderInputComponent={renderInputComponent}
                 renderSectionTitle={renderSectionTitle}
                 getSectionSuggestions={getSectionSuggestions}
-                inputProps={inputProps}
+                shouldRenderSuggestions={this.shouldRenderSuggestions}
+                renderSuggestionsContainer={renderSuggestionsContainer}       
+                renderSuggestion={renderSuggestion}       
             />
         );
     }
