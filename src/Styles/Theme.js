@@ -19,7 +19,7 @@ const Theme = {
     layout: {
         header: '6rem',
         sidebar: '25rem',
-        search: '30rem'
+        search: '35rem'
     }
 }
 

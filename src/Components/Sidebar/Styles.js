@@ -39,7 +39,7 @@ export const NavItemHeading = styled.h5`
     margin:0 0 1.5rem;
     text-transform:uppercase;
     color: ${props => props.theme.secondary};
-    opacity: .5;
+    opacity: .75;
 `
 
 export const NavItemLink = styled(Link)`

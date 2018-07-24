@@ -1,4 +1,6 @@
 const updateSuggestions = arr => {
+    if (arr === undefined || arr.length === 0) return arr
+
     let updatedSuggestions = [
         {
             title: 'Movies',
