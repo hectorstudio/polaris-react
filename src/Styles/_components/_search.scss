@@ -6,3 +6,29 @@
         padding-bottom:1.5rem;
     }
 }
+
+.react-autosuggest {
+    &__input {
+        color: color(dark);
+        font-weight:700;
+        background:none;
+        border:0;
+        line-height:5rem;
+        color:#FFF;
+        width:100%;
+        position:absolute;
+        top:0;
+        left:0;
+        padding-left:5rem;
+        font-size:1.6rem;
+
+        &::-webkit-input-placeholder {
+            color: rgba(255,255,255, .2);
+        }
+
+        &:focus {
+            outline:none;
+            color: color(dark);
+        }
+    }
+}

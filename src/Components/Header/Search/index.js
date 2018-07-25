@@ -7,7 +7,6 @@ import FETCH_SEARCH from 'Queries/fetchSearch'
 
 import SearchInput from './SearchInput'
 import { 
-    Dropdown,
     getSuggestionValue,
     getSectionSuggestions,
     renderSuggestion,
@@ -67,9 +66,13 @@ class Search extends Component {
     shouldRenderSuggestions = () => {
         return this.state.value.trim().length > 1;
     }
+    
+    onSuggestionSelected = (event, {suggestion}) => {
+        console.log(suggestion);
+    }
 
     render() {
-        const { value, suggestions, loading, hasFocus } = this.state;
+        const { value, suggestions, loading } = this.state;
 
         const inputProps = {
             placeholder: 'Search...',
@@ -80,25 +83,6 @@ class Search extends Component {
         const renderInputComponent = inputProps => (
             <SearchInput inputProps={inputProps} loading={loading} toggleFocus={this.toggleFocus}/>
         );
-
-        const renderSuggestionsContainer = ({ containerProps, children }) => {
-            let activeDropdown = (
-                suggestions.length > 0
-                    ? (suggestions[0].suggestions.length > 0 || suggestions[1].suggestions.length > 0)
-                    : false
-            ) 
-
-            return (
-                <Dropdown
-                    containerProps={containerProps}
-                    results={activeDropdown}
-                    children={children}
-                    value={value}
-                    loading={loading}
-                    hasFocus={hasFocus}
-                />
-            )
-        };
 
         return (
             <Autosuggest
@@ -112,8 +96,8 @@ class Search extends Component {
                 renderSectionTitle={renderSectionTitle}
                 getSectionSuggestions={getSectionSuggestions}
                 shouldRenderSuggestions={this.shouldRenderSuggestions}
-                renderSuggestionsContainer={renderSuggestionsContainer}       
                 renderSuggestion={renderSuggestion}       
+                onSuggestionSelected={this.onSuggestionSelected}
             />
         );
     }

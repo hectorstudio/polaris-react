@@ -20,9 +20,9 @@ const updateSuggestions = arr => {
         }
     });
 
-    // Remove Uneeded Object(s)
-    if (updatedSuggestions[0].suggestions.length === 0) updatedSuggestions.shift();
-    if (updatedSuggestions[1].suggestions.length === 0) updatedSuggestions.pop();
+    updatedSuggestions.forEach((type, i) => {
+        if (type.suggestions.length === 0) updatedSuggestions.splice(i, 1);
+    });
 
     return updatedSuggestions
 }
