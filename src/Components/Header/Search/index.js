@@ -11,7 +11,7 @@ import {
     getSectionSuggestions,
     renderSuggestion,
     renderSectionTitle
-} from './Dropdown'
+} from './Suggestion'
 
 import { updateSuggestions } from 'Helpers'
 
@@ -79,9 +79,15 @@ class Search extends Component {
             value,
             onChange: this.onChange
         };  
-        
+
+        console.log(suggestions.length === 0 && value.length > 2);
         const renderInputComponent = inputProps => (
-            <SearchInput inputProps={inputProps} loading={loading} toggleFocus={this.toggleFocus}/>
+            <SearchInput 
+                inputProps={inputProps} 
+                loading={loading} 
+                toggleFocus={this.toggleFocus} 
+                hasResults={suggestions.length === 0 && value.length > 2}
+            />
         );
 
         return (

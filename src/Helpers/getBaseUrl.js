@@ -1,3 +1,8 @@
+/**
+ * Generate base url using current window.location
+ * @return {String} String containing the base url
+ */
+
 const getBaseUrl = () => {
     let url = 'http://atalanta.bysh.me:8080';
     

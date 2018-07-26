@@ -5,7 +5,7 @@ import Empty from 'Components/Media/Card/Empty'
 // Local Styles
 import { LibraryWrap, LibraryListWrap } from '../Styles'
 // Global Styles
-import { PageHeading } from 'Helpers/Styles'
+import { PageHeading } from 'Styles'
 
 const MovieList = () => (
     <LibraryWrap>

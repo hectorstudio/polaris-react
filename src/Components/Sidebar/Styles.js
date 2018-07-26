@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 // Animations
-import { aFadeIn } from 'Helpers/Animations'
+import { aFadeIn } from 'Styles/Animations'
 
 export const SidebarWrap = styled.nav`
     width: ${props => props.theme.layout.sidebar};

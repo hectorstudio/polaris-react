@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
 // Animations
-import { aFadeIn } from 'Helpers/Animations'
+import { aFadeIn } from 'Styles/Animations'
 
 export const HeaderWrap = styled.header`
     height: ${props => props.theme.layout.header};

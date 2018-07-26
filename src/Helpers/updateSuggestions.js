@@ -1,5 +1,11 @@
+/**
+ * Seperates suggestions by type.
+ * @param {Array} arr List of suggestions to be seperated by type
+ * @return {Array} Updated suggestions array seperated by type
+ */
+
 const updateSuggestions = arr => {
-    if (arr === undefined || arr.length === 0) return arr
+    if (arr === undefined || arr.length === 0) return []
 
     let updatedSuggestions = [
         {
@@ -19,7 +25,7 @@ const updateSuggestions = arr => {
             updatedSuggestions[1].suggestions.push(sug);
         }
     });
-
+    
     updatedSuggestions.forEach((type, i) => {
         if (type.suggestions.length === 0) updatedSuggestions.splice(i, 1);
     });

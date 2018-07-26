@@ -31,4 +31,16 @@
             color: color(dark);
         }
     }
+
+    &__section-container {
+        width: 35rem;
+        background:#FFF;
+        border-radius:0 0 .2rem .2rem;
+        box-shadow: 0 10px 15px rgba(0,0,0, .3);
+        z-index:2;
+        position:relative;
+        &--first {
+            border-radius:.2rem .2rem 0 0;
+        }
+    }
 }

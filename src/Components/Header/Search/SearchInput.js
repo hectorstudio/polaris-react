@@ -5,7 +5,8 @@ import faSearch from '@fortawesome/fontawesome-pro-regular/faSearch'
 import { 
     InputWrap, 
     LoadingIcon, 
-    SearchIcon 
+    SearchIcon,
+    ErrorAlert
 } from './Styles'
 
 export default class SearchInput extends Component {
@@ -22,10 +23,12 @@ export default class SearchInput extends Component {
 
     render() { 
         let searchColor = (this.state.hasFocus ? '#120E18' : 'rgba(255,255,255, .1)');
-
+        let checkResults = (this.props.hasResults && !this.props.loading && this.state.hasFocus);
+        
         return ( 
             <InputWrap hasFocus={this.state.hasFocus}>
                 { this.props.loading && <LoadingIcon icon={faSpinner} spin /> }
+                { checkResults && <ErrorAlert>No Results Found</ErrorAlert> }
                 <SearchIcon icon={faSearch} color={searchColor}/>
                 <input 
                     {...this.props.inputProps}

@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
 export const InputWrap = styled.div`
@@ -24,6 +23,27 @@ export const LoadingIcon = styled(FontAwesomeIcon)`
     transition: .2s all;
     opacity: 1;
 `;
+
+export const ErrorAlert = styled.span`
+    display:block;
+    width: 100%;
+    line-height:3rem;
+    color: ${props => props.theme.darken.dark};
+    text-align:center;
+    font-weight:800;
+    letter-spacing: .1rem;
+    font-size:1rem;
+    text-transform:uppercase;
+    padding:0 1.5rem;
+    border-radius:.2rem;
+    border:.3rem solid #FFF;
+    background:#FFF;
+    box-shadow:0 10px 15px rgba(0,0,0, .3);
+    position:absolute;
+    top:6rem;
+    left:0;
+`
+
 
 export const SearchIcon = styled(FontAwesomeIcon)`
     font-size:1.6rem;

@@ -14,7 +14,7 @@ const renderSuggestion = suggestion => {
     let year = (suggestion.__typename === 'Movie' ? suggestion.year : suggestion.first_air_date);
 
     return (
-        <Suggestion to="/movies">
+        <Suggestion>
             <SuggestionPoster src={`${getBaseUrl()}/m/images/tmdb/w342/${suggestion.poster_path}`} alt={suggestion.name} />
             { suggestion.name }
             { year }
@@ -22,10 +22,9 @@ const renderSuggestion = suggestion => {
     )
 }
 
-const renderSectionTitle = section => (
+const renderSectionTitle = (section) => (
     <Title>{section.title}</Title>
-);
-
+)
 
 export {
     getSuggestionValue,

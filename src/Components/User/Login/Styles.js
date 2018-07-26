@@ -1,8 +1,7 @@
-import styled, { keyframes } from 'styled-components';
-import { Link } from 'react-router-dom';
-import { headShake } from 'react-animations';
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-const loginError = keyframes`${headShake}`;
+import { aHeadShake } from 'Styles/Animations'
 
 // Containers
 export const FormWrap = styled.form`
@@ -13,7 +12,7 @@ export const FormWrap = styled.form`
     transition: .2s border;
     border:1px solid;
     border-color: ${(props => props.error ? props.theme.alerts.error : 'transparent')};
-    animation: ${(props => props.error ? `.5s ${loginError} alternate` : 'none')};
+    animation: ${(props => props.error ? `.5s ${aHeadShake} alternate` : 'none')};
 `;
 
 // Heading
