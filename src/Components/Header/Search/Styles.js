@@ -45,11 +45,39 @@ export const Title = styled.h4`
     text-transform:uppercase;
 `
 
-export const Suggestion = styled.span`
+export const NoResultsError = styled.span`
+    display:block;
+    width: 100%;
+    line-height:3rem;
+    color: ${props => props.theme.darken.dark};
+    box-shadow:0 10px 15px rgba(0,0,0, .3);
+    text-align:center;
+    font-weight:800;
+    letter-spacing: .1rem;
+    font-size:1rem;
+    border-radius:.2rem;
+    text-transform:uppercase;
+    padding:0 1.5rem;
+    background:#FFF;
+    position:absolute;
+    top: 6rem;
+    left: 0;
+`
 
+export const Suggestion = styled.span`
+    float:left;
+    width:100%;
+    height:4rem;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+    padding-right: 3rem;
+    line-height: 4rem;
 `
 
 export const SuggestionPoster = styled.img`
-    width: 5rem;
+    height:4rem;
+    padding:.2rem;
     float:left;
+    margin-right:.5rem;
 `;

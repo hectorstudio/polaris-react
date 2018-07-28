@@ -46,7 +46,7 @@ class Search extends Component {
     loadSuggestions = () => {
         let suggest = (typeof this.props.data === 'undefined' ? [] : this.props.data.search);
 
-        this.setState({
+        this.setState({ 
             suggestions: (typeof this.props.data === 'undefined' ? [] : updateSuggestions(suggest)),
             loading: false
         });
@@ -73,6 +73,7 @@ class Search extends Component {
 
     render() {
         const { value, suggestions, loading } = this.state;
+        let checkSuggestions = (typeof suggestions === 'undefined' ? [] : suggestions);
 
         const inputProps = {
             placeholder: 'Search...',
@@ -81,13 +82,19 @@ class Search extends Component {
         };  
         
         const renderInputComponent = inputProps => (
-            <SearchInput inputProps={inputProps} loading={loading} toggleFocus={this.toggleFocus}/>
+            <SearchInput 
+                inputProps={inputProps} 
+                loading={loading} 
+                toggleFocus={this.toggleFocus}
+                hasSuggestions={(suggestions.length > 0)}
+                value={value}
+            />
         );
 
         return (
             <Autosuggest
                 multiSection={true}
-                suggestions={suggestions}
+                suggestions={checkSuggestions}
                 onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
                 onSuggestionsClearRequested={this.onSuggestionsClearRequested}
                 getSuggestionValue={getSuggestionValue}

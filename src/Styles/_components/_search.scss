@@ -1,13 +1,30 @@
-.react-autosuggest__section-container {
-
-
-    &:first-of-type {
-        border-bottom:1px solid color(light);
-        padding-bottom:1.5rem;
-    }
-}
-
 .react-autosuggest {
+    &__section-container {
+        background: #FFF;
+        border-radius: 0 0 .2rem .2rem;
+        position: relative;
+        z-index: 2;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, .3);
+        max-width: 35rem;
+        overflow: hidden;
+        
+        &:first-of-type {
+            border-bottom: 1px solid color(light);
+            padding-bottom: 1.5rem;
+            border-radius: .2rem .2rem 0 0;
+        }
+    }
+
+    &__suggestions-list {
+        float:left;
+        width:100%;
+    }
+
+    &__suggestion {
+        float:left;
+        width:100%;
+    }
+
     &__input {
         color: color(dark);
         font-weight:700;
@@ -19,8 +36,9 @@
         position:absolute;
         top:0;
         left:0;
-        padding-left:5rem;
+        padding:0 5rem;
         font-size:1.6rem;
+        overflow:hidden;
 
         &::-webkit-input-placeholder {
             color: rgba(255,255,255, .2);
