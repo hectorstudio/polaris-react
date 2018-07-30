@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 import faSpinner from '@fortawesome/fontawesome-pro-regular/faSpinner'
 import faSearch from '@fortawesome/fontawesome-pro-regular/faSearch'
 
-import { generateMediaUrl } from 'Helpers'
 import { InputWrap, LoadingIcon, SearchIcon, NoResultsError } from './Styles'
 
 class SearchInput extends Component {
