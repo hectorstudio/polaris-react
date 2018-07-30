@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 // Animations
-import { aFadeIn } from 'Helpers/Animations'
+import { aFadeIn } from 'Styles/Animations'
 
 export const AppWrap = styled.main`
     display: flex;

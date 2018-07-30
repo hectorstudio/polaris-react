@@ -26,7 +26,7 @@ export const AlertType = styled.strong`
     color: ${props => getColor(props)};
     margin-right:.5rem;
     text-transform:capitalize;
-    font-weight:800;
+    font-weight:700;
     font-size:1.4rem;
     &:after {
         content:':';
@@ -34,8 +34,8 @@ export const AlertType = styled.strong`
 `;
 
 export const AlertMessage = styled.p`
-    color: ${props => props.theme.secondary};
-    font-weight:700;
+    color: ${props => props.theme.text};
+    font-weight:600;
     line-height: 1.75;
     display:inline-block;
     padding-left:5rem;

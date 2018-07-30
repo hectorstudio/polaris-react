@@ -1,17 +1,16 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom';
+
 import faSpinner from '@fortawesome/fontawesome-pro-regular/faSpinner'
 import faSearch from '@fortawesome/fontawesome-pro-regular/faSearch'
 
-import { 
-    InputWrap, 
-    LoadingIcon, 
-    SearchIcon,
-    NoResultsError
-} from './Styles'
+import { generateMediaUrl } from 'Helpers'
+import { InputWrap, LoadingIcon, SearchIcon, NoResultsError } from './Styles'
 
-export default class SearchInput extends Component {
+class SearchInput extends Component {
     state = {
-        hasFocus: false
+        hasFocus: false,
+        value: ''
     }
 
     setFocus = (e, hasFocus) => {
@@ -19,6 +18,18 @@ export default class SearchInput extends Component {
             this.props.toggleFocus(hasFocus);
             (hasFocus ? this.props.inputProps.onFocus(e) : this.props.inputProps.onBlur(e))
         });
+    }
+
+    setSearch = (e) => {
+        this.setState({ value: e.target.value });
+        this.props.inputProps.onChange(e) 
+    }
+
+    checkKey = (e) => {
+        if (e.key === 'Enter') {
+            console.log(this.state.value);
+            //this.props.history.push();
+        }
     }
 
     render() { 
@@ -35,6 +46,8 @@ export default class SearchInput extends Component {
                     {...inputProps}
                     onFocus={(e) => this.setFocus(e, true)} 
                     onBlur={(e) => this.setFocus(e, false)}
+                    onChange={(e) => this.setSearch(e)}
+                    onKeyPress={(e) => this.checkKey(e)}
                 />
 
                 { noResults && <NoResultsError>No Results Found</NoResultsError> }
@@ -42,3 +55,5 @@ export default class SearchInput extends Component {
         );
     }
 }
+
+export default withRouter(SearchInput);

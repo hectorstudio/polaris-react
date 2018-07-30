@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 // Animations
-import { aFadeIn } from 'Helpers/Animations'
+import { aFadeIn } from 'Styles/Animations'
 
 export const SidebarWrap = styled.nav`
     width: ${props => props.theme.layout.sidebar};
@@ -43,16 +43,18 @@ export const NavItemHeading = styled.h5`
 `
 
 export const NavItemLink = styled(Link)`
-    font-size:1.6rem;
+    font-size:1.4rem;
+    letter-spacing: .1rem;
     line-height: 1.5;
-    font-weight:700;
+    font-weight:600;
     margin:0 0 1rem;
-    color: ${props => props.theme.secondary};
+    color: ${props => props.theme.light};
+    opacity:.6;
     float:left;
     width:100%;
     transition:.2s all;
 
     &:hover {
-        color: #FFF;
+        opacity: 1;
     }
 `

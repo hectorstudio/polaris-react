@@ -37,12 +37,11 @@ export const SearchIcon = styled(FontAwesomeIcon)`
 
 export const Title = styled.h4`
     padding:1.5rem;
-    border-bottom:1px solid #EEE;
-    font-weight:800;
     font-size:1rem;
     letter-spacing: .1rem;
-    color:#AAA;
     text-transform:uppercase;
+    border-bottom:1px solid #EEE;
+    color: ${props => props.theme.dark};
 `
 
 export const NoResultsError = styled.span`
@@ -64,20 +63,54 @@ export const NoResultsError = styled.span`
     left: 0;
 `
 
-export const Suggestion = styled.span`
-    float:left;
-    width:100%;
-    height:4rem;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-    overflow:hidden;
-    padding-right: 3rem;
-    line-height: 4rem;
+export const Suggestion = styled.article`
+    float: left;
+    width: 100%;
+    height: 6rem;
+    display: flex;
+    flex-direction: column;
+    padding: .5rem;
+    font-weight: 700;
+    position: relative;
+    padding-left: 5rem;
+    justify-content: center;
+    cursor:pointer;
+    transition:.2s background;
+
+    &:hover {
+        background: #FAFAFA;
+    }
 `
 
-export const SuggestionPoster = styled.img`
-    height:4rem;
-    padding:.2rem;
+export const Name = styled.span`
+    color: ${props => props.theme.dark};
+    float: left;
+    width: 100%;
+    font-size: 1.4rem;
+    padding-right: 2rem;
+    line-height:1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 700;
+    overflow:hidden;
+    margin:0 0 .2rem;
+`
+
+export const Year = styled.small`
     float:left;
-    margin-right:.5rem;
+    width:100%;
+    text-transform:uppercase;
+    font-size:1.2rem;
+    font-weight:700;
+    letter-spacing: .1rem;
+    opacity:.75;
+    color ${props => props.theme.text};
+`
+
+export const Poster = styled.img`
+    height:5rem;
+    padding:.2rem;
+    position: absolute;
+    top: .5rem;
+    left: .5rem;
 `;

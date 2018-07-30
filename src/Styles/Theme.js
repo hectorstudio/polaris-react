@@ -20,6 +20,10 @@ const Theme = {
         header: '6rem',
         sidebar: '25rem',
         search: '35rem'
+    },
+    fonts: {
+        opensans: '"Open-sans", sans-serif',
+        muli: '"Muli", sans-serif'     
     }
 }
 

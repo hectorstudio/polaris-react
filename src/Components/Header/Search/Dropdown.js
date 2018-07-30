@@ -4,7 +4,9 @@ import { getBaseUrl } from 'Helpers'
 import {
     Title,
     Suggestion,
-    SuggestionPoster
+    Poster,
+    Name,
+    Year
 } from './Styles'
 
 const getSuggestionValue = suggestion => suggestion.name;
@@ -15,9 +17,9 @@ const renderSuggestion = suggestion => {
 
     return (
         <Suggestion to="/movies">
-            <SuggestionPoster src={`${getBaseUrl()}/m/images/tmdb/w342/${suggestion.poster_path}`} alt={suggestion.name} />
-            { suggestion.name }
-            { year }
+            <Poster src={`${getBaseUrl()}/m/images/tmdb/w342/${suggestion.poster_path}`} alt={suggestion.name} />
+            <Name>{suggestion.name}</Name>
+            <Year>{year}</Year>
         </Suggestion>
     )
 }

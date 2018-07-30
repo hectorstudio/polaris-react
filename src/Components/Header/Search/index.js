@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import debounce from 'lodash/debounce'
 import Autosuggest from 'react-autosuggest'
 import { graphql } from 'react-apollo'
+import { withRouter } from 'react-router-dom';
 
 import FETCH_SEARCH from 'Queries/fetchSearch'
 
@@ -13,7 +14,7 @@ import {
     renderSectionTitle
 } from './Dropdown'
 
-import { updateSuggestions } from 'Helpers'
+import { updateSuggestions, generateMediaUrl } from 'Helpers'
 
 class Search extends Component {
     constructor() {
@@ -68,7 +69,7 @@ class Search extends Component {
     }
     
     onSuggestionSelected = (event, {suggestion}) => {
-        console.log(suggestion);
+        this.props.history.push(generateMediaUrl(suggestion.__typename, suggestion.uuid, suggestion.name));
     }
 
     render() {
@@ -110,9 +111,7 @@ class Search extends Component {
     }
 }
 
-export default Search = graphql(FETCH_SEARCH, {
+export default Search = withRouter(graphql(FETCH_SEARCH, {
     skip: props => (props.value.trim().length > 2 ? false : true ),
     options: (props) => ({ variables: { name: props.value } })
-})(Search);
-
-
+})(Search));
