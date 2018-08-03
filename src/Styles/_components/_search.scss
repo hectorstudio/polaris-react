@@ -1,16 +1,43 @@
-.react-autosuggest__section-container {
-
-
-    &:first-of-type {
-        border-bottom:1px solid color(light);
-        padding-bottom:1.5rem;
-    }
-}
-
 .react-autosuggest {
+    &__suggestions-container {
+        border-radius: .2rem;
+        overflow: hidden;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, .6);
+        position: relative;
+        z-index:99;
+    }
+
+    &__section-container {
+        background: #FFF;
+        position: relative;
+        z-index: 2;
+        max-width: 35rem;
+        overflow: hidden;
+        border-bottom:.1rem solid color(light);
+        
+        &:last-of-type {
+            border-bottom:0;
+        }
+    }
+
+    &__suggestions-list {
+        float:left;
+        width:100%;
+    }
+
+    &__suggestion {
+        float:left;
+        width:100%;
+        border-bottom:1px solid #EEE;
+
+        &:last-child {
+            border-bottom:0;
+            overflow: hidden;
+        }
+    }
+
     &__input {
         color: color(dark);
-        font-weight:700;
         background:none;
         border:0;
         line-height:5rem;
@@ -19,8 +46,10 @@
         position:absolute;
         top:0;
         left:0;
-        padding-left:5rem;
+        padding:0 5rem;
         font-size:1.6rem;
+        overflow:hidden;
+        font-weight: 600;
 
         &::-webkit-input-placeholder {
             color: rgba(255,255,255, .2);

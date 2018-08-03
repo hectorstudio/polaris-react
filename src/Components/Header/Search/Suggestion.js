@@ -4,7 +4,9 @@ import { getBaseUrl } from 'Helpers'
 import {
     Title,
     Suggestion,
-    SuggestionPoster
+    Poster,
+    Name,
+    Year
 } from './Styles'
 
 const getSuggestionValue = suggestion => suggestion.name;
@@ -14,10 +16,10 @@ const renderSuggestion = suggestion => {
     let year = (suggestion.__typename === 'Movie' ? suggestion.year : suggestion.first_air_date);
 
     return (
-        <Suggestion>
-            <SuggestionPoster src={`${getBaseUrl()}/m/images/tmdb/w342/${suggestion.poster_path}`} alt={suggestion.name} />
-            { suggestion.name }
-            { year }
+        <Suggestion to="/movies">
+            <Poster src={`${getBaseUrl()}/m/images/tmdb/w342/${suggestion.poster_path}`} alt={suggestion.name} />
+            <Name>{suggestion.name}</Name>
+            <Year>{year}</Year>
         </Suggestion>
     )
 }

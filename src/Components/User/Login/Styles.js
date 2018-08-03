@@ -1,7 +1,6 @@
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-
-import { aHeadShake } from 'Styles/Animations'
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { aHeadShake } from 'Styles/Animations';
 
 // Containers
 export const FormWrap = styled.form`
@@ -25,10 +24,10 @@ export const Heading = styled.h1`
 `
 
 export const SubHeading = styled.p`
-    font-size:1.8rem;
-    font-weight:700;
+    font-size:1.6rem;
+    font-weight:600;
     margin:0 0 5rem;
-    color: ${props => props.theme.secondary};
+    color: ${props => props.theme.text};
 `
 
 // Form Elements
@@ -66,7 +65,7 @@ export const LoginInput = styled.input`
     width:100%;
     float:left;
     font-size:1.8rem;
-    font-weight:700;
+    font-weight:600;
     color: ${props => props.theme.darken.primary};
 
     &::placeholder {
@@ -87,7 +86,8 @@ export const LoginButton = styled.button`
     border:0;
     background: ${props => props.theme.primary};
     font-size:2rem;
-    font-weight:700;
+    font-family: ${props => props.theme.fonts.muli};
+    font-weight:800;
     box-shadow:0 10px 15px rgba(0,0,0, .1);
     transition:.2s all;
     cursor: pointer;
@@ -114,7 +114,7 @@ export const LoginButton = styled.button`
 // Register
 export const RegisterPara = styled.p`
     font-size:1.6rem;
-    color: ${props => props.theme.secondary}
+    color: ${props => props.theme.text}
     font-weight:700;
 `;
 

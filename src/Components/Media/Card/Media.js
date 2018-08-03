@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getBaseUrl } from 'Helpers'
+import { getBaseUrl, generateMediaUrl } from 'Helpers'
 
 import { CardPoster, CardWrap, CardTitle} from './Styles';
 
@@ -11,17 +11,14 @@ class Media extends Component {
     componentDidMount() {
         const { type, uuid } = this.props;
 
-        let url = this.state.name.replace(/\s+/g, '-').toLowerCase();
-
         this.setState({
-            url: `/${type}/${uuid}/${url}`
+            url: generateMediaUrl(type, uuid, this.state.name)
         });
     }
 
     render() {
         const { poster_path, imdb_id, history } = this.props;
         const { name } = this.state;
-
 
         return (
             <CardWrap data-tmdb-id={imdb_id} onClick={() => { history.push(this.state.url) }}>

@@ -43,6 +43,21 @@ class Login extends Component {
             });
         })
     }
+    _handleLogin = () => {
+        // Login Request
+        AUTH_REQUEST(this.state.username, this.state.password).then(response => {
+            this.setState({ success: true });
+
+            // Allow Successful Login Fade Out
+            setTimeout(() => {
+                    this.setState({ redirectToDashboard: true });
+            }, 750);
+        }).catch(error => {
+            this.setState({ error: true }, () => {
+                this.props.alert.error('Looks like your Username and Password dont match, Please Try Again');
+            });
+        })
+    }
 
     _handleChange = e => {
         let emptyInput = (this.state.username.length < 1 || this.state.password.length < 1);

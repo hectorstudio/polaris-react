@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import debounce from 'lodash/debounce'
 import Autosuggest from 'react-autosuggest'
 import { graphql } from 'react-apollo'
+import { withRouter } from 'react-router-dom';
 
 import FETCH_SEARCH from 'Queries/fetchSearch'
 
@@ -13,7 +14,7 @@ import {
     renderSectionTitle
 } from './Suggestion'
 
-import { updateSuggestions } from 'Helpers'
+import { updateSuggestions, generateMediaUrl } from 'Helpers'
 
 class Search extends Component {
     constructor() {
@@ -46,7 +47,7 @@ class Search extends Component {
     loadSuggestions = () => {
         let suggest = (typeof this.props.data === 'undefined' ? [] : this.props.data.search);
 
-        this.setState({
+        this.setState({ 
             suggestions: (typeof this.props.data === 'undefined' ? [] : updateSuggestions(suggest)),
             loading: false
         });
@@ -68,11 +69,12 @@ class Search extends Component {
     }
     
     onSuggestionSelected = (event, {suggestion}) => {
-        console.log(suggestion);
+        this.props.history.push(generateMediaUrl(suggestion.__typename, suggestion.uuid, suggestion.name));
     }
 
     render() {
         const { value, suggestions, loading } = this.state;
+        let checkSuggestions = (typeof suggestions === 'undefined' ? [] : suggestions);
 
         const inputProps = {
             placeholder: 'Search...',
@@ -85,15 +87,16 @@ class Search extends Component {
             <SearchInput 
                 inputProps={inputProps} 
                 loading={loading} 
-                toggleFocus={this.toggleFocus} 
-                hasResults={suggestions.length === 0 && value.length > 2}
+                toggleFocus={this.toggleFocus}
+                hasSuggestions={(suggestions.length > 0)}
+                value={value}
             />
         );
 
         return (
             <Autosuggest
                 multiSection={true}
-                suggestions={suggestions}
+                suggestions={checkSuggestions}
                 onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
                 onSuggestionsClearRequested={this.onSuggestionsClearRequested}
                 getSuggestionValue={getSuggestionValue}
@@ -109,9 +112,7 @@ class Search extends Component {
     }
 }
 
-export default Search = graphql(FETCH_SEARCH, {
+export default Search = withRouter(graphql(FETCH_SEARCH, {
     skip: props => (props.value.trim().length > 2 ? false : true ),
     options: (props) => ({ variables: { name: props.value } })
-})(Search);
-
-
+})(Search));
