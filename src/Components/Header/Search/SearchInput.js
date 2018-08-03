@@ -26,8 +26,7 @@ class SearchInput extends Component {
 
     checkKey = (e) => {
         if (e.key === 'Enter') {
-            console.log(this.state.value);
-            //this.props.history.push();
+            this.props.history.push(`/search/${this.state.value}`);
         }
     }
 

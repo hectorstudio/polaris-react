@@ -90,7 +90,6 @@ export const Suggestion = styled.article`
     display: flex;
     flex-direction: column;
     padding: .5rem;
-    font-weight: 700;
     position: relative;
     padding-left: 5rem;
     justify-content: center;
@@ -111,7 +110,7 @@ export const Name = styled.span`
     line-height:1.2;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-weight: 700;
+    font-weight: 600;
     overflow:hidden;
     margin:0 0 .2rem;
 `
@@ -121,7 +120,7 @@ export const Year = styled.small`
     width:100%;
     text-transform:uppercase;
     font-size:1.2rem;
-    font-weight:700;
+    font-weight:400;
     letter-spacing: .1rem;
     opacity:.75;
     color ${props => props.theme.text};

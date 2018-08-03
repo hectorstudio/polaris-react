@@ -1,6 +1,6 @@
 import gql from "graphql-tag"
 
-const FETCH_SEARCH = gql`
+const FETCH_SUGGESTIONS = gql`
     query search($name: String!) {
         search(name: $name) {
             __typename
@@ -22,4 +22,4 @@ const FETCH_SEARCH = gql`
     }
 `
 
-export default FETCH_SEARCH
+export default FETCH_SUGGESTIONS

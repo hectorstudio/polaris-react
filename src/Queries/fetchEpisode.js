@@ -4,9 +4,9 @@ import { Query } from "react-apollo"
 
 import Episode from 'Components/Media/Episode'
 
-const FETCH_EPISODE = uuid => gql`
-    {
-        episode(uuid: "${uuid}") {
+const FETCH_EPISODE = gql`
+    query episode($uuid: String!) {
+        episode(uuid: $uuid) {    
             name
             
             files {
@@ -24,7 +24,8 @@ const FETCH_EPISODE = uuid => gql`
 const FetchEpisode = ({ uuid }) => {
     return (
         <Query
-            query={FETCH_EPISODE(uuid)}
+            query={FETCH_EPISODE}
+            variables={{ uuid }}
         >
 
             {({ loading, error, data }) => {

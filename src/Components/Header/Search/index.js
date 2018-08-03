@@ -4,7 +4,7 @@ import Autosuggest from 'react-autosuggest'
 import { graphql } from 'react-apollo'
 import { withRouter } from 'react-router-dom';
 
-import FETCH_SEARCH from 'Queries/fetchSearch'
+import FETCH_SUGGESTIONS from 'Queries/fetchSuggestions'
 
 import SearchInput from './SearchInput'
 import { 
@@ -82,7 +82,6 @@ class Search extends Component {
             onChange: this.onChange
         };  
 
-        console.log(suggestions.length === 0 && value.length > 2);
         const renderInputComponent = inputProps => (
             <SearchInput 
                 inputProps={inputProps} 
@@ -112,7 +111,7 @@ class Search extends Component {
     }
 }
 
-export default Search = withRouter(graphql(FETCH_SEARCH, {
+export default Search = withRouter(graphql(FETCH_SUGGESTIONS, {
     skip: props => (props.value.trim().length > 2 ? false : true ),
     options: (props) => ({ variables: { name: props.value } })
 })(Search));

@@ -1,10 +1,23 @@
 import React from 'react'
-import FetchSearch from 'Queries/fetchSearch'
+import FetchSearchResults from 'Queries/fetchSearchResults'
+import Empty from 'Components/Media/Card/Empty'
+
+// Local Styles
+import { LibraryWrap, LibraryListWrap } from '../Styles'
+// Global Styles
+import { PageHeading } from 'Styles'
 
 const Search = props => {
     return (
-        <FetchSearch name={    } />
+        <LibraryWrap>
+            <PageHeading>Searched For: {props.match.params.value}</PageHeading>
+
+            <LibraryListWrap>
+                <FetchSearchResults value={props.match.params.value} />
+                <Empty length="10" />
+            </LibraryListWrap>
+        </LibraryWrap>
     )
 }
 
-export default Series
+export default Search

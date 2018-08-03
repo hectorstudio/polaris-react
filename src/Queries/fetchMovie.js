@@ -4,9 +4,9 @@ import { Query } from "react-apollo"
 
 import Movie from 'Components/Media/Movie'
 
-const FETCH_MOVIE = uuid => gql`
-    {
-        movies(uuid: "${uuid}") {
+const FETCH_MOVIE = gql`
+    query movies($uuid: String!) {
+        movies(uuid: $uuid) {    
             title
             year
             overview
@@ -26,10 +26,11 @@ const FETCH_MOVIE = uuid => gql`
     }
 `
 
-const FetchMovie = ({ uuid, autoplay }) => {
+const FetchMovie = ({ uuid }) => {
     return (
         <Query
-            query={FETCH_MOVIE(uuid)}
+            query={ FETCH_MOVIE }
+            variables={{ uuid }}
         >
 
             {({ loading, error, data }) => {

@@ -20,6 +20,9 @@ import Series from 'Containers/Media/Series'
 import Season from 'Containers/Media/Season'
 import Episode from 'Containers/Media/Episode'
 
+// Search Results
+import Search from 'Containers/Media/Search'
+
 // Auth
 import { Auth, checkAuth } from 'Components/Auth'
 
@@ -52,6 +55,8 @@ export default class Routes extends Component {
                 <PrivateRoute exact path="/series/:uuid/:name" component={Series} />
                 <PrivateRoute exact path="/season/:uuid/:name" component={Season} />
                 <PrivateRoute exact path="/episode/:uuid/:name" component={Episode} />
+
+                <PrivateRoute exact path="/search/:value" component={Search} />
             </Switch>
         )
     }
