@@ -10,7 +10,7 @@ import { PageHeading } from 'Styles'
 const Search = props => {
     return (
         <LibraryWrap>
-            <PageHeading>Searched For: {props.match.params.value}</PageHeading>
+            <PageHeading>Results For: "{props.match.params.value}"</PageHeading>
 
             <LibraryListWrap>
                 <FetchSearchResults value={props.match.params.value} />

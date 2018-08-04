@@ -7,9 +7,13 @@ import faSearch from '@fortawesome/fontawesome-pro-regular/faSearch'
 import { InputWrap, LoadingIcon, SearchIcon, NoResultsError } from './Styles'
 
 class SearchInput extends Component {
-    state = {
-        hasFocus: false,
-        value: ''
+    constructor() {
+        super();
+
+        this.state = {
+            hasFocus: false,
+            value: ''
+        }
     }
 
     setFocus = (e, hasFocus) => {
@@ -25,8 +29,15 @@ class SearchInput extends Component {
     }
 
     checkKey = (e) => {
-        if (e.key === 'Enter') {
-            this.props.history.push(`/search/${this.state.value}`);
+        let location = this.props.location.pathname.split('/'),
+            currentLocation = location.pop() || location.pop();
+
+        if (e.key === 'Enter' && this.state.value.replace(/\s*$/, "") !== currentLocation.replace(/\s*$/, "")) {
+            this.props.unmount();
+
+            setTimeout(() => {
+                this.props.history.push(`/search/${this.state.value}`);
+            }, 500);
         }
     }
 

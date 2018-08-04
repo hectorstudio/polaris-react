@@ -35,6 +35,7 @@ const FetchSearchResults = ({ value }) => {
             {({ loading, error, data }) => {
                 if (loading) return "Loading...";
                 if (error) return `Error! ${error.message}`;
+                if (data.search.length === 0) return `No Results Found For ${value}`
 
                 return data.search.map(({ __typename, name, poster_path, imdb_id, uuid }, i) => {
                     let result_details = {
@@ -46,8 +47,7 @@ const FetchSearchResults = ({ value }) => {
 
                     return (<MediaCard type={__typename} key={i} {...result_details} />);
                 });
-            }}
-
+            }} 
         </Query>
     )
 };

@@ -20,7 +20,6 @@ class Login extends Component {
 
     componentWillMount() {
         if (Auth.isAuthenticated) this.setState({ redirectToDashboard: true });
-
         this.setState({ isMounted: true })
     }
 

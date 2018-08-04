@@ -24,14 +24,11 @@ class Search extends Component {
             value: '',
             suggestions: [],
             loading: false,
-            hasFocus: false
+            hasFocus: false,
+            isUnmounting: false
         };
 
         this.debouncedLoadSuggestions = debounce(this.loadSuggestions, 500);
-    }
-
-    debounce = () => {
-        return 300 + Math.random() * 1000;
     }
 
     onChange = (event, {newValue}) => {
@@ -54,8 +51,10 @@ class Search extends Component {
     }
 
     onSuggestionsFetchRequested = ({ value }) => {
-        this.debouncedLoadSuggestions(value);
-        this.setState({loading: true});
+        if(!this.state.isUnmounting) {
+            this.debouncedLoadSuggestions(value);
+            this.setState({loading: true});
+        }
     }
 
     onSuggestionsClearRequested = () => {
@@ -72,6 +71,12 @@ class Search extends Component {
         this.props.history.push(generateMediaUrl(suggestion.__typename, suggestion.uuid, suggestion.name));
     }
 
+    unmountComponent = () => {
+        this.setState({
+            isUnmounting: true
+        })
+    }
+
     render() {
         const { value, suggestions, loading } = this.state;
         let checkSuggestions = (typeof suggestions === 'undefined' ? [] : suggestions);
@@ -82,6 +87,8 @@ class Search extends Component {
             onChange: this.onChange
         };  
 
+        console.log(this.state.isUnmounting);
+
         const renderInputComponent = inputProps => (
             <SearchInput 
                 inputProps={inputProps} 
@@ -89,6 +96,7 @@ class Search extends Component {
                 toggleFocus={this.toggleFocus}
                 hasSuggestions={(suggestions.length > 0)}
                 value={value}
+                unmount={this.unmountComponent}
             />
         );
 
