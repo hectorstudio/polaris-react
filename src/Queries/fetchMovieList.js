@@ -7,7 +7,7 @@ import MediaCard from 'Components/Media/Card'
 const FETCH_MOVIES = gql`
     {
         movies {
-            title,
+            name,
             poster_path,
             imdb_id,
             uuid
@@ -24,9 +24,9 @@ const FetchMovieList = () => (
             if (loading) return "Loading...";
             if (error) return `Error! ${error.message}`;
 
-            return data.movies.map(({ title, poster_path, imdb_id, uuid }, i) => {
+            return data.movies.map(({ name, poster_path, imdb_id, uuid }, i) => {
                 let movie_details = {
-                    title,
+                    name,
                     poster_path,
                     imdb_id,
                     uuid
