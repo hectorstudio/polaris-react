@@ -1,0 +1,75 @@
+.react-autosuggest {
+    &__suggestions-container {
+        border-radius: .2rem;
+        overflow: hidden;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, .6);
+        position: relative;
+        z-index:99;
+    }
+
+    &__section-container {
+        background: #FFF;
+        position: relative;
+        z-index: 2;
+        max-width: 35rem;
+        overflow: hidden;
+        border-bottom:.1rem solid color(light);
+        
+        &:last-of-type {
+            border-bottom:0;
+        }
+    }
+
+    &__suggestions-list {
+        float:left;
+        width:100%;
+    }
+
+    &__suggestion {
+        float:left;
+        width:100%;
+        border-bottom:1px solid #EEE;
+
+        &:last-child {
+            border-bottom:0;
+            overflow: hidden;
+        }
+    }
+
+    &__input {
+        color: color(dark);
+        background:none;
+        border:0;
+        line-height:5rem;
+        color:#FFF;
+        width:100%;
+        position:absolute;
+        top:0;
+        left:0;
+        padding:0 5rem;
+        font-size:1.6rem;
+        overflow:hidden;
+        font-weight: 600;
+
+        &::-webkit-input-placeholder {
+            color: rgba(255,255,255, .2);
+        }
+
+        &:focus {
+            outline:none;
+            color: color(dark);
+        }
+    }
+
+    &__section-container {
+        width: 35rem;
+        background:#FFF;
+        border-radius:0 0 .2rem .2rem;
+        box-shadow: 0 10px 15px rgba(0,0,0, .3);
+        z-index:2;
+        position:relative;
+        &--first {
+            border-radius:.2rem .2rem 0 0;
+        }
+    }
+}

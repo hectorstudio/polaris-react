@@ -1,34 +1,63 @@
-import React from 'react'
+import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom' 
 import PrivateRoute from './Helper/PrivateRoute'
 
 // Auth
-import Login from 'Pages/Auth/Login'
-import ForgotPassword from 'Pages/Auth/ForgotPassword'
-import Register from 'Pages/Auth/Register'
+import Login from 'Containers/User/Login'
+import ForgotPassword from 'Containers/User/ForgotPassword'
+import Register from 'Containers/User/Register'
 
 // App
-import Dashboard from 'Pages/Dashboard'
+import Dashboard from 'Containers/Dashboard'
+
+// Movie
+import MovieList from 'Containers/Media/MovieList'
+import Movie from 'Containers/Media/Movie'
+
+// Series
+import SeriesList from 'Containers/Media/SeriesList'
+import Series from 'Containers/Media/Series'
+import Season from 'Containers/Media/Season'
+import Episode from 'Containers/Media/Episode'
+
+// Search Results
+import Search from 'Containers/Media/Search'
 
 // Auth
-import { Auth } from 'Actions/Auth'
+import { Auth, checkAuth } from 'Components/Auth'
 
-const Routes = () => (
-    <Switch>
-        <Route exact path="/" render={() => (
-            Auth.isAuthenticated ? (
-                <Redirect to="/dashboard" />
-            ) : (
-                <Redirect to="/login" />
-                )
-        )} />
+export default class Routes extends Component {
+    componentWillMount() {
+        checkAuth();
+    }
 
-        <Route exact path='/login' component={Login} />
-        <Route exact path='/forgot' component={ForgotPassword} />
-        <Route exact path='/register' component={Register} />
+    render() { 
+        return ( 
+            <Switch>
+                <Route exact path="/" render={() => (
+                    Auth.isAuthenticated ? (
+                        <Redirect to="/dashboard" />
+                    ) : (
+                            <Redirect to="/login" />
+                        )
+                )} />
 
-        <PrivateRoute path="/dashboard" component={Dashboard} />
-    </Switch>
-)
+                <Route exact path='/login' component={Login} />
+                <Route exact path='/forgot' component={ForgotPassword} />
+                <Route exact path='/register' component={Register} />
 
-export default Routes
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+
+                <PrivateRoute exact path="/movies" component={MovieList} />
+                <PrivateRoute exact path='/movie/:uuid/:name' component={Movie} />
+
+                <PrivateRoute exact path="/series" component={SeriesList} />
+                <PrivateRoute exact path="/series/:uuid/:name" component={Series} />
+                <PrivateRoute exact path="/season/:uuid/:name" component={Season} />
+                <PrivateRoute exact path="/episode/:uuid/:name" component={Episode} />
+
+                <PrivateRoute exact path="/search/:value" component={Search} />
+            </Switch>
+        )
+    }
+}

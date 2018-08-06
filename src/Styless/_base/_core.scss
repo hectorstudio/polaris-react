@@ -1,0 +1,33 @@
+html, body {
+    font-size:62.5%;
+}
+
+body {
+    margin:0;
+    background: linear-gradient(color(dark), color(background) 85%);
+    background-attachment: fixed;
+    font-size: 1.6rem;
+}
+
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+}
+
+input, textarea, button, body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 800;
+    font-family: 'Muli', sans-serif;
+}
+
+a, button {
+    cursor:pointer;
+    text-decoration:none;
+    &:focus {
+        outline:none;
+    }
+}
