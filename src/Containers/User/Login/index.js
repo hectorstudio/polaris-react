@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { withAlert } from 'react-alert'
-
 import { LoginWrap } from './Styles'
 
 import { AUTH_REQUEST, Auth } from 'Components/Auth'

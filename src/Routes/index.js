@@ -25,22 +25,27 @@ import Search from 'Containers/Media/Search'
 
 // Auth
 import { Auth, checkAuth } from 'Components/Auth'
+import { isInitialSetup } from 'Helpers'
 
 export default class Routes extends Component {
     componentWillMount() {
         checkAuth();
     }
 
+    initialRender = () => {
+        return (Auth.isAuthenticated 
+            ? <Redirect to="/dashboard" />
+            : (isInitialSetup() 
+                ? <Redirect to="/register" /> 
+                : <Redirect to="/login" />
+            )
+        )
+    }
+
     render() { 
         return ( 
             <Switch>
-                <Route exact path="/" render={() => (
-                    Auth.isAuthenticated ? (
-                        <Redirect to="/dashboard" />
-                    ) : (
-                            <Redirect to="/login" />
-                        )
-                )} />
+                <Route exact path="/" render={this.initialRender} />
 
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/forgot' component={ForgotPassword} />
