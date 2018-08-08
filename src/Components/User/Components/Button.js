@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { LoginButton } from './Styles'
+import { FormButton } from '../Styles'
 
 export default class Button  extends Component {
     state = {
@@ -28,12 +28,12 @@ export default class Button  extends Component {
 
     render() { 
         return (
-            <LoginButton 
+            <FormButton 
                 type="submit" 
                 onClick={ this._handleLogin } 
                 disabled={ (this.state.disabled || this.props.disabled ? true : false) }>
                     {this.props.value}
-            </LoginButton> 
+            </FormButton> 
         )
     }
 }

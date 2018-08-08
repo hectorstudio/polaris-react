@@ -1,9 +1,14 @@
-import React from 'react';
+import React from 'react'
+import { withAlert } from 'react-alert'
+
+import { RegisterWrap } from './Styles'
+
+import RegisterForm from 'Components/User/Register'
 
 const Register = () => (
-    <div>
-        <h1>Register</h1>
-    </div>
+    <RegisterWrap>
+        <RegisterForm />
+    </RegisterWrap>
 )
 
-export default Register
+export default withAlert(Register)

@@ -7,7 +7,7 @@ export const FormWrap = styled.form`
     padding:5rem;
     background:#FFF;
     box-shadow: 0 10px 60px rgba(0,0,0, 0.05);
-    margin:0 0 3rem;
+    margin:3rem 0;
     transition: .2s border;
     border:1px solid;
     border-color: ${(props => props.error ? props.theme.alerts.error : 'transparent')};
@@ -26,12 +26,12 @@ export const Heading = styled.h1`
 export const SubHeading = styled.p`
     font-size:1.6rem;
     font-weight:600;
-    margin:0 0 5rem;
+    margin:0 0 3rem;
     color: ${props => props.theme.text};
 `
 
 // Form Elements
-export const LoginInputWrap = styled.div`
+export const InputWrap = styled.div`
     float:left;
     width:100%;
     position:relative;
@@ -46,6 +46,7 @@ export const LoginInputWrap = styled.div`
         z-index:3;
         width:100%;
         transition:.3s width;
+        display: ${(props => props.uniqueCode ? 'none' : 'block')};
     }
 
     &:after {
@@ -59,13 +60,42 @@ export const LoginInputWrap = styled.div`
     }    
 `;
 
-export const LoginInput = styled.input`
+export const TextInput = styled.input`
     height: 5rem;
     border:0;
     width:100%;
     float:left;
     font-size:1.8rem;
     font-weight:600;
+    color: ${props => props.theme.darken.primary};
+
+    &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 100px white inset;
+    }
+
+    &:-webkit-autofill {
+        -webkit-text-fill-color: ${props => props.theme.darken.primary};
+    }
+
+    &::placeholder {
+        color: ${props => props.theme.text};
+    }
+
+    &:focus {
+        outline:none;
+    }
+`
+
+export const UniqueInput = styled.input`
+    height: 5rem;
+    border:0;
+    width:100%;
+    float:left;
+    font-size:1.8rem;
+    font-weight:600;
+    background: #FFF;
+    border:2px solid ${props => props.theme.darken.primary};
+    text-align:center;
     color: ${props => props.theme.darken.primary};
 
     &::placeholder {
@@ -77,9 +107,9 @@ export const LoginInput = styled.input`
     }
 `
 
-export const LoginButton = styled.button`
+export const FormButton = styled.button`
     height: 6rem;
-    margin: 3rem 0 5rem;
+    margin: 3rem 0;
     color: #FFF;
     width:100%;
     text-align:center;
@@ -112,13 +142,13 @@ export const LoginButton = styled.button`
 `
 
 // Register
-export const RegisterPara = styled.p`
+export const FormLinkPara = styled.p`
     font-size:1.6rem;
     color: ${props => props.theme.text}
     font-weight:700;
 `;
 
-export const RegisterLink = styled(Link)`
+export const Links = styled(Link)`
     color: ${props => props.theme.primary};
     margin-left:.5rem;
     font-weight: 700;

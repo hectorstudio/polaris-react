@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Heading, SubHeading } from './Styles'
+import { Heading, SubHeading } from '../Styles'
 
 const Title = ({ heading, sub }) => (
     <React.Fragment>
