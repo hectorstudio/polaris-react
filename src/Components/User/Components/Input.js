@@ -16,12 +16,14 @@ export default class Input extends Component {
     }
 
     render() { 
-        const { type, name, placeholder, handleChange, uniqueCode } = this.props;
+        const { type, name, placeholder, handleChange, uniqueCode, autocomplete, value } = this.props;
 
         let inputProps = {
-            type: type ,
-            name: name,
-            placeholder: placeholder,
+            value,
+            type,
+            name,
+            placeholder,
+            autoComplete: autocomplete,
             onChange: handleChange,
             onFocus: this.handleFocus,
             onBlur: this.handleBlur

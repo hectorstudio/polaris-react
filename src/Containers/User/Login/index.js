@@ -11,7 +11,6 @@ class Login extends Component {
         redirectToDashboard: false,
         success: false,
         error: false,
-        disabled: true,
         username: '',
         password: '',
         isMounted: false
@@ -58,12 +57,9 @@ class Login extends Component {
     }
 
     _handleChange = e => {
-        let emptyInput = (this.state.username.length < 1 || this.state.password.length < 1);
-
         if(this.state.isMounted) {
             this.setState({ 
-                [e.target.name]: e.target.value,
-                disabled: (!emptyInput ? false : true)
+                [e.target.name]: e.target.value
             });
         }
     }
@@ -79,8 +75,7 @@ class Login extends Component {
         let LoginProps = {
             handleLogin: this._handleLogin,
             handleChange: this._handleChange,
-            error: this.state.error,
-            disabled: this.state.disabled
+            error: this.state.error
         }
 
         return ( 

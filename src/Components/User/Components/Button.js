@@ -15,9 +15,9 @@ export default class Button  extends Component {
         e.preventDefault();
 
         if(!this.state.disabled) {
-            this.props.handleLogin();
+            this.props.handleSubmit();
 
-            // Throttle Login Attempts 
+            // Throttle Button Clicks 
             this.setState({ disabled: true });
 
             this.throttle = setTimeout(() => {

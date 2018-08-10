@@ -13,10 +13,10 @@ const RegisterForm = (props) => (
             <Logo alt="Bytesized Streaming" height="30" />
             <Title heading="Sign Up" sub="Account Registration" />
 
-            <Input type="text" name="invitecode" placeholder="Enter Invite Code" handleChange={props.handleChange} uniqueCode/>
-            <Input type="text" name="username" placeholder="Enter Username" handleChange={props.handleChange} />
-            <Input type="password" name="password" placeholder="Enter Password" handleChange={props.handleChange} />
-            <Button handleRegister={props.handleLogin} value="Register" disabled={props.disabled} />
+            <Input type="text" value={props.inviteCode} name="invitecode" autocomplete="invite-code" placeholder="Enter Invite Code" handleChange={props.handleChange} uniqueCode/>
+            <Input type="text" name="username" autocomplete="new-username" placeholder="Enter Username" handleChange={props.handleChange} />
+            <Input type="password" name="password" autocomplete="new-password" placeholder="Enter Password" handleChange={props.handleChange} />
+            <Button handleSubmit={props.handleRegister} value="Register" />
 
             <FormLink to="/login" strapline="Have An Account?" value="Log In" setup={false} /> 
         </FormWrap>
