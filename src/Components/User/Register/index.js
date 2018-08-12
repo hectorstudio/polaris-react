@@ -13,7 +13,7 @@ const RegisterForm = (props) => (
             <Logo alt="Bytesized Streaming" height="30" />
             <Title heading="Sign Up" sub="Account Registration" />
             {!props.initialSetup &&
-                <Input type="text" value={(props.inviteCode ? props.inviteCode : '')} name="invite_code" autocomplete="invite_code" placeholder="Enter Invite Code" handleChange={props.handleChange} uniqueCode />
+                <Input type="text" value={(props.invite_code ? props.invite_code : '')} name="invite_code" autocomplete="invite_code" placeholder="Enter Invite Code" handleChange={props.handleChange} uniqueCode />
             }
             <Input type="text" name="username" autocomplete="new-username" placeholder="Enter Username" handleChange={props.handleChange} />
             <Input type="password" name="password" autocomplete="new-password" placeholder="Enter Password" handleChange={props.handleChange} />

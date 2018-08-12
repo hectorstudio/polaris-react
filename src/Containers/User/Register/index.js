@@ -19,7 +19,7 @@ class Register extends Component {
 
     componentWillMount() {
         this.setState({
-            inviteCode: getUrlParameter('invite_code')
+            invite_code: getUrlParameter('invite_code')
         });
     }
 
@@ -38,7 +38,7 @@ class Register extends Component {
         if (this.state.invite_code.length > 0) {
             register_info = { 
                 ...register_info, 
-                invite_code: this.state.invite_code 
+                code: this.state.invite_code 
             }
         }
 
@@ -59,7 +59,7 @@ class Register extends Component {
             handleRegister: this._handleRegister,
             handleChange: this._handleChange,
             error: this.state.error,
-            inviteCode: this.state.inviteCode,
+            invite_code: this.state.invite_code,
             initialSetup: isInitialSetup()
         }
 
