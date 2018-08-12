@@ -11,9 +11,9 @@ class Login extends Component {
         redirectToDashboard: false,
         success: false,
         error: false,
+        isMounted: false,
         username: '',
-        password: '',
-        isMounted: false
+        password: ''
     }
 
     componentWillMount() {

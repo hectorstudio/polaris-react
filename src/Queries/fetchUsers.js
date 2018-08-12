@@ -4,11 +4,13 @@ import { Query } from "react-apollo"
 
 import UserListItem from 'Components/Admin/Users/UserListItem'
 
-const FETCH_USER = gql`
+const FETCH_INVITES = gql`
     {
-        users {    
-            login
-            admin
+        invites {    
+            code
+            user {
+                login
+            }
         }
     }
 `
@@ -16,7 +18,7 @@ const FETCH_USER = gql`
 const FetchUsers = () => {
     return (
         <Query
-            query={ FETCH_USER }
+            query={ FETCH_INVITES }
         >
 
             {({ loading, error, data }) => {
@@ -25,10 +27,10 @@ const FetchUsers = () => {
 
                 console.log(data);
 
-                return data.users.map(({ login, admin }, i) => {
+                return data.invites.map(({ code, user }, i) => {
                     let user_details = {
-                        login,
-                        admin
+                        invite_code: code,
+                        user: user.login
                     }
 
                     return (<UserListItem key={i} {...user_details} />);

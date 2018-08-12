@@ -1,8 +1,13 @@
 import React from 'react'
 
 const UserListItem = props => {
-    console.log(props);
-    return <li>Name: {props.login} {(props.admin ? 'Admin' : 'User')}</li>
+    return (
+        <li>
+            Name: {props.user} 
+            <br />
+            Invite: {props.invite_code}
+        </li>
+    )
 }
 
 export default UserListItem

@@ -2,14 +2,17 @@ import React, { Component } from 'react'
 
 import FetchUsers from 'Queries/fetchUsers'
 
-class UserManagement extends Component {
+class ManageUsers extends Component {
     render() { 
         return ( 
-            <ul>
-                <FetchUsers />
-            </ul>
+            <div>
+                <h1>Users</h1>
+                <ul>
+                    <FetchUsers />
+                </ul>
+            </div>
         );
     }
 }
  
-export default UserManagement;
+export default ManageUsers;
