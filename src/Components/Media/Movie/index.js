@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { graphql } from 'react-apollo';
+import React, { Component } from 'react'
+import { graphql } from 'react-apollo'
 
 import { 
     generateMimeTypes, 

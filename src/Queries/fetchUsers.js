@@ -15,25 +15,40 @@ const FETCH_INVITES = gql`
     }
 `
 
-const FetchUsers = () => {
+const FetchUsers = props => {
+
     return (
         <Query
             query={ FETCH_INVITES }
         >
-
-            {({ loading, error, data }) => {
+                
+            {({ loading, error, data, refetch, networkStatus  }) => {
+                if (networkStatus === 4) return "Refetching!";
                 if (loading) return "Loading...";
                 if (error) return `Error! ${error.message}`;
 
-                console.log(data);
+                const _generateInviteCode = () => {
+                    props.generateUserInvite()
+                    refetch()
+                }
 
                 return data.invites.map(({ code, user }, i) => {
-                    let user_details = {
-                        invite_code: code,
-                        user: user.login
-                    }
+                    let length = data.invites.length;
 
-                    return (<UserListItem key={i} {...user_details} />);
+                    return (
+                        <React.Fragment key={i}>
+                            <ul>
+                                <UserListItem
+                                    user={(user ? user.login : false)}
+                                    invite_code={code}
+                                />
+                            </ul>
+
+                            { length === i+1 &&
+                                <button onClick={() => { _generateInviteCode() }}>Generate Invite Code</button>
+                            }
+                        </React.Fragment>
+                    )
                 });
             }}
 
