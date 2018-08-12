@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom' 
 import PrivateRoute from './Helper/PrivateRoute'
+import AdminRoute from './Helper/AdminRoute'
 
 // Auth
 import Login from 'Containers/User/Login'
@@ -9,6 +10,9 @@ import Register from 'Containers/User/Register'
 
 // App
 import Dashboard from 'Containers/Dashboard'
+
+// Admin
+import Users from 'Containers/Admin/Users'
 
 // Movie
 import MovieList from 'Containers/Media/MovieList'
@@ -50,6 +54,8 @@ export default class Routes extends Component {
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/forgot' component={ForgotPassword} />
                 <Route exact path='/register' component={Register} />
+
+                <AdminRoute exact path="/users" component={Users} />
 
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
 

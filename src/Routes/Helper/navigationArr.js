@@ -20,11 +20,11 @@ let navigationArr = [
         name: 'Settings',
         links: [
             {
-                name: 'Account',
-                to: '/'
+                name: 'Users',
+                to: '/users'
             },
             {
-                name: 'App Settings',
+                name: 'Settings',
                 to: '/'
             }
         ]

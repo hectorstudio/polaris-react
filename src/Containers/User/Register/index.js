@@ -16,7 +16,7 @@ class Register extends Component {
 
     componentWillMount() {
         this.setState({
-            inviteCode: getUrlParameter('inviteCode')
+            inviteCode: getUrlParameter('invite_code')
         });
     }
 

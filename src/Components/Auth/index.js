@@ -25,6 +25,9 @@ export const Auth = {
     authenticate() {
         this.isAuthenticated = true
     },
+    admin() {
+        this.admin = true
+    },
     logout() {
         this.isAuthenticated = false
     }
