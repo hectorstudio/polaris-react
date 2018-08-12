@@ -26,26 +26,9 @@ class Login extends Component {
     }
     
     _handleLogin = () => {
-        // Login Request
         AUTH_REQUEST(this.state.username, this.state.password).then(response => {
             this.setState({ success: true });
 
-            // Allow Successful Login Fade Out
-            setTimeout(() => {
-                    this.setState({ redirectToDashboard: true });
-            }, 750);
-        }).catch(error => {
-            this.setState({ error: true }, () => {
-                this.props.alert.error('Looks like your Username and Password dont match, Please Try Again');
-            });
-        })
-    }
-    _handleLogin = () => {
-        // Login Request
-        AUTH_REQUEST(this.state.username, this.state.password).then(response => {
-            this.setState({ success: true });
-
-            // Allow Successful Login Fade Out
             setTimeout(() => {
                     this.setState({ redirectToDashboard: true });
             }, 750);
@@ -68,9 +51,7 @@ class Login extends Component {
         const { from } = this.props.location.state || { from: { pathname: "/dashboard" } };
         const { redirectToDashboard } = this.state;
 
-        if (redirectToDashboard) {
-            return <Redirect to={from} />;
-        }
+        if (redirectToDashboard) return <Redirect to={from} />
 
         let LoginProps = {
             handleLogin: this._handleLogin,

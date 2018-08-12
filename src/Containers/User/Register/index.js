@@ -1,17 +1,20 @@
 import React, { Component } from 'react'
 import { withAlert } from 'react-alert'
-import { getUrlParameter } from 'Helpers'
+import { Redirect } from 'react-router'
+import { getUrlParameter, isInitialSetup } from 'Helpers'
+
+import CREATE_USER from 'Mutations/createUser'
+import RegisterForm from 'Components/User/Register'
 
 import { RegisterWrap } from './Styles'
-
-import RegisterForm from 'Components/User/Register'
 
 class Register extends Component {
     state = { 
         error: false,
+        redirectToDashboard: false,
         username: '',
         password: '',
-        inviteCode: ''
+        invite_code: ''
     }
 
     componentWillMount() {
@@ -27,15 +30,37 @@ class Register extends Component {
     }
 
     _handleRegister = () => {
-        console.log(this.state)
+        let register_info = {
+            login: this.state.username,
+            password: this.state.password
+        }
+
+        if (this.state.invite_code.length > 0) {
+            register_info = { 
+                ...register_info, 
+                invite_code: this.state.invite_code 
+            }
+        }
+
+        CREATE_USER(register_info).then(response => {
+            this.setState({ redirectToDashboard: true  });
+        }).catch(error => {
+            this.setState({ error: true }, () => {
+                this.props.alert.error('Looks like there was an error, Please Try Again');
+            });
+        })
     }
     
     render() { 
+        const { from } = this.props.location.state || { from: { pathname: "/dashboard" } };
+        if (this.state.redirectToDashboard) return <Redirect to={from} />
+
         let RegisterProps = {
             handleRegister: this._handleRegister,
             handleChange: this._handleChange,
             error: this.state.error,
-            inviteCode: this.state.inviteCode
+            inviteCode: this.state.inviteCode,
+            initialSetup: isInitialSetup()
         }
 
         return ( 
