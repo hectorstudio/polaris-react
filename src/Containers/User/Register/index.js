@@ -31,7 +31,7 @@ class Register extends Component {
 
     _handleRegister = () => {
         let register_info = {
-            login: this.state.username,
+            username: this.state.username,
             password: this.state.password
         }
 

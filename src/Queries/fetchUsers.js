@@ -9,7 +9,7 @@ const FETCH_INVITES = gql`
         invites {    
             code
             user {
-                login
+                username
             }
         }
     }
@@ -39,7 +39,7 @@ const FetchUsers = props => {
                         <React.Fragment key={i}>
                             <ul>
                                 <UserListItem
-                                    user={(user ? user.login : false)}
+                                    user={(user ? user.username: false)}
                                     invite_code={code}
                                 />
                             </ul>
