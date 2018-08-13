@@ -13,7 +13,7 @@ import Theme from 'Styles/Theme'
 import App from 'Containers/App'
 import { AlertTemplate, AlertOptions } from 'Components/Alerts'
 
-const BytesizedStreaming = () => (
+const Olaris = () => (
     <Router>
         <LastLocationProvider>
             <ApolloProvider client={Client}>
@@ -27,4 +27,4 @@ const BytesizedStreaming = () => (
     </Router>
 );
 
-render(<BytesizedStreaming />, document.getElementById("bytesized-streaming"));
+render(<Olaris />, document.getElementById("olaris"));

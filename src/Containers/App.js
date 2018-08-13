@@ -22,7 +22,7 @@ export default class App extends Component {
         )
 
         return (
-            <AppWrap id="bytesized-streaming" authed={Auth.isAuthenticated}>
+            <AppWrap authed={Auth.isAuthenticated}>
                 {(Auth.isAuthenticated ? <LoggedIn /> : <Routes />)}
             </AppWrap>
         );

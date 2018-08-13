@@ -10,7 +10,7 @@ import FormLink from '../Components/FormLink'
 const RegisterForm = (props) => (
     <React.Fragment>
         <FormWrap error={props.error}>
-            <Logo alt="Bytesized Streaming" height="30" />
+            <Logo alt="Olaris" height="30" />
             <Title heading="Sign Up" sub="Account Registration" />
             {!props.initialSetup &&
                 <Input type="text" value={(props.invite_code ? props.invite_code : '')} name="invite_code" autocomplete="invite_code" placeholder="Enter Invite Code" handleChange={props.handleChange} uniqueCode />
