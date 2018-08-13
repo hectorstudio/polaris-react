@@ -145,7 +145,7 @@ export const FormButton = styled.button`
 export const FormLinkPara = styled.p`
     font-size:1.6rem;
     color: ${props => props.theme.text}
-    font-weight:700;
+    font-weight:600;
 `;
 
 export const Links = styled(Link)`
@@ -164,7 +164,7 @@ export const ForgotPasswordLink = styled(Link)`
     color: ${props => props.theme.text};
     margin:0 auto;
     transition: .3s color;
-    font-weight:700;
+    font-weight:600;
 
     &:hover {
         color: ${props => props.theme.primary};

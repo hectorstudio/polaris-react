@@ -26,7 +26,7 @@ export const AlertType = styled.strong`
     color: ${props => getColor(props)};
     margin-right:.5rem;
     text-transform:capitalize;
-    font-weight:700;
+    font-weight:600;
     font-size:1.4rem;
     &:after {
         content:':';
