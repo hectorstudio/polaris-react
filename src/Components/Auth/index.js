@@ -20,6 +20,12 @@ export const AUTH_REQUEST = (username, password) => {
     })
 }
 
+export const isAdmin = () => {
+    let token = cookies.get('jwt');
+
+    return jwtDecode(token.jwt).admin
+}
+
 export const Auth = {
     isAuthenticated: false,
     authenticate() {

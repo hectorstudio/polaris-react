@@ -11,7 +11,7 @@ import ForgotPassword from '../Components/ForgotPassword'
 const LoginForm = (props) => (
     <React.Fragment>
         <FormWrap error={props.error}>
-            <Logo alt="Bytesized Streaming" height="30"/>
+            <Logo alt="Olaris" height="30"/>
             <Title heading="Welcome Back!" sub="Login to get started" />
 
             <Input type="text" name="username" placeholder="Enter Username" handleChange={props.handleChange} />
