@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ForgotPasswordLink } from './Styles';
+import { ForgotPasswordLink } from '../Styles';
 
 const ForgotPassword = (props) => (
     <ForgotPasswordLink to={props.to} value={props.value}>

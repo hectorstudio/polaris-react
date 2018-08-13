@@ -1,11 +1,15 @@
+import getUrlParameter from './getUrlParameter'
 import getBaseUrl from './getBaseUrl'
 import updateSuggestions from './updateSuggestions'
 import generateMimeTypes from './generateMimeTypes'
 import generateMediaUrl from './generateMediaUrl'
+import isInitialSetup from './isInitialSetup'
 
 export {
+    getUrlParameter,
     getBaseUrl,
     generateMimeTypes,
     generateMediaUrl,
-    updateSuggestions
+    updateSuggestions,
+    isInitialSetup
 }

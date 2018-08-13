@@ -87,8 +87,6 @@ class Search extends Component {
             onChange: this.onChange
         };  
 
-        console.log(this.state.isUnmounting);
-
         const renderInputComponent = inputProps => (
             <SearchInput 
                 inputProps={inputProps} 

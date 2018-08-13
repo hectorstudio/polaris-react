@@ -1,13 +1,12 @@
 import React from 'react'
-
-import { FormWrap } from './Styles'
+import { FormWrap } from '../Styles'
 
 import Logo from 'Components/Logo'
-import Title from './Title'
-import Input from './Input' 
-import Button from './Button' 
-import Register from './Register' 
-import ForgotPassword from './ForgotPassword'
+import Title from '../Components/Title'
+import Input from '../Components/Input' 
+import Button from '../Components/Button' 
+import FormLink from '../Components/FormLink' 
+import ForgotPassword from '../Components/ForgotPassword'
 
 const LoginForm = (props) => (
     <React.Fragment>
@@ -17,9 +16,9 @@ const LoginForm = (props) => (
 
             <Input type="text" name="username" placeholder="Enter Username" handleChange={props.handleChange} />
             <Input type="password" name="password" placeholder="Enter Password" handleChange={props.handleChange} />
-            <Button handleLogin={props.handleLogin} value="Login" disabled={props.disabled}/>
+            <Button handleSubmit={props.handleLogin} value="Login" disabled={props.disabled}/>
 
-            <Register to="/register" value="Sign Up" setup={false}/> 
+            <FormLink to="/register" strapline="Don't Have An Account?" value="Sign Up" setup={false}/> 
         </FormWrap>
 
         <ForgotPassword to='/forgot' value="Forgot Password?"/>
