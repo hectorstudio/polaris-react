@@ -10,7 +10,7 @@ export const AUTH_REQUEST = (username, password) => {
     let url = `${getBaseUrl()}/m/v1/auth`;
 
     let data = {
-        login: username,
+        username: username,
         password: password
     }
 
