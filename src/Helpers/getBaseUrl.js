@@ -3,9 +3,7 @@
  * @return {String} String containing the base url
  */
 
-const getBaseUrl = () => {
-    let url = 'http://atalanta.bysh.me:8080';
-    
+const getBaseUrl = () => { 
     // eslint-disable-next-line
     let path;
 
@@ -16,7 +14,7 @@ const getBaseUrl = () => {
         console.log('Cant Find Base Url');
     }
 
-    return url
+    return path
 }
 
 export default getBaseUrl
