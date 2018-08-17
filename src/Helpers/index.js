@@ -3,6 +3,7 @@ import getBaseUrl from './getBaseUrl'
 import updateSuggestions from './updateSuggestions'
 import generateMimeTypes from './generateMimeTypes'
 import generateMediaUrl from './generateMediaUrl'
+import generateFileList from './generateFileList'
 import isInitialSetup from './isInitialSetup'
 
 export {
@@ -11,5 +12,6 @@ export {
     generateMimeTypes,
     generateMediaUrl,
     updateSuggestions,
-    isInitialSetup
+    isInitialSetup,
+    generateFileList
 }

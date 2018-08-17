@@ -1,6 +1,6 @@
 import React from 'react'
 import { withLastLocation } from 'react-router-last-location'
-import faAngleLeft from '@fortawesome/fontawesome-pro-regular/faAngleLeft'
+import { faAngleLeft } from '@fortawesome/pro-regular-svg-icons'
 
 import { BackButton, BackIcon } from './Styles'
 

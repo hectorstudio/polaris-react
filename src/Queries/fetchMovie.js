@@ -2,12 +2,12 @@ import React from 'react'
 import gql from "graphql-tag"
 import { Query } from "react-apollo"
 
-import Movie from 'Components/Media/Movie'
+import MediaItem from 'Components/Media/MediaItem'
 
 const FETCH_MOVIE = gql`
     query movies($uuid: String!) {
         movies(uuid: $uuid) {    
-            title
+            name
             year
             overview
             imdb_id
@@ -39,7 +39,7 @@ const FetchMovie = ({ uuid }) => {
 
                 let movie = data.movies[0];
 
-                return (<Movie {...movie} />);
+                return (<MediaItem {...movie} />);
             }}
 
         </Query>

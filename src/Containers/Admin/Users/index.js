@@ -10,18 +10,16 @@ class Users extends Component {
         inviteGenerated: false
     }
 
-    _generateUserInvite = () => {
-        console.log('generating');
-        
+    _generateUserInvite = () => {     
         this.props.mutate()
-        .then(({ data }) => {
-            this.setState({
-                inviteCode: data.createUserInvite.code
+            .then(({ data }) => {
+                this.setState({
+                    inviteCode: data.createUserInvite.code
+                });
+            })
+            .catch((error) => {
+                console.log('There was an error generating your invite code', error);
             });
-        })
-        .catch((error) => {
-            console.log('There was an error generating your invite code', error);
-        });
     }
     
     render() { 

@@ -2,7 +2,7 @@ import React from 'react'
 import gql from "graphql-tag"
 import { Query } from "react-apollo"
 
-import Episode from 'Components/Media/Episode'
+import MediaItem from 'Components/Media/MediaItem'
 
 const FETCH_EPISODE = gql`
     query episode($uuid: String!) {
@@ -34,7 +34,7 @@ const FetchEpisode = ({ uuid }) => {
                 
                 let episode = data.episode;
 
-                return (<Episode type="episode" {...episode} />);
+                return (<MediaItem type="episode" {...episode} />);
             }}
 
         </Query>

@@ -1,9 +1,7 @@
 import React from 'react'
 
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import faExclamationCircle from '@fortawesome/fontawesome-pro-regular/faExclamationCircle'
-import faCheckCircle from '@fortawesome/fontawesome-pro-regular/faCheckCircle'
-import faQuestionCircle from '@fortawesome/fontawesome-pro-regular/faQuestionCircle'
+import { faExclamationCircle, faCheckCircle, faQuestionCircle } from '@fortawesome/pro-regular-svg-icons'
 
 import { AlertWrap, AlertMessage, AlertType, IconWrap, Close } from './Style'
 

@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom';
 
-import faSpinner from '@fortawesome/fontawesome-pro-regular/faSpinner'
-import faSearch from '@fortawesome/fontawesome-pro-regular/faSearch'
+import { faSearch, faSpinner } from '@fortawesome/pro-regular-svg-icons'
 
 import { InputWrap, LoadingIcon, SearchIcon, NoResultsError } from './Styles'
 

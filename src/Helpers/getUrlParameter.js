@@ -1,5 +1,6 @@
 /**
  * Get Url Parameters
+ * @param {String, String} Url Parameter & Current URL
  * @return {String} String containing param
  */
 const getUrlParameter = (name, url) => {

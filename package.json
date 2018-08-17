@@ -5,7 +5,7 @@
     "homepage": "/app",
     "dependencies": {
         "@fortawesome/fontawesome": "^1.1.8",
-        "@fortawesome/fontawesome-pro-regular": "^5.0.13",
+        "@fortawesome/pro-regular-svg-icons": "^5.0.13",
         "@fortawesome/react-fontawesome": "0.0.20",
         "@videojs/http-streaming": "^1.1.0",
         "apollo-boost": "^0.1.7",
@@ -27,6 +27,7 @@
         "react-dom": "^16.4.0",
         "react-router-dom": "^4.2.2",
         "react-router-last-location": "^1.1.0",
+        "react-select": "^2.0.0",
         "react-transition-group": "^2.3.1",
         "save": "^2.3.2",
         "styled-components": "^3.3.0",

@@ -4,6 +4,7 @@
  */
 
 const getBaseUrl = () => { 
+    let url = 'http://atalanta.bysh.me:8080';
     // eslint-disable-next-line
     let path;
 
@@ -14,7 +15,7 @@ const getBaseUrl = () => {
         console.log('Cant Find Base Url');
     }
 
-    return path
+    return url
 }
 
 export default getBaseUrl
