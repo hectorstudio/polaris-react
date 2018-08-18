@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Auth, checkAuth } from 'Components/Auth'
+import { Auth, checkAuth } from 'Client/Auth'
 import { AppWrap, ContentWrap } from './Styles'
 
 import Sidebar from 'Components/Sidebar'

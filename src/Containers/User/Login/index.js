@@ -3,7 +3,7 @@ import { Redirect } from 'react-router'
 import { withAlert } from 'react-alert'
 import { LoginWrap } from './Styles'
 
-import { AUTH_REQUEST, Auth } from 'Components/Auth'
+import { AUTH_REQUEST, Auth } from 'Client/Auth'
 import LoginForm from 'Components/User/Login'
 
 class Login extends Component {

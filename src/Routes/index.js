@@ -28,7 +28,7 @@ import Episode from 'Containers/Media/Episode'
 import Search from 'Containers/Media/Search'
 
 // Auth
-import { Auth, checkAuth } from 'Components/Auth'
+import { Auth, checkAuth } from 'Client/Auth'
 import { isInitialSetup } from 'Helpers'
 
 export default class Routes extends Component {
