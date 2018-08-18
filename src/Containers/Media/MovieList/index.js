@@ -2,14 +2,13 @@ import React from 'react'
 import FetchMovieList from 'Queries/fetchMovieList'
 import Empty from 'Components/Media/Card/Empty'
 
-// Local Styles
+import Header from 'Components/Media/Library/LibraryHeader'
+
 import { LibraryWrap, LibraryListWrap } from '../Styles'
-// Global Styles
-import { PageHeading } from 'Styles'
 
 const MovieList = () => (
     <LibraryWrap>
-        <PageHeading>Movies</PageHeading>
+        <Header heading="Movies" button="Add Movies"/>
         
         <LibraryListWrap>
             <FetchMovieList />

@@ -1,6 +1,6 @@
 let navigationArr = [
     { 
-        name: 'Media', 
+        name: 'Libraries', 
         links: [
             {
                 name: 'Dashboard',
