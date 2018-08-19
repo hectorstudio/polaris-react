@@ -14,8 +14,8 @@ const LoginForm = (props) => (
             <Logo alt="Olaris" height="30"/>
             <Title heading="Welcome Back!" sub="Login to get started" />
 
-            <Input type="text" name="username" placeholder="Enter Username" handleChange={props.handleChange} />
-            <Input type="password" name="password" placeholder="Enter Password" handleChange={props.handleChange} />
+            <Input type="text" name="username" autocomplete="username" placeholder="Enter Username" handleChange={props.handleChange} />
+            <Input type="password" name="password" autocomplete="password" placeholder="Enter Password" handleChange={props.handleChange} />
             <Button handleSubmit={props.handleLogin} value="Login" disabled={props.disabled}/>
 
             <FormLink to="/register" strapline="Don't Have An Account?" value="Sign Up" setup={false}/> 

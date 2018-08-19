@@ -6,23 +6,6 @@ import ModalClose from './ModalClose'
 
 import { StyledModal, Container } from './Styles'
 
-const propTypes = {
-    isOpen: PropTypes.bool.isRequired,
-    contentLabel: PropTypes.string.isRequired,
-    children: PropTypes.node.isRequired,
-    onClose: PropTypes.func,
-    className: PropTypes.string,
-    tall: PropTypes.bool,
-    noCloseLabel: PropTypes.bool,
-};
-
-const defaultProps = {
-    className: '',
-    onClose: noop,
-    tall: false,
-    noCloseLabel: false,
-};
-
 StyledModal.setAppElement('#olaris')
 
 const ModalBox = ({
@@ -50,7 +33,21 @@ const ModalBox = ({
         </StyledModal>
     );
 
-ModalBox.propTypes = propTypes;
-ModalBox.defaultProps = defaultProps;
+ModalBox.propTypes = {
+    isOpen: PropTypes.bool.isRequired,
+    contentLabel: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired,
+    onClose: PropTypes.func,
+    className: PropTypes.string,
+    tall: PropTypes.bool,
+    noCloseLabel: PropTypes.bool,
+};
+
+ModalBox.defaultProps = {
+    className: '',
+    onClose: noop,
+    tall: false,
+    noCloseLabel: false,
+};
 
 export default ModalBox;

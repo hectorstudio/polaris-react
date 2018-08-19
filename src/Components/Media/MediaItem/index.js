@@ -32,8 +32,6 @@ class MediaItem extends Component {
 
     componentDidMount() {
         let autoplay = getUrlParameter('autoplay');
-        
-        // Trigger Autoplay
         if (autoplay) this._playMedia()
     }
 

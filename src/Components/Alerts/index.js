@@ -1,35 +1,15 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import { faExclamationCircle, faCheckCircle, faQuestionCircle } from '@fortawesome/pro-regular-svg-icons'
+import AlertIcon from './AlertIcon'
 
-import { AlertWrap, AlertMessage, AlertType, IconWrap, Close } from './Style'
-
-const getIcon = type => {
-    switch (type) {
-        case 'error':
-            return <FontAwesomeIcon icon={faExclamationCircle} color="#E83C50" size="2x"/>
-        case 'info':
-            return <FontAwesomeIcon icon={faQuestionCircle} color="#4C6EAC" size="2x"/>
-        case 'success':
-            return <FontAwesomeIcon icon={faCheckCircle} color="#81A35A" size="2x"/>
-        default:
-            return false
-    }
-}
-
-const AlertTemplate = ({ message, options, style, close }) => {
-    return (
-        <AlertWrap>
-            <AlertMessage> 
-                <AlertType type={options.type}>{options.type}</AlertType> {message}
-            </AlertMessage>
-
-            <IconWrap>{getIcon(options.type)}</IconWrap>
-            <Close onClick={close}>×</Close>
-        </AlertWrap>
-    )
-}
+import { 
+    AlertWrap, 
+    AlertMessage,
+    AlertType, 
+    IconWrap, 
+    Close 
+} from './Style'
 
 const AlertOptions = {
     position: 'bottom right',
@@ -37,6 +17,38 @@ const AlertOptions = {
     transition: 'fade',
     offset: '30'
 }
+
+const AlertTemplate = ({ 
+    message, 
+    options, 
+    close 
+}) => (
+        <AlertWrap>
+            <AlertMessage> 
+                <AlertType type={options.type}>{options.type}</AlertType> {message}
+            </AlertMessage>
+
+            <IconWrap>{AlertIcon(options.type)}</IconWrap>
+            <Close onClick={close}>×</Close>
+        </AlertWrap>
+    )
+
+
+AlertTemplate.propTypes = {
+    message: PropTypes.string.isRequired,
+    options: PropTypes.shape({
+        type: PropTypes.string.isRequired,
+        timeout: PropTypes.number
+    }).isRequired,
+    close: PropTypes.func.isRequired
+};
+
+AlertTemplate.defaultProps = {
+    options: PropTypes.shape({
+        type: 'info',
+        timeout: 5000
+    })
+};
 
 export {
     AlertTemplate,

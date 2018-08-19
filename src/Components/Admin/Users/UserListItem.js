@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
+import PropTypes from 'prop-types'
+
 import DELETE_USER from 'Mutations/deleteUser'
 
 class UserListItem extends Component {
@@ -39,6 +41,13 @@ class UserListItem extends Component {
             )
         }
     }
+}
+
+UserListItem.propTypes = {
+    user: PropTypes.string.isRequired,
+    invite_code: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    mutate: PropTypes.func.isRequired
 }
 
 export default UserListItem = graphql(DELETE_USER)(UserListItem);
