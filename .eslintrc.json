@@ -1,0 +1,16 @@
+{
+    "extends": "airbnb",
+    "parser": "babel-eslint",
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "paths": ["src"]
+            }
+        }
+    },
+    "rules": {
+       "no-class-assign": "off",
+       "no-console": "off",
+       "linebreak-style": "off"
+    }
+}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import debounce from 'lodash/debounce'
 import Autosuggest from 'react-autosuggest'
 import { graphql } from 'react-apollo'
@@ -115,6 +116,10 @@ class Search extends Component {
             />
         );
     }
+}
+
+Search.propTypes = {
+    updateSearch: PropTypes.func.isRequired
 }
 
 export default Search = withRouter(graphql(FETCH_SUGGESTIONS, {

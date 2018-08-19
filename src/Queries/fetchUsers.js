@@ -45,7 +45,7 @@ const FetchUsers = props => {
                         <React.Fragment key={i}>
                             <UserListItem
                                 user={(user ? user.username : '')}
-                                invite_code={code}
+                                inviteCode={code}
                                 id={id}
                             />
 

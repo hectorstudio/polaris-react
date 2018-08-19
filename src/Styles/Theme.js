@@ -1,4 +1,4 @@
-import { darken } from 'polished'
+import { darken } from 'polished';
 
 const Theme = {
     primary: `#6b5697`,
@@ -23,7 +23,7 @@ const Theme = {
     },
     fonts: {
         opensans: '"Open-sans", sans-serif',
-        muli: '"Muli", sans-serif'     
+        muli: '"Muli", sans-serif'
     }
 }
 
