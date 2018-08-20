@@ -1,4 +1,4 @@
-import gql from "graphql-tag"
+import gql from 'graphql-tag';
 
 const DELETE_USER = gql` 
     mutation deleteUser($id: Int!) {
@@ -12,6 +12,6 @@ const DELETE_USER = gql`
             }
         }
     }
-`
+`;
 
 export default DELETE_USER;

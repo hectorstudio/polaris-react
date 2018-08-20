@@ -1,13 +1,11 @@
-import axios from 'axios'
+import axios from 'axios';
 
-import { getBaseUrl } from 'Helpers'
+import { getBaseUrl } from 'Helpers';
 
 const isInitialSetup = () => {
-    let url = `${getBaseUrl()}/m/v1/user/setup`;
+  const url = `${getBaseUrl()}/m/v1/user/setup`;
 
-    axios.post(url).then(response => {
-        return response.data
-    });
-}
+  axios.post(url).then(response => response.data);
+};
 
-export default isInitialSetup
+export default isInitialSetup;

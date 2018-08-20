@@ -1,12 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-import { Heading, SubHeading } from '../Styles'
+import { Heading, SubHeading } from '../Styles';
 
 const Title = ({ heading, sub }) => (
-    <React.Fragment>
-        <Heading>{heading}</Heading>
-        <SubHeading>{sub}</SubHeading>
-    </React.Fragment>
-)
+  <React.Fragment>
+    <Heading>{heading}</Heading>
+    <SubHeading>{sub}</SubHeading>
+  </React.Fragment>
+);
 
-export default Title
+export default Title;

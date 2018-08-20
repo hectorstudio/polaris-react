@@ -1,39 +1,40 @@
 import React, { Component } from 'react';
 
-import { FormButton } from '../Styles'
+import { FormButton } from '../Styles';
 
-export default class Button  extends Component {
+export default class Button extends Component {
     state = {
-        disabled: false
+      disabled: false,
     }
-    
+
     componentWillUnmount() {
-        clearTimeout(this.throttle);
+      clearTimeout(this.throttle);
     }
 
-    _handleLogin = e => {
-        e.preventDefault();
+    _handleLogin = (e) => {
+      e.preventDefault();
 
-        if(!this.state.disabled) {
-            this.props.handleSubmit();
+      if (!this.state.disabled) {
+        this.props.handleSubmit();
 
-            // Throttle Button Clicks 
-            this.setState({ disabled: true });
+        // Throttle Button Clicks
+        this.setState({ disabled: true });
 
-            this.throttle = setTimeout(() => {
-                this.setState({ disabled: false });
-            }, 1000);
-        }
+        this.throttle = setTimeout(() => {
+          this.setState({ disabled: false });
+        }, 1000);
+      }
     }
 
-    render() { 
-        return (
-            <FormButton 
-                type="submit" 
-                onClick={ this._handleLogin } 
-                disabled={ (this.state.disabled || this.props.disabled ? true : false) }>
-                    {this.props.value}
-            </FormButton> 
-        )
+    render() {
+      return (
+        <FormButton
+          type="submit"
+          onClick={this._handleLogin}
+          disabled={(!!(this.state.disabled || this.props.disabled))}
+        >
+          {this.props.value}
+        </FormButton>
+      );
     }
 }

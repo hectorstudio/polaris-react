@@ -1,8 +1,8 @@
-import React from 'react'
-import gql from "graphql-tag"
-import { Query } from "react-apollo"
+import React from 'react';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
 
-import MediaCard from 'Components/Media/Card'
+import MediaCard from 'Components/Media/Card';
 
 const FETCH_MOVIES = gql`
     {
@@ -13,30 +13,32 @@ const FETCH_MOVIES = gql`
             uuid
         }
     }
-`
+`;
 
 const FetchMovieList = () => (
-    <Query
-        query={FETCH_MOVIES}
-    >
+  <Query
+    query={FETCH_MOVIES}
+  >
 
-        {({ loading, error, data }) => {
-            if (loading) return "Loading...";
-            if (error) return `Error! ${error.message}`;
+    {({ loading, error, data }) => {
+      if (loading) return 'Loading...';
+      if (error) return `Error! ${error.message}`;
 
-            return data.movies.map(({ name, poster_path, imdb_id, uuid }, i) => {
-                let movie_details = {
-                    name,
-                    poster_path,
-                    imdb_id,
-                    uuid
-                }
+      return data.movies.map(({
+        name, poster_path, imdb_id, uuid,
+      }, i) => {
+        const movie_details = {
+          name,
+          poster_path,
+          imdb_id,
+          uuid,
+        };
 
-                return (<MediaCard type="movie" key={i} {...movie_details} />);
-            });
-        }}
+        return (<MediaCard type="movie" key={i} {...movie_details} />);
+      });
+    }}
 
-    </Query>
+  </Query>
 );
 
-export default FetchMovieList
+export default FetchMovieList;

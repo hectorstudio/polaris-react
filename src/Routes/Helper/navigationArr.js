@@ -1,34 +1,34 @@
-let navigationArr = [
-    { 
-        name: 'Libraries', 
-        links: [
-            {
-                name: 'Dashboard',
-                to: '/dashboard'
-            },
-            {
-                name: 'Movies',
-                to: '/movies'
-            },
-            {
-                name: 'Series',
-                to: '/series'
-            }
-        ]
-    },
-    {
+const navigationArr = [
+  {
+    name: 'Libraries',
+    links: [
+      {
+        name: 'Dashboard',
+        to: '/dashboard',
+      },
+      {
+        name: 'Movies',
+        to: '/movies',
+      },
+      {
+        name: 'Series',
+        to: '/series',
+      },
+    ],
+  },
+  {
+    name: 'Settings',
+    links: [
+      {
+        name: 'Users',
+        to: '/users',
+      },
+      {
         name: 'Settings',
-        links: [
-            {
-                name: 'Users',
-                to: '/users'
-            },
-            {
-                name: 'Settings',
-                to: '/'
-            }
-        ]
-    }
+        to: '/',
+      },
+    ],
+  },
 ];
 
-export default navigationArr
+export default navigationArr;

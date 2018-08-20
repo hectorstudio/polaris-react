@@ -6,4 +6,4 @@ export const PageHeading = styled.h1`
     font-weight:300;
     letter-spacing: .2rem;
     margin:0 0 3rem;
-`
+`;

@@ -1,8 +1,8 @@
-import React from 'react'
-import gql from "graphql-tag"
-import { Query } from "react-apollo"
+import React from 'react';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
 
-import MediaItem from 'Components/Media/MediaItem'
+import MediaItem from 'Components/Media/MediaItem';
 
 const FETCH_EPISODE = gql`
     query episode($uuid: String!) {
@@ -19,26 +19,24 @@ const FETCH_EPISODE = gql`
             }
         }
     }
-`
+`;
 
-const FetchEpisode = ({ uuid }) => {
-    return (
-        <Query
-            query={FETCH_EPISODE}
-            variables={{ uuid }}
-        >
+const FetchEpisode = ({ uuid }) => (
+  <Query
+    query={FETCH_EPISODE}
+    variables={{ uuid }}
+  >
 
-            {({ loading, error, data }) => {
-                if (loading) return "Loading...";
-                if (error) return `Error! ${error.message}`;
-                
-                let episode = data.episode;
+    {({ loading, error, data }) => {
+      if (loading) return 'Loading...';
+      if (error) return `Error! ${error.message}`;
 
-                return (<MediaItem type="episode" {...episode} />);
-            }}
+      const episode = data.episode;
 
-        </Query>
-    )
-};
+      return (<MediaItem type="episode" {...episode} />);
+    }}
 
-export default FetchEpisode
+  </Query>
+);
+
+export default FetchEpisode;

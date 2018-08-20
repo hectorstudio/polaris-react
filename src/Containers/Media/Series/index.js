@@ -1,11 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-import FetchSeries from 'Queries/fetchSeries'
+import FetchSeries from 'Queries/fetchSeries';
 
-const Series = props => {
-    return (
-        <FetchSeries uuid={props.match.params.uuid} />
-    )
-}
+const Series = props => (
+  <FetchSeries uuid={props.match.params.uuid} />
+);
 
-export default Series
+export default Series;

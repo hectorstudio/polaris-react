@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 // Animations
-import { aFadeIn } from 'Styles/Animations'
+import { aFadeIn } from 'Styles/Animations';
 
 export const AppWrap = styled.main`
     display: flex;
     height: 100vh;
     flex-wrap: nowrap;
     flex-direction: column;
-    justify-content: ${props => props.authed ? 'initial' : 'center'};
+    justify-content: ${props => (props.authed ? 'initial' : 'center')};
 `;
 
 export const ContentWrap = styled.div`
@@ -18,4 +18,4 @@ export const ContentWrap = styled.div`
     float:left;
     animation: ${`.5s ${aFadeIn} alternate`};
     margin: 0 0 0 ${props => props.theme.layout.sidebar};
-`
+`;

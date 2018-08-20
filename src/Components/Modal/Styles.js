@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import ReactModal from 'react-modal'
+import styled from 'styled-components';
+import ReactModal from 'react-modal';
 
 export const StyledModal = styled(ReactModal)`
   position: fixed;
@@ -29,4 +29,4 @@ Container.displayName = 'Container';
 
 export const ModalClose = styled.span`
     display:block;
-`
+`;

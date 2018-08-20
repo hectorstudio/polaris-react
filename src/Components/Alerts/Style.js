@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 
 const getColor = (props) => {
-    switch (props.type) {
-        case 'error':
-            return props.theme.alerts.error
-        case 'info':
-            return props.theme.alerts.info
-        case 'success':
-            return props.theme.alerts.success
-        default:
-            return 'black'
-    }
-}
+  switch (props.type) {
+    case 'error':
+      return props.theme.alerts.error;
+    case 'info':
+      return props.theme.alerts.info;
+    case 'success':
+      return props.theme.alerts.success;
+    default:
+      return 'black';
+  }
+};
 
 export const AlertWrap = styled.div`
     background: #FFF;

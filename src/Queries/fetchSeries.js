@@ -1,8 +1,8 @@
-import React from 'react'
-import gql from "graphql-tag"
-import { Query } from "react-apollo"
+import React from 'react';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
 
-import Series from 'Components/Media/Series'
+import Series from 'Components/Media/Series';
 
 const FETCH_SERIES = uuid => gql`
     {
@@ -20,23 +20,23 @@ const FETCH_SERIES = uuid => gql`
             }
         }
     }
-`
+`;
 
 const FetchSeries = ({ uuid }) => (
-    <Query
-        query={FETCH_SERIES(uuid)}
-    >
+  <Query
+    query={FETCH_SERIES(uuid)}
+  >
 
-        {({ loading, error, data }) => {
-            if (loading) return "Loading...";
-            if (error) return `Error! ${error.message}`;
+    {({ loading, error, data }) => {
+      if (loading) return 'Loading...';
+      if (error) return `Error! ${error.message}`;
 
-            return (
-                <Series {...data.series[0]} />
-            )
-        }}
+      return (
+        <Series {...data.series[0]} />
+      );
+    }}
 
-    </Query>
+  </Query>
 );
 
-export default FetchSeries
+export default FetchSeries;

@@ -1,11 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-import FetchEpisode from 'Queries/fetchEpisode'
+import FetchEpisode from 'Queries/fetchEpisode';
 
-const Episode = props => {
-    return (
-        <FetchEpisode uuid={props.match.params.uuid} />
-    )
-}
+const Episode = props => (
+  <FetchEpisode uuid={props.match.params.uuid} />
+);
 
-export default Episode
+export default Episode;

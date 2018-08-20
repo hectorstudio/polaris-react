@@ -8,5 +8,5 @@ export const LoginWrap = styled.section`
     align-self: center;
     margin: 0 auto;
     flex-direction: column;
-    animation: ${ (props => props.success ? `.25s ${aFadeOut} forwards` : `.5s ${aFadeIn} alternate`) };
+    animation: ${(props => (props.success ? `.25s ${aFadeOut} forwards` : `.5s ${aFadeIn} alternate`))};
 `;

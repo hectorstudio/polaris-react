@@ -1,8 +1,8 @@
-import React from 'react'
-import gql from "graphql-tag"
-import { Query } from "react-apollo"
+import React from 'react';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
 
-import MediaCard from 'Components/Media/Card'
+import MediaCard from 'Components/Media/Card';
 
 const FETCH_SEARCH_RESULTS = gql`
     query search($value: String!) {
@@ -23,33 +23,33 @@ const FETCH_SEARCH_RESULTS = gql`
             }
         }
     }
-`
+`;
 
-const FetchSearchResults = ({ value }) => {
-    return (
-        <Query
-            query={ FETCH_SEARCH_RESULTS }
-            variables={{ value }}
-        >
+const FetchSearchResults = ({ value }) => (
+  <Query
+    query={FETCH_SEARCH_RESULTS}
+    variables={{ value }}
+  >
 
-            {({ loading, error, data }) => {
-                if (loading) return "Loading...";
-                if (error) return `Error! ${error.message}`;
-                if (data.search.length === 0) return `No Results Found For ${value}`
+    {({ loading, error, data }) => {
+      if (loading) return 'Loading...';
+      if (error) return `Error! ${error.message}`;
+      if (data.search.length === 0) return `No Results Found For ${value}`;
 
-                return data.search.map(({ __typename, name, poster_path, imdb_id, uuid }, i) => {
-                    let result_details = {
-                        name,
-                        poster_path,
-                        imdb_id,
-                        uuid
-                    }
+      return data.search.map(({
+        __typename, name, poster_path, imdb_id, uuid,
+      }, i) => {
+        const result_details = {
+          name,
+          poster_path,
+          imdb_id,
+          uuid,
+        };
 
-                    return (<MediaCard type={__typename} key={i} {...result_details} />);
-                });
-            }} 
-        </Query>
-    )
-};
+        return (<MediaCard type={__typename} key={i} {...result_details} />);
+      });
+    }}
+  </Query>
+);
 
-export default FetchSearchResults
+export default FetchSearchResults;

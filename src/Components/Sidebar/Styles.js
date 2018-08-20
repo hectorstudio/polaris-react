@@ -1,8 +1,8 @@
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 // Animations
-import { aFadeIn } from 'Styles/Animations'
+import { aFadeIn } from 'Styles/Animations';
 
 export const SidebarWrap = styled.nav`
     width: ${props => props.theme.layout.sidebar};
@@ -30,7 +30,7 @@ export const NavItemWrap = styled.section`
     &:first-of-type {
         margin-top:5rem;
     }
-`
+`;
 
 export const NavItemHeading = styled.h5`
     font-size:1rem;
@@ -40,7 +40,7 @@ export const NavItemHeading = styled.h5`
     text-transform:uppercase;
     color: ${props => props.theme.secondary};
     opacity: .75;
-`
+`;
 
 export const NavItemLink = styled(Link)`
     font-size:1.4rem;
@@ -57,4 +57,4 @@ export const NavItemLink = styled(Link)`
     &:hover {
         opacity: 1;
     }
-`
+`;

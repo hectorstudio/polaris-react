@@ -1,8 +1,8 @@
-import styled from 'styled-components'
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Animations
-import { aFadeIn } from 'Styles/Animations'
+import { aFadeIn } from 'Styles/Animations';
 
 export const HeaderWrap = styled.header`
     height: ${props => props.theme.layout.header};
@@ -45,10 +45,10 @@ export const BackButton = styled.button`
     background:none;
     border:0;
     float:left;
-    opacity: ${(props => props.visible ? '1' : '.2')};
-    pointer-events: ${(props => props.visible ? 'initial' : 'none')};
+    opacity: ${(props => (props.visible ? '1' : '.2'))};
+    pointer-events: ${(props => (props.visible ? 'initial' : 'none'))};
 
     &:hover ${BackIcon} {
-        color: ${(props => props.visible ? '#FFF' : props.theme.secondary)};
+        color: ${(props => (props.visible ? '#FFF' : props.theme.secondary))};
     }
 `;

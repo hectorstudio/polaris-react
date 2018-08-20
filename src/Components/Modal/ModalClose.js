@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 const ModalClose = props => (
-    <button onClick={props.onClick}>
+  <button onClick={props.onClick}>
         Close
-    </button>
-)
+  </button>
+);
 
-export default ModalClose
+export default ModalClose;

@@ -1,11 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-import FetchMovie from 'Queries/fetchMovie'
+import FetchMovie from 'Queries/fetchMovie';
 
-const Movie = props => {
-    return (
-        <FetchMovie uuid={props.match.params.uuid} />
-    )
-}
+const Movie = props => (
+  <FetchMovie uuid={props.match.params.uuid} />
+);
 
-export default Movie
+export default Movie;

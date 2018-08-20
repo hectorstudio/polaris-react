@@ -1,22 +1,21 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import { DashboardWrap } from './Styles'
-import { PageHeading } from 'Styles'
+import { PageHeading } from 'Styles';
 
 import Cookies from 'universal-cookie';
+import { DashboardWrap } from './Styles';
+
 const cookies = new Cookies();
 
 export default class Dashboard extends Component {
-    render() { 
+  render() {
+    const token = cookies.get('jwt');
+    console.log(token);
 
-        let token = cookies.get('jwt');
-        console.log(token);
-        
-        return ( 
-            <DashboardWrap>
-                <PageHeading>Dashboard</PageHeading>
-            </DashboardWrap>
-         )
-    }
+    return (
+      <DashboardWrap>
+        <PageHeading>Dashboard</PageHeading>
+      </DashboardWrap>
+    );
+  }
 }
-

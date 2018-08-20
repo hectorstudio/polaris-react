@@ -1,16 +1,14 @@
-import React from 'react'
-import { Player } from 'video-react'
-import HLSSource from './HLSSource'
+import React from 'react';
+import { Player } from 'video-react';
+import HLSSource from './HLSSource';
 
-const Video = (props) => {
-    return (
-        <Player>
-            <HLSSource
-                isVideoChild    
-                src={props.source}
-            />
-        </Player>
-    );
-}
+const Video = props => (
+  <Player>
+    <HLSSource
+      isVideoChild
+      src={props.source}
+    />
+  </Player>
+);
 
-export default Video
+export default Video;

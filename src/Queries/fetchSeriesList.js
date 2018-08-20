@@ -1,8 +1,8 @@
-import React from 'react'
-import gql from "graphql-tag"
-import { Query } from "react-apollo"
+import React from 'react';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
 
-import MediaCard from 'Components/Media/Card'
+import MediaCard from 'Components/Media/Card';
 
 const FETCH_SERIES_LIST = gql`
     {
@@ -13,31 +13,33 @@ const FETCH_SERIES_LIST = gql`
             uuid
         }
     }
-`
+`;
 
 const FetchSeriesList = () => (
-    <Query
-        query={FETCH_SERIES_LIST}
-    >
+  <Query
+    query={FETCH_SERIES_LIST}
+  >
 
-        {({ loading, error, data }) => {
-            if (loading) return "Loading...";
-            if (error) return `Error! ${error.message}`;
+    {({ loading, error, data }) => {
+      if (loading) return 'Loading...';
+      if (error) return `Error! ${error.message}`;
 
-            return data.series.map(({ name, seasons, poster_path, tmdb_id, uuid }, i) => {
-                let series_details = {
-                    name,
-                    seasons,
-                    poster_path,
-                    tmdb_id,
-                    uuid
-                }
+      return data.series.map(({
+        name, seasons, poster_path, tmdb_id, uuid,
+      }, i) => {
+        const series_details = {
+          name,
+          seasons,
+          poster_path,
+          tmdb_id,
+          uuid,
+        };
 
-                return (<MediaCard type="series" key={i} {...series_details} />);
-            });
-        }}
+        return (<MediaCard type="series" key={i} {...series_details} />);
+      });
+    }}
 
-    </Query>
+  </Query>
 );
 
-export default FetchSeriesList
+export default FetchSeriesList;

@@ -1,16 +1,16 @@
-import styled from 'styled-components'
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const InputWrap = styled.div`
-    background: ${props => props.hasFocus ? '#FFF' : 'rgba(255,255,255, .1)'};
-    box-shadow: ${props => props.hasFocus ? '0 10px 15px rgba(0,0,0, .3)' : 'none'};
+    background: ${props => (props.hasFocus ? '#FFF' : 'rgba(255,255,255, .1)')};
+    box-shadow: ${props => (props.hasFocus ? '0 10px 15px rgba(0,0,0, .3)' : 'none')};
     margin:.5rem 0;
     height: 5rem;
     width: ${props => props.theme.layout.search};
     border-radius:.2rem;
     transition: .2s all;
     position:relative;
-`
+`;
 export const LoadingIcon = styled(FontAwesomeIcon)`
     color: ${props => props.theme.dark};
     font-size:1.6rem;
@@ -42,7 +42,7 @@ export const ErrorAlert = styled.span`
     position:absolute;
     top:6rem;
     left:0;
-`
+`;
 
 
 export const SearchIcon = styled(FontAwesomeIcon)`
@@ -62,7 +62,7 @@ export const Title = styled.h4`
     text-transform:uppercase;
     border-bottom:1px solid #EEE;
     color: ${props => props.theme.dark};
-`
+`;
 
 export const NoResultsError = styled.span`
     display:block;
@@ -81,7 +81,7 @@ export const NoResultsError = styled.span`
     position:absolute;
     top: 6rem;
     left: 0;
-`
+`;
 
 export const Suggestion = styled.article`
     float: left;
@@ -99,7 +99,7 @@ export const Suggestion = styled.article`
     &:hover {
         background: #FAFAFA;
     }
-`
+`;
 
 export const Name = styled.span`
     color: ${props => props.theme.dark};
@@ -113,7 +113,7 @@ export const Name = styled.span`
     font-weight: 600;
     overflow:hidden;
     margin:0 0 .2rem;
-`
+`;
 
 export const Year = styled.small`
     float:left;
@@ -124,7 +124,7 @@ export const Year = styled.small`
     letter-spacing: .1rem;
     opacity:.75;
     color ${props => props.theme.text};
-`
+`;
 
 export const Poster = styled.img`
     height:5rem;

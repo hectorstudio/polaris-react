@@ -4,19 +4,19 @@
  * @return {array} array with file name & id
  */
 
-const generateFileList = files => { 
-    let arr = [];
+const generateFileList = (files) => {
+  const arr = [];
 
-    files.forEach((f, i) => {
-        let file = {
-            value: i,
-            label: f.file_name
-        };
+  files.forEach((f, i) => {
+    const file = {
+      value: i,
+      label: f.file_name,
+    };
 
-        arr.push(file)
-    });
+    arr.push(file);
+  });
 
-    return arr
-}
+  return arr;
+};
 
-export default generateFileList
+export default generateFileList;

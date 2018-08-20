@@ -1,4 +1,4 @@
-import gql from "graphql-tag"
+import gql from 'graphql-tag';
 
 const CREATE_USER_INVITE = gql` 
     mutation createUserInvite {
@@ -10,6 +10,6 @@ const CREATE_USER_INVITE = gql`
             }
         }
     }
-`
+`;
 
 export default CREATE_USER_INVITE;

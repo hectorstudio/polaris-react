@@ -10,8 +10,8 @@ export const FormWrap = styled.form`
     margin:3rem 0;
     transition: .2s border;
     border:1px solid;
-    border-color: ${(props => props.error ? props.theme.alerts.error : 'transparent')};
-    animation: ${(props => props.error ? `.5s ${aHeadShake} alternate` : 'none')};
+    border-color: ${(props => (props.error ? props.theme.alerts.error : 'transparent'))};
+    animation: ${(props => (props.error ? `.5s ${aHeadShake} alternate` : 'none'))};
 `;
 
 // Heading
@@ -21,14 +21,14 @@ export const Heading = styled.h1`
     font-weight:800;
     margin: 3rem 0 0;
     color: ${props => props.theme.dark};
-`
+`;
 
 export const SubHeading = styled.p`
     font-size:1.6rem;
     font-weight:600;
     margin:0 0 3rem;
     color: ${props => props.theme.text};
-`
+`;
 
 // Form Elements
 export const InputWrap = styled.div`
@@ -46,16 +46,16 @@ export const InputWrap = styled.div`
         z-index:3;
         width:100%;
         transition:.3s width;
-        display: ${(props => props.uniqueCode ? 'none' : 'block')};
+        display: ${(props => (props.uniqueCode ? 'none' : 'block'))};
     }
 
     &:after {
-        background: ${(props => props.error ? props.theme.alerts.error : props.theme.light)};
+        background: ${(props => (props.error ? props.theme.alerts.error : props.theme.light))};
     }
 
     &:before {
         z-index:4;
-        width:${props => props.isFocused ? 100 : 0}%;
+        width:${props => (props.isFocused ? 100 : 0)}%;
         background-image: linear-gradient(-135deg, ${props => props.theme.primary} 0%, ${props => props.theme.darken.primary} 50%, ${props => props.theme.primary} 100%);
     }    
 `;
@@ -84,7 +84,7 @@ export const TextInput = styled.input`
     &:focus {
         outline:none;
     }
-`
+`;
 
 export const UniqueInput = styled.input`
     height: 5rem;
@@ -105,7 +105,7 @@ export const UniqueInput = styled.input`
     &:focus {
         outline:none;
     }
-`
+`;
 
 export const FormButton = styled.button`
     height: 6rem;
@@ -139,7 +139,7 @@ export const FormButton = styled.button`
     &:focus {
         outline: none;
     }
-`
+`;
 
 // Register
 export const FormLinkPara = styled.p`
