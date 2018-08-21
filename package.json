@@ -35,7 +35,8 @@
         "save": "^2.3.2",
         "styled-components": "^3.3.0",
         "universal-cookie": "^2.1.5",
-        "video-react": "^0.11.2"
+        "video-react": "^0.11.2",
+        "video.js": "^7.1.0"
     },
     "devDependencies": {
         "babel-plugin-module-resolver": "^3.1.1",

@@ -4,6 +4,7 @@
  */
 
 const getBaseUrl = () => {
+
   // eslint-disable-next-line
   let path;
 

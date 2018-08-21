@@ -1,14 +1,26 @@
-import React from 'react';
-import { Player } from 'video-react';
-import HLSSource from './HLSSource';
+import React from 'react'
+import videojs from 'video.js'
 
-const Video = props => (
-  <Player>
-    <HLSSource
-      isVideoChild
-      src={props.source}
-    />
-  </Player>
-);
+export default class Video extends React.Component {
+  componentDidMount() {
+    this.player = videojs(this.videoNode, this.props, function onPlayerReady() {
 
-export default Video;
+    });
+  }
+
+  componentWillUnmount() {
+    if (this.player) {
+      this.player.dispose()
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <div data-vjs-player>
+          <video ref={node => this.videoNode = node} className="video-js"></video>
+        </div>
+      </div>
+    )
+  }
+}

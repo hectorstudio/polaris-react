@@ -64,6 +64,18 @@ class MediaItem extends Component {
       const { name } = this.props;
       const { source, files, selectedFile } = this.state;
 
+      const videoJsOptions = {
+        autoplay: true,
+        controls: true,
+        enableLowInitialPlaylist: true,
+
+        sources: [{
+          src: source,
+          type: 'application/x-mpegURL',
+          name,
+        }]
+      };
+
       return (
         <div>
           <h1>{name}</h1>
@@ -82,7 +94,7 @@ class MediaItem extends Component {
           {this.state.source !== ''
             ? (
               <VideoWrap>
-                <Video source={source} />
+                <Video {...videoJsOptions} />
               </VideoWrap>
             )
             : null
