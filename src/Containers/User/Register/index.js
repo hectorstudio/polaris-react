@@ -15,11 +15,13 @@ class Register extends Component {
       username: '',
       password: '',
       invite_code: '',
+      initialSetup: false,
     }
 
     componentWillMount() {
       this.setState({
         invite_code: getUrlParameter('invite_code'),
+        initialSetup: isInitialSetup(),
       });
     }
 
@@ -60,7 +62,7 @@ class Register extends Component {
         handleChange: this._handleChange,
         error: this.state.error,
         invite_code: this.state.invite_code,
-        initialSetup: isInitialSetup(),
+        initialSetup: this.state.initialSetup,
       };
 
       return (

@@ -4,8 +4,10 @@
  */
 
 const getBaseUrl = () => {
+  return 'http://atalanta.bysh.me:8080';
+
   // eslint-disable-next-line
-    let path;
+  let path;
 
   // For use when we have it running on servers
   if (typeof window !== 'undefined') {
