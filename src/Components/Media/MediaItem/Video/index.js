@@ -1,14 +1,14 @@
-import React from 'react'
+import React, { Component } from 'react'
 import videojs from 'video.js'
 import chromecast from '@silvermine/videojs-chromecast'
 
-videojs.registerPlugin('chromecast', chromecast);
-
-export default class Video extends React.Component {
+export default class Video extends Component {
     componentDidMount() {
-        this.player = videojs(this.videoNode, this.props, function onPlayerReady() {
-            
-        });
+      videojs.registerPlugin('chromecast', chromecast);
+      
+      this.player = videojs(this.videoNode, this.props, function onPlayerReady() {
+        console.log('onPlayerReady', this);
+      });
     }
 
     componentWillUnmount() {
