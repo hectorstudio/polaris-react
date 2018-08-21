@@ -28,9 +28,7 @@ export const Auth = {
 
 export const checkAuth = () => {
   if (cookies.get('jwt') == null) return false;
-
-  const jwt = jwtDecode(Token.jwt);
-
+  const jwt = jwtDecode(cookies.get('jwt').jwt);
 
   const current_time = Date.now() / 1000;
 
