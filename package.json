@@ -8,6 +8,7 @@
         "@fortawesome/fontawesome-svg-core": "^1.2.0-14",
         "@fortawesome/pro-regular-svg-icons": "^5.0.13",
         "@fortawesome/react-fontawesome": "^0.1.0-11",
+        "@silvermine/videojs-chromecast": "^1.1.0",
         "apollo-boost": "^0.1.7",
         "apollo-cache-inmemory": "^1.2.4",
         "apollo-link-context": "^1.0.8",

@@ -67,13 +67,19 @@ class MediaItem extends Component {
       const videoJsOptions = {
         autoplay: true,
         controls: true,
+        techOrder: ['chromecast', 'html5'],
         enableLowInitialPlaylist: true,
 
         sources: [{
           src: source,
           type: 'application/x-mpegURL',
           name,
-        }]
+        }],
+        plugins: {
+          chromecast: {
+            receiverAppID: '1234' // Not required
+          },
+        },
       };
 
       return (
