@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import videojs from 'video.js'
-import chromecast from '@silvermine/videojs-chromecast'
+require('@silvermine/videojs-chromecast')(videojs);
 
 export default class Video extends Component {
     componentDidMount() {
-      videojs.registerPlugin('chromecast', chromecast);
-      
       this.player = videojs(this.videoNode, this.props, function onPlayerReady() {
-        console.log('onPlayerReady', this);
+        this.chromecast()
       });
     }
 
