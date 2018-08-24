@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import { withLastLocation } from 'react-router-last-location';
 import { faAngleLeft } from '@fortawesome/pro-regular-svg-icons';
 
@@ -16,6 +18,17 @@ const Back = ({ lastLocation, history }) => {
       <BackIcon icon={faAngleLeft} />
     </BackButton>
   );
+};
+
+Back.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
+  lastLocation: PropTypes.shape({
+    pathname: PropTypes.string,
+  }),
+};
+
+Back.defaultProps = {
+  lastLocation: {},
 };
 
 export default withLastLocation(Back);

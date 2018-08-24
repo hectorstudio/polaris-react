@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { FormButton } from '../Styles';
 
@@ -11,11 +12,14 @@ export default class Button extends Component {
       clearTimeout(this.throttle);
     }
 
-    _handleLogin = (e) => {
+    handleLogin = (e) => {
       e.preventDefault();
 
-      if (!this.state.disabled) {
-        this.props.handleSubmit();
+      const { disabled } = this.state;
+      const { handleSubmit } = this.props;
+
+      if (!disabled) {
+        handleSubmit();
 
         // Throttle Button Clicks
         this.setState({ disabled: true });
@@ -27,14 +31,22 @@ export default class Button extends Component {
     }
 
     render() {
+      const { disabled } = this.state;
+      const { value } = this.props;
+
       return (
         <FormButton
           type="submit"
-          onClick={this._handleLogin}
-          disabled={(!!(this.state.disabled || this.props.disabled))}
+          onClick={this.handleLogin}
+          disabled={(!!(disabled || disabled))}
         >
-          {this.props.value}
+          {value}
         </FormButton>
       );
     }
 }
+
+Button.propTypes = {
+  value: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+};

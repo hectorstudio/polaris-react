@@ -14,13 +14,13 @@ class Register extends Component {
       redirectToDashboard: false,
       username: '',
       password: '',
-      invite_code: '',
+      inviteCode: '',
       initialSetup: false,
     }
 
     componentWillMount() {
       this.setState({
-        invite_code: getUrlParameter('invite_code'),
+        inviteCode: getUrlParameter('invite_code'),
         initialSetup: isInitialSetup(),
       });
     }
@@ -61,7 +61,7 @@ class Register extends Component {
         handleRegister: this._handleRegister,
         handleChange: this._handleChange,
         error: this.state.error,
-        invite_code: this.state.invite_code,
+        inviteCode: this.state.inviteCode,
         initialSetup: this.state.initialSetup,
       };
 

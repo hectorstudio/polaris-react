@@ -29,8 +29,8 @@ const FetchMovieList = () => (
       }, i) => {
         const movie_details = {
           name,
-          poster_path,
-          imdb_id,
+          posterPath: poster_path,
+          id: imdb_id,
           uuid,
         };
 

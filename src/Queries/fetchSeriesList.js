@@ -30,8 +30,8 @@ const FetchSeriesList = () => (
         const series_details = {
           name,
           seasons,
-          poster_path,
-          tmdb_id,
+          posterPath: poster_path,
+          id: tmdb_id,
           uuid,
         };
 

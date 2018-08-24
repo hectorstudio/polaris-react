@@ -7,16 +7,13 @@ import { graphql } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 
 import FETCH_SUGGESTIONS from 'Queries/fetchSuggestions';
-
 import { updateSuggestions, generateMediaUrl } from 'Helpers';
+import renderSuggestion from './Suggestion';
+import renderSectionTitle from './SectionTitle';
 import SearchInput from './SearchInput';
-import {
-  getSuggestionValue,
-  getSectionSuggestions,
-  renderSuggestion,
-  renderSectionTitle,
-} from './Suggestion';
 
+const getSuggestionValue = suggestion => suggestion.name;
+const getSectionSuggestions = section => section.suggestions;
 
 class Search extends Component {
   constructor() {

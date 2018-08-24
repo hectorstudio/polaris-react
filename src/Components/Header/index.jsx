@@ -11,17 +11,19 @@ export default class Header extends Component {
       value: '',
     }
 
-    _updateSearch = (value) => {
+    updateSearch = (value) => {
       this.setState({
         value,
       });
     };
 
     render() {
+      const { value } = this.state;
+
       return (
         <HeaderWrap>
           <Back />
-          <Search value={this.state.value} updateSearch={this._updateSearch} />
+          <Search value={value} updateSearch={this.updateSearch} />
           <Logout />
         </HeaderWrap>
       );

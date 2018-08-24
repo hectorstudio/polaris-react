@@ -8,6 +8,11 @@
             }
         }
     },
+    "env": {
+      "browser": true,
+      "node": true,
+      "jasmine": true
+    },
     "rules": {
        "no-class-assign": "off",
        "no-console": "off",

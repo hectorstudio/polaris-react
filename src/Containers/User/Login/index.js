@@ -25,7 +25,7 @@ class Login extends Component {
       this.setState({ isMounted: false });
     }
 
-    _handleLogin = () => {
+    handleLogin = () => {
       AUTH_REQUEST(this.state.username, this.state.password).then((response) => {
         this.setState({ success: true });
 
@@ -39,7 +39,7 @@ class Login extends Component {
       });
     }
 
-    _handleChange = (e) => {
+    handleChange = (e) => {
       if (this.state.isMounted) {
         this.setState({
           [e.target.name]: e.target.value,
@@ -54,8 +54,8 @@ class Login extends Component {
       if (redirectToDashboard) return <Redirect to={from} />;
 
       const LoginProps = {
-        handleLogin: this._handleLogin,
-        handleChange: this._handleChange,
+        handleLogin: this.handleLogin,
+        handleChange: this.handleChange,
         error: this.state.error,
       };
 
