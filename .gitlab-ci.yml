@@ -1,15 +1,9 @@
-# This file is a template, and might need editing before it works on your project.
-image: node:9.11.2-slim
+image: node:10.9.0-alpine
 
 variables:
 
-# The problem is that to be able to use go get, one needs to put
-# the repository in the $GOPATH. So for example if your gitlab domain
-# is gitlab.com, and that your repository is namespace/project, and
-# the default GOPATH being /go, then you'd need to have your
-# repository in /go/src/gitlab.com/namespace/project
-# Thus, making a symbolic link corrects this.
 before_script:
+  - apk add --no-cache git
   - yarn install
 
 stages:
@@ -22,4 +16,3 @@ compile:
     artifacts:
       paths:
         - build/
-      expire_in: 2 week
