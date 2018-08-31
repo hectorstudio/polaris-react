@@ -5,11 +5,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { aFadeIn } from 'Styles/Animations';
 
 export const HeaderWrap = styled.header`
-    height: ${props => props.theme.layout.header};
-    width:calc(100% - 6rem);
+    height: auto;
+    width: calc(100% - ${props => props.theme.layout.sidebar});
     animation: ${`.5s ${aFadeIn} alternate`};
-    margin:3rem auto;
     display:flex;
+    padding: 3rem;
+    background-color: rgba(0,0,0,.25);
+    position:fixed;
+    top:0;
+    left: ${props => props.theme.layout.sidebar}
 `;
 
 export const LogoutIcon = styled(FontAwesomeIcon)`

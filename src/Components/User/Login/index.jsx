@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Logo from 'Components/Logo';
+import LogoIcon from 'Components/Logo/LogoIcon';
 import { FormWrap } from '../Styles';
 
 import Title from '../Components/Title';
@@ -18,7 +18,7 @@ const LoginForm = ({
 }) => (
   <React.Fragment>
     <FormWrap error={error}>
-      <Logo alt="Olaris" height="35" />
+      <LogoIcon alt="Olaris" height="35" />
       <Title heading="Welcome Back!" sub="Login to get started" />
 
       <Input type="text" name="username" autocomplete="username" placeholder="Enter Username" handleChange={handleChange} />

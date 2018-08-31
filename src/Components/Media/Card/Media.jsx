@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { getBaseUrl, generateMediaUrl } from 'Helpers';
 
-import { CardPoster, CardWrap, CardTitle } from './Styles';
+import {
+  CardPoster,
+  CardWrap,
+  CardTitle,
+  CardPopup,
+} from './Styles';
 
 class Media extends Component {
     state = {
@@ -19,13 +24,27 @@ class Media extends Component {
     }
 
     render() {
-      const { history, name, posterPath } = this.props;
+      const {
+        history,
+        name,
+        posterPath,
+        type,
+      } = this.props;
       const { url } = this.state;
+
+      let title = true;
+
+      if (type === 'movie' || type === 'series') {
+        title = false;
+      }
 
       return (
         <CardWrap onClick={() => { history.push(url); }}>
           <CardPoster bgimg={`${getBaseUrl()}/m/images/tmdb/w342/${posterPath}`} alt={name} />
-          <CardTitle>{name}</CardTitle>
+          { title
+            && <CardTitle>{name}</CardTitle>
+          }
+          <CardPopup />
         </CardWrap>
       );
     }

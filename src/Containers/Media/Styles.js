@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 
 export const LibraryWrap = styled.div`
-    width:100%;
-    padding:0 5rem;
+    height: calc(100vh - 10rem);
+    width: 100%;
+    padding: 5rem 5rem 0;
+    margin: 10rem 0 0;
+    overflow-y: scroll;
 `;
 
 export const LibraryListWrap = styled.section`
-    width: 100%;
+    width: calc(100% + 1.5rem);
     display: flex;
     flex-flow: row wrap;
+    margin-left: -1.5rem;
 `;

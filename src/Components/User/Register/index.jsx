@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Logo from 'Components/Logo';
+import LogoIcon from 'Components/Logo/LogoIcon';
 import { FormWrap } from '../Styles';
 
 import Title from '../Components/Title';
@@ -19,7 +19,7 @@ const RegisterForm = ({
 }) => (
   <React.Fragment>
     <FormWrap error={error}>
-      <Logo alt="Olaris" height="30" />
+      <LogoIcon alt="Olaris" height="30" />
       <Title heading="Sign Up" sub="Account Registration" />
       { console.log(inviteCode) }
       {!initialSetup

@@ -1,3 +1,7 @@
+.react-autosuggest__container {
+  position:relative;
+}
+
 .react-autosuggest {
     &__suggestions-container {
         border-radius: .2rem;
@@ -5,13 +9,16 @@
         box-shadow: 0 10px 15px rgba(0, 0, 0, .6);
         position: relative;
         z-index:99;
+        position:absolute;
+        top:5rem;
+        left:0;
     }
 
     &__section-container {
         background: #FFF;
         position: relative;
         z-index: 2;
-        max-width: 35rem;
+        max-width: 30rem;
         overflow: hidden;
         border-bottom:.1rem solid color(light);
         
@@ -40,13 +47,13 @@
         color: color(dark);
         background:none;
         border:0;
-        line-height:5rem;
+        line-height:4rem;
         color:#FFF;
         width:100%;
         position:absolute;
         top:0;
         left:0;
-        padding:0 5rem;
+        padding:0 4rem;
         font-size:1.6rem;
         overflow:hidden;
         font-weight: 600;

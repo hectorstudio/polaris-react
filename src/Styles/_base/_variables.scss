@@ -1,8 +1,10 @@
 $colors: (
-    primary: #6b5697,
-    secondary: rgba(255,255,255, .5),
-    text: #5D6680,
-    dark: #282137,
+    primary: #FF9B3D,
+    secondary: #C9CCD1,
+    pink: #E83773,
+    purple: #BF00B7,
+    text: #556488,
+    dark: #000F32,
     light: #F5F7FA,
-    background: #120e1a
+    background: darken(#000F32, 5%)
 );

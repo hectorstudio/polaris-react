@@ -3,8 +3,9 @@ import styled from 'styled-components';
 
 const EmptyArticle = styled.article`
     flex: 1 0 auto;
-    width:16rem;
-    margin:0 1rem 0;
+    width:14rem;
+    max-width:20rem;
+    margin:0 1.5rem 0;
 `;
 
 const EmptyArticles = () => {

@@ -18,4 +18,5 @@ export const ContentWrap = styled.div`
     float:left;
     animation: ${`.5s ${aFadeIn} alternate`};
     margin: 0 0 0 ${props => props.theme.layout.sidebar};
+    overflow-x: hidden;
 `;

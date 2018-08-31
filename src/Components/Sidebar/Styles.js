@@ -15,6 +15,10 @@ export const SidebarWrap = styled.nav`
     padding:3rem;
 `;
 
+export const DashboardLink = styled(Link)`
+  float:left;
+`;
+
 export const HomeLink = styled(Link)`
     width: 6rem;
     height:6rem;
@@ -39,7 +43,7 @@ export const NavItemHeading = styled.h5`
     margin:0 0 1.5rem;
     text-transform:uppercase;
     color: ${props => props.theme.secondary};
-    opacity: .75;
+    opacity: .25;
 `;
 
 export const NavItemLink = styled(Link)`

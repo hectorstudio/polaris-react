@@ -1,13 +1,15 @@
 import React from 'react';
 
-import Logo from 'Components/Logo';
+import LogoIcon from 'Components/Logo/LogoIcon';
 import Navigation from './Navigation';
 
-import { SidebarWrap } from './Styles';
+import { SidebarWrap, DashboardLink } from './Styles';
 
 const SideBar = () => (
   <SidebarWrap>
-    <Logo height="30" />
+    <DashboardLink to="/">
+      <LogoIcon height="30" />
+    </DashboardLink>
     <Navigation />
   </SidebarWrap>
 );

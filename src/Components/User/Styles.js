@@ -6,7 +6,7 @@ import { aHeadShake } from 'Styles/Animations';
 export const FormWrap = styled.form`
     padding:5rem;
     background:#FFF;
-    box-shadow: 0 10px 60px rgba(0,0,0, 0.05);
+    box-shadow: 0 10px 60px rgba(0,0,0, 0.3);
     margin:3rem 0;
     transition: .2s border;
     border:1px solid;
@@ -20,7 +20,7 @@ export const Heading = styled.h1`
     line-height:1.5;
     font-weight:800;
     margin: 3rem 0 0;
-    color: ${props => props.theme.dark};
+    color: ${(props => props.theme.dark)};
 `;
 
 export const SubHeading = styled.p`
@@ -37,6 +37,8 @@ export const InputWrap = styled.div`
     position:relative;
     padding-bottom: .2rem;
     margin:0 0 2rem;
+    border: 1px solid #EEE;
+
     &:after, &:before {
         content:'';
         position:absolute;
@@ -67,18 +69,21 @@ export const TextInput = styled.input`
     float:left;
     font-size:1.8rem;
     font-weight:600;
-    color: ${props => props.theme.darken.primary};
+    text-indent: 1.5rem;
+    background:#FFF;
+    color: ${props => props.theme.dark};
 
     &:-webkit-autofill {
-        -webkit-box-shadow: 0 0 0 100px white inset;
+        -webkit-box-shadow: 0 0 0 100px #FFF inset;
     }
 
     &:-webkit-autofill {
-        -webkit-text-fill-color: ${props => props.theme.darken.primary};
+        -webkit-text-fill-color: ${props => props.theme.dark};
     }
 
     &::placeholder {
         color: ${props => props.theme.text};
+        opacity: .25;
     }
 
     &:focus {
@@ -114,7 +119,7 @@ export const FormButton = styled.button`
     width:100%;
     text-align:center;
     border:0;
-    background: ${props => props.theme.primary};
+    background: ${props => props.theme.dark};
     font-size:2rem;
     font-family: ${props => props.theme.fonts.muli};
     font-weight:800;
@@ -146,6 +151,7 @@ export const FormLinkPara = styled.p`
     font-size:1.6rem;
     color: ${props => props.theme.text}
     font-weight:600;
+    text-align:center;
 `;
 
 export const Links = styled(Link)`
