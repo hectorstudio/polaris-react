@@ -7,16 +7,16 @@ import Series from 'Components/Media/Series';
 const FETCH_SERIES = uuid => gql`
     {
         series(uuid: "${uuid}") {
-            name
-            tmdb_id
+            seriesName: name
+            id: tmdb_id
             uuid
             overview
             
             seasons {
-                name
-                poster_path
+                seasonName: name
+                posterPath: poster_path
                 uuid
-                tmdb_id
+                id: tmdb_id
             }
         }
     }

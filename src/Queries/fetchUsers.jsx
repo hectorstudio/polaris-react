@@ -29,32 +29,31 @@ const FetchUsers = props => (
       if (loading) return 'Loading...';
       if (error) return `Error! ${error.message}`;
 
-      const _generateInviteCode = () => {
+      const generateInviteCode = () => {
         props.generateUserInvite();
         refetch();
       };
 
       if (data.invites.length === 0) {
-        return (<button onClick={() => { _generateInviteCode(); }}>Generate Invite Code</button>);
+        return (<button onClick={() => { generateInviteCode(); }}>Generate Invite Code</button>);
       }
 
       return data.invites.map(({ code, user }, i) => {
         const length = data.invites.length;
+        console.log(user);
 
-
-        const id = i + 2;
 
         return (
           <React.Fragment key={i}>
             <UserListItem
               user={(user ? user.username : '')}
               inviteCode={code}
-              id={id}
+              id={(user ? user.id : '')}
             />
 
             {length === i + 1
-                                && <button onClick={() => { _generateInviteCode(); }}>Generate Invite Code</button>
-                            }
+                && <button onClick={() => { generateInviteCode(); }}>Generate Invite Code</button>
+            }
           </React.Fragment>
         );
       });

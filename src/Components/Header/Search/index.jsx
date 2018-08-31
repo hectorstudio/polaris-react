@@ -32,6 +32,7 @@ class Search extends Component {
 
   onChange = (e, { newValue }) => {
     const { updateSearch } = this.props;
+
     this.setState({ value: newValue }, () => {
       updateSearch(newValue);
     });
@@ -43,7 +44,6 @@ class Search extends Component {
 
   loadSuggestions = () => {
     const { data } = this.props;
-
     const suggest = (typeof data === 'undefined' ? [] : data.search);
 
     this.setState({
@@ -54,7 +54,7 @@ class Search extends Component {
 
   onSuggestionsFetchRequested = ({ value }) => {
     const { isUnmounting } = this.state;
-
+    
     if (!isUnmounting) {
       this.debouncedLoadSuggestions(value);
       this.setState({ loading: true });
@@ -67,7 +67,7 @@ class Search extends Component {
     });
   };
 
-  shouldRenderSuggestions = val => val.trim().length > 1
+  shouldRenderSuggestions = val => val.trim().length > 3
 
   onSuggestionSelected = (e, { suggestion }) => {
     const { history } = this.props;
@@ -88,6 +88,7 @@ class Search extends Component {
       loading,
       hasFocus,
     } = this.state;
+
     const checkSuggestions = (typeof suggestions === 'undefined' ? [] : suggestions);
 
     const inputProps = {
@@ -145,6 +146,6 @@ Search.defaultProps = {
 };
 
 export default Search = withRouter(graphql(FETCH_SUGGESTIONS, {
-  skip: props => (!(props.value.trim().length > 2)),
+  skip: props => (!(props.value.trim().length > 3)),
   options: props => ({ variables: { name: props.value } }),
 })(Search));

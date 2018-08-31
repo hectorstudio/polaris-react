@@ -68,7 +68,7 @@ class SearchInput extends Component {
     } = this.props;
 
     const searchColor = (hasFocus ? '#120E18' : 'rgba(255,255,255, .1)');
-    const noResults = (!hasSuggestions && hasFocus && !loading && value.length > 2);
+    const noResults = (!hasSuggestions && hasFocus && !loading && value.length > 3);
 
     return (
       <InputWrap hasFocus={hasFocus}>

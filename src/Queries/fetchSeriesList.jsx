@@ -8,8 +8,8 @@ const FETCH_SERIES_LIST = gql`
     {
         series {
             name,
-            poster_path,
-            tmdb_id,
+            posterPath: poster_path,
+            id: tmdb_id,
             uuid
         }
     }
@@ -25,17 +25,17 @@ const FetchSeriesList = () => (
       if (error) return `Error! ${error.message}`;
 
       return data.series.map(({
-        name, seasons, poster_path, tmdb_id, uuid,
-      }, i) => {
-        const series_details = {
+        name, seasons, posterPath, id, uuid,
+      }) => {
+        const series = {
           name,
           seasons,
-          posterPath: poster_path,
-          id: tmdb_id,
+          posterPath,
+          id,
           uuid,
         };
 
-        return (<MediaCard type="series" key={i} {...series_details} />);
+        return (<MediaCard type="series" key={uuid} {...series} />);
       });
     }}
 

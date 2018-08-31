@@ -19,17 +19,11 @@ class Media extends Component {
     }
 
     render() {
-      const {
-        posterPath,
-        id,
-        history,
-        name,
-      } = this.props;
-
+      const { history, name, posterPath } = this.props;
       const { url } = this.state;
 
       return (
-        <CardWrap data-tmdb-id={id} onClick={() => { history.push(url); }}>
+        <CardWrap onClick={() => { history.push(url); }}>
           <CardPoster bgimg={`${getBaseUrl()}/m/images/tmdb/w342/${posterPath}`} alt={name} />
           <CardTitle>{name}</CardTitle>
         </CardWrap>
@@ -39,15 +33,10 @@ class Media extends Component {
 
 Media.propTypes = {
   name: PropTypes.string.isRequired,
-  id: PropTypes.string,
   posterPath: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   uuid: PropTypes.string.isRequired,
   history: ReactRouterPropTypes.history.isRequired,
-};
-
-Media.defaultProps = {
-  id: '0000',
 };
 
 export default Media;

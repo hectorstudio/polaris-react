@@ -53,8 +53,12 @@ class UserListItem extends Component {
 UserListItem.propTypes = {
   user: PropTypes.string.isRequired,
   inviteCode: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string,
   mutate: PropTypes.func.isRequired,
+};
+
+UserListItem.defaultProps = {
+  id: '',
 };
 
 export default UserListItem = graphql(DELETE_USER)(UserListItem);

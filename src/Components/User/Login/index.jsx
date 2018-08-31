@@ -18,7 +18,7 @@ const LoginForm = ({
 }) => (
   <React.Fragment>
     <FormWrap error={error}>
-      <Logo alt="Olaris" height="30" />
+      <Logo alt="Olaris" height="35" />
       <Title heading="Welcome Back!" sub="Login to get started" />
 
       <Input type="text" name="username" autocomplete="username" placeholder="Enter Username" handleChange={handleChange} />

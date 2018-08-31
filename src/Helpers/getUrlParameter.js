@@ -4,12 +4,13 @@
  * @return {String} String containing param
  */
 const getUrlParameter = (name, url) => {
-  if (!url) url = window.location.href;
-  name = name.replace(/\[\]]/g, '\\$&');
-  const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`);
+  let nUrl;
 
+  if (!url) nUrl = window.location.href;
+  const nName = name.replace(/\[\]]/g, '\\$&');
+  const regex = new RegExp(`[?&]${nName}(=([^&#]*)|&|#|$)`);
 
-  const results = regex.exec(url);
+  const results = regex.exec(nUrl);
   if (!results) return null;
   if (!results[2]) return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));

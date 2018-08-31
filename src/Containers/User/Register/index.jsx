@@ -6,7 +6,7 @@ import { getUrlParameter, isInitialSetup } from 'Helpers';
 import CREATE_USER from 'Mutations/createUser';
 import RegisterForm from 'Components/User/Register';
 
-import { RegisterWrap } from './Styles';
+import RegisterWrap from './Styles';
 
 class Register extends Component {
     state = {
@@ -25,44 +25,55 @@ class Register extends Component {
       });
     }
 
-    _handleChange = (e) => {
+    handleChange = (e) => {
       this.setState({
         [e.target.name]: e.target.value,
       });
     }
 
-    _handleRegister = () => {
-      let register_info = {
-        username: this.state.username,
-        password: this.state.password,
+    handleRegister = () => {
+      const { alert } = this.props;
+      const { username, password, invite_code: inviteCode } = this.state;
+
+      let registerInfo = {
+        username,
+        password,
       };
 
-      if (this.state.invite_code.length > 0) {
-        register_info = {
-          ...register_info,
-          code: this.state.invite_code,
+      if (inviteCode.length > 0) {
+        registerInfo = {
+          ...registerInfo,
+          code: inviteCode,
         };
       }
 
-      CREATE_USER(register_info).then((response) => {
+      CREATE_USER(registerInfo).then(() => {
         this.setState({ redirectToDashboard: true });
-      }).catch((error) => {
+      }).catch(() => {
         this.setState({ error: true }, () => {
-          this.props.alert.error('Looks like there was an error, Please Try Again');
+          alert.error('Looks like there was an error, Please Try Again');
         });
       });
     }
 
     render() {
-      const { from } = this.props.location.state || { from: { pathname: '/dashboard' } };
-      if (this.state.redirectToDashboard) return <Redirect to={from} />;
+      const { location } = this.props;
+      const {
+        redirectToDashboard,
+        error,
+        inviteCode,
+        initialSetup,
+      } = this.state;
+
+      const { from } = location.state || { from: { pathname: '/dashboard' } };
+      if (redirectToDashboard) return <Redirect to={from} />;
 
       const RegisterProps = {
-        handleRegister: this._handleRegister,
-        handleChange: this._handleChange,
-        error: this.state.error,
-        inviteCode: this.state.inviteCode,
-        initialSetup: this.state.initialSetup,
+        handleRegister: this.handleRegister,
+        handleChange: this.handleChange,
+        error,
+        inviteCode,
+        initialSetup,
       };
 
       return (

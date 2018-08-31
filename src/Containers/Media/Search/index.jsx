@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import FetchSearchResults from 'Queries/fetchSearchResults';
 import Empty from 'Components/Media/Card/Empty';
 
@@ -7,19 +8,23 @@ import { PageHeading } from 'Styles';
 import { LibraryWrap, LibraryListWrap } from '../Styles';
 // Global Styles
 
-const Search = props => (
+const Search = ({ match }) => (
   <LibraryWrap>
     <PageHeading>
-Results For: "
-      {props.match.params.value}
-"
+      Results For:
+      {match.params.value}
     </PageHeading>
 
     <LibraryListWrap>
-      <FetchSearchResults value={props.match.params.value} />
+      <FetchSearchResults value={match.params.value} />
       <Empty length="10" />
     </LibraryListWrap>
   </LibraryWrap>
 );
+
+Search.propTypes = {
+  match: ReactRouterPropTypes.match.isRequired,
+};
+
 
 export default Search;

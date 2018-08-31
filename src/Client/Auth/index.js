@@ -30,13 +30,13 @@ export const checkAuth = () => {
   if (cookies.get('jwt') == null) return false;
   const jwt = jwtDecode(cookies.get('jwt').jwt);
 
-  const current_time = Date.now() / 1000;
+  const currentTime = Date.now() / 1000;
 
-  if (jwt.exp < current_time) {
+  if (jwt.exp < currentTime) {
     return false;
   }
 
-  Auth.authenticate();
+  return Auth.authenticate();
 };
 
 export const AUTH_REQUEST = (username, password) => {

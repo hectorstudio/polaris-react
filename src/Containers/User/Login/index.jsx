@@ -4,7 +4,7 @@ import { withAlert } from 'react-alert';
 
 import { AUTH_REQUEST, Auth } from 'Client/Auth';
 import LoginForm from 'Components/User/Login';
-import { LoginWrap } from './Styles';
+import LoginWrap from './Styles';
 
 class Login extends Component {
     state = {
@@ -26,21 +26,26 @@ class Login extends Component {
     }
 
     handleLogin = () => {
-      AUTH_REQUEST(this.state.username, this.state.password).then((response) => {
+      const { username, password } = this.state;
+      const { alert } = this.props;
+
+      AUTH_REQUEST(username, password).then(() => {
         this.setState({ success: true });
 
         setTimeout(() => {
           this.setState({ redirectToDashboard: true });
         }, 750);
-      }).catch((error) => {
+      }).catch(() => {
         this.setState({ error: true }, () => {
-          this.props.alert.error('Looks like your Username and Password dont match, Please Try Again');
+          alert.error('Looks like your Username and Password dont match, Please Try Again');
         });
       });
     }
 
     handleChange = (e) => {
-      if (this.state.isMounted) {
+      const { isMounted } = this.state;
+
+      if (isMounted) {
         this.setState({
           [e.target.name]: e.target.value,
         });
@@ -48,7 +53,10 @@ class Login extends Component {
     }
 
     render() {
-      const { from } = this.props.location.state || { from: { pathname: '/dashboard' } };
+      const { error, success } = this.state;
+      const { location } = this.props;
+
+      const { from } = location.state || { from: { pathname: '/dashboard' } };
       const { redirectToDashboard } = this.state;
 
       if (redirectToDashboard) return <Redirect to={from} />;
@@ -56,11 +64,11 @@ class Login extends Component {
       const LoginProps = {
         handleLogin: this.handleLogin,
         handleChange: this.handleChange,
-        error: this.state.error,
+        error,
       };
 
       return (
-        <LoginWrap success={this.state.success}>
+        <LoginWrap success={success}>
           <LoginForm {...LoginProps} />
         </LoginWrap>
       );

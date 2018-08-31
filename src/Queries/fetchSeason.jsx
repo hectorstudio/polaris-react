@@ -7,16 +7,17 @@ import Season from 'Components/Media/Season';
 const FETCH_SEASON = uuid => gql`
     {
         season(uuid: "${uuid}") {
-            name
+            seasonName: name
             overview
-            season_number
-            air_date
-            poster_path
-            tmdb_id
+            seasonNumber: season_number
+            airDate: air_date
+            posterPath: poster_path
+            id: tmdb_id
             uuid
             episodes {
                 name
                 uuid
+                id: tmdb_id
             }
         }
     }

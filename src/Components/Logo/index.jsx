@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Icon from 'Images/logo-icon.png';
+import Icon from 'Images/logo-icon.svg';
 
 const LogoIcon = ({ alt, height }) => (
   <img src={Icon} alt={alt} height={`${height}px`} />

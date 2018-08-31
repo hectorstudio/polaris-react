@@ -22,17 +22,19 @@ class MediaItem extends Component {
     }
 
     componentWillMount() {
-      const file_list = generateFileList(this.props.files);
+      const { files } = this.props;
+
+      const fileList = generateFileList(files);
 
       this.setState({
-        files: file_list,
-        selectedFile: file_list[0],
+        files: fileList,
+        selectedFile: fileList[0],
       });
     }
 
     componentDidMount() {
       const autoplay = getUrlParameter('autoplay');
-      if (autoplay) this._playMedia();
+      if (autoplay) this.playMedia();
     }
 
     _handleFileChange = (selectedFile) => {
@@ -41,18 +43,21 @@ class MediaItem extends Component {
       });
     }
 
-    _playMedia() {
-      this.props.mutate({
-        variables: { uuid: this.props.files[this.state.selectedFile.value].uuid },
+    playMedia() {
+      const { mutate, files } = this.props;
+      const { selectedFile } = this.state;
+
+      mutate({
+        variables: { uuid: files[selectedFile.value].uuid },
       })
         .then(({ data }) => {
-          const mime_types = generateMimeTypes(this.props.files[this.state.selectedFile.value].streams);
+          const mimeTypes = generateMimeTypes(files[selectedFile.value].streams);
 
 
-          const stream_path = data.createStreamingTicket.streamingPath;
+          const streamPath = data.createStreamingTicket.streamingPath;
 
           this.setState({
-            source: `${getBaseUrl()}${stream_path}?${mime_types}`,
+            source: `${getBaseUrl()}${streamPath}?${mimeTypes}`,
           });
         })
         .catch((error) => {
@@ -77,7 +82,7 @@ class MediaItem extends Component {
         }],
         plugins: {
           chromecast: {
-            receiverAppID: '2A952047' // Not required
+            receiverAppID: '2A952047', // Not required
           },
         },
       };
@@ -86,25 +91,27 @@ class MediaItem extends Component {
         <div>
           <h1>{name}</h1>
           { files.length > 1
-                    && (
-                    <Select
-                      value={selectedFile}
-                      options={files}
-                      onChange={this._handleFileChange}
-                      styles={SelectStyle}
-                    />
-                    )
-                }
-          <div onClick={this._playMedia.bind(this)}>Play Movie</div>
+            && (
+              <Select
+                value={selectedFile}
+                options={files}
+                onChange={this.handleFileChange}
+                styles={SelectStyle}
+              />
+            )
+          }
+          <button type="submit" onClick={this.playMedia.bind(this)}>
+            Play Movie
+          </button>
 
-          {this.state.source !== ''
+          {source !== ''
             ? (
               <VideoWrap>
                 <Video {...videoJsOptions} />
               </VideoWrap>
             )
             : null
-                }
+          }
 
         </div>
       );

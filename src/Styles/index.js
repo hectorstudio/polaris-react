@@ -7,3 +7,7 @@ export const PageHeading = styled.h1`
     letter-spacing: .2rem;
     margin:0 0 3rem;
 `;
+
+export const PageSubTitle = styled.p`
+  font-size:1.4rem;
+`;

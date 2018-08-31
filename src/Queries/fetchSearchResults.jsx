@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
@@ -8,17 +9,17 @@ const FETCH_SEARCH_RESULTS = gql`
     query search($value: String!) {
         search(name: $value) {    
             ... on Movie {
-                __typename
+                typename: __typename
                 name
-                poster_path
+                posterPath: poster_path
                 year
                 uuid
             }
             ... on Series {
-                __typename
+                typename: __typename
                 name
-                poster_path
-                first_air_date
+                posterPath: poster_path
+                airDate: first_air_date
                 uuid
             }
         }
@@ -37,19 +38,22 @@ const FetchSearchResults = ({ value }) => (
       if (data.search.length === 0) return `No Results Found For ${value}`;
 
       return data.search.map(({
-        __typename, name, poster_path, imdb_id, uuid,
-      }, i) => {
-        const result_details = {
+        typename, name, posterPath, uuid,
+      }) => {
+        const result = {
           name,
-          poster_path,
-          imdb_id,
+          posterPath,
           uuid,
         };
 
-        return (<MediaCard type={__typename} key={i} {...result_details} />);
+        return (<MediaCard type={typename} key={uuid} {...result} />);
       });
     }}
   </Query>
 );
+
+FetchSearchResults.propTypes = {
+  value: PropTypes.string.isRequired,
+};
 
 export default FetchSearchResults;

@@ -30,8 +30,7 @@ const FetchEpisode = ({ uuid }) => (
     {({ loading, error, data }) => {
       if (loading) return 'Loading...';
       if (error) return `Error! ${error.message}`;
-
-      const episode = data.episode;
+      const { episode } = data;
 
       return (<MediaItem type="episode" {...episode} />);
     }}
