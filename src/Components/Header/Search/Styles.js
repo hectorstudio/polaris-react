@@ -5,7 +5,7 @@ export const InputWrap = styled.div`
     background: ${props => (props.hasFocus ? '#FFF' : 'rgba(255,255,255, .1)')};
     box-shadow: ${props => (props.hasFocus ? '0 10px 15px rgba(0,0,0, .3)' : 'none')};
     margin:0;
-    height: 4rem;
+    height: 5rem;
     width: ${props => props.theme.layout.search};
     border-radius:.2rem;
     transition: .2s all;
@@ -52,7 +52,7 @@ export const SearchIcon = styled(FontAwesomeIcon)`
     position:absolute;
     top:50%;
     margin-top: -.8rem;
-    left:1.2rem;
+    left:1.7rem;
     transition: .2s color;
 `;
 

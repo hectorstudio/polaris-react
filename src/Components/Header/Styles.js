@@ -1,19 +1,40 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Animations
 import { aFadeIn } from 'Styles/Animations';
 
 export const HeaderWrap = styled.header`
-    height: auto;
-    width: calc(100% - ${props => props.theme.layout.sidebar});
+    height: ${props => props.theme.layout.header};
+    width: 100%;
     animation: ${`.5s ${aFadeIn} alternate`};
     display:flex;
-    padding: 3rem;
-    background-color: rgba(0,0,0,.25);
+    padding: 1.5rem 1.5rem 1.5rem 3rem;
     position:fixed;
     top:0;
-    left: ${props => props.theme.layout.sidebar}
+    background:${props => props.theme.background};
+    border-bottom:1px solid ${props => props.theme.border};
+    left: 0;
+    z-index:5;
+`;
+
+export const DashboardLink = styled(Link)`
+  float:left;
+  padding:1rem 2rem 0 0;
+  margin-right:3rem;
+  position:relative;
+
+  &:before {
+    content: '';
+    position:absolute;
+    top:50%;
+    right:0;
+    transform: translateY(-50%);
+    height:3rem;
+    width:.1rem;
+    background: ${props => props.theme.border};
+  }
 `;
 
 export const LogoutIcon = styled(FontAwesomeIcon)`
@@ -23,8 +44,8 @@ export const LogoutIcon = styled(FontAwesomeIcon)`
 `;
 
 export const LogoutButton = styled.button`
-    width: ${props => props.theme.layout.header};
-    height:${props => props.theme.layout.header};
+    width: 5rem;
+    height:5rem;
     float:right;
     background:none;
     border:none;

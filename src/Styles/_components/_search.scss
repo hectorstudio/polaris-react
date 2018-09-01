@@ -1,16 +1,17 @@
 .react-autosuggest__container {
   position:relative;
+  z-index:5;
 }
 
 .react-autosuggest {
     &__suggestions-container {
         border-radius: .2rem;
         overflow: hidden;
-        box-shadow: 0 10px 15px rgba(0, 0, 0, .6);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, .1);
         position: relative;
         z-index:99;
         position:absolute;
-        top:5rem;
+        top:6rem;
         left:0;
     }
 
@@ -47,13 +48,13 @@
         color: color(dark);
         background:none;
         border:0;
-        line-height:4rem;
+        line-height:5rem;
         color:#FFF;
         width:100%;
         position:absolute;
         top:0;
         left:0;
-        padding:0 4rem;
+        padding:0 5rem;
         font-size:1.6rem;
         overflow:hidden;
         font-weight: 600;

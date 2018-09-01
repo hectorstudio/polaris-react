@@ -5,7 +5,7 @@ const EmptyArticle = styled.article`
     flex: 1 0 auto;
     width:14rem;
     max-width:20rem;
-    margin:0 1.5rem 0;
+    margin:0 .25rem .5rem;
 `;
 
 const EmptyArticles = () => {

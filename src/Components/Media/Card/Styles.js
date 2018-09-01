@@ -4,7 +4,7 @@ export const CardWrap = styled.article`
   flex: 1 0 auto;
   width:14rem;
   max-width:20rem;
-  margin:0 1.5rem 3rem;
+  margin:0 .25rem .5rem;
   cursor:pointer;
   position:relative;
 

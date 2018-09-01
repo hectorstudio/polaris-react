@@ -7,16 +7,14 @@ import { aFadeIn } from 'Styles/Animations';
 export const SidebarWrap = styled.nav`
     width: ${props => props.theme.layout.sidebar};
     position: fixed;
-    top: 0;
+    top: ${props => props.theme.layout.header};
     left: 0;
-    height: 100vh;
-    background-color: rgba(0,0,0,.5);
+    height: calc(100vh - ${props => props.theme.layout.header});
+    background-image: linear-gradient(to bottom, #1a1a2c 0%,${props => props.theme.lighten.background} 100%);
     animation: ${`.5s ${aFadeIn} alternate`};
     padding:3rem;
-`;
-
-export const DashboardLink = styled(Link)`
-  float:left;
+    z-index:2;
+    border-right:1px solid ${props => props.theme.border};
 `;
 
 export const HomeLink = styled(Link)`
@@ -32,7 +30,7 @@ export const NavItemWrap = styled.section`
     width:100%;
     margin:0 0 3rem;
     &:first-of-type {
-        margin-top:5rem;
+        margin-top:2rem;
     }
 `;
 

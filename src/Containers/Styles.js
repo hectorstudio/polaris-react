@@ -11,7 +11,7 @@ export const AppWrap = styled.main`
     justify-content: ${props => (props.authed ? 'initial' : 'center')};
 `;
 
-export const ContentWrap = styled.div`
+export const PageWrap = styled.div`
     flex: 1 1 auto;
     max-width:  calc(100% - ${props => props.theme.layout.sidebar});
     height:calc(100vh - ${props => props.theme.layout.header});

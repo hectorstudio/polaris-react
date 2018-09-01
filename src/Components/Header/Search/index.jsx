@@ -54,7 +54,7 @@ class Search extends Component {
 
   onSuggestionsFetchRequested = ({ value }) => {
     const { isUnmounting } = this.state;
-    
+
     if (!isUnmounting) {
       this.debouncedLoadSuggestions(value);
       this.setState({ loading: true });
