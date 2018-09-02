@@ -9,7 +9,7 @@ export const CardWrap = styled.article`
   cursor:pointer;
   position:relative;
   background: #1e1e2e;
-  animation: ${`.2s ${aFadeIn} alternate`};
+  animation: ${`.4s ${aFadeIn} alternate`};
 
   &:before {
     content:'';
