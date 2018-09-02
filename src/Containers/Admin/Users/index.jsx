@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { graphql } from 'react-apollo';
 import CREATE_USER_INVITE from 'Mutations/createUserInvite';
 
+import ContentWrap from 'Containers/ContentWrap';
 import ManageUsers from 'Components/Admin/Users';
 
 class Users extends Component {
@@ -17,9 +18,9 @@ class Users extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <ContentWrap>
         <ManageUsers generateUserInvite={this.generateUserInvite} />
-      </React.Fragment>
+      </ContentWrap>
     );
   }
 }

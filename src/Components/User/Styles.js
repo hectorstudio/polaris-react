@@ -119,7 +119,7 @@ export const FormButton = styled.button`
     width:100%;
     text-align:center;
     border:0;
-    background: ${props => props.theme.dark};
+    background: ${props => props.theme.primary};
     font-size:2rem;
     font-family: ${props => props.theme.fonts.muli};
     font-weight:800;

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
+import Loading from 'Components/Loading';
 import MediaCard from 'Components/Media/Card';
 
 const FETCH_SEARCH_RESULTS = gql`
@@ -33,7 +34,7 @@ const FetchSearchResults = ({ value }) => (
   >
 
     {({ loading, error, data }) => {
-      if (loading) return 'Loading...';
+      if (loading) return <Loading />;
       if (error) return `Error! ${error.message}`;
       if (data.search.length === 0) return `No Results Found For ${value}`;
 

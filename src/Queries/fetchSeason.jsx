@@ -2,6 +2,7 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
+import Loading from 'Components/Loading';
 import Season from 'Components/Media/Season';
 
 const FETCH_SEASON = uuid => gql`
@@ -29,7 +30,7 @@ const FetchSeason = ({ uuid }) => (
   >
 
     {({ loading, error, data }) => {
-      if (loading) return 'Loading...';
+      if (loading) return <Loading />;
       if (error) return `Error! ${error.message}`;
 
       return (

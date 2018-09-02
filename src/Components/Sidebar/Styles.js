@@ -12,7 +12,6 @@ export const SidebarWrap = styled.nav`
     height: calc(100vh - ${props => props.theme.layout.header});
     background-image: linear-gradient(to bottom, #1a1a2c 0%,${props => props.theme.lighten.background} 100%);
     animation: ${`.5s ${aFadeIn} alternate`};
-    padding:3rem;
     z-index:2;
     border-right:1px solid ${props => props.theme.border};
 `;
@@ -26,12 +25,13 @@ export const HomeLink = styled(Link)`
 `;
 
 export const NavItemWrap = styled.section`
-    float:left;
-    width:100%;
-    margin:0 0 3rem;
-    &:first-of-type {
-        margin-top:2rem;
-    }
+  float:left;
+  width:100%;
+  margin:0 0 3rem;
+  padding:0 3rem;
+  &:first-of-type {
+    margin-top: 4rem;
+  }
 `;
 
 export const NavItemHeading = styled.h5`

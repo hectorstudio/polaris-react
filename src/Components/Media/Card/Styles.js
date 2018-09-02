@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { aFadeIn } from 'Styles/Animations';
 
 export const CardWrap = styled.article`
   flex: 1 0 auto;
@@ -7,6 +8,8 @@ export const CardWrap = styled.article`
   margin:0 .25rem .5rem;
   cursor:pointer;
   position:relative;
+  background: #1e1e2e;
+  animation: ${`.2s ${aFadeIn} alternate`};
 
   &:before {
     content:'';
@@ -41,6 +44,9 @@ export const CardPoster = styled.span`
   position:relative;
   z-index:1;
   position:relative;
+  opacity:0;
+  animation: ${`.3s ${aFadeIn} forwards`};
+  animation-delay: .3s;
 `;
 
 export const CardTitle = styled.h3`

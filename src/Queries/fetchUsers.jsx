@@ -2,6 +2,7 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
+import Loading from 'Components/Loading';
 import UserListItem from 'Components/Admin/Users/UserListItem';
 
 const FETCH_INVITES = gql`
@@ -26,7 +27,7 @@ const FetchUsers = props => (
       loading, error, data, refetch, networkStatus,
     }) => {
       if (networkStatus === 4) console.log('Refetching!');
-      if (loading) return 'Loading...';
+      if (loading) return <Loading />;
       if (error) return `Error! ${error.message}`;
 
       const generateInviteCode = () => {

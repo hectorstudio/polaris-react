@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
+import LazyLoad from 'react-lazyload';
 import { getBaseUrl, generateMediaUrl } from 'Helpers';
 
 import {
@@ -40,7 +41,9 @@ class Media extends Component {
 
       return (
         <CardWrap onClick={() => { history.push(url); }}>
-          <CardPoster bgimg={`${getBaseUrl()}/m/images/tmdb/w342/${posterPath}`} alt={name} />
+          <LazyLoad height={210} debounce={100} overflow resize>
+            <CardPoster bgimg={`${getBaseUrl()}/m/images/tmdb/w342/${posterPath}`} alt={name} />
+          </LazyLoad>
           { title
             && <CardTitle>{name}</CardTitle>
           }
