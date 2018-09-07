@@ -1,35 +1,18 @@
 import styled from 'styled-components';
 import { aFadeIn } from 'Styles/Animations';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const CardWrap = styled.article`
   flex: 1 0 auto;
   width:14rem;
   max-width:20rem;
-  margin:0 .25rem .5rem;
+  margin:0 .5rem 1rem;
   cursor:pointer;
   position:relative;
   background: #1e1e2e;
+  border-radius:.5rem;
+  overflow:hidden;
   animation: ${`.4s ${aFadeIn} alternate`};
-
-  &:before {
-    content:'';
-    position:absolute;
-    width:calc(100% + .2rem);
-    height:calc(100% + .2rem);
-    top:-.1rem;
-    left:-.1rem;
-    background: linear-gradient(45deg, #ff9b3d 0%,#e83773 50%,#bf00b7 100%);
-    box-sizing: border-box;
-    z-index:0;
-    opacity:0;
-    transition:.2s opacity;
-  }
-
-  &:hover {
-    &:before {
-      opacity:1;
-    }
-  }
 `;
 
 export const CardPoster = styled.span`
@@ -39,7 +22,6 @@ export const CardPoster = styled.span`
   background-repeat:no-repeat;
   background-size:cover;
   background-position:center;
-  box-shadow: 0 3px 3px rgba(0,0,0, 0.15);
   padding-top: calc(513 / 342 * 100%);
   position:relative;
   z-index:1;
@@ -47,6 +29,13 @@ export const CardPoster = styled.span`
   opacity:0;
   animation: ${`.3s ${aFadeIn} forwards`};
   animation-delay: .3s;
+  border-radius:.5rem;
+  filter: grayscale(0) saturate(125%);
+  transition: .5s all;
+
+  ${CardWrap}:hover & { 
+    filter: grayscale(25%) saturate(75%);
+  }
 `;
 
 export const CardTitle = styled.h3`
@@ -59,6 +48,22 @@ export const CardTitle = styled.h3`
   color: #FFF;
 `;
 
+export const Unwatched = styled.span`
+  position:absolute;
+  bottom:0;
+  left:-1.5rem;
+  background:${props => props.theme.primary};
+  width: 6.5rem;
+  height: 1rem;
+  z-index:6;
+  transform: rotate(45deg);
+  transition:.2s all;
+
+  ${CardWrap}:hover & { 
+    transform: rotate(45deg) translateY(2rem) translateX(2rem);
+  }
+`;
+
 export const CardPopup = styled.div`
   content:'';
   position:absolute;
@@ -66,14 +71,63 @@ export const CardPopup = styled.div`
   left:0;
   width:100%;
   height:100%;
-  background: #000000bf;
   z-index: 1;
   opacity:0;
   pointer-events:none;
   transition:.2s opacity;
+  overflow:hidden;
+  border-radius:.4rem;
+  
+  &:before {
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%,rgba(0,0,0,0.9) 100%);
+    opacity:1;
+  }
 
   ${CardWrap}:hover & {
     opacity:1;
     pointer-events:initial
+  }
+`;
+
+export const AutoPlay = styled.span`
+  position:absolute;
+  border-radius:50%;
+  top:50%;
+  left:50%;
+  transform: translateY(-50%) translateX(-50%) scale(0.5);
+  display:block;
+  width:5rem;
+  height:5rem;
+  z-index:10;
+  transition:.2s all;
+  background:#00000080;
+  border:2px solid #FFF; 
+
+  ${CardWrap}:hover & { 
+    transform: translateY(-50%) translateX(-50%) scale(1);
+  }
+  
+  &:hover {
+    border-color: ${props => props.theme.primary};
+  }
+`;
+
+export const AutoPlayIcon = styled(FontAwesomeIcon)`
+  color:#FFF;
+  font-size:1.6rem;
+  transition:.2s all;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translateY(-50%) translateX(-50%);
+
+  ${AutoPlay}:hover & {
+    color:${props => props.theme.primary};
   }
 `;

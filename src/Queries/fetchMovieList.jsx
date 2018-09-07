@@ -12,6 +12,10 @@ const FETCH_MOVIES = gql`
             posterPath: poster_path,
             id: imdb_id,
             uuid
+            playState: play_state {
+              finished
+              playtime
+            }
         }
     }
 `;
@@ -26,13 +30,18 @@ const FetchMovieList = () => (
       if (error) return `Error! ${error.message}`;
 
       return data.movies.map(({
-        name, posterPath, id, uuid,
+        name,
+        posterPath,
+        id,
+        uuid,
+        playState,
       }) => {
         const movie = {
           name,
           posterPath,
           id,
           uuid,
+          playState,
         };
 
         return (<MediaCard type="movie" key={uuid} {...movie} />);

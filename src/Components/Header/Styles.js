@@ -2,13 +2,9 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-// Animations
-import { aFadeIn } from 'Styles/Animations';
-
 export const HeaderWrap = styled.header`
     height: ${props => props.theme.layout.header};
     width: 100%;
-    animation: ${`.5s ${aFadeIn} alternate`};
     display:flex;
     padding: 1.5rem 1.5rem 1.5rem 3rem;
     position:fixed;

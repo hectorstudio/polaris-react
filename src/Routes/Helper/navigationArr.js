@@ -28,12 +28,7 @@ const navigationArr = [
         name: 'Users',
         to: '/users',
         id: 'users',
-      },
-      {
-        name: 'Settings',
-        to: '/',
-        id: 'settings',
-      },
+      }
     ],
   },
 ];
