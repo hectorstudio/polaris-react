@@ -50,17 +50,47 @@ export const CardTitle = styled.h3`
 
 export const Unwatched = styled.span`
   position:absolute;
-  bottom:0;
-  left:-1.5rem;
+  bottom:0rem;
+  left:-3.5rem;
   background:${props => props.theme.primary};
-  width: 6.5rem;
-  height: 1rem;
+  width: 6rem;
+  height: 2rem;
   z-index:6;
-  transform: rotate(45deg);
   transition:.2s all;
+  box-shadow: 0 0 25px #00000080;
+  transform: rotate(45deg);
+  animation: ${`.3s ${aFadeIn} forwards`};
 
   ${CardWrap}:hover & { 
-    transform: rotate(45deg) translateY(2rem) translateX(2rem);
+    transform: translateY(2rem) translateX(-2rem);
+  }
+`;
+
+export const PlayState = styled.span`
+  position:absolute;
+  top: .5rem;
+  left:.5rem;
+  width:calc(100% - 1rem);
+  background: rgba(0,0,0,.5);
+  border-radius: .5rem;
+  height:.7rem;
+  z-index:6;
+  transition:.2s all;
+  overflow:hidden;
+  border:1px solid #000;
+
+  &:before {
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    height:.5rem;
+    width: ${props => props.percent}%;
+    background:${props => props.theme.primary};
+  }
+
+  ${CardWrap}:hover & { 
+    transform: translateY(-2rem);
   }
 `;
 
@@ -76,7 +106,6 @@ export const CardPopup = styled.div`
   pointer-events:none;
   transition:.2s opacity;
   overflow:hidden;
-  border-radius:.4rem;
   
   &:before {
     content:'';

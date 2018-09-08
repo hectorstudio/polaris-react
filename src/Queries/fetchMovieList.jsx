@@ -16,6 +16,9 @@ const FETCH_MOVIES = gql`
               finished
               playtime
             }
+            files {
+              total_duration
+            }
         }
     }
 `;
@@ -35,6 +38,7 @@ const FetchMovieList = () => (
         id,
         uuid,
         playState,
+        files,
       }) => {
         const movie = {
           name,
@@ -42,6 +46,7 @@ const FetchMovieList = () => (
           id,
           uuid,
           playState,
+          length: files[0].total_duration,
         };
 
         return (<MediaCard type="movie" key={uuid} {...movie} />);
