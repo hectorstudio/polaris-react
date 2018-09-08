@@ -12,6 +12,7 @@ const FETCH_SERIES_LIST = gql`
             posterPath: poster_path,
             id: tmdb_id,
             uuid
+            unwatchedCount: unwatched_episodes_count
         }
     }
 `;
@@ -26,14 +27,14 @@ const FetchSeriesList = () => (
       if (error) return `Error! ${error.message}`;
 
       return data.series.map(({
-        name, seasons, posterPath, id, uuid,
+        name, posterPath, id, uuid, unwatchedCount,
       }) => {
         const series = {
           name,
-          seasons,
           posterPath,
           id,
           uuid,
+          unwatchedCount,
         };
 
         return (<MediaCard type="series" key={uuid} {...series} />);

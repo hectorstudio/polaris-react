@@ -6,13 +6,14 @@ import { LibraryWrap, LibraryListWrap, LibraryHeading } from './Styles';
 
 const Series = ({ seriesName, seasons, overview }) => {
   const seasonList = seasons.map(({
-    seasonName, posterPath, id, uuid,
+    seasonName, posterPath, id, uuid, unwatchedCount,
   }) => {
     const season = {
       name: seasonName,
       posterPath,
       id,
       uuid,
+      unwatchedCount,
     };
 
     return (

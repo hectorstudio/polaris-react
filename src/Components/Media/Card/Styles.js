@@ -50,8 +50,8 @@ export const CardTitle = styled.h3`
 
 export const Unwatched = styled.span`
   position:absolute;
-  bottom:0rem;
-  left:-3.5rem;
+  top:0;
+  right:-3rem;
   background:${props => props.theme.primary};
   width: 6rem;
   height: 2rem;
@@ -62,13 +62,33 @@ export const Unwatched = styled.span`
   animation: ${`.3s ${aFadeIn} forwards`};
 
   ${CardWrap}:hover & { 
-    transform: translateY(2rem) translateX(-2rem);
+    transform: translateY(-2rem) translateX(2rem) rotate(45deg);
+  }
+`;
+
+export const UnwatchedCount = styled.span`
+  position:absolute;
+  top:1rem;
+  right:1rem;
+  box-shadow: 0 0 25px #00000080;
+  background:${props => props.theme.primary};
+  line-height:2rem;
+  padding:0 1rem;
+  border-radius:1rem;
+  font-family: ${props => props.theme.fonts.muli};
+  color:#FFF;
+  font-size:1.2rem;
+  transition:.2s all;
+  font-weight:900;
+
+  ${CardWrap}:hover & { 
+    transform: translateY(-5rem) translateX(5rem);
   }
 `;
 
 export const PlayState = styled.span`
   position:absolute;
-  top: .5rem;
+  bottom: .5rem;
   left:.5rem;
   width:calc(100% - 1rem);
   background: rgba(0,0,0,.5);
@@ -90,7 +110,7 @@ export const PlayState = styled.span`
   }
 
   ${CardWrap}:hover & { 
-    transform: translateY(-2rem);
+    transform: translateY(2rem);
   }
 `;
 

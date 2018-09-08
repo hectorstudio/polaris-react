@@ -15,10 +15,18 @@ const FETCH_SEASON = uuid => gql`
             posterPath: poster_path
             id: tmdb_id
             uuid
+            unwatchedCount: unwatched_episodes_count
             episodes {
                 name
                 uuid
                 id: tmdb_id
+                playState: play_state {
+                  finished
+                  playtime
+                }
+                files {
+                  total_duration
+                }
             }
         }
     }

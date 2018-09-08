@@ -18,6 +18,7 @@ const FETCH_SERIES = uuid => gql`
                 posterPath: poster_path
                 uuid
                 id: tmdb_id
+                unwatchedCount: unwatched_episodes_count
             }
         }
     }

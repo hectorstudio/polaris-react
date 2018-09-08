@@ -4,16 +4,14 @@ import MediaCard from 'Components/Media/Card';
 import { LibraryWrap, LibraryListWrap, LibraryHeading } from './Styles';
 
 const Season = ({ seasonName, episodes, posterPath }) => {
-  const episodeList = episodes.map(({ name, id, uuid }) => {
+  const episodeList = episodes.map((e) => {
     const episode = {
-      name,
       posterPath,
-      id,
-      uuid,
+      ...e,
     };
 
     return (
-      <MediaCard type="episode" key={uuid} {...episode} />
+      <MediaCard type="episode" key={e.uuid} {...episode} />
     );
   });
 
