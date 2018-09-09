@@ -76,7 +76,12 @@ class MediaItem extends Component {
     }
 
     render() {
-      const { name, backdropPath, year } = this.props;
+      const {
+        name,
+        backdropPath,
+        year,
+        airDate,
+      } = this.props;
       const { source, files, selectedFile } = this.state;
 
       const videoJsOptions = {
@@ -106,7 +111,7 @@ class MediaItem extends Component {
             <MediaRightCol>
               <MediaName>{name}</MediaName>
               <MediaInfo>
-                {year}
+                {(year || airDate)}
                 {convertFloatMs(selectedFile.totalDuration)}
               </MediaInfo>
             </MediaRightCol>

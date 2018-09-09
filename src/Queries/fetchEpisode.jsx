@@ -8,11 +8,19 @@ import MediaItem from 'Components/Media/MediaItem';
 const FETCH_EPISODE = gql`
     query episode($uuid: String!) {
         episode(uuid: $uuid) {    
-            name
-            
+          name
+          overview
+          airDate: air_date
+
+          playState: play_state {
+            finished
+            playtime
+          }
+          
             files {
                 file_name
                 uuid
+                total_duration
                 streams {
                     codec_mime
                     stream_type
