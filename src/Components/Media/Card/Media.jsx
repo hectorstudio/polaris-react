@@ -43,20 +43,21 @@ class Media extends Component {
         name,
         posterPath,
         type,
+        onClick,
+        size,
       } = this.props;
       const { url } = this.state;
-
       const checkType = (type === 'movie' || type === 'episode');
 
       return (
-        <CardWrap onClick={(e) => { this.gotoMedia(e, url, history); }}>
+        <CardWrap onClick={e => (onClick || this.gotoMedia(e, url, history))} size={size}>
           <LazyLoad height={230} debounce={100} overflow resize>
             <CardPoster bgimg={`${getBaseUrl()}/m/images/tmdb/w342/${posterPath}`} alt={name}>
               <MediaInfo {...this.props} />
             </CardPoster>
           </LazyLoad>
           <CardPopup>
-            <AutoPlay onClick={(e) => { this.autoPlay(e, url, history); }}>
+            <AutoPlay onClick={e => (onClick || this.autoPlay(e, url, history))}>
               <AutoPlayIcon icon={(checkType ? faPlay : faSearch)} />
             </AutoPlay>
           </CardPopup>
@@ -71,6 +72,11 @@ Media.propTypes = {
   type: PropTypes.string.isRequired,
   uuid: PropTypes.string.isRequired,
   history: ReactRouterPropTypes.history.isRequired,
+  size: PropTypes.string,
+};
+
+Media.defaultProps = {
+  size: 'small',
 };
 
 export default Media;

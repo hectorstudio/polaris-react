@@ -8,9 +8,9 @@ import MediaCard from 'Components/Media/Card';
 const FETCH_MOVIES = gql`
     {
         movies {
-            name,
-            posterPath: poster_path,
-            id: imdb_id,
+            name
+            posterPath: poster_path
+            id: imdb_id
             uuid
             playState: play_state {
               finished
@@ -47,9 +47,10 @@ const FetchMovieList = () => (
           uuid,
           playState,
           length: files[0].total_duration,
+          type: 'movie',
         };
 
-        return (<MediaCard type="movie" key={uuid} {...movie} />);
+        return (<MediaCard key={uuid} {...movie} />);
       });
     }}
 

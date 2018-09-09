@@ -7,12 +7,23 @@ import {
   getBaseUrl,
   generateFileList,
   getUrlParameter,
+  convertFloatMs,
 } from 'Helpers';
 
 import REQUEST_STREAM from 'Mutations/requestStream';
-import { VideoWrap, SelectStyle } from './Styles';
-
+import Media from 'Components/Media/Card';
 import Video from './Video';
+
+import {
+  VideoWrap,
+  SelectStyle,
+  MediaFullWrap,
+  MediaFull,
+  MediaLeftCol,
+  MediaRightCol,
+  MediaName,
+  MediaInfo,
+} from './Styles';
 
 class MediaItem extends Component {
     state = {
@@ -23,7 +34,6 @@ class MediaItem extends Component {
 
     componentWillMount() {
       const { files } = this.props;
-
       const fileList = generateFileList(files);
 
       this.setState({
@@ -66,7 +76,7 @@ class MediaItem extends Component {
     }
 
     render() {
-      const { name } = this.props;
+      const { name, backdropPath, year } = this.props;
       const { source, files, selectedFile } = this.state;
 
       const videoJsOptions = {
@@ -88,8 +98,20 @@ class MediaItem extends Component {
       };
 
       return (
-        <div>
-          <h1>{name}</h1>
+        <MediaFullWrap bg={`${getBaseUrl()}/m/images/tmdb/w1280/${backdropPath}`}>
+          <MediaFull>
+            <MediaLeftCol>
+              <Media size="large" onClick={() => { this.playMedia(); }} {...this.props} />
+            </MediaLeftCol>
+            <MediaRightCol>
+              <MediaName>{name}</MediaName>
+              <MediaInfo>
+                {year}
+                {convertFloatMs(selectedFile.totalDuration)}
+              </MediaInfo>
+            </MediaRightCol>
+          </MediaFull>
+
           { files.length > 1
             && (
               <Select
@@ -100,9 +122,6 @@ class MediaItem extends Component {
               />
             )
           }
-          <button type="submit" onClick={this.playMedia.bind(this)}>
-            Play Movie
-          </button>
 
           {source !== ''
             ? (
@@ -113,7 +132,7 @@ class MediaItem extends Component {
             : null
           }
 
-        </div>
+        </MediaFullWrap>
       );
     }
 }

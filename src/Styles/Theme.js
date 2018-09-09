@@ -29,7 +29,7 @@ const Theme = {
     search: '30rem',
   },
   fonts: {
-    opensans: '"Open-sans", sans-serif',
+    opensans: '"Open Sans", sans-serif',
     muli: '"Muli", sans-serif',
   },
 };

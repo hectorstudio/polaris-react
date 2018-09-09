@@ -2,17 +2,19 @@ import styled from 'styled-components';
 import { aFadeIn } from 'Styles/Animations';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+/* eslint no-confusing-arrow: ["off"] */
+
 export const CardWrap = styled.article`
   flex: 1 0 auto;
-  width:14rem;
-  max-width:20rem;
-  margin:0 .5rem 1rem;
+  width:${props => props.size === 'large' ? '100%' : '14rem'};
+  max-width:${props => props.size === 'large' ? '100%' : '20rem'};
+  margin:${props => props.size === 'large' ? '0' : '0 .5rem 1rem'};
   cursor:pointer;
   position:relative;
   background: #1e1e2e;
-  border-radius:.5rem;
   overflow:hidden;
   animation: ${`.4s ${aFadeIn} alternate`};
+  border-radius:.5rem;
 `;
 
 export const CardPoster = styled.span`
@@ -29,7 +31,6 @@ export const CardPoster = styled.span`
   opacity:0;
   animation: ${`.3s ${aFadeIn} forwards`};
   animation-delay: .3s;
-  border-radius:.5rem;
   filter: grayscale(0) saturate(125%);
   transition: .5s all;
 
@@ -135,7 +136,7 @@ export const CardPopup = styled.div`
     width:100%;
     height:100%;
     background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%,rgba(0,0,0,0.9) 100%);
-    opacity:1;
+    opacity:.75;
   }
 
   ${CardWrap}:hover & {

@@ -5,6 +5,7 @@ import generateMimeTypes from './generateMimeTypes';
 import generateMediaUrl from './generateMediaUrl';
 import generateFileList from './generateFileList';
 import isInitialSetup from './isInitialSetup';
+import convertFloatMs from './convertFloatMs';
 
 export {
   getUrlParameter,
@@ -14,4 +15,5 @@ export {
   updateSuggestions,
   isInitialSetup,
   generateFileList,
+  convertFloatMs,
 };

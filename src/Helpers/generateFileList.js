@@ -11,6 +11,7 @@ const generateFileList = (files) => {
     const file = {
       value: i,
       label: f.file_name,
+      totalDuration: f.total_duration,
     };
 
     arr.push(file);
