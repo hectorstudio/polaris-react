@@ -10,6 +10,7 @@ const FETCH_EPISODE = gql`
         episode(uuid: $uuid) {    
           name
           overview
+          still_path
           airDate: air_date
 
           playState: play_state {

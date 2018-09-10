@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import MediaCard from 'Components/Media/Card';
 import { LibraryWrap, LibraryListWrap, LibraryHeading } from './Styles';
 
-const Season = ({ seasonName, episodes, posterPath }) => {
+const Season = ({ seasonName, episodes }) => {
   const episodeList = episodes.map((e) => {
     const episode = {
-      posterPath,
+      posterPath: e.still_path,
       ...e,
     };
+
+    console.log(episode);
 
     return (
       <MediaCard type="episode" key={e.uuid} {...episode} />
@@ -35,7 +37,6 @@ Season.propTypes = {
     id: PropTypes.number.isRequired,
     uuid: PropTypes.string.isRequired,
   })).isRequired,
-  posterPath: PropTypes.string.isRequired,
 };
 
 export default Season;
