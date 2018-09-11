@@ -9,15 +9,15 @@ const FETCH_MOVIES = gql`
     {
         movies {
             name
-            posterPath: poster_path
-            id: imdb_id
+            posterPath
+            id: imdbID
             uuid
-            playState: play_state {
+            playState {
               finished
               playtime
             }
             files {
-              total_duration
+              totalDuration
             }
         }
     }

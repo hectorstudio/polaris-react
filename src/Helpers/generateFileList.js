@@ -10,8 +10,8 @@ const generateFileList = (files) => {
   files.forEach((f, i) => {
     const file = {
       value: i,
-      label: f.file_name,
-      totalDuration: f.total_duration,
+      label: f.fileName,
+      totalDuration: f.totalDuration,
     };
 
     arr.push(file);

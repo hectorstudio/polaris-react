@@ -10,27 +10,25 @@ const FETCH_SEASON = uuid => gql`
         season(uuid: "${uuid}") {
             seasonName: name
             overview
-            seasonNumber: season_number
-            airDate: air_date
-            posterPath: poster_path
-            id: tmdb_id
+            seasonNumber
+            airDate
+            posterPath
+            id: tmdbID
             uuid
-            unwatchedCount: unwatched_episodes_count
-
+            unwatchedCount: unwatchedEpisodesCount
             episodes {
                 name
                 uuid
-                still_path
-                id: tmdb_id
+                stillPath
+                id: tmdbID
 
-                playState: play_state {
+                playState {
                   finished
                   playtime
-                  
                 }
+
                 files {
-                  total_duration
-                  
+                  totalDuration
                 }
             }
         }
