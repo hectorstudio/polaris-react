@@ -11,6 +11,7 @@ const FETCH_EPISODE = gql`
           name
           overview
           airDate
+          stillPath
 
           playState{
             finished

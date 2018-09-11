@@ -19,11 +19,14 @@ const FETCH_SEASON = uuid => gql`
             episodes {
                 name
                 uuid
+                stillPath
                 id: tmdbID
+
                 playState {
                   finished
                   playtime
                 }
+
                 files {
                   totalDuration
                 }
