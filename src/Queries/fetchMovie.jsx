@@ -7,26 +7,26 @@ import MediaItem from 'Components/Media/MediaItem';
 
 const FETCH_MOVIE = gql`
     query movies($uuid: String!) {
-        movies(uuid: $uuid) {    
+        movies(uuid: $uuid) {
             name
             year
             overview
-            imdb_id
-            backdropPath: backdrop_path
+            imdbID
+            backdropPath
             uuid
-            posterPath: poster_path
+            posterPath
 
-            playState: play_state {
+            playState{
               finished
               playtime
             }
             files {
-                file_name
+                fileName
                 uuid
-                total_duration
+                totalDuration
                 streams {
-                    codec_mime
-                    stream_type
+                    codecMime
+                    streamType
                 }
             }
         }

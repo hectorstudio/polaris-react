@@ -7,7 +7,7 @@ import UserListItem from 'Components/Admin/Users/UserListItem';
 
 const FETCH_INVITES = gql`
     {
-        invites {    
+        invites {
             code
             user {
                 username

@@ -8,19 +8,19 @@ import MediaCard from 'Components/Media/Card';
 
 const FETCH_SEARCH_RESULTS = gql`
     query search($value: String!) {
-        search(name: $value) {    
+        search(name: $value) {
             ... on Movie {
                 typename: __typename
                 name
-                posterPath: poster_path
+                posterPath
                 year
                 uuid
             }
             ... on Series {
                 typename: __typename
                 name
-                posterPath: poster_path
-                airDate: first_air_date
+                posterPath
+                airDate: firstAirDate
                 uuid
             }
         }

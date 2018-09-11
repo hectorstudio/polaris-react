@@ -9,16 +9,16 @@ const FETCH_SERIES = uuid => gql`
     {
         series(uuid: "${uuid}") {
             seriesName: name
-            id: tmdb_id
+            id: tmdbID
             uuid
             overview
-            
+
             seasons {
                 seasonName: name
-                posterPath: poster_path
+                posterPath
                 uuid
-                id: tmdb_id
-                unwatchedCount: unwatched_episodes_count
+                id: tmdbID
+                unwatchedCount: unwatchedEpisodesCount
             }
         }
     }

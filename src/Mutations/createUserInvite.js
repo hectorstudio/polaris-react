@@ -1,9 +1,9 @@
 import gql from 'graphql-tag';
 
-const CREATE_USER_INVITE = gql` 
+const CREATE_USER_INVITE = gql`
     mutation createUserInvite {
         createUserInvite {
-            code 
+            code
             error {
                 message
                 hasError

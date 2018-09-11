@@ -2,19 +2,19 @@ import gql from 'graphql-tag';
 
 const FETCH_SUGGESTIONS = gql`
     query search($name: String!) {
-        search(name: $name) { 
+        search(name: $name) {
             ... on Movie {
                 typename: __typename
                 name
-                poster_path
+                posterPath
                 year
                 uuid
             }
             ... on Series {
                 typename: __typename
                 name
-                poster_path
-                first_air_date
+                posterPath
+                firstAirDate
                 uuid
             }
         }

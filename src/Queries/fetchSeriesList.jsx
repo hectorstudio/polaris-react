@@ -9,10 +9,10 @@ const FETCH_SERIES_LIST = gql`
     {
         series {
             name,
-            posterPath: poster_path,
-            id: tmdb_id,
+            posterPath,
+            id: tmdbID,
             uuid
-            unwatchedCount: unwatched_episodes_count
+            unwatchedCount: unwatchedEpisodesCount
         }
     }
 `;
