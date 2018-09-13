@@ -6,15 +6,15 @@ import Loading from 'Components/Loading';
 import MediaCard from 'Components/Media/Card';
 
 const FETCH_SERIES_LIST = gql`
-    {
-        series {
-            name,
-            posterPath,
-            id: tmdbID,
-            uuid
-            unwatchedCount: unwatchedEpisodesCount
-        }
+  {
+    series {
+      type: __typename
+      name
+      posterPath
+      uuid
+      unwatchedEpisodesCount
     }
+  }
 `;
 
 const FetchSeriesList = () => (
@@ -26,19 +26,7 @@ const FetchSeriesList = () => (
       if (loading) return <Loading />;
       if (error) return `Error! ${error.message}`;
 
-      return data.series.map(({
-        name, posterPath, id, uuid, unwatchedCount,
-      }) => {
-        const series = {
-          name,
-          posterPath,
-          id,
-          uuid,
-          unwatchedCount,
-        };
-
-        return (<MediaCard type="series" key={uuid} {...series} />);
-      });
+      return data.series.map((s => <MediaCard key={s.uuid} {...s} />));
     }}
 
   </Query>

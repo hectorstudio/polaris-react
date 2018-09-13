@@ -6,21 +6,23 @@ import Loading from 'Components/Loading';
 import MediaCard from 'Components/Media/Card';
 
 const FETCH_MOVIES = gql`
-    {
-        movies {
-            name
-            posterPath
-            id: imdbID
-            uuid
-            playState {
-              finished
-              playtime
-            }
-            files {
-              totalDuration
-            }
-        }
+  {
+    movies {
+      type: __typename
+      name
+      posterPath
+      uuid
+
+      playState {
+        finished
+        playtime
+      }
+      
+      files {
+        totalDuration
+      }
     }
+  }
 `;
 
 const FetchMovieList = () => (
@@ -32,26 +34,7 @@ const FetchMovieList = () => (
       if (loading) return <Loading />;
       if (error) return `Error! ${error.message}`;
 
-      return data.movies.map(({
-        name,
-        posterPath,
-        id,
-        uuid,
-        playState,
-        files,
-      }) => {
-        const movie = {
-          name,
-          posterPath,
-          id,
-          uuid,
-          playState,
-          length: files[0].total_duration,
-          type: 'movie',
-        };
-
-        return (<MediaCard key={uuid} {...movie} />);
-      });
+      return data.movies.map((m => <MediaCard key={m.uuid} {...m} />));
     }}
 
   </Query>

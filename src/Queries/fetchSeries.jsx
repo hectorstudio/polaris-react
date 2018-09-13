@@ -6,22 +6,22 @@ import Loading from 'Components/Loading';
 import Series from 'Components/Media/Series';
 
 const FETCH_SERIES = uuid => gql`
-    {
-        series(uuid: "${uuid}") {
-            seriesName: name
-            id: tmdbID
-            uuid
-            overview
-
-            seasons {
-                seasonName: name
-                posterPath
-                uuid
-                id: tmdbID
-                unwatchedCount: unwatchedEpisodesCount
-            }
-        }
+  {
+    series(uuid: "${uuid}") {
+      type: __typename
+      name
+      uuid
+      overview
+      
+      seasons {
+        type: __typename
+        name
+        posterPath
+        uuid
+        unwatchedEpisodesCount
+      }
     }
+  }
 `;
 
 const FetchSeries = ({ uuid }) => (
@@ -33,9 +33,9 @@ const FetchSeries = ({ uuid }) => (
       if (loading) return <Loading />;
       if (error) return `Error! ${error.message}`;
 
-      return (
-        <Series {...data.series[0]} />
-      );
+      const s = { ...data.series[0] };
+
+      return <Series {...s} />;
     }}
 
   </Query>

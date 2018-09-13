@@ -28,7 +28,7 @@ const navigationArr = [
         name: 'Users',
         to: '/users',
         id: 'users',
-      }
+      },
     ],
   },
 ];

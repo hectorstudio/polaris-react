@@ -4,26 +4,12 @@ import MediaCard from 'Components/Media/Card';
 
 import { LibraryWrap, LibraryListWrap, LibraryHeading } from './Styles';
 
-const Series = ({ seriesName, seasons, overview }) => {
-  const seasonList = seasons.map(({
-    seasonName, posterPath, id, uuid, unwatchedCount,
-  }) => {
-    const season = {
-      name: seasonName,
-      posterPath,
-      id,
-      uuid,
-      unwatchedCount,
-    };
-
-    return (
-      <MediaCard type="season" key={uuid} {...season} />
-    );
-  });
+const Series = ({ name, seasons, overview }) => {
+  const seasonList = seasons.map((s => <MediaCard key={s.uuid} {...s} />));
 
   return (
     <LibraryWrap>
-      <LibraryHeading>{seriesName}</LibraryHeading>
+      <LibraryHeading>{name}</LibraryHeading>
       <p>{overview}</p>
       <LibraryListWrap>
         {seasonList}
@@ -33,10 +19,9 @@ const Series = ({ seriesName, seasons, overview }) => {
 };
 
 Series.propTypes = {
-  seriesName: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   seasons: PropTypes.arrayOf(PropTypes.shape({
-    seasonName: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
     uuid: PropTypes.string.isRequired,
   })).isRequired,
   overview: PropTypes.string.isRequired,

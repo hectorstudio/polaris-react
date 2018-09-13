@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import { render } from 'react-dom';
 import { LastLocationProvider } from 'react-router-last-location';

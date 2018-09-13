@@ -7,24 +7,32 @@ import Loading from 'Components/Loading';
 import MediaCard from 'Components/Media/Card';
 
 const FETCH_SEARCH_RESULTS = gql`
-    query search($value: String!) {
-        search(name: $value) {
-            ... on Movie {
-                typename: __typename
-                name
-                posterPath
-                year
-                uuid
-            }
-            ... on Series {
-                typename: __typename
-                name
-                posterPath
-                airDate: firstAirDate
-                uuid
-            }
+  query search($value: String!) {
+    search(name: $value) {
+      type: __typename
+      ... on Movie {
+        name
+        posterPath
+        year
+        uuid
+        
+        playState {
+          finished
+          playtime
         }
+
+        files {
+          totalDuration
+        }
+      }
+      ... on Series {
+        name
+        posterPath
+        firstAirDate
+        uuid
+      }
     }
+  }
 `;
 
 const FetchSearchResults = ({ value }) => (
@@ -38,17 +46,7 @@ const FetchSearchResults = ({ value }) => (
       if (error) return `Error! ${error.message}`;
       if (data.search.length === 0) return `No Results Found For ${value}`;
 
-      return data.search.map(({
-        typename, name, posterPath, uuid,
-      }) => {
-        const result = {
-          name,
-          posterPath,
-          uuid,
-        };
-
-        return (<MediaCard type={typename} key={uuid} {...result} />);
-      });
+      return data.search.map((r => <MediaCard key={r.uuid} {...r} />));
     }}
   </Query>
 );

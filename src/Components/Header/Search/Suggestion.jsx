@@ -14,7 +14,7 @@ const renderSuggestion = (suggestion) => {
 
   return (
     <Suggestion to="/movies">
-      <Poster src={`${getBaseUrl()}/m/images/tmdb/w342/${suggestion.poster_path}`} alt={suggestion.name} />
+      <Poster src={`${getBaseUrl()}/m/images/tmdb/w342/${suggestion.posterPath}`} alt={suggestion.name} />
       <Name>{suggestion.name}</Name>
       { year
         && <Year>{year}</Year>

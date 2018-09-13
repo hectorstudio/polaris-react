@@ -6,14 +6,14 @@ import Loading from 'Components/Loading';
 import UserListItem from 'Components/Admin/Users/UserListItem';
 
 const FETCH_INVITES = gql`
-    {
-        invites {
-            code
-            user {
-                username
-            }
-        }
+{
+  invites {
+    code
+    user {
+      username
     }
+  }
+}
 `;
 
 const FetchUsers = props => (
@@ -36,13 +36,11 @@ const FetchUsers = props => (
       };
 
       if (data.invites.length === 0) {
-        return (<button onClick={() => { generateInviteCode(); }}>Generate Invite Code</button>);
+        return (<button type="submit" onClick={() => { generateInviteCode(); }}>Generate Invite Code</button>);
       }
 
       return data.invites.map(({ code, user }, i) => {
         const length = data.invites.length;
-        console.log(user);
-
 
         return (
           <React.Fragment key={i}>
@@ -53,7 +51,7 @@ const FetchUsers = props => (
             />
 
             {length === i + 1
-                && <button onClick={() => { generateInviteCode(); }}>Generate Invite Code</button>
+              && <button type="submit" onClick={() => { generateInviteCode(); }}>Generate Invite Code</button>
             }
           </React.Fragment>
         );
