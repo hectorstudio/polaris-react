@@ -5,7 +5,7 @@
  */
 
 const generateMediaUrl = (type, uuid, name) => {
-  const compiledname = name.replace(/\s+/g, '-').toLowerCase();
+  const compiledname = name.replace(/\s+/g, '-').replace(/[^\w\s]/gi, '').toLowerCase();
 
   return `/${type.toLowerCase()}/${uuid}/${compiledname}`;
 };
