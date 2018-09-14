@@ -78,7 +78,6 @@ class MediaItem extends Component {
     render() {
       const {
         name,
-        backdropPath,
         year,
         airDate,
       } = this.props;
@@ -103,7 +102,7 @@ class MediaItem extends Component {
       };
 
       return (
-        <MediaFullWrap bg={`${getBaseUrl()}/m/images/tmdb/w1280/${backdropPath}`}>
+        <MediaFullWrap>
           <MediaFull>
             <MediaLeftCol>
               <Media size="large" onClick={() => { this.playMedia(); }} {...this.props} />

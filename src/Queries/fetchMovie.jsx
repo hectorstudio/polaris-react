@@ -6,33 +6,33 @@ import Loading from 'Components/Loading';
 import MediaItem from 'Components/Media/MediaItem';
 
 const FETCH_MOVIE = gql`
-query movies($uuid: String!) {
-  movies(uuid: $uuid) {
-    type: __typename
-    name
-    year
-    overview
-    imdbID
-    backdropPath
-    uuid
-    posterPath
-    
-    playState {
-      finished
-      playtime
-    }
-    
-    files {
-      fileName
+  query movies($uuid: String!) {
+    movies(uuid: $uuid) {
+      type: __typename
+      name
+      year
+      overview
+      imdbID
+      backdropPath
       uuid
-      totalDuration
-      streams {
-        codecMime
-        streamType
+      posterPath
+      
+      playState {
+        finished
+        playtime
+      }
+      
+      files {
+        fileName
+        uuid
+        totalDuration
+        streams {
+          codecMime
+          streamType
+        }
       }
     }
   }
-}
 `;
 
 const FetchMovie = ({ uuid }) => (

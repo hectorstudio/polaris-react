@@ -9,7 +9,7 @@ export const HeaderWrap = styled.header`
     padding: 1.5rem 1.5rem 1.5rem 3rem;
     position:fixed;
     top:0;
-    background:${props => props.theme.background};
+    background:rgba(0,0,0, .2);
     border-bottom:1px solid ${props => props.theme.border};
     left: 0;
     z-index:5;

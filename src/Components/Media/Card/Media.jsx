@@ -73,7 +73,7 @@ class Media extends Component {
 const requiredPropsCheck = (props, propName, componentName) => {
   const { posterPath, stillPath } = props;
   if (!posterPath && !stillPath) {
-    return new Error(`One of 'data' or 'url' is required by '${componentName}' component.`);
+    return new Error(`One of 'posterPath' or 'stillPath' is required by '${componentName}' component.`);
   }
 
   return null;

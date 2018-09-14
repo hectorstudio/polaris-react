@@ -6,35 +6,39 @@ import Loading from 'Components/Loading';
 import Season from 'Components/Media/Season';
 
 const FETCH_SEASON = uuid => gql`
-{
-  season(uuid: "${uuid}") {
-    type: __typename
-    name
-    overview
-    seasonNumber
-    airDate
-    posterPath
-    uuid
-    unwatchedEpisodesCount
-
-    episodes {
+  {
+    season(uuid: "${uuid}") {
       type: __typename
       name
+      overview
+      seasonNumber
+      airDate
+      posterPath
       uuid
-      stillPath
-      id: tmdbID
-      
-      playState {
-        finished
-        playtime
+      unwatchedEpisodesCount
+
+      series {
+        posterPath
       }
-      
-      files {
-        totalDuration
+
+      episodes {
+        type: __typename
+        name
+        uuid
+        stillPath
+        id: tmdbID
+        
+        playState {
+          finished
+          playtime
+        }
+        
+        files {
+          totalDuration
+        }
       }
     }
   }
-}
 `;
 
 const FetchSeason = ({ uuid }) => (

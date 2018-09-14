@@ -27,7 +27,6 @@ export const CardPoster = styled.span`
   padding-top: calc(513 / 342 * 100%);
   position:relative;
   z-index:1;
-  position:relative;
   opacity:0;
   animation: ${`.3s ${aFadeIn} forwards`};
   animation-delay: .3s;

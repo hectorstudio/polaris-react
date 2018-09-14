@@ -12,6 +12,7 @@ const FETCH_SERIES = uuid => gql`
       name
       uuid
       overview
+      posterPath
       
       seasons {
         type: __typename

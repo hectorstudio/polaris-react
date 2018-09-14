@@ -10,7 +10,7 @@ const Theme = {
   light: '#F5F7FA',
   background: '#191927',
   header: '#222230',
-  border: '#252537',
+  border: '#1f1f34',
   darken: {
     primary: darken(0.2, '#FF9B3D'),
     dark: darken(0.1, '#000F32'),

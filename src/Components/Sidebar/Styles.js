@@ -7,7 +7,7 @@ export const SidebarWrap = styled.nav`
     top: ${props => props.theme.layout.header};
     left: 0;
     height: calc(100vh - ${props => props.theme.layout.header});
-    background-image: linear-gradient(to bottom, #1a1a2c 0%,${props => props.theme.lighten.background} 100%);
+    background-image: linear-gradient(to bottom, rgba(0,0,0, .3) 0%, rgba(0,0,0, .2) 100%);
     z-index:2;
     border-right:1px solid ${props => props.theme.border};
 `;
