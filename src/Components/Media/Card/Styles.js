@@ -11,7 +11,7 @@ export const CardWrap = styled.article`
   margin:${props => props.size === 'large' ? '0' : '0 .5rem 1rem'};
   cursor:pointer;
   position:relative;
-  background: #1e1e2e;
+  background: #00000015;
   overflow:hidden;
   animation: ${`.4s ${aFadeIn} alternate`};
   border-radius:.5rem;

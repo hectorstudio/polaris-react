@@ -9,7 +9,6 @@ export const SidebarWrap = styled.nav`
     height: calc(100vh - ${props => props.theme.layout.header});
     background-image: linear-gradient(to bottom, rgba(0,0,0, .3) 0%, rgba(0,0,0, .2) 100%);
     z-index:2;
-    border-right:1px solid ${props => props.theme.border};
 `;
 
 export const HomeLink = styled(NavLink)`

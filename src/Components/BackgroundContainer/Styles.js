@@ -2,7 +2,7 @@ import styled, { keyframes } from 'styled-components';
 
 const fadeInLow = keyframes`
   from { opacity: 0 }
-  to { opacity: .05 }
+  to { opacity: .1 }
 `;
 
 const AppBackground = styled.span`
