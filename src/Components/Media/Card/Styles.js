@@ -3,11 +3,11 @@ import { aFadeIn } from 'Styles/Animations';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 /* eslint no-confusing-arrow: ["off"] */
-
 export const CardWrap = styled.article`
   flex: 1 0 auto;
   width:${props => props.size === 'large' ? '100%' : '14rem'};
   max-width:${props => props.size === 'large' ? '100%' : '20rem'};
+  min-width:${props => props.size === 'large' ? '25rem' : '14rem'};
   margin:${props => props.size === 'large' ? '0' : '0 .5rem 1rem'};
   cursor:pointer;
   position:relative;
@@ -57,7 +57,7 @@ export const Unwatched = styled.span`
   height: 2rem;
   z-index:6;
   transition:.2s all;
-  box-shadow: 0 0 25px #00000080;
+  box-shadow: 0 0 25px #00000020;
   transform: rotate(45deg);
   animation: ${`.3s ${aFadeIn} forwards`};
 

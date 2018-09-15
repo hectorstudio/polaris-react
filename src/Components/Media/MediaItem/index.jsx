@@ -7,22 +7,23 @@ import {
   getBaseUrl,
   generateFileList,
   getUrlParameter,
-  convertFloatMs,
 } from 'Helpers';
 
 import REQUEST_STREAM from 'Mutations/requestStream';
 import Media from 'Components/Media/Card';
+import MediaInfo from './MediaInfo';
+import DropdownIndicator from './SelectComponents';
 import Video from './Video';
 
 import {
   VideoWrap,
   SelectStyle,
   MediaFullWrap,
+  MediaBackground,
   MediaFull,
   MediaLeftCol,
   MediaRightCol,
-  MediaName,
-  MediaInfo,
+  SelectFile,
 } from './Styles';
 
 class MediaItem extends Component {
@@ -47,7 +48,7 @@ class MediaItem extends Component {
       if (autoplay) this.playMedia();
     }
 
-    _handleFileChange = (selectedFile) => {
+    handleFileChange = (selectedFile) => {
       this.setState({
         selectedFile,
       });
@@ -76,12 +77,9 @@ class MediaItem extends Component {
     }
 
     render() {
-      const {
-        name,
-        year,
-        airDate,
-      } = this.props;
+      const { name, posterPath, season } = this.props;
       const { source, files, selectedFile } = this.state;
+      const background = (posterPath || season.series.posterPath);
 
       const videoJsOptions = {
         autoplay: true,
@@ -96,36 +94,37 @@ class MediaItem extends Component {
         }],
         plugins: {
           chromecast: {
-            receiverAppID: '2A952047', // Not required
+            receiverAppID: '2A952047',
           },
         },
       };
 
       return (
         <MediaFullWrap>
+          <MediaBackground bgimg={`${getBaseUrl()}/m/images/tmdb/w342/${background}`} />
           <MediaFull>
             <MediaLeftCol>
               <Media size="large" onClick={() => { this.playMedia(); }} {...this.props} />
             </MediaLeftCol>
             <MediaRightCol>
-              <MediaName>{name}</MediaName>
-              <MediaInfo>
-                {(year || airDate)}
-                {convertFloatMs(selectedFile.totalDuration)}
-              </MediaInfo>
+              <MediaInfo {...this.props} selectedFile={selectedFile} />
+              {files.length > 1
+                && (
+                  <SelectFile>
+                    <span>Select File:</span>
+                    <Select
+                      value={selectedFile}
+                      options={files}
+                      onChange={this.handleFileChange}
+                      components={{ DropdownIndicator }}
+                      styles={SelectStyle}
+                      isSearchable={false}
+                    />
+                  </SelectFile>
+                )
+              }
             </MediaRightCol>
           </MediaFull>
-
-          { files.length > 1
-            && (
-              <Select
-                value={selectedFile}
-                options={files}
-                onChange={this.handleFileChange}
-                styles={SelectStyle}
-              />
-            )
-          }
 
           {source !== ''
             ? (

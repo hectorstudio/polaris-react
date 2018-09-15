@@ -6,12 +6,13 @@
 
 const generateFileList = (files) => {
   const arr = [];
-
+  
   files.forEach((f, i) => {
     const file = {
       value: i,
       label: f.fileName,
       totalDuration: f.totalDuration,
+      streams: f.streams,
     };
 
     arr.push(file);

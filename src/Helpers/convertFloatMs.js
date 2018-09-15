@@ -8,15 +8,15 @@ const convertFloatMs = (time) => {
   /* eslint no-bitwise: ["error", { "allow": ["~"] }] */
   const hrs = ~~(time / 3600);
   const mins = ~~((time % 3600) / 60);
-  let ret;
+  let total;
 
   if (hrs > 0) {
-    ret = `${hrs} Hr ${(mins || '0')} Min`;
+    total = `${hrs} Hr ${(mins || '0')} Min`;
   } else {
-    ret = `${mins} Min`;
+    total = `${mins} Min`;
   }
 
-  return ret;
+  return total;
 };
 
 export default convertFloatMs;

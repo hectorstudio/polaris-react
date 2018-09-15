@@ -29,6 +29,9 @@ const FETCH_MOVIE = gql`
         streams {
           codecMime
           streamType
+          resolution
+          bitRate
+          language
         }
       }
     }
