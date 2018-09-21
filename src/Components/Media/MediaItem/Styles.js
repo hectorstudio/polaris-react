@@ -29,7 +29,7 @@ export const MediaFullWrap = styled.section`
     height:100%;
     background:${props => props.theme.background};
     opacity:.4;
-    z-index:1;
+    z-index: -1;
   }
 `;
 
@@ -49,7 +49,7 @@ export const MediaBackground = styled.span`
   position:fixed;
   top:0;
   left:0;
-  z-index:1;
+  z-index: -1;
   filter: blur(25px);
   opacity:0;
   animation: ${`.3s ${fadeInLow} forwards`};
