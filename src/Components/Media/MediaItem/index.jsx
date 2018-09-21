@@ -87,6 +87,11 @@ class MediaItem extends Component {
         techOrder: ['chromecast', 'html5'],
         enableLowInitialPlaylist: true,
 
+        html5: {
+          // NOTE(Leon Handreke): Fixes audio track loading on Chrome Linux for me
+          nativeAudioTracks: false
+        },
+
         sources: [{
           src: source,
           type: 'application/x-mpegURL',
