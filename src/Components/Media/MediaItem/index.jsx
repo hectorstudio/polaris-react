@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
-import Select from 'react-select';
 
 import {
   generateMimeTypes,
@@ -12,18 +11,18 @@ import {
 import REQUEST_STREAM from 'Mutations/requestStream';
 import Media from 'Components/Media/Card';
 import MediaInfo from './MediaInfo';
-import DropdownIndicator from './SelectComponents';
+import MediaFiles from './MediaFiles';
+import MediaSubtitles from './MediaSubtitles';
+import MediaAudio from './MediaAudio';
 import Video from './Video';
 
 import {
   VideoWrap,
-  SelectStyle,
   MediaFullWrap,
   MediaBackground,
   MediaFull,
   MediaLeftCol,
   MediaRightCol,
-  SelectFile,
 } from './Styles';
 
 class MediaItem extends Component {
@@ -48,13 +47,13 @@ class MediaItem extends Component {
       if (autoplay) this.playMedia();
     }
 
-    handleFileChange = (selectedFile) => {
+    fileChange = (selectedFile) => {
       this.setState({
         selectedFile,
       });
     }
 
-    playMedia() {
+    playMedia = () => {
       const { mutate, files } = this.props;
       const { selectedFile } = this.state;
 
@@ -89,7 +88,7 @@ class MediaItem extends Component {
 
         html5: {
           // NOTE(Leon Handreke): Fixes audio track loading on Chrome Linux for me
-          nativeAudioTracks: false
+          nativeAudioTracks: false,
         },
 
         sources: [{
@@ -113,21 +112,9 @@ class MediaItem extends Component {
             </MediaLeftCol>
             <MediaRightCol>
               <MediaInfo {...this.props} selectedFile={selectedFile} />
-              {files.length > 1
-                && (
-                  <SelectFile>
-                    <span>Select File:</span>
-                    <Select
-                      value={selectedFile}
-                      options={files}
-                      onChange={this.handleFileChange}
-                      components={{ DropdownIndicator }}
-                      styles={SelectStyle}
-                      isSearchable={false}
-                    />
-                  </SelectFile>
-                )
-              }
+              <MediaFiles files={files} selectedFile={selectedFile} fileChange={this.fileChange} />
+              <MediaSubtitles selectedFile={selectedFile} />
+              <MediaAudio selectedFile={selectedFile} />
             </MediaRightCol>
           </MediaFull>
 

@@ -6,6 +6,7 @@ import generateMediaUrl from './generateMediaUrl';
 import generateFileList from './generateFileList';
 import isInitialSetup from './isInitialSetup';
 import convertFloatMs from './convertFloatMs';
+import streamFilter from './streamFilter';
 
 export {
   getUrlParameter,
@@ -16,4 +17,5 @@ export {
   isInitialSetup,
   generateFileList,
   convertFloatMs,
+  streamFilter,
 };

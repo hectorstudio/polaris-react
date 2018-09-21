@@ -119,8 +119,8 @@ export const CardPopup = styled.div`
   position:absolute;
   top:0;
   left:0;
-  width:100%;
-  height:100%;
+  width:102%;
+  height:102%;
   z-index: 1;
   opacity:0;
   pointer-events:none;
@@ -144,7 +144,7 @@ export const CardPopup = styled.div`
   }
 `;
 
-export const AutoPlay = styled.span`
+export const PopupLink = styled.span`
   position:absolute;
   border-radius:50%;
   top:50%;
@@ -167,7 +167,7 @@ export const AutoPlay = styled.span`
   }
 `;
 
-export const AutoPlayIcon = styled(FontAwesomeIcon)`
+export const PopupIcon = styled(FontAwesomeIcon)`
   color:#FFF;
   font-size:1.6rem;
   transition:.2s all;
@@ -176,7 +176,7 @@ export const AutoPlayIcon = styled(FontAwesomeIcon)`
   left:50%;
   transform: translateY(-50%) translateX(-50%);
 
-  ${AutoPlay}:hover & {
+  ${PopupLink}:hover & {
     color:${props => props.theme.primary};
   }
 `;

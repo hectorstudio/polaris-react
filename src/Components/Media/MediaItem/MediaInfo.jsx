@@ -54,7 +54,7 @@ const MediaInfo = (props) => {
         </MediaRelease>
       </MediaName>
 
-      <MediaDetails>
+      <MediaDetails unwatched={playState.finished}>
         {selectedFile.totalDuration > 0 && (<li>{convertFloatMs(selectedFile.totalDuration)}</li>)}
         <li>{renderPlayState()}</li>
         <li>{renderResolution()}</li>

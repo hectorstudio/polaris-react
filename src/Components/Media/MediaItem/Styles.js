@@ -67,28 +67,60 @@ export const MediaRightCol = styled.div`
   padding-left: 2.5rem;
 `;
 
-export const SelectFile = styled.div`
+export const MediaInfo = styled.div`
   float:left;
   width:100%;
   display:flex;
   position:relative;
+  margin:0 0 1rem;
+`;
 
-  span {
-    padding-right:2.5rem;
-    text-transform:uppercase;
+export const MediaInfoList = styled.ul`
+  margin:0;
+  padding:0;
+
+  li {
+    display:inline-block;
     color: #FFF;
-    opacity:.5;
-    font-size:1.2rem;
-    font-weight:600;
-    line-height:2rem
-    letter-spacing:.1rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    transform: tranzslateY(-.05rem);
+    text-transform:uppercase;
+    margin-right:.5rem;
+    padding-right:.5rem;
+
+    &:last-child {
+      margin:0;
+      padding:0;
+      border:0;
+    }
   }
 `;
 
+export const MediaInfoSubhead = styled.span`
+  text-transform:uppercase;
+  color: #FFF;
+  opacity:.5;
+  font-size:1.1rem;
+  font-weight:600;
+  line-height:2rem
+  letter-spacing:.1rem;
+  margin-right:1.5rem;
+`;
+
 export const DropdownIcon = styled(FontAwesomeIcon)`
-    color: ${props => props.theme.primary};
+    color: #FFF;
     font-size:1.4rem;
     height:2rem;
+`;
+
+export const FileName = styled.p`
+  color: #FFF;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  transform: translateY(-.05rem);
 `;
 
 export const SelectStyle = {
@@ -147,7 +179,7 @@ export const SelectStyle = {
     display: 'none',
   }),
   singleValue: () => ({
-    color: '#FF9B3D',
+    color: '#FFF',
     margin: 0,
   }),
 };
@@ -192,6 +224,10 @@ export const MediaDetails = styled.ul`
 
     &:last-child {
       border-right:0;
+    }
+
+    &:nth-child(2) {
+      color: ${props => props.watched ? props.theme.secondary : props.theme.primary};
     }
   }
 `;

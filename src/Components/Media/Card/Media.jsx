@@ -11,8 +11,8 @@ import {
   CardPoster,
   CardWrap,
   CardPopup,
-  AutoPlay,
-  AutoPlayIcon,
+  PopupLink,
+  PopupIcon,
 } from './Styles';
 
 class Media extends Component {
@@ -28,13 +28,26 @@ class Media extends Component {
     });
   }
 
-  gotoMedia = (e, url, history) => {
-    history.push(url);
+  cardClick = (e, url, history) => {
+    const { onClick } = this.props;
+
+    if (onClick) {
+      onClick();
+    } else {
+      history.push(url);
+    }
   }
 
   autoPlay = (e, url, history) => {
+    const { onClick } = this.props;
+
+    if (onClick) {
+      onClick();
+    } else {
+      history.push(`${url}?autoplay=true`);
+    }
+
     e.stopPropagation();
-    history.push(`${url}?autoplay=true`);
   }
 
   render() {
@@ -44,7 +57,6 @@ class Media extends Component {
       posterPath,
       stillPath,
       type,
-      onClick,
       size,
       files,
     } = this.props;
@@ -54,16 +66,16 @@ class Media extends Component {
     const length = files[0].totalDuration;
 
     return (
-      <CardWrap onClick={e => (onClick || this.gotoMedia(e, url, history))} size={size}>
+      <CardWrap onClick={e => (this.cardClick(e, url, history))} size={size}>
         <LazyLoad height={230} debounce={100} overflow resize>
           <CardPoster bgimg={`${getBaseUrl()}/m/images/tmdb/w342/${(posterPath || stillPath)}`} alt={name}>
             <MediaInfo {...this.props} length={length} showPlayStatus={showPlayStatus} />
           </CardPoster>
         </LazyLoad>
         <CardPopup>
-          <AutoPlay onClick={e => (onClick || this.autoPlay(e, url, history))}>
-            <AutoPlayIcon icon={(showPlayStatus ? faPlay : faSearch)} />
-          </AutoPlay>
+          <PopupLink onClick={e => (this.autoPlay(e, url, history))}>
+            <PopupIcon icon={(showPlayStatus ? faPlay : faSearch)} />
+          </PopupLink>
         </CardPopup>
       </CardWrap>
     );
