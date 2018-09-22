@@ -140,8 +140,8 @@ export const CardPopup = styled.div`
   position:absolute;
   top:0;
   left:0;
-  width:100%;
-  height:100%;
+  width:calc(100% + 0.5px);
+  height:calc(100% + 0.5px);
   z-index: 1;
   opacity:0;
   pointer-events:none;
