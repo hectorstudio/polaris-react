@@ -3,9 +3,31 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { aFadeIn } from 'Styles/Animations';
 
+export const CloseVideo = styled(FontAwesomeIcon)`
+  position:absolute;
+  top:1.2rem;
+  right:1.2rem;
+  color: #FFF;
+  font-size:2rem;
+  cursor:pointer;
+  z-index:11;
+  transition:.2s all;
+  opacity:.4;
+  
+  &:hover {
+    opacity:1;
+  }
+`;
+
 export const VideoWrap = styled.article`
-    width: 600px;
-    float: left;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:10;
+    background:#00000090;
+    animation: ${`.4s ${aFadeIn} alternate`};
 `;
 
 export const MediaFull = styled.article`

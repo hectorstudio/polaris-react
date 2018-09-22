@@ -1,10 +1,11 @@
-@import '../node_modules/video.js/dist/video-js.css';
-@import '../node_modules/@silvermine/videojs-chromecast/dist/silvermine-videojs-chromecast.css';
-@import '_base/variables';
-@import '_mixins/functions';
+@import '../node_modules/video.js/dist/video-js.css',
+        '../node_modules/@silvermine/videojs-chromecast/dist/silvermine-videojs-chromecast.css',
+        '_base/variables',
+        '_mixins/functions';
 
-@import '_base/reset';
-@import '_base/fonts';
-@import '_base/core';
+@import '_base/reset',
+        '_base/fonts',
+        '_base/core';
 
-@import '_components/search';
+@import '_components/search',
+        '_components/video';

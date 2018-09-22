@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
+import { faTimes } from '@fortawesome/pro-regular-svg-icons';
 
 import {
   generateMimeTypes,
@@ -16,7 +17,7 @@ import MediaSubtitles from './MediaSubtitles';
 import MediaAudio from './MediaAudio';
 import Video from './Video';
 
-import { VideoWrap, MediaFull } from './Styles';
+import { VideoWrap, MediaFull, CloseVideo } from './Styles';
 import {
   MediaFullWrap,
   MediaLeftCol,
@@ -34,6 +35,7 @@ class MediaItem extends Component {
     componentWillMount() {
       const { files } = this.props;
       const fileList = generateFileList(files);
+      
 
       this.setState({
         files: fileList,
@@ -44,12 +46,23 @@ class MediaItem extends Component {
     componentDidMount() {
       const autoplay = getUrlParameter('autoplay');
       if (autoplay) this.playMedia();
+
+      document.addEventListener('keydown', this.closeMedia, false);
     }
+
+    componentWillUnmount() {
+      document.removeEventListener('keydown', this.closeMedia, false);
+    }
+
 
     fileChange = (selectedFile) => {
       this.setState({
         selectedFile,
       });
+    }
+
+    closeMedia = () => {
+      this.setState({ source: '' });
     }
 
     playMedia = () => {
@@ -81,7 +94,11 @@ class MediaItem extends Component {
         season,
         type,
       } = this.props;
-      const { source, files, selectedFile } = this.state;
+      const {
+        source,
+        files,
+        selectedFile,
+      } = this.state;
       const background = (posterPath || season.series.posterPath);
 
       const videoJsOptions = {
@@ -125,6 +142,7 @@ class MediaItem extends Component {
           {source !== ''
             ? (
               <VideoWrap>
+                <CloseVideo icon={faTimes} onClick={this.closeMedia} />
                 <Video {...videoJsOptions} />
               </VideoWrap>
             )
