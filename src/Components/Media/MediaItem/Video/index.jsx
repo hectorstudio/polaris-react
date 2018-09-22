@@ -8,7 +8,6 @@ export default class Video extends Component {
     this.player = videojs(this.videoNode,
       {
         ...this.props,
-        fluid: true,
         controls: true,
         html5: {
           nativeAudioTracks: false,

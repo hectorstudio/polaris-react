@@ -47,11 +47,11 @@ class MediaItem extends Component {
       const autoplay = getUrlParameter('autoplay');
       if (autoplay) this.playMedia();
 
-      document.addEventListener('keydown', this.closeMedia, false);
+      document.addEventListener('keydown', this.escapeClose, false);
     }
 
     componentWillUnmount() {
-      document.removeEventListener('keydown', this.closeMedia, false);
+      document.removeEventListener('keydown', this.escapeClose, false);
     }
 
 
@@ -60,6 +60,8 @@ class MediaItem extends Component {
         selectedFile,
       });
     }
+
+    escapeClose = e => e.key === 'Escape' && this.closeMedia();
 
     closeMedia = () => {
       this.setState({ source: '' });
