@@ -5,9 +5,18 @@ require('@silvermine/videojs-chromecast')(videojs);
 
 export default class Video extends Component {
   componentDidMount() {
-    this.player = videojs(this.videoNode, this.props, function onPlayerReady() {
-      this.chromecast();
-    });
+    this.player = videojs(this.videoNode,
+      {
+        ...this.props,
+        fluid: true,
+        controls: true,
+        html5: {
+          nativeAudioTracks: false,
+        },
+      },
+      function onPlayerReady() {
+        this.chromecast();
+      });
   }
 
   componentWillUnmount() {

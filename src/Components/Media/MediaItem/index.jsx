@@ -35,7 +35,7 @@ class MediaItem extends Component {
     componentWillMount() {
       const { files } = this.props;
       const fileList = generateFileList(files);
-      
+
 
       this.setState({
         files: fileList,
@@ -103,14 +103,8 @@ class MediaItem extends Component {
 
       const videoJsOptions = {
         autoplay: true,
-        controls: true,
         techOrder: ['chromecast', 'html5'],
         enableLowInitialPlaylist: true,
-
-        html5: {
-          // NOTE(Leon Handreke): Fixes audio track loading on Chrome Linux for me
-          nativeAudioTracks: false,
-        },
 
         sources: [{
           src: source,
