@@ -32,6 +32,36 @@ const Theme = {
     opensans: '"Open Sans", sans-serif',
     muli: '"Muli", sans-serif',
   },
+  card: {
+    small: {
+      width: '14rem',
+      maxWidth: '100%',
+      minWidth: '14rem',
+      margin: '0 1rem 1.5rem',
+      paddingTop: 'calc(513 / 342 * 100%)',
+    },
+    large: {
+      width: '100%',
+      maxWidth: '100%',
+      minWidth: '100%',
+      margin: '0',
+      paddingTop: 'calc(513 / 342 * 100%)',
+    },
+    wide: {
+      width: '20rem',
+      maxWidth: '100%',
+      minWidth: '16rem',
+      margin: '0 1rem 1.5rem',
+      paddingTop: '12rem',
+    },
+    largeWide: {
+      width: '26rem',
+      maxWidth: '100%',
+      minWidth: '20rem',
+      margin: '0',
+      paddingTop: '15rem',
+    },
+  },
 };
 
 export default Theme;

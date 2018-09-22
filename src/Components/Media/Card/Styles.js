@@ -5,16 +5,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 /* eslint no-confusing-arrow: ["off"] */
 export const CardWrap = styled.article`
   flex: 1 0 auto;
-  width:${props => props.size === 'large' ? '100%' : '14rem'};
-  max-width:${props => props.size === 'large' ? '100%' : '20rem'};
-  min-width:${props => props.size === 'large' ? '25rem' : '14rem'};
-  margin:${props => props.size === 'large' ? '0' : '0 .5rem 1rem'};
-  cursor:pointer;
+  width: ${props => props.theme.card[props.size].width};
+  max-width: ${props => props.theme.card[props.size].maxWidth};
+  min-width: ${props => props.theme.card[props.size].minWidth};
+  margin: ${props => props.theme.card[props.size].margin};
   position:relative;
-  background: #00000015;
-  overflow:hidden;
   animation: ${`.4s ${aFadeIn} alternate`};
-  border-radius:.5rem;
+`;
+
+export const PosterWrap = styled.div`
+  overflow:hidden;
+  position:relative;
+  border-radius: .3rem;
+  background: #00000015;
 `;
 
 export const CardPoster = styled.span`
@@ -24,7 +27,7 @@ export const CardPoster = styled.span`
   background-repeat:no-repeat;
   background-size:cover;
   background-position:center;
-  padding-top: calc(513 / 342 * 100%);
+  padding-top: ${props => props.theme.card[props.size].paddingTop};
   position:relative;
   z-index:1;
   opacity:0;
@@ -33,19 +36,38 @@ export const CardPoster = styled.span`
   filter: grayscale(0) saturate(125%);
   transition: .5s all;
 
-  ${CardWrap}:hover & { 
-    filter: grayscale(25%) saturate(75%);
+  ${PosterWrap}:hover & { 
+    filter: ${props => props.hover ? 'grayscale(25%) saturate(75%)' : 'grayscale(0) saturate(125%)'};
   }
 `;
 
 export const CardTitle = styled.h3`
   width: 100%;
   float: left;
-  text-align: center;
+  text-align: left;
   margin:1rem 0 0;
-  font-size:1.2rem;
-  font-weight:800;
+  font-size:1.4rem;
   color: #FFF;
+  font-weight:600;
+  font-family: ${props => props.theme.fonts.opensans};
+  cursor:pointer;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding-right: 2rem;
+
+  &:hover {
+    text-decoration:underline;
+  }
+`;
+
+export const CardEpisodeCount = styled.span`
+  float:left;
+  width:100%;
+  font-size:1.2rem;
+  font-weight:600;
+  margin-top:.5rem;
+  color: #FFFFFF75;
 `;
 
 export const Unwatched = styled.span`
@@ -61,27 +83,26 @@ export const Unwatched = styled.span`
   transform: rotate(45deg);
   animation: ${`.3s ${aFadeIn} forwards`};
 
-  ${CardWrap}:hover & { 
+  ${PosterWrap}:hover & { 
     transform: translateY(-2rem) translateX(2rem) rotate(45deg);
   }
 `;
 
 export const UnwatchedCount = styled.span`
   position:absolute;
-  top:1rem;
-  right:1rem;
+  top:.5rem;
+  right:.5rem;
   box-shadow: 0 0 25px #00000080;
   background:${props => props.theme.primary};
-  line-height:2rem;
-  padding:0 1rem;
-  border-radius:1rem;
+  padding: .4rem .8rem .3rem;
+  border-radius:.2rem;
   font-family: ${props => props.theme.fonts.muli};
   color:#FFF;
   font-size:1.2rem;
   transition:.2s all;
   font-weight:900;
 
-  ${CardWrap}:hover & { 
+  ${PosterWrap}:hover & { 
     transform: translateY(-5rem) translateX(5rem);
   }
 `;
@@ -109,7 +130,7 @@ export const PlayState = styled.span`
     background:${props => props.theme.primary};
   }
 
-  ${CardWrap}:hover & { 
+  ${PosterWrap}:hover & { 
     transform: translateY(2rem);
   }
 `;
@@ -119,8 +140,8 @@ export const CardPopup = styled.div`
   position:absolute;
   top:0;
   left:0;
-  width:102%;
-  height:102%;
+  width:100%;
+  height:100%;
   z-index: 1;
   opacity:0;
   pointer-events:none;
@@ -138,9 +159,10 @@ export const CardPopup = styled.div`
     opacity:.75;
   }
 
-  ${CardWrap}:hover & {
+  ${PosterWrap}:hover & {
     opacity:1;
     pointer-events:initial
+    cursor:pointer;
   }
 `;
 
@@ -158,7 +180,7 @@ export const PopupLink = styled.span`
   background:#00000080;
   border:2px solid #FFF; 
 
-  ${CardWrap}:hover & { 
+  ${PosterWrap}:hover & { 
     transform: translateY(-50%) translateX(-50%) scale(1);
   }
   

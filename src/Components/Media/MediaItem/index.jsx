@@ -16,14 +16,13 @@ import MediaSubtitles from './MediaSubtitles';
 import MediaAudio from './MediaAudio';
 import Video from './Video';
 
+import { VideoWrap, MediaFull } from './Styles';
 import {
-  VideoWrap,
   MediaFullWrap,
-  MediaBackground,
-  MediaFull,
   MediaLeftCol,
   MediaRightCol,
-} from './Styles';
+  MediaBackground,
+} from '../Styles';
 
 class MediaItem extends Component {
     state = {
@@ -76,7 +75,12 @@ class MediaItem extends Component {
     }
 
     render() {
-      const { name, posterPath, season } = this.props;
+      const {
+        name,
+        posterPath,
+        season,
+        type,
+      } = this.props;
       const { source, files, selectedFile } = this.state;
       const background = (posterPath || season.series.posterPath);
 
@@ -108,7 +112,7 @@ class MediaItem extends Component {
           <MediaBackground bgimg={`${getBaseUrl()}/m/images/tmdb/w342/${background}`} />
           <MediaFull>
             <MediaLeftCol>
-              <Media size="large" onClick={() => { this.playMedia(); }} {...this.props} />
+              <Media size={(type === 'Episode' ? 'largeWide' : 'large')} onClick={() => { this.playMedia(); }} {...this.props} />
             </MediaLeftCol>
             <MediaRightCol>
               <MediaInfo {...this.props} selectedFile={selectedFile} />

@@ -9,7 +9,7 @@ const SeriesList = () => (
   <ContentWrap>
     <LibraryListWrap>
       <FetchSeriesList />
-      <Empty length="10" />
+      <Empty />
     </LibraryListWrap>
   </ContentWrap>
 );

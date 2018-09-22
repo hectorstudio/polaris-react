@@ -1,21 +1,56 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MediaCard from 'Components/Media/Card';
-import { LibraryWrap, LibraryListWrap, LibraryHeading } from './Styles';
 
-const Season = ({ name, episodes }) => {
-  const episodeList = episodes.map((e => <MediaCard key={e.uuid} {...e} />));
+import { getBaseUrl } from 'Helpers';
+
+import Empty from 'Components/Media/Card/Empty';
+import Media from 'Components/Media/Card';
+
+import {
+  MediaFullWrap,
+  MediaLeftCol,
+  MediaRightCol,
+  MediaName,
+  MediaRelease,
+  SubTitle,
+  MediaBackground,
+} from '../Styles';
+import SeasonsWrap from './Styles';
+
+const Season = (props) => {
+  const {
+    name,
+    posterPath,
+    episodes,
+    airDate,
+  } = props;
+
+  const episodeList = episodes.map((e => <Media size="wide" key={e.uuid} {...e} />));
+  const releaseYear = airDate.split('-')[0];
 
   return (
-    <div>
-      <LibraryWrap>
-        <LibraryHeading>{name}</LibraryHeading>
+    <MediaFullWrap>
+      <MediaBackground bgimg={`${getBaseUrl()}/m/images/tmdb/w342/${posterPath}`} />
+      <MediaLeftCol>
+        <Media size="large" {...props} hover={false} />
+      </MediaLeftCol>
+      <MediaRightCol>
+        <MediaName>
+          { name }
+          <MediaRelease>
+            (
+            {(releaseYear)}
+            )
+          </MediaRelease>
+        </MediaName>
 
-        <LibraryListWrap>
+        <SubTitle>Episodes</SubTitle>
+        <SeasonsWrap>
           {episodeList}
-        </LibraryListWrap>
-      </LibraryWrap>
-    </div>
+          <Empty size="wide" />
+        </SeasonsWrap>
+      </MediaRightCol>
+    </MediaFullWrap>
   );
 };
 

@@ -6,11 +6,13 @@ import { faPlay, faSearch } from '@fortawesome/pro-solid-svg-icons';
 import { getBaseUrl, generateMediaUrl } from 'Helpers';
 
 import MediaInfo from './MediaInfo';
+import MediaName from './MediaName';
 
 import {
   CardPoster,
   CardWrap,
   CardPopup,
+  PosterWrap,
   PopupLink,
   PopupIcon,
 } from './Styles';
@@ -29,10 +31,12 @@ class Media extends Component {
   }
 
   cardClick = (e, url, history) => {
-    const { onClick } = this.props;
+    const { onClick, hover } = this.props;
 
     if (onClick) {
       onClick();
+    } else if (!hover) {
+      e.preventDefault();
     } else {
       history.push(url);
     }
@@ -54,29 +58,45 @@ class Media extends Component {
     const {
       history,
       name,
+      episodes,
       posterPath,
       stillPath,
       type,
       size,
       files,
+      hover,
     } = this.props;
     const { url } = this.state;
 
     const showPlayStatus = (type === 'Movie' || type === 'Episode');
-    const length = files[0].totalDuration;
+    const bgImage = (posterPath || stillPath
+      ? `${getBaseUrl()}/m/images/tmdb/w342/${(posterPath || stillPath)}`
+      : '/images/placeholder.png'
+    );
 
     return (
       <CardWrap onClick={e => (this.cardClick(e, url, history))} size={size}>
-        <LazyLoad height={230} debounce={100} overflow resize>
-          <CardPoster bgimg={`${getBaseUrl()}/m/images/tmdb/w342/${(posterPath || stillPath)}`} alt={name}>
-            <MediaInfo {...this.props} length={length} showPlayStatus={showPlayStatus} />
-          </CardPoster>
-        </LazyLoad>
-        <CardPopup>
-          <PopupLink onClick={e => (this.autoPlay(e, url, history))}>
-            <PopupIcon icon={(showPlayStatus ? faPlay : faSearch)} />
-          </PopupLink>
-        </CardPopup>
+        <PosterWrap>
+          <LazyLoad height={(size === 'wide' ? 125 : 230)} debounce={100} overflow resize>
+            <CardPoster hover={hover} size={size} bgimg={bgImage}>
+              <MediaInfo
+                {...this.props}
+                length={files[0].totalDuration}
+                showPlayStatus={showPlayStatus}
+              />
+            </CardPoster>
+          </LazyLoad>
+          {hover
+            && (
+              <CardPopup>
+                <PopupLink onClick={e => (this.autoPlay(e, url, history))}>
+                  <PopupIcon icon={(showPlayStatus ? faPlay : faSearch)} />
+                </PopupLink>
+              </CardPopup>
+            )
+          }
+        </PosterWrap>
+        {(!size.toLowerCase().includes('large') && (type === 'Season' || type === 'Episode')) && <MediaName name={name} episodes={episodes} /> }
       </CardWrap>
     );
   }
@@ -92,7 +112,7 @@ const requiredPropsCheck = (props, propName, componentName) => {
 };
 
 Media.propTypes = {
-  name: PropTypes.string.isRequired,
+  airDate: PropTypes.string,
   posterPath: requiredPropsCheck,
   stillPath: requiredPropsCheck,
   type: PropTypes.string.isRequired,
@@ -102,10 +122,13 @@ Media.propTypes = {
   })),
   history: ReactRouterPropTypes.history.isRequired,
   size: PropTypes.string,
+  hover: PropTypes.bool,
 };
 
 Media.defaultProps = {
   size: 'small',
+  airDate: null,
+  hover: true,
   posterPath: null,
   stillPath: null,
   files: [

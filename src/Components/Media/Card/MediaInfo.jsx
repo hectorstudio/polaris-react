@@ -5,7 +5,6 @@ import {
   Unwatched,
   UnwatchedCount,
   PlayState,
-  CardTitle,
 } from './Styles';
 
 export default class MediaInfo extends Component {
@@ -17,6 +16,7 @@ export default class MediaInfo extends Component {
       playState,
       showPlayStatus,
       unwatchedEpisodesCount,
+      size,
     } = this.props;
 
     const watchStatus = () => {
@@ -31,7 +31,7 @@ export default class MediaInfo extends Component {
         );
       }
 
-      if (unwatchedEpisodesCount > 0) {
+      if (unwatchedEpisodesCount > 0 && size !== 'large') {
         return <UnwatchedCount>{unwatchedEpisodesCount}</UnwatchedCount>;
       }
 
@@ -46,11 +46,8 @@ export default class MediaInfo extends Component {
   };
 
   render() {
-    const { type, name } = this.props;
-
     return (
       <React.Fragment>
-        {((type === 'Season' || type === 'Episode') && <CardTitle>{name}</CardTitle>)}
         { this.mediaState() }
       </React.Fragment>
     );
@@ -58,11 +55,10 @@ export default class MediaInfo extends Component {
 }
 
 MediaInfo.propTypes = {
-  name: PropTypes.string.isRequired,
   showPlayStatus: PropTypes.bool.isRequired,
-  type: PropTypes.string.isRequired,
   unwatchedEpisodesCount: PropTypes.number,
   length: PropTypes.number,
+  size: PropTypes.string,
   playState: PropTypes.shape({
     finished: PropTypes.bool,
     playtime: PropTypes.number,
@@ -72,6 +68,7 @@ MediaInfo.propTypes = {
 MediaInfo.defaultProps = {
   length: 0,
   unwatchedEpisodesCount: 0,
+  size: 'small',
   playState: {
     finished: true,
     playtime: 0,

@@ -15,7 +15,7 @@ const Search = ({ match }) => (
       {match.params.value}
     </PageHeading>
     <FetchSearchResults value={match.params.value} />
-    <Empty length="10" />
+    <Empty />
   </LibraryListWrap>
 );
 

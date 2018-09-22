@@ -2,13 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { convertFloatMs } from 'Helpers';
 
-import {
-  MediaName,
-  MediaRelease,
-  MediaInfoWrap,
-  MediaDetails,
-  MediaOverview,
-} from './Styles';
+import { MediaInfoWrap, MediaDetails } from './Styles';
+import { MediaName, MediaRelease, MediaOverview } from '../Styles'
 
 const MediaInfo = (props) => {
   const {
@@ -48,9 +43,9 @@ const MediaInfo = (props) => {
       <MediaName>
         { name }
         <MediaRelease>
-        (
+          (
           {(year || airDate)}
-        )
+          )
         </MediaRelease>
       </MediaName>
 

@@ -6,7 +6,7 @@
 
 const generateFileList = (files) => {
   const arr = [];
-  
+
   files.forEach((f, i) => {
     const file = {
       value: i,

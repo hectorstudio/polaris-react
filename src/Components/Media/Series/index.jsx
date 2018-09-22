@@ -1,20 +1,58 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MediaCard from 'Components/Media/Card';
 
-import { LibraryWrap, LibraryListWrap, LibraryHeading } from './Styles';
+import { getBaseUrl } from 'Helpers';
 
-const Series = ({ name, seasons, overview }) => {
-  const seasonList = seasons.map((s => <MediaCard key={s.uuid} {...s} />));
+import Empty from 'Components/Media/Card/Empty';
+import Media from 'Components/Media/Card';
+
+import {
+  MediaFullWrap,
+  MediaLeftCol,
+  MediaRightCol,
+  MediaName,
+  SubTitle,
+  MediaRelease,
+  MediaOverview,
+  MediaBackground,
+} from '../Styles';
+import SeasonsWrap from './Styles';
+
+const Series = (props) => {
+  const {
+    name,
+    posterPath,
+    seasons,
+    overview,
+    firstAirDate,
+  } = props;
+
+  const seasonList = seasons.map((s => <Media key={s.uuid} {...s} />));
+  const releaseYear = firstAirDate.split('-')[0];
 
   return (
-    <LibraryWrap>
-      <LibraryHeading>{name}</LibraryHeading>
-      <p>{overview}</p>
-      <LibraryListWrap>
-        {seasonList}
-      </LibraryListWrap>
-    </LibraryWrap>
+    <MediaFullWrap>
+      <MediaBackground bgimg={`${getBaseUrl()}/m/images/tmdb/w342/${posterPath}`} />
+      <MediaLeftCol>
+        <Media size="large" {...props} hover={false} />
+      </MediaLeftCol>
+      <MediaRightCol>
+        <MediaName>
+          {name}
+          <MediaRelease>
+            (
+            {releaseYear}
+            )
+          </MediaRelease>
+        </MediaName>
+        <MediaOverview>{overview}</MediaOverview>
+        <SubTitle>Seasons</SubTitle>
+        <SeasonsWrap>
+          {seasonList}
+          <Empty />
+        </SeasonsWrap>
+      </MediaRightCol>
+    </MediaFullWrap>
   );
 };
 

@@ -9,7 +9,7 @@ const MovieList = () => (
   <ContentWrap>
     <LibraryListWrap>
       <FetchMovieList />
-      <Empty length="10" />
+      <Empty />
     </LibraryListWrap>
   </ContentWrap>
 );

@@ -13,6 +13,7 @@ const FETCH_SERIES = uuid => gql`
       uuid
       overview
       posterPath
+      firstAirDate
       
       seasons {
         type: __typename
@@ -20,6 +21,10 @@ const FETCH_SERIES = uuid => gql`
         posterPath
         uuid
         unwatchedEpisodesCount
+        
+        episodes {
+          uuid
+        }
       }
     }
   }

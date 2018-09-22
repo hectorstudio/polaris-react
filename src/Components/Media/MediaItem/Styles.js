@@ -1,36 +1,11 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { aFadeIn } from 'Styles/Animations';
 
-const fadeInLow = keyframes`
-  from { opacity: 0 }
-  to { opacity: .2 }
-`;
-
 export const VideoWrap = styled.article`
     width: 600px;
     float: left;
-`;
-
-export const MediaFullWrap = styled.section`
-  float:left;
-  width:100%;
-  height:calc(100vh - ${props => props.theme.layout.header});
-  padding:5rem;
-  position:relative;
-
-  &:after {
-    content:'';
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:${props => props.theme.background};
-    opacity:.4;
-    z-index: -1;
-  }
 `;
 
 export const MediaFull = styled.article`
@@ -39,32 +14,6 @@ export const MediaFull = styled.article`
   position:relative;
   z-index:5;
   display:flex;
-`;
-
-export const MediaBackground = styled.span`
-  background: url(${props => props.bgimg}) no-repeat center;
-  background-size:cover;
-  width:100%;
-  height:100%;
-  position:fixed;
-  top:0;
-  left:0;
-  z-index: -1;
-  filter: blur(25px);
-  opacity:0;
-  animation: ${`.3s ${fadeInLow} forwards`};
-  animation-delay: .3s;
-`;
-
-export const MediaLeftCol = styled.div`
-  float:left;
-  width:25rem;
-  margin-right: 2.5rem;
-`;
-
-export const MediaRightCol = styled.div`
-  float:left;
-  padding-left: 2.5rem;
 `;
 
 export const MediaInfo = styled.div`
@@ -190,23 +139,6 @@ export const MediaInfoWrap = styled.div`
   width:100%;
 `;
 
-export const MediaName = styled.h1`
-  font-size:3rem;
-  color:#FFF;
-  font-weight:600;
-  float:left;
-  width:100%;
-  margin:0 0 2rem;
-`;
-
-export const MediaRelease = styled.span`
-  font-size:1.6rem;
-  color:${props => props.theme.secondary};
-  opacity:.5;
-  font-weight:400;
-  margin-left:1rem;
-`;
-
 export const MediaDetails = styled.ul`
   float:left;
   width:100%;
@@ -230,14 +162,4 @@ export const MediaDetails = styled.ul`
       color: ${props => props.watched ? props.theme.secondary : props.theme.primary};
     }
   }
-`;
-
-export const MediaOverview = styled.p`
-  font-size:1.4rem;
-  line-height:2.6rem;
-  color:${props => props.theme.secondary};
-  font-weight:400;
-  float:left;
-  width:100%;
-  margin:0 0 2rem;
 `;
