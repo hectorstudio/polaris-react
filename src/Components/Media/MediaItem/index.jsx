@@ -129,7 +129,11 @@ class MediaItem extends Component {
             </MediaLeftCol>
             <MediaRightCol>
               <MediaInfo {...this.props} selectedFile={selectedFile} />
-              <MediaFiles files={files} selectedFile={selectedFile} fileChange={this.fileChange} />
+              <MediaFiles
+                files={files}
+                selectedFile={selectedFile}
+                fileChange={this.fileChange}
+              />
               <MediaSubtitles selectedFile={selectedFile} />
               <MediaAudio selectedFile={selectedFile} />
             </MediaRightCol>

@@ -28,6 +28,7 @@ const FETCH_EPISODE = gql`
 
       files {
         fileName
+        filePath
         uuid
         totalDuration
         streams {

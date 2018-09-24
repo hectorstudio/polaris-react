@@ -24,6 +24,7 @@ const FETCH_MOVIE = gql`
       
       files {
         fileName
+        filePath
         uuid
         totalDuration
         streams {

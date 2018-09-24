@@ -11,6 +11,7 @@ const generateFileList = (files) => {
     const file = {
       value: i,
       label: f.fileName,
+      filePath: f.filePath,
       totalDuration: f.totalDuration,
       streams: f.streams,
     };

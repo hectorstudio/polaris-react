@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { convertFloatMs } from 'Helpers';
 
 import { MediaInfoWrap, MediaDetails } from './Styles';
-import { MediaName, MediaRelease, MediaOverview } from '../Styles'
+import { MediaName, MediaRelease, MediaOverview } from '../Styles';
 
 const MediaInfo = (props) => {
   const {
@@ -38,6 +38,12 @@ const MediaInfo = (props) => {
     return resolution;
   };
 
+  const renderTotalD = () => {
+    if (!selectedFile.totalDuration > 0) return 'Unknown Length';
+
+    return convertFloatMs(selectedFile.totalDuration);
+  };
+
   return (
     <MediaInfoWrap>
       <MediaName>
@@ -50,7 +56,7 @@ const MediaInfo = (props) => {
       </MediaName>
 
       <MediaDetails unwatched={playState.finished}>
-        {selectedFile.totalDuration > 0 && (<li>{convertFloatMs(selectedFile.totalDuration)}</li>)}
+        <li>{renderTotalD()}</li>
         <li>{renderPlayState()}</li>
         <li>{renderResolution()}</li>
       </MediaDetails>
