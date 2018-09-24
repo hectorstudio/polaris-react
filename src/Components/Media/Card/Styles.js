@@ -55,6 +55,7 @@ export const CardTitle = styled.h3`
   text-overflow: ellipsis;
   overflow: hidden;
   padding-right: 2rem;
+  line-height: 2.2rem;
 
   &:hover {
     text-decoration:underline;

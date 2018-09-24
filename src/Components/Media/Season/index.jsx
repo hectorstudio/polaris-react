@@ -11,6 +11,7 @@ import {
   MediaLeftCol,
   MediaRightCol,
   MediaName,
+  MediaOverview,
   MediaRelease,
   SubTitle,
   MediaBackground,
@@ -23,6 +24,7 @@ const Season = (props) => {
     posterPath,
     episodes,
     airDate,
+    overview,
   } = props;
 
   const episodeList = episodes.map((e => <Media size="wide" key={e.uuid} {...e} />));
@@ -43,7 +45,7 @@ const Season = (props) => {
             )
           </MediaRelease>
         </MediaName>
-
+        <MediaOverview>{overview}</MediaOverview>
         <SubTitle>Episodes</SubTitle>
         <SeasonsWrap>
           {episodeList}

@@ -33,6 +33,9 @@ const FETCH_EPISODE = gql`
         streams {
           codecMime
           streamType
+          resolution
+          bitRate
+          language
         }
       }
     }
