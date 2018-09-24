@@ -10,7 +10,7 @@ export default class Video extends Component {
         ...this.props,
         controls: true,
         html5: {
-          nativeAudioTracks: false,
+          nativeAudioTracks: false
         },
       },
       function onPlayerReady() {
