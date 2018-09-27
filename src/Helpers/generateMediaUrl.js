@@ -4,10 +4,6 @@
  * @return {String} Returns url string
  */
 
-const generateMediaUrl = (type, uuid, name) => {
-  const compiledname = name.replace(/\s+/g, '-').replace(/[^\w\s]/gi, '').toLowerCase();
-
-  return `/${type.toLowerCase()}/${uuid}/${compiledname}`;
-};
+const generateMediaUrl = (type, uuid) => `/${type.toLowerCase()}/${uuid}`;
 
 export default generateMediaUrl;

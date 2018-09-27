@@ -19,7 +19,6 @@ export const MediaFullWrap = styled.section`
     left:0;
     width:100%;
     height:100%;
-    background:${props => props.theme.background};
     opacity:.2;
     z-index: -1;
   }

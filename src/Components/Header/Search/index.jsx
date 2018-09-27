@@ -72,7 +72,7 @@ class Search extends Component {
   onSuggestionSelected = (e, { suggestion }) => {
     const { history } = this.props;
 
-    history.push(generateMediaUrl(suggestion.type, suggestion.uuid, suggestion.name));
+    history.push(generateMediaUrl(suggestion.type, suggestion.uuid));
   }
 
   unmountComponent = () => {

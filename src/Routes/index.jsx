@@ -38,14 +38,14 @@ export default class Routes extends Component {
 
   initialRender = () => {
     if (Auth.isAuthenticated) {
-      return <Redirect to="/dashboard" />
-    } else {
-      if (isInitialSetup()) {
-        return <Redirect to="/register" />
-      } else {
-        return <Redirect to="/login" />
-      }
+      return <Redirect to="/dashboard" />;
     }
+
+    if (isInitialSetup()) {
+      return <Redirect to="/register" />;
+    }
+
+    return <Redirect to="/login" />;
   };
 
   render() {
@@ -62,12 +62,12 @@ export default class Routes extends Component {
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
 
         <PrivateRoute exact path="/movies" component={MovieList} />
-        <PrivateRoute exact path="/movie/:uuid/:name" component={Movie} />
+        <PrivateRoute exact path="/movie/:uuid" component={Movie} />
 
         <PrivateRoute exact path="/series" component={SeriesList} />
-        <PrivateRoute exact path="/series/:uuid/:name" component={Series} />
-        <PrivateRoute exact path="/season/:uuid/:name" component={Season} />
-        <PrivateRoute exact path="/episode/:uuid/:name" component={Episode} />
+        <PrivateRoute exact path="/series/:uuid" component={Series} />
+        <PrivateRoute exact path="/season/:uuid" component={Season} />
+        <PrivateRoute exact path="/episode/:uuid" component={Episode} />
 
         <PrivateRoute exact path="/search/:value" component={Search} />
       </Switch>

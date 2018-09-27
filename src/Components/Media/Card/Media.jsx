@@ -23,10 +23,13 @@ class Media extends Component {
   }
 
   componentDidMount() {
-    const { type, uuid, name } = this.props;
+    const {
+      type,
+      uuid,
+    } = this.props;
 
     this.setState({
-      url: generateMediaUrl(type, uuid, name),
+      url: generateMediaUrl(type, uuid),
     });
   }
 
@@ -112,6 +115,7 @@ const requiredPropsCheck = (props, propName, componentName) => {
 };
 
 Media.propTypes = {
+  name: PropTypes.string.isRequired,
   airDate: PropTypes.string,
   posterPath: requiredPropsCheck,
   stillPath: requiredPropsCheck,

@@ -19,17 +19,6 @@ export const DashboardLink = styled(Link)`
   padding:1rem 2rem 0 0;
   margin-right:3rem;
   position:relative;
-
-  &:before {
-    content: '';
-    position:absolute;
-    top:50%;
-    right:0;
-    transform: translateY(-50%);
-    height:3rem;
-    width:.1rem;
-    background: ${props => props.theme.border};
-  }
 `;
 
 export const LogoutIcon = styled(FontAwesomeIcon)`
