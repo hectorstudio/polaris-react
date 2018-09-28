@@ -4,7 +4,9 @@ import { NavItemWrap, NavItemHeading, NavItemLink } from './Styles';
 
 const NavItem = ({ name, links }) => {
   const LinkList = links.map((link => (
-    <NavItemLink to={link.to} key={link.id}>{link.name}</NavItemLink>
+    <NavItemLink to={link.to} key={link.id}>
+      {link.name}
+    </NavItemLink>
   )));
 
   return (

@@ -1,7 +1,7 @@
 import { darken, lighten } from 'polished';
 
 const Theme = {
-  primary: '#FFF',
+  primary: '#FF9B3D',
   secondary: '#C9CCD1',
   text: '#556488',
   dark: '#000F32',

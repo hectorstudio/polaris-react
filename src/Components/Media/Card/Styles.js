@@ -11,6 +11,7 @@ export const CardWrap = styled.article`
   margin: ${props => props.theme.card[props.size].margin};
   position:relative;
   animation: ${`.4s ${aFadeIn} alternate`};
+  z-index:1;
 `;
 
 export const PosterWrap = styled.div`

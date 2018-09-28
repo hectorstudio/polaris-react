@@ -4,9 +4,9 @@ import { NavLink } from 'react-router-dom';
 export const SidebarWrap = styled.nav`
     width: ${props => props.theme.layout.sidebar};
     position: fixed;
-    top: ${props => props.theme.layout.header};
+    top: 0;
     left: 0;
-    height: calc(100vh - ${props => props.theme.layout.header});
+    height: 100vh;
     background-image: linear-gradient(to bottom, rgba(0,0,0, .3) 0%, rgba(0,0,0, .2) 100%);
     z-index:2;
 `;
@@ -17,6 +17,13 @@ export const HomeLink = styled(NavLink)`
     padding:1.5rem;
     align-self: center;
     margin: auto;
+`;
+
+export const DashboardLink = styled(NavLink)`
+  float:left;
+  padding:1rem 2rem 0 0;
+  margin:3rem 3rem 0;
+  position:relative;
 `;
 
 export const NavItemWrap = styled.section`
