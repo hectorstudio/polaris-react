@@ -24,9 +24,9 @@ export const AddLibraryButton = styled.button`
 export const ModalHeader = styled.header`
   float:left;
   width:100%;
-  min-width:50rem;
+  max-width:60rem;
+  width:100%;
   padding:2rem;
-  margin-bottom:2rem;
   border-bottom:1px solid rgba(0,0,0, .2);
   background: rgba(0,0,0, .1);
 `;
@@ -38,11 +38,27 @@ export const ModalHeading = styled.h3`
   font-weight:600;
 `;
 
+export const ModalBody = styled.div`
+  float:left;
+  width:100%;
+  padding:2rem;
+`;
+
+export const AddLibraryWrap = styled.article`
+
+`;
+
+export const AddLibraryInput = styled.input`
+  
+`;
+
+export const SubmitLibrary = styled.button`
+  
+`;
+
 export const LibraryItemWrap = styled.article`
   float:left;
-  padding:0 2rem;
   width:100%;
-  margin-bottom:2rem;
 `;
 
 export const LibraryItemFilePath = styled.span`

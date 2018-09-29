@@ -9,7 +9,7 @@ import {
   AlertType,
   IconWrap,
   Close,
-} from './Style';
+} from './Styles';
 
 const AlertOptions = {
   position: 'bottom right',

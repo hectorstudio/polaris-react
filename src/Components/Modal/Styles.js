@@ -34,7 +34,7 @@ StyledModal.displayName = 'StyledModal';
 
 export const Container = styled.div`
   background-color: ${props => props.theme.background};
-  max-width: 70rem;
+  max-width: 50rem;
   padding: 0;
   position: relative;
   animation: ${`.3s ${fadeInZoom} forwards`};
