@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
 import Loading from 'Components/Loading';
-import AlertInline from 'Components/Alerts/AlertInline';
+import { AlertInline } from 'Components/Alerts';
 import LibraryItem from 'Components/Media/LibraryHeader/LibraryItem';
 
 const FETCH_LIBRARIES = gql`
@@ -34,8 +34,6 @@ const FetchLibraryList = ({ type }) => (
         );
       }
 
-      console.log(data);
-
       return filteredLibrary.map(
         (li => <LibraryItem key={li.id} filePath={li.filePath} id={li.id} />),
       );
@@ -48,4 +46,7 @@ FetchLibraryList.propTypes = {
   type: PropTypes.string.isRequired,
 };
 
-export default FetchLibraryList;
+export {
+  FetchLibraryList,
+  FETCH_LIBRARIES,
+};

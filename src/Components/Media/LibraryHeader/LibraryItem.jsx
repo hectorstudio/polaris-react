@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { graphql } from 'react-apollo';
 
 import { faTrash } from '@fortawesome/pro-regular-svg-icons';
+import { AlertInline } from 'Components/Alerts';
+import { FETCH_LIBRARIES } from 'Queries/fetchLibraries';
 import { DELETE_LIBRARY } from 'Mutations/manageLibraries';
 
 import { LibraryItemWrap, LibraryItemFilePath, LibraryItemDelete } from './Styles';
@@ -10,8 +12,10 @@ import { LibraryItemWrap, LibraryItemFilePath, LibraryItemDelete } from './Style
 class LibraryItem extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      deleted: false,
+      error: false,
+      errorMessage: '',
     };
   }
 
@@ -20,16 +24,15 @@ class LibraryItem extends Component {
 
     mutate({
       variables: { id },
+      refetchQueries: [{ query: FETCH_LIBRARIES }],
     })
       .then((res) => {
-        if (res.error.hasError) {
+        const { error } = res.data.deleteLibrary;
+
+        if (error) {
           this.setState({
             error: true,
-            errorMessage: res.error.message
-          });
-        } else {
-          this.setState({
-            deleted: true,
+            errorMessage: error.message,
           });
         }
       })
@@ -39,18 +42,15 @@ class LibraryItem extends Component {
           errorMessage: error.message,
         });
       });
-
-    console.log(id);
   }
 
   render() {
     const { filePath, id } = this.props;
-    const { deleted } = this.state;
-
-    if (deleted) return <p>Deleted</p>;
+    const { error, errorMessage } = this.state;
 
     return (
       <LibraryItemWrap>
+        { error && <AlertInline type="error">{errorMessage}</AlertInline> }
         <LibraryItemFilePath>{filePath}</LibraryItemFilePath>
         <LibraryItemDelete icon={faTrash} onClick={() => this.deleteLibrary(id)} />
       </LibraryItemWrap>
@@ -61,6 +61,7 @@ class LibraryItem extends Component {
 LibraryItem.propTypes = {
   filePath: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
+  mutate: PropTypes.func.isRequired,
 };
 
 export default LibraryItem = graphql(DELETE_LIBRARY)(LibraryItem);

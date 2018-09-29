@@ -48,7 +48,7 @@ export const ModalCloseButton = styled.button`
   top: 1rem;
   right: 1rem;
   background: #15151e;
-  color: #ffffff25;
+  color: #ffffff50;
   line-height: 3.6rem;
   border: 1px solid #12121c;
   padding: 0 1rem;

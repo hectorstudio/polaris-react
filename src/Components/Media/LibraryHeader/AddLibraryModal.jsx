@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'react-apollo';
 
-import FetchLibraryList from 'Queries/fetchLibraries';
+import { FetchLibraryList, FETCH_LIBRARIES } from 'Queries/fetchLibraries';
 import { ADD_LIBRARY } from 'Mutations/manageLibraries';
 
+import { AlertInline } from 'Components/Alerts';
 import Modal from 'Components/Modal';
 import AddLibrary from './AddLibrary';
 
@@ -14,7 +15,7 @@ class AddLibraryModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      added: false,
+      addedLibraries: [],
       error: false,
       errorMessage: '',
     };
@@ -22,6 +23,8 @@ class AddLibraryModal extends Component {
 
   addLibrary = (filePath) => {
     const { type, mutate } = this.props;
+    const { addedLibraries } = this.state;
+
     const kind = (type === 'movies' ? 0 : 1);
 
     mutate({
@@ -30,17 +33,22 @@ class AddLibraryModal extends Component {
         kind,
         filePath,
       },
+      refetchQueries: [{ query: FETCH_LIBRARIES }],
     })
-      .then(() => {
-        this.setState({
-          added: true,
-        });
+      .then((res) => {
+        const { library } = res.data.createLibrary;
 
-        console.log('test');
+        this.setState({
+          addedLibraries: [
+            ...addedLibraries,
+            {
+              filePath: library.filePath,
+              id: library.id,
+            },
+          ],
+        });
       })
       .catch((error) => {
-        console.log(error);
-
         this.setState({
           error: true,
           errorMessage: error,
@@ -55,18 +63,19 @@ class AddLibraryModal extends Component {
       type,
       isOpen,
     } = this.props;
-    const { added } = this.state;
+    const { error, errorMessage } = this.state;
 
     const Heading = `Manage ${type} folders`;
 
     return (
-      <Modal contentLabel={contentLabel} isOpen={isOpen} onClose={() => (onClose(isOpen))} added={added}>
+      <Modal contentLabel={contentLabel} isOpen={isOpen} onClose={() => (onClose(isOpen))}>
         <ModalHeader>
           <ModalHeading>
             {Heading}
           </ModalHeading>
         </ModalHeader>
         <ModalBody>
+          {error && <AlertInline type="error">{errorMessage}</AlertInline>}
           <FetchLibraryList type={type} />
           <AddLibrary addLibrary={this.addLibrary} />
         </ModalBody>

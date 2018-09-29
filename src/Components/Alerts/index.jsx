@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import AlertIcon from './AlertIcon';
+import AlertInline from './AlertInline';
 
 import {
   AlertWrap,
@@ -55,4 +56,5 @@ AlertTemplate.defaultProps = {
 export {
   AlertTemplate,
   AlertOptions,
+  AlertInline,
 };

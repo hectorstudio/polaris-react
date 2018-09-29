@@ -16,14 +16,16 @@ const getColor = (props) => {
 export const AlertInlineWrap = styled.span`
   float:left;
   width:100%;
-  background: ${props => getColor(props)};
-  color:#FFF;
+  color: ${props => getColor(props)};
+  border:1px solid ${props => getColor(props)};
+  background:rgb(22, 22, 34);
   line-height:4rem;
   font-size:1.4rem;
   padding:0 1.5rem;
   border-radius:.3rem;
   text-align:center;
   font-weight:600;
+  margin:0 0 2rem;
 `;
 
 export const AlertWrap = styled.div`
