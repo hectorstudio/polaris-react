@@ -43,7 +43,7 @@ const FetchLibraryList = ({ kind }) => (
 );
 
 FetchLibraryList.propTypes = {
-  kind: PropTypes.string.isRequired,
+  kind: PropTypes.number.isRequired,
 };
 
 export {
