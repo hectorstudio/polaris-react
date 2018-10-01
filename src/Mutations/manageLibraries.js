@@ -7,6 +7,10 @@ export const ADD_LIBRARY = gql`
         filePath
         id
       }
+      error {
+        hasError
+        message
+      }
     }
   }
 `;
