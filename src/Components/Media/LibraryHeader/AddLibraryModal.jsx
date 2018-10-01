@@ -42,7 +42,7 @@ class AddLibraryModal extends Component {
       refetchQueries: [{ query: FETCH_LIBRARIES }],
     })
       .then((res) => {
-        const { error } = res.data.deleteLibrary;
+        const { error } = res.data.createLibrary;
 
         if (error) {
           this.setState({
