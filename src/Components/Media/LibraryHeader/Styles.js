@@ -55,7 +55,7 @@ export const AddLibraryWrap = styled.article`
 export const AddLibraryInput = styled.input`
   padding:0 6.5rem 0 1.5rem;
   line-height:5rem;
-  background: #FFF;
+  background: #000;
   border-radius:.3rem;
   color:#737382;
   display:block;
@@ -88,7 +88,7 @@ export const SubmitLibrary = styled(FontAwesomeIcon)`
   padding: 0 1.5rem;
   color:#FFF;
   pointer-events: ${(props => props.disabled ? 'none' : 'initial')};
-  background: ${(props => props.disabled ? '#DDD' : props.theme.alerts.success)};
+  background: ${(props => props.disabled ? '#000' : props.theme.alerts.success)};
 `;
 
 export const LibraryItemWrap = styled.article`

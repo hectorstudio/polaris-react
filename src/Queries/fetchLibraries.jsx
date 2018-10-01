@@ -11,13 +11,13 @@ const FETCH_LIBRARIES = gql`
   {
     libraries {
       id
-      name
+      kind
       filePath
     }
   }
 `;
 
-const FetchLibraryList = ({ type }) => (
+const FetchLibraryList = ({ kind }) => (
   <Query
     query={FETCH_LIBRARIES}
   >
@@ -26,7 +26,7 @@ const FetchLibraryList = ({ type }) => (
       if (loading) return <Loading relative />;
       if (error) return `Error! ${error.message}`;
 
-      const filteredLibrary = data.libraries.filter(l => l.name === type);
+      const filteredLibrary = data.libraries.filter(l => l.kind === kind);
 
       if (filteredLibrary.length === 0) {
         return (
@@ -43,7 +43,7 @@ const FetchLibraryList = ({ type }) => (
 );
 
 FetchLibraryList.propTypes = {
-  type: PropTypes.string.isRequired,
+  kind: PropTypes.string.isRequired,
 };
 
 export {

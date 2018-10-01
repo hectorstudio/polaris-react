@@ -29,7 +29,7 @@ export default class AddLibrary extends Component {
 
     return (
       <AddLibraryWrap>
-        <AddLibraryInput type="text" onChange={e => this.handleChange(e)} />
+        <AddLibraryInput autofocus="true" placeholder="Enter Filepath" type="text" onChange={e => this.handleChange(e)} />
         <SubmitLibrary disabled={disabled} icon={faPlus} onClick={() => addLibrary(filePath)} />
       </AddLibraryWrap>
     );

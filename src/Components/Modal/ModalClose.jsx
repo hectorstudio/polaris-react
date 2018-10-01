@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { ModalCloseButton } from './Styles';
 
 const ModalClose = ({ onClick }) => (
-  <ModalCloseButton onClick={onClick}>Exit Modal</ModalCloseButton>
+  <ModalCloseButton onClick={onClick}>Close</ModalCloseButton>
 );
 
 ModalClose.propTypes = {

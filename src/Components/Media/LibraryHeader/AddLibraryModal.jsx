@@ -15,17 +15,23 @@ class AddLibraryModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      addedLibraries: [],
       error: false,
       errorMessage: '',
+      kind: 0,
     };
+  }
+
+  componentDidMount() {
+    const { type } = this.props;
+
+    this.setState({
+      kind: (type === 'movies' ? 0 : 1),
+    });
   }
 
   addLibrary = (filePath) => {
     const { type, mutate } = this.props;
-    const { addedLibraries } = this.state;
-
-    const kind = (type === 'movies' ? 0 : 1);
+    const { kind } = this.state;
 
     mutate({
       variables: {
@@ -35,19 +41,6 @@ class AddLibraryModal extends Component {
       },
       refetchQueries: [{ query: FETCH_LIBRARIES }],
     })
-      .then((res) => {
-        const { library } = res.data.createLibrary;
-
-        this.setState({
-          addedLibraries: [
-            ...addedLibraries,
-            {
-              filePath: library.filePath,
-              id: library.id,
-            },
-          ],
-        });
-      })
       .catch((error) => {
         this.setState({
           error: true,
@@ -63,7 +56,7 @@ class AddLibraryModal extends Component {
       type,
       isOpen,
     } = this.props;
-    const { error, errorMessage } = this.state;
+    const { error, errorMessage, kind } = this.state;
 
     const Heading = `Manage ${type} folders`;
 
@@ -76,7 +69,7 @@ class AddLibraryModal extends Component {
         </ModalHeader>
         <ModalBody>
           {error && <AlertInline type="error">{errorMessage}</AlertInline>}
-          <FetchLibraryList type={type} />
+          <FetchLibraryList kind={kind} />
           <AddLibrary addLibrary={this.addLibrary} />
         </ModalBody>
       </Modal>
