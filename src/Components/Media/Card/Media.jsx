@@ -42,15 +42,20 @@ class Media extends Component {
   }
 
   cardClick = (e, url, history, showPlayStatus) => {
-    const { onClick, playState } = this.props;
+    const { playState, onClick, internalCard } = this.props;
 
     if (showPlayStatus) {
-      if (playState.playtime > 0) {
+      if (playState.playtime > 0 && !playState.finished) {
         this.toggleModal();
-      } else if (onClick) {
+      } else if (internalCard) {
         onClick();
+      } else if (e.target.tagName === 'DIV') {
+        history.push(url);
       } else {
-        history.push(`${url}?autoplay=true`);
+        history.push({
+          pathname: url,
+          state: { autoplay: true },
+        });
       }
     } else {
       history.push(url);
@@ -68,6 +73,7 @@ class Media extends Component {
       size,
       files,
       hover,
+      resumeMedia,
     } = this.props;
     const { url, modalOpen } = this.state;
 
@@ -109,6 +115,7 @@ class Media extends Component {
           contentLabel="Resume Media"
           isOpen={modalOpen}
           onClose={() => (this.toggleModal(modalOpen))}
+          resumeMedia={resumeMedia}
         />
       </React.Fragment>
     );

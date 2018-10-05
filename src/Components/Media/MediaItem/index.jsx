@@ -29,19 +29,21 @@ import {
 class MediaItem extends Component {
     state = {
       source: '',
+      resume: false,
       files: [],
       selectedFile: {},
       playState: {},
     }
 
     componentWillMount() {
-      const { files, playState } = this.props;
+      const { files, playState, location } = this.props;
       const fileList = generateFileList(files);
 
       this.setState({
         files: fileList,
         selectedFile: fileList[0],
-        playState
+        resume: (location.state ? location.state.resume : false),
+        playState,
       });
     }
 
@@ -66,7 +68,9 @@ class MediaItem extends Component {
     escapeClose = e => e.key === 'Escape' && this.closeMedia();
 
     closeMedia = () => {
-      this.setState({ source: '' });
+      this.setState({
+        source: '',
+      });
     }
 
     playMedia = () => {
@@ -78,8 +82,6 @@ class MediaItem extends Component {
       })
         .then(({ data }) => {
           const mimeTypes = generateMimeTypes(files[selectedFile.value].streams);
-
-
           const streamPath = data.createStreamingTicket.streamingPath;
 
           this.setState({
@@ -91,6 +93,14 @@ class MediaItem extends Component {
         });
     }
 
+    resumeMedia = (resume) => {
+      this.setState({ resume });
+
+      this.playMedia();
+    }
+
+    updatePlayState = (playtime, finished) => this.setState({ playState: { playtime, finished } });
+
     render() {
       const {
         name,
@@ -98,13 +108,13 @@ class MediaItem extends Component {
         season,
         type,
         uuid,
-        location,
       } = this.props;
       const {
         source,
         files,
         selectedFile,
         playState,
+        resume,
       } = this.state;
       const background = (posterPath || season.series.posterPath);
 
@@ -125,15 +135,26 @@ class MediaItem extends Component {
         },
       };
 
+      const mediaInfo = {
+        ...this.props,
+        playState,
+      };
+
       return (
         <MediaFullWrap>
           <MediaBackground bgimg={`${getBaseUrl()}/m/images/tmdb/w342/${background}`} />
           <MediaFull>
             <MediaLeftCol>
-              <Media size={(type === 'Episode' ? 'largeWide' : 'large')} onClick={() => { this.playMedia(); }} {...this.props} />
+              <Media
+                size={(type === 'Episode' ? 'largeWide' : 'large')}
+                resumeMedia={this.resumeMedia}
+                onClick={() => { this.playMedia(); }}
+                internalCard
+                {...mediaInfo}
+              />
             </MediaLeftCol>
             <MediaRightCol>
-              <MediaInfo {...this.props} selectedFile={selectedFile} />
+              <MediaInfo {...mediaInfo} selectedFile={selectedFile} />
               <MediaFiles
                 files={files}
                 selectedFile={selectedFile}
@@ -150,10 +171,11 @@ class MediaItem extends Component {
                 <CloseVideo icon={faTimes} onClick={this.closeMedia} />
                 <Video
                   {...videoJsOptions}
-                  resume={location.state.resume}
+                  resume={resume}
                   playState={playState}
                   uuid={uuid}
                   length={selectedFile.totalDuration}
+                  updatePlayState={this.updatePlayState}
                 />
               </VideoWrap>
             )

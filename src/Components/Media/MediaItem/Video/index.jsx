@@ -30,7 +30,11 @@ class Video extends Component {
       this.chromecast();
     });
 
-    if (resume) this.player.currentTime(playState.playtime);
+    if (resume) {
+      this.player.currentTime(playState.playtime);
+    } else {
+      this.player.currentTime(0);
+    }
 
     const updatePlayState = setInterval(() => {
       const playtime = Math.round(this.player.currentTime());
@@ -51,11 +55,20 @@ class Video extends Component {
   }
 
   playStateMutation = (playtime) => {
-    const { uuid, length, mutate } = this.props;
+    const {
+      uuid,
+      length,
+      mutate,
+      updatePlayState,
+    } = this.props;
     const finished = playtime * (100 / length) > 98;
 
     mutate({
-      variables: { uuid, playtime, finished },
+      variables: { uuid, playtime: (!finished ? playtime : 0), finished },
+    }).then(() => {
+      updatePlayState(playtime, finished);
+    }).catch((err) => {
+      console.log(err);
     });
   }
 
@@ -74,6 +87,7 @@ Video.propTypes = {
   uuid: PropTypes.string.isRequired,
   length: PropTypes.number.isRequired,
   mutate: PropTypes.func.isRequired,
+  updatePlayState: PropTypes.func.isRequired,
   playState: PropTypes.shape({
     finished: PropTypes.bool,
     playtime: PropTypes.number,

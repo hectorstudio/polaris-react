@@ -51,7 +51,7 @@ const MediaInfo = (props) => {
   return (
     <MediaInfoWrap>
       <MediaName>
-        { name }
+        {name}
         <MediaRelease>
           {releaseDate}
         </MediaRelease>
