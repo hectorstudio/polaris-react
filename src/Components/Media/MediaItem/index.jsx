@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import { compose } from 'lodash/fp';
 import { graphql } from 'react-apollo';
+import { withRouter } from 'react-router-dom';
 import { faTimes } from '@fortawesome/pro-regular-svg-icons';
 
 import {
   generateMimeTypes,
   getBaseUrl,
   generateFileList,
-  getUrlParameter,
 } from 'Helpers';
 
 import REQUEST_STREAM from 'Mutations/requestStream';
@@ -30,22 +31,23 @@ class MediaItem extends Component {
       source: '',
       files: [],
       selectedFile: {},
+      playState: {},
     }
 
     componentWillMount() {
-      const { files } = this.props;
+      const { files, playState } = this.props;
       const fileList = generateFileList(files);
-
 
       this.setState({
         files: fileList,
         selectedFile: fileList[0],
+        playState
       });
     }
 
     componentDidMount() {
-      const autoplay = getUrlParameter('autoplay');
-      if (autoplay) this.playMedia();
+      const { location } = this.props;
+      if (location.state && location.state.autoplay === true) this.playMedia();
 
       document.addEventListener('keydown', this.escapeClose, false);
     }
@@ -96,11 +98,13 @@ class MediaItem extends Component {
         season,
         type,
         uuid,
+        location,
       } = this.props;
       const {
         source,
         files,
         selectedFile,
+        playState,
       } = this.state;
       const background = (posterPath || season.series.posterPath);
 
@@ -144,7 +148,13 @@ class MediaItem extends Component {
             ? (
               <VideoWrap>
                 <CloseVideo icon={faTimes} onClick={this.closeMedia} />
-                <Video {...videoJsOptions} uuid={uuid} length={selectedFile.totalDuration} />
+                <Video
+                  {...videoJsOptions}
+                  resume={location.state.resume}
+                  playState={playState}
+                  uuid={uuid}
+                  length={selectedFile.totalDuration}
+                />
               </VideoWrap>
             )
             : null
@@ -155,4 +165,7 @@ class MediaItem extends Component {
     }
 }
 
-export default MediaItem = graphql(REQUEST_STREAM)(MediaItem);
+export default compose(
+  withRouter,
+  graphql(REQUEST_STREAM),
+)(MediaItem);

@@ -7,6 +7,7 @@ import { getBaseUrl, generateMediaUrl } from 'Helpers';
 
 import MediaInfo from './MediaInfo';
 import MediaName from './MediaName';
+import ResumeModal from './ResumeModal';
 
 import {
   CardPoster,
@@ -20,6 +21,7 @@ import {
 class Media extends Component {
   state = {
     url: '',
+    modalOpen: false,
   }
 
   componentDidMount() {
@@ -33,28 +35,26 @@ class Media extends Component {
     });
   }
 
-  cardClick = (e, url, history) => {
-    const { onClick, hover } = this.props;
+  toggleModal = (modalOpen) => {
+    this.setState({
+      modalOpen: !modalOpen,
+    });
+  }
 
-    if (onClick) {
-      onClick();
-    } else if (!hover) {
-      e.preventDefault();
+  cardClick = (e, url, history, showPlayStatus) => {
+    const { onClick, playState } = this.props;
+
+    if (showPlayStatus) {
+      if (playState.playtime > 0) {
+        this.toggleModal();
+      } else if (onClick) {
+        onClick();
+      } else {
+        history.push(`${url}?autoplay=true`);
+      }
     } else {
       history.push(url);
     }
-  }
-
-  autoPlay = (e, url, history) => {
-    const { onClick } = this.props;
-
-    if (onClick) {
-      onClick();
-    } else {
-      history.push(`${url}?autoplay=true`);
-    }
-
-    e.stopPropagation();
   }
 
   render() {
@@ -69,7 +69,7 @@ class Media extends Component {
       files,
       hover,
     } = this.props;
-    const { url } = this.state;
+    const { url, modalOpen } = this.state;
 
     const showPlayStatus = (type === 'Movie' || type === 'Episode');
     const bgImage = (posterPath || stillPath
@@ -78,29 +78,39 @@ class Media extends Component {
     );
 
     return (
-      <CardWrap onClick={e => (this.cardClick(e, url, history))} size={size}>
-        <PosterWrap>
-          <LazyLoad height={(size === 'wide' ? 125 : 230)} debounce={100} overflow resize>
-            <CardPoster hover={hover} size={size} bgimg={bgImage}>
-              <MediaInfo
-                {...this.props}
-                length={files[0].totalDuration}
-                showPlayStatus={showPlayStatus}
-              />
-            </CardPoster>
-          </LazyLoad>
-          {hover
-            && (
-              <CardPopup>
-                <PopupLink onClick={e => (this.autoPlay(e, url, history))}>
-                  <PopupIcon icon={(showPlayStatus ? faPlay : faSearch)} />
-                </PopupLink>
-              </CardPopup>
-            )
-          }
-        </PosterWrap>
-        {(!size.toLowerCase().includes('large') && (type === 'Season' || type === 'Episode')) && <MediaName name={name} episodes={episodes} /> }
-      </CardWrap>
+      <React.Fragment>
+        <CardWrap onClick={e => (this.cardClick(e, url, history, showPlayStatus))} size={size}>
+          <PosterWrap>
+            <LazyLoad height={(size === 'wide' ? 125 : 230)} debounce={100} overflow resize>
+              <CardPoster hover={hover} size={size} bgimg={bgImage}>
+                <MediaInfo
+                  {...this.props}
+                  length={files[0].totalDuration}
+                  showPlayStatus={showPlayStatus}
+                />
+              </CardPoster>
+            </LazyLoad>
+            {hover
+              && (
+                <CardPopup>
+                  <PopupLink>
+                    <PopupIcon icon={(showPlayStatus ? faPlay : faSearch)} />
+                  </PopupLink>
+                </CardPopup>
+              )
+            }
+          </PosterWrap>
+          {(!size.toLowerCase().includes('large') && (type === 'Season' || type === 'Episode')) && <MediaName name={name} episodes={episodes} /> }
+        </CardWrap>
+
+        <ResumeModal
+          url={url}
+          history={history}
+          contentLabel="Resume Media"
+          isOpen={modalOpen}
+          onClose={() => (this.toggleModal(modalOpen))}
+        />
+      </React.Fragment>
     );
   }
 }

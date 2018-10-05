@@ -17,6 +17,8 @@ class Video extends Component {
   }
 
   componentDidMount() {
+    const { resume, playState } = this.props;
+
     this.player = videojs(this.videoNode, {
       ...this.props,
       controls: true,
@@ -27,6 +29,8 @@ class Video extends Component {
     function onPlayerReady() {
       this.chromecast();
     });
+
+    if (resume) this.player.currentTime(playState.playtime);
 
     const updatePlayState = setInterval(() => {
       const playtime = Math.round(this.player.currentTime());
@@ -50,8 +54,6 @@ class Video extends Component {
     const { uuid, length, mutate } = this.props;
     const finished = playtime * (100 / length) > 98;
 
-    console.log(uuid, playtime, finished)
-
     mutate({
       variables: { uuid, playtime, finished },
     });
@@ -72,6 +74,15 @@ Video.propTypes = {
   uuid: PropTypes.string.isRequired,
   length: PropTypes.number.isRequired,
   mutate: PropTypes.func.isRequired,
+  playState: PropTypes.shape({
+    finished: PropTypes.bool,
+    playtime: PropTypes.number,
+  }).isRequired,
+  resume: PropTypes.bool,
+};
+
+Video.defaultProps = {
+  resume: false,
 };
 
 export default Video = graphql(UPDATE_PLAYSTATE)(Video);

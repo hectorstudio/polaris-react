@@ -21,29 +21,6 @@ export const AddLibraryButton = styled.button`
   letter-spacing: .1rem;
 `;
 
-export const ModalHeader = styled.header`
-  float:left;
-  width:100%;
-  max-width:60rem;
-  width:100%;
-  padding:2rem;
-  border-bottom:1px solid rgba(0,0,0, .2);
-  background: rgba(0,0,0, .1);
-`;
-
-export const ModalHeading = styled.h3`
-  font-size:1.8rem;
-  color:#FFF;
-  text-transform:capitalize;
-  font-weight:600;
-`;
-
-export const ModalBody = styled.div`
-  float:left;
-  width:100%;
-  padding:2rem;
-`;
-
 export const AddLibraryWrap = styled.article`
   padding-top: 1rem;
   border-top:1px solid rgba(0,0,0, .2);

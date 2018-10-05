@@ -11,10 +11,6 @@ export default class LibraryHeader extends Component {
     modalOpen: false,
   }
 
-  addLibrary = () => {
-
-  }
-
   toggleModal = (modalOpen) => {
     this.setState({
       modalOpen: !modalOpen,

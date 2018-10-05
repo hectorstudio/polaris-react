@@ -7,9 +7,8 @@ import { ADD_LIBRARY } from 'Mutations/manageLibraries';
 
 import { AlertInline } from 'Components/Alerts';
 import Modal from 'Components/Modal';
+import { ModalHeader, ModalHeading, ModalBody } from 'Components/Modal/Styles';
 import AddLibrary from './AddLibrary';
-
-import { ModalHeader, ModalHeading, ModalBody } from './Styles';
 
 class AddLibraryModal extends Component {
   constructor(props) {

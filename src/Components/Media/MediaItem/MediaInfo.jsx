@@ -20,8 +20,8 @@ const MediaInfo = (props) => {
 
     if (playState.finished) {
       renderedState = 'Watched';
-    } else if (playState.playtime < 60) {
-      renderedState = '< 1 Minute Watched';
+    } else if (playState.playtime < 60 && playState.playtime > 0) {
+      renderedState = '< 1 Minute watched';
     } else if (!playState.finished && playState.playtime > 0) {
       renderedState = `${convertFloatMs(playState.playtime)} Watched`;
     } else {
@@ -46,14 +46,14 @@ const MediaInfo = (props) => {
     return convertFloatMs(selectedFile.totalDuration);
   };
 
+  const releaseDate = `(${(year || airDate)})`;
+
   return (
     <MediaInfoWrap>
       <MediaName>
         { name }
         <MediaRelease>
-          (
-          {(year || airDate)}
-          )
+          {releaseDate}
         </MediaRelease>
       </MediaName>
 
