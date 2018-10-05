@@ -20,8 +20,10 @@ const MediaInfo = (props) => {
 
     if (playState.finished) {
       renderedState = 'Watched';
+    } else if (playState.playtime < 60) {
+      renderedState = '< 1 Minute Watched';
     } else if (!playState.finished && playState.playtime > 0) {
-      renderedState = `${convertFloatMs(playState.playtime * 60)} Watched`;
+      renderedState = `${convertFloatMs(playState.playtime)} Watched`;
     } else {
       renderedState = 'Unwatched';
     }

@@ -95,6 +95,7 @@ class MediaItem extends Component {
         posterPath,
         season,
         type,
+        uuid,
       } = this.props;
       const {
         source,
@@ -143,7 +144,7 @@ class MediaItem extends Component {
             ? (
               <VideoWrap>
                 <CloseVideo icon={faTimes} onClick={this.closeMedia} />
-                <Video {...videoJsOptions} />
+                <Video {...videoJsOptions} uuid={uuid} length={selectedFile.totalDuration} />
               </VideoWrap>
             )
             : null

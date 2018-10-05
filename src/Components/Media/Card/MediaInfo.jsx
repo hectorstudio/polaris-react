@@ -8,7 +8,7 @@ import {
 } from './Styles';
 
 export default class MediaInfo extends Component {
-  playPosition = (length, playtime) => ((playtime * 60) / length) * 100;
+  playPosition = (length, playtime) => (playtime * (100 / length));
 
   mediaState = () => {
     const {
