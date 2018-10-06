@@ -58,6 +58,7 @@ class MediaItem extends Component {
       document.removeEventListener('keydown', this.escapeClose, false);
     }
 
+    escapeClose = e => e.key === 'Escape' && this.closeMedia();
 
     fileChange = (selectedFile) => {
       this.setState({
@@ -65,12 +66,16 @@ class MediaItem extends Component {
       });
     }
 
-    escapeClose = e => e.key === 'Escape' && this.closeMedia();
-
     closeMedia = () => {
       this.setState({
         source: '',
       });
+    }
+
+    resumeMedia = (resume) => {
+      this.setState({ resume });
+
+      this.playMedia();
     }
 
     playMedia = () => {
@@ -91,12 +96,6 @@ class MediaItem extends Component {
         .catch((error) => {
           console.log('there was an error Playing the Movie', error);
         });
-    }
-
-    resumeMedia = (resume) => {
-      this.setState({ resume });
-
-      this.playMedia();
     }
 
     updatePlayState = (playtime, finished) => this.setState({ playState: { playtime, finished } });

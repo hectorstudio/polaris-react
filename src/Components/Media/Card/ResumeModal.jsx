@@ -10,24 +10,20 @@ const ResumeModal = (props) => {
     contentLabel,
     onClose,
     isOpen,
-    resumeMedia,
+    internalRequest,
     url,
     history,
   } = props;
 
-  const externalPlay = (resume, autoplay) => {
-    history.push({
-      pathname: url,
-      state: { resume, autoplay },
-    });
-  };
-
   const handlePlayRequest = (resume, autoplay) => {
-    if (resumeMedia) {
-      resumeMedia(resume);
+    if (internalRequest) {
+      internalRequest(resume);
       onClose();
     } else {
-      externalPlay(resume, autoplay);
+      history.push({
+        pathname: url,
+        state: { resume, autoplay },
+      });
     }
   };
 
@@ -51,12 +47,12 @@ ResumeModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
   url: PropTypes.string,
-  resumeMedia: PropTypes.func,
+  internalRequest: PropTypes.func,
   history: ReactRouterPropTypes.history,
 };
 
 ResumeModal.defaultProps = {
-  resumeMedia: null,
+  internalRequest: null,
   history: null,
   url: '',
 };

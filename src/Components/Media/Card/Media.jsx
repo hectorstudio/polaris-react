@@ -115,7 +115,7 @@ class Media extends Component {
           contentLabel="Resume Media"
           isOpen={modalOpen}
           onClose={() => (this.toggleModal(modalOpen))}
-          resumeMedia={resumeMedia}
+          internalRequest={resumeMedia}
         />
       </React.Fragment>
     );
