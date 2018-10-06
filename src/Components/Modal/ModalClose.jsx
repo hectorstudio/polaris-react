@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { faTimes } from '@fortawesome/pro-regular-svg-icons';
 
 import { ModalCloseButton } from './Styles';
 
 const ModalClose = ({ onClick }) => (
-  <ModalCloseButton onClick={onClick}>Close</ModalCloseButton>
+  <ModalCloseButton icon={faTimes} onClick={onClick}>Close</ModalCloseButton>
 );
 
 ModalClose.propTypes = {

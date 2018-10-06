@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import Modal from 'Components/Modal';
 
-import { ModalBody } from 'Components/Modal/Styles';
+import { ModalBody, ModalHeader, ModalHeading } from 'Components/Modal/Styles';
 
 const ResumeModal = (props) => {
   const {
@@ -13,6 +13,7 @@ const ResumeModal = (props) => {
     internalRequest,
     url,
     history,
+    playState,
   } = props;
 
   const handlePlayRequest = (resume, autoplay) => {
@@ -27,15 +28,35 @@ const ResumeModal = (props) => {
     }
   };
 
+  const convertPlaystate = () => {
+    const date = new Date(null);
+    date.setHours(0, 0, 0);
+    date.setSeconds(playState.playtime);
+
+    const hours = (date.getHours() > 0 ? `${date.getHours()} Hrs` : '');
+    const minutes = (date.getMinutes() > 0 ? `${date.getMinutes()} Mins` : '');
+    const seconds = (date.getSeconds() > 0 ? `${date.getSeconds()} Secs` : '');
+
+    const resumeTimeStamp = `${hours} ${minutes} ${seconds}`;
+
+    return `Resume video from ${resumeTimeStamp}`;
+  };
+
   return (
     <Modal
       contentLabel={contentLabel}
       isOpen={isOpen}
       onClose={() => (onClose(isOpen))}
-      noCloseLabel
     >
+      <ModalHeader>
+        <ModalHeading>
+          Resume Playback
+        </ModalHeading>
+      </ModalHeader>
       <ModalBody>
-        <button type="submit" href="#" onClick={() => (handlePlayRequest(true, true))}>Resume Video</button>
+        <button type="submit" href="#" onClick={() => (handlePlayRequest(true, true))}>
+          {playState && convertPlaystate()}
+        </button>
         <button type="submit" onClick={() => (handlePlayRequest(false, true))}>From Start</button>
       </ModalBody>
     </Modal>

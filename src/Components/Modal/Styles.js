@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import ReactModal from 'react-modal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { aFadeIn } from 'Styles/Animations';
 
@@ -43,22 +44,18 @@ export const Container = styled.div`
 `;
 Container.displayName = 'Container';
 
-export const ModalCloseButton = styled.button`
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: #15151e;
-  color: #ffffff50;
-  line-height: 3.6rem;
-  border: 1px solid #12121c;
-  padding: 0 1rem;
-  font-weight: 600;
+export const ModalCloseButton = styled(FontAwesomeIcon)`
+  position:absolute;
+  top:0;
+  right:0;
+  color: #FFF;
+  font-size:2rem;
+  cursor:pointer;
+  z-index:11;
   transition:.2s all;
-
-  &:hover {
-    background: transparent;
-    color: #fff;
-  }
+  width: 5.9rem !important;
+  height: 5.9rem;
+  padding: 2rem;
 `;
 
 export const ModalHeader = styled.header`
