@@ -4,6 +4,7 @@ import ReactRouterPropTypes from 'react-router-prop-types';
 import Modal from 'Components/Modal';
 
 import { ModalBody, ModalHeader, ModalHeading } from 'Components/Modal/Styles';
+import { ResumeOption } from './Styles';
 
 const ResumeModal = (props) => {
   const {
@@ -54,10 +55,10 @@ const ResumeModal = (props) => {
         </ModalHeading>
       </ModalHeader>
       <ModalBody>
-        <button type="submit" href="#" onClick={() => (handlePlayRequest(true, true))}>
+        <ResumeOption type="submit" href="#" onClick={() => (handlePlayRequest(true, true))}>
           {playState && convertPlaystate()}
-        </button>
-        <button type="submit" onClick={() => (handlePlayRequest(false, true))}>From Start</button>
+        </ResumeOption>
+        <ResumeOption type="submit" onClick={() => (handlePlayRequest(false, true))}>From Start</ResumeOption>
       </ModalBody>
     </Modal>
   );

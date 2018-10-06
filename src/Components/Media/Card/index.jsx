@@ -43,7 +43,14 @@ class MediaCard extends Component {
   }
 
   cardClick = (e, url, history, showPlayStatus) => {
-    const { playState, onClick, internalCard } = this.props;
+    const {
+      playState,
+      onClick,
+      internalCard,
+      hover,
+    } = this.props;
+
+    if (!hover) return false;
 
     if (showPlayStatus) {
       if (playState.playtime > 0 && !playState.finished) {
