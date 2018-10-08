@@ -8,14 +8,6 @@ import UPDATE_PLAYSTATE from 'Mutations/updatePlaystate';
 require('@silvermine/videojs-chromecast')(videojs);
 
 class Video extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      playstateIntervalId: {},
-    };
-  }
-
   componentDidMount() {
     const { resume, playState } = this.props;
 
@@ -30,28 +22,25 @@ class Video extends Component {
       this.chromecast();
     });
 
+    this.player.on('timeupdate', () => {
+      const playtime = this.player.currentTime();
+
+      if ((Math.round(playtime % 5)) === 0) {
+        this.playStateMutation(Math.floor(playtime));
+      }
+    });
+
     if (resume) {
-      this.player.currentTime(playState.playtime);
+      this.player.currentTime(playState.playtime - 5);
     } else {
       this.player.currentTime(0);
     }
-
-    const updatePlayState = setInterval(() => {
-      const playtime = Math.round(this.player.currentTime());
-      this.playStateMutation(playtime);
-    }, 2000);
-
-    this.setState({ playstateIntervalId: updatePlayState });
   }
 
   componentWillUnmount() {
-    const { playstateIntervalId } = this.state;
-
     if (this.player) {
       this.player.dispose();
     }
-
-    clearInterval(playstateIntervalId);
   }
 
   playStateMutation = (playtime) => {

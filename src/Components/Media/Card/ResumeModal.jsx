@@ -71,12 +71,20 @@ ResumeModal.propTypes = {
   url: PropTypes.string,
   internalRequest: PropTypes.func,
   history: ReactRouterPropTypes.history,
+  playState: PropTypes.shape({
+    finished: PropTypes.bool,
+    playtime: PropTypes.number,
+  }),
 };
 
 ResumeModal.defaultProps = {
   internalRequest: null,
   history: null,
   url: '',
+  playState: {
+    finished: false,
+    playtime: 0,
+  },
 };
 
 export default ResumeModal;

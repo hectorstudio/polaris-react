@@ -53,12 +53,14 @@ class MediaCard extends Component {
     if (!hover) return false;
 
     if (showPlayStatus) {
+      if (e.target.tagName === 'DIV' && !internalCard) {
+        history.push(url);
+      }
+
       if (playState.playtime > 0 && !playState.finished) {
         this.toggleModal();
       } else if (internalCard) {
         onClick();
-      } else if (e.target.tagName === 'DIV') {
-        history.push(url);
       } else {
         history.push({
           pathname: url,
@@ -68,6 +70,8 @@ class MediaCard extends Component {
     } else {
       history.push(url);
     }
+
+    return false;
   }
 
   render() {
@@ -132,7 +136,7 @@ class MediaCard extends Component {
   }
 }
 
-const requiredPropsCheck = (props, propName, componentName) => {
+const requiredPropsCheck = (props, componentName) => {
   const { posterPath, stillPath } = props;
   if (!posterPath && !stillPath) {
     return new Error(`One of 'posterPath' or 'stillPath' is required by '${componentName}' component.`);

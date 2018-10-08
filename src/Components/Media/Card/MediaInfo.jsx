@@ -70,7 +70,7 @@ MediaInfo.defaultProps = {
   unwatchedEpisodesCount: 0,
   size: 'small',
   playState: {
-    finished: true,
+    finished: false,
     playtime: 0,
   },
 };
