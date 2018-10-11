@@ -18,6 +18,7 @@
        "no-console": "off",
        "linebreak-style": "off",
        "jsx-a11y/media-has-caption": "off",
-       "no-confusing-arrow": "off"
+       "no-confusing-arrow": "off",
+       "import/no-cycle": "off"
     }
 }

@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { throttle } from 'lodash';
 import { graphql } from 'react-apollo';
 import videojs from 'video.js';
 
 import UPDATE_PLAYSTATE from 'Mutations/updatePlaystate';
+import mutatePlayState from './mutatePlayState';
 
 require('@silvermine/videojs-chromecast')(videojs);
 
 class Video extends Component {
+  t = throttle(() => this.playStateMutation(Math.floor(this.player.currentTime())), 2000);
+
   componentDidMount() {
     const { resume, playState } = this.props;
 
@@ -23,11 +27,7 @@ class Video extends Component {
     });
 
     this.player.on('timeupdate', () => {
-      const playtime = this.player.currentTime();
-
-      if ((Math.round(playtime % 5)) === 0) {
-        this.playStateMutation(Math.floor(playtime));
-      }
+      this.t();
     });
 
     if (resume) {
@@ -38,27 +38,18 @@ class Video extends Component {
   }
 
   componentWillUnmount() {
+    this.t.cancel();
+
     if (this.player) {
       this.player.dispose();
     }
   }
 
   playStateMutation = (playtime) => {
-    const {
-      uuid,
-      length,
-      mutate,
-      updatePlayState,
-    } = this.props;
+    const { uuid, length, mutate } = this.props;
     const finished = playtime * (100 / length) > 98;
 
-    mutate({
-      variables: { uuid, playtime: (!finished ? playtime : 0), finished },
-    }).then(() => {
-      updatePlayState(playtime, finished);
-    }).catch((err) => {
-      console.log(err);
-    });
+    mutatePlayState(mutate, uuid, playtime, finished);
   }
 
   render() {
@@ -76,7 +67,6 @@ Video.propTypes = {
   uuid: PropTypes.string.isRequired,
   length: PropTypes.number.isRequired,
   mutate: PropTypes.func.isRequired,
-  updatePlayState: PropTypes.func.isRequired,
   playState: PropTypes.shape({
     finished: PropTypes.bool,
     playtime: PropTypes.number,

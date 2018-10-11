@@ -32,18 +32,16 @@ class MediaItem extends Component {
       resume: false,
       files: [],
       selectedFile: {},
-      playState: {},
     }
 
     componentWillMount() {
-      const { files, playState, location } = this.props;
+      const { files, location } = this.props;
       const fileList = generateFileList(files);
 
       this.setState({
         files: fileList,
         selectedFile: fileList[0],
         resume: (location.state ? location.state.resume : false),
-        playState,
       });
     }
 
@@ -98,8 +96,6 @@ class MediaItem extends Component {
         });
     }
 
-    updatePlayState = (playtime, finished) => this.setState({ playState: { playtime, finished } });
-
     render() {
       const {
         name,
@@ -107,12 +103,12 @@ class MediaItem extends Component {
         season,
         type,
         uuid,
+        playState,
       } = this.props;
       const {
         source,
         files,
         selectedFile,
-        playState,
         resume,
       } = this.state;
       const background = (posterPath || season.series.posterPath);
@@ -174,7 +170,6 @@ class MediaItem extends Component {
                   playState={playState}
                   uuid={uuid}
                   length={selectedFile.totalDuration}
-                  updatePlayState={this.updatePlayState}
                 />
               </VideoWrap>
             )

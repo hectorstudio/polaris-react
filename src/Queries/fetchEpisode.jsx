@@ -5,7 +5,7 @@ import { Query } from 'react-apollo';
 import Loading from 'Components/Loading';
 import MediaItem from 'Components/Media/MediaItem';
 
-const FETCH_EPISODE = gql`
+export const FETCH_EPISODE = gql`
   query episode($uuid: String!) {
     episode(uuid: $uuid) {
       type: __typename
@@ -43,7 +43,7 @@ const FETCH_EPISODE = gql`
   }
 `;
 
-const FetchEpisode = ({ uuid }) => (
+export const FetchEpisode = ({ uuid }) => (
   <Query
     query={FETCH_EPISODE}
     variables={{ uuid }}
@@ -58,5 +58,3 @@ const FetchEpisode = ({ uuid }) => (
 
   </Query>
 );
-
-export default FetchEpisode;
