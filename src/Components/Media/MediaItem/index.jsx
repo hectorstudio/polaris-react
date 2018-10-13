@@ -85,10 +85,18 @@ class MediaItem extends Component {
       })
         .then(({ data }) => {
           const mimeTypes = generateMimeTypes(files[selectedFile.value].streams);
-          const streamPath = data.createStreamingTicket.streamingPath;
+
+          // NOTE(Leon Handreke): This is quite an ugly hack, ideally there should be a better compatibility check to
+          // decide on DASH vs HLS and Chromecast should always get a DASH stream.
+          // From https://stackoverflow.com/questions/9038625/detect-if-device-is-ios
+          var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+          const streamPath = isIOS ? data.createStreamingTicket.hlsStreamingPath : data.createStreamingTicket.dashStreamingPath;
+          const mimeType = isIOS ? 'application/x-mpegURL' : 'application/dash+xml';
 
           this.setState({
             source: `${getBaseUrl()}${streamPath}?${mimeTypes}`,
+            mimeType: mimeType,
           });
         })
         .catch((error) => {
@@ -107,6 +115,7 @@ class MediaItem extends Component {
       } = this.props;
       const {
         source,
+        mimeType,
         files,
         selectedFile,
         resume,
@@ -120,7 +129,9 @@ class MediaItem extends Component {
 
         sources: [{
           src: source,
-          type: 'application/x-mpegURL',
+          type: mimeType,
+          // Set one GBit initially and drop down if required to make it choose transmuxed first
+          bandwidth: 1000000000,
           name,
         }],
         plugins: {
