@@ -2,11 +2,11 @@ import React from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
 import ContentWrap from 'Containers/ContentWrap';
-import { FetchEpisode } from 'Queries/fetchEpisode';
+import RenderEpisode from './RenderEpisode';
 
 const Episode = ({ match }) => (
   <ContentWrap>
-    <FetchEpisode uuid={match.params.uuid} />
+    <RenderEpisode uuid={match.params.uuid} />
   </ContentWrap>
 );
 

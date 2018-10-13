@@ -5,7 +5,7 @@ import { graphql } from 'react-apollo';
 import videojs from 'video.js';
 
 import UPDATE_PLAYSTATE from 'Mutations/updatePlaystate';
-import mutatePlayState from './mutatePlayState';
+import { mutatePlayStateEpisode, mutatePlayStateMovie } from './mutatePlayState';
 
 require('@silvermine/videojs-chromecast')(videojs);
 
@@ -46,10 +46,19 @@ class Video extends Component {
   }
 
   playStateMutation = (playtime) => {
-    const { uuid, length, mutate } = this.props;
+    const {
+      uuid,
+      length,
+      mutate,
+      type,
+    } = this.props;
     const finished = playtime * (100 / length) > 98;
 
-    mutatePlayState(mutate, uuid, playtime, finished);
+    if (type === 'Episode') {
+      mutatePlayStateEpisode(mutate, uuid, playtime, finished);
+    } else {
+      mutatePlayStateMovie(mutate, uuid, playtime, finished);
+    }
   }
 
   render() {
@@ -67,6 +76,7 @@ Video.propTypes = {
   uuid: PropTypes.string.isRequired,
   length: PropTypes.number.isRequired,
   mutate: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired,
   playState: PropTypes.shape({
     finished: PropTypes.bool,
     playtime: PropTypes.number,

@@ -4,13 +4,14 @@ const Theme = {
   primary: '#FF9B3D',
   secondary: '#C9CCD1',
   text: '#556488',
-  dark: '#2a3853',
+  dark: '#38496b',
   light: '#F5F7FA',
-  background: '#1D2D43',
+  background: '#111d2e',
+  playbar: '#FF9B3D',
 
   darken: {
     primary: darken(0.2, '#FF9B3D'),
-    dark: darken(0.1, '#000F32'),
+    dark: darken(0.1, '#111d2e'),
   },
   lighten: {
     background: lighten(0.1, '#191927'),

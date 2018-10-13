@@ -11,15 +11,19 @@ export const CardWrap = styled.article`
 `;
 
 export const PosterWrap = styled.div`
-  overflow:hidden;
+  display:block;
   position:relative;
-  background: #00000015;
-  box-shadow:0 15px 25px rgba(0,0,0, .1);
+  background: #00000025;
+  box-shadow:0 15px 25px rgba(0,0,0, .3);
+  float:left;
+  width:100%;
+  overflow:hidden;
 `;
 
 export const CardPoster = styled.span`
   width: 100%;
   float: left;
+  padding:.2rem;
   background-image: url(${props => props.bgimg});
   background-repeat:no-repeat;
   background-size:cover;
@@ -70,19 +74,19 @@ export const CardEpisodeCount = styled.span`
 
 export const Unwatched = styled.span`
   position:absolute;
-  top:0;
-  right:-3rem;
-  background:${props => props.theme.primary};
-  width: 6rem;
-  height: 2rem;
+  top:-2.5rem;
+  left:-0.25rem;
+  width: 1rem;
+  height: 5rem;
   z-index:6;
-  transition:.2s all;
-  box-shadow: 0 0 25px #00000020;
   transform: rotate(45deg);
+  transition:.2s all;
+  background: ${props => props.theme.playbar};
   animation: ${`.3s ${aFadeIn} forwards`};
-
+  box-shadow:0 0 15px rgba(0,0,0 .8);
+  
   ${PosterWrap}:hover & { 
-    transform: translateY(-2rem) translateX(2rem) rotate(45deg);
+    transform: translateY(-5rem) translateX(-5rem);
   }
 `;
 
@@ -108,15 +112,14 @@ export const UnwatchedCount = styled.span`
 export const PlayState = styled.span`
   position:absolute;
   bottom: .5rem;
-  left:.5rem;
+  left: .5rem;
   width:calc(100% - 1rem);
-  background: rgba(0,0,0,.5);
-  border-radius: .5rem;
+  background: #000;
   height:.7rem;
   z-index:6;
   transition:.2s all;
   overflow:hidden;
-  border:1px solid #000;
+  border-radius:.5rem;
 
   &:before {
     content:'';
@@ -124,12 +127,15 @@ export const PlayState = styled.span`
     top:0;
     left:0;
     height:.5rem;
+    margin:.1rem;
+    border-radius:.2rem 0 0 .2rem;
     width: ${props => props.percent}%;
-    background:${props => props.theme.primary};
+    background:${props => props.theme.playbar};
   }
 
   ${PosterWrap}:hover & { 
-    transform: translateY(2rem);
+    transform: scale(0);
+    opacity:0;
   }
 `;
 

@@ -171,6 +171,7 @@ class MediaItem extends Component {
                   playState={playState}
                   uuid={uuid}
                   length={selectedFile.totalDuration}
+                  type={type}
                 />
               </VideoWrap>
             )

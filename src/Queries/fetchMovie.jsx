@@ -1,9 +1,4 @@
-import React from 'react';
 import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
-
-import Loading from 'Components/Loading';
-import MediaItem from 'Components/Media/MediaItem';
 
 const FETCH_MOVIE = gql`
   query movies($uuid: String!) {
@@ -39,22 +34,4 @@ const FETCH_MOVIE = gql`
   }
 `;
 
-const FetchMovie = ({ uuid }) => (
-  <Query
-    query={FETCH_MOVIE}
-    variables={{ uuid }}
-  >
-
-    {({ loading, error, data }) => {
-      if (loading) return <Loading />;
-      if (error) return `Error! ${error.message}`;
-
-      const m = { ...data.movies[0] };
-
-      return <MediaItem {...m} />;
-    }}
-
-  </Query>
-);
-
-export default FetchMovie;
+export default FETCH_MOVIE;

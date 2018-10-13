@@ -83,7 +83,7 @@ export const MediaBackground = styled.span`
   top:0;
   left:0;
   z-index: -1;
-  filter: blur(25px);
+  filter: blur(35px);
   opacity:0;
   animation: ${`.3s ${fadeInLow} forwards`};
   animation-delay: .3s;

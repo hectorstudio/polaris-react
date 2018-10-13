@@ -18,8 +18,8 @@ const RenderMovieList = () => (
       if (error) return `Error! ${error.message}`;
 
       return data.movies.map(m => (
-        <LibraryListItem>
-          <MediaCard key={m.uuid} {...m} />
+        <LibraryListItem key={m.uuid}>
+          <MediaCard {...m} />
         </LibraryListItem>
       ));
     }}

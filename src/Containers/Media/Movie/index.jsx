@@ -2,11 +2,11 @@ import React from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
 import ContentWrap from 'Containers/ContentWrap';
-import FetchMovie from 'Queries/fetchMovie';
+import RenderMovie from './RenderMovie';
 
 const Movie = ({ match }) => (
   <ContentWrap>
-    <FetchMovie uuid={match.params.uuid} />
+    <RenderMovie uuid={match.params.uuid} />
   </ContentWrap>
 );
 

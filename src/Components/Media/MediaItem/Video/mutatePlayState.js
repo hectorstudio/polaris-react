@@ -1,6 +1,7 @@
-import { FETCH_EPISODE } from 'Queries/fetchEpisode';
+import FETCH_EPISODE from 'Queries/fetchEpisode';
+import FETCH_MOVIE from 'Queries/fetchMovie';
 
-const mutatePlayState = (mutate, uuid, playtime, finished) => {
+export const mutatePlayStateEpisode = (mutate, uuid, playtime, finished) => {
   mutate({
     variables: { uuid, playtime: (!finished ? playtime : 0), finished },
     update: (store, { data: { createPlayState } }) => {
@@ -28,4 +29,30 @@ const mutatePlayState = (mutate, uuid, playtime, finished) => {
     });
 };
 
-export default mutatePlayState;
+export const mutatePlayStateMovie = (mutate, uuid, playtime, finished) => {
+  mutate({
+    variables: { uuid, playtime: (!finished ? playtime : 0), finished },
+    update: (store, { data: { createPlayState } }) => {
+      const { playState } = createPlayState;
+      const data = store.readQuery({ query: FETCH_MOVIE, variables: { uuid } });
+
+      store.writeQuery({
+        query: FETCH_MOVIE,
+        variables: { uuid },
+        data: {
+          movies: [{
+            ...data.movies[0],
+            playState: {
+              ...data.movies[0].playState,
+              finished: playState.finished,
+              playtime: playState.playtime,
+            },
+          }],
+        },
+      });
+    },
+  })
+    .catch((err) => {
+      console.log(err);
+    });
+};

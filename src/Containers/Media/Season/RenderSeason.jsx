@@ -18,7 +18,6 @@ const RenderSeason = ({ uuid }) => (
     {({ loading, error, data }) => {
       if (loading) return <Loading />;
       if (error) return `Error! ${error.message}`;
-      console.log(data.season);
 
       const episodeList = data.season.episodes.map(s => (
         <LibraryListItemWide key={s.uuid}>
