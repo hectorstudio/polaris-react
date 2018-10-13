@@ -7,7 +7,8 @@ const REQUEST_STREAM = gql`
                 hasError
                 message
             }
-            streamingPath
+            dashStreamingPath
+            hlsStreamingPath
             jwt
         }
     }
