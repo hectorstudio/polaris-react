@@ -76,13 +76,14 @@ class MediaCard extends Component {
 
   render() {
     const {
+      wide,
+      showText,
       history,
       name,
       episodes,
       posterPath,
       stillPath,
       type,
-      size,
       files,
       hover,
       playState,
@@ -98,10 +99,10 @@ class MediaCard extends Component {
 
     return (
       <React.Fragment>
-        <CardWrap onClick={e => (this.cardClick(e, url, history, showPlayStatus))} size={size}>
+        <CardWrap onClick={e => (this.cardClick(e, url, history, showPlayStatus))}>
           <PosterWrap>
-            <LazyLoad height={(size === 'wide' ? 125 : 230)} debounce={100} overflow resize>
-              <CardPoster hover={hover} size={size} bgimg={bgImage}>
+            <LazyLoad height={(type === 'Episode' ? 125 : 230)} debounce={100} overflow resize>
+              <CardPoster hover={hover} wide={wide} bgimg={bgImage}>
                 <MediaInfo
                   {...this.props}
                   length={files[0].totalDuration}
@@ -119,7 +120,7 @@ class MediaCard extends Component {
               )
             }
           </PosterWrap>
-          {(!size.toLowerCase().includes('large') && (type === 'Season' || type === 'Episode')) && <MediaName name={name} episodes={episodes} />}
+          {showText && <MediaName name={name} episodes={episodes} />}
         </CardWrap>
 
         <ResumeModal
@@ -156,16 +157,18 @@ MediaCard.propTypes = {
     totalDuration: PropTypes.number,
   })),
   history: ReactRouterPropTypes.history.isRequired,
-  size: PropTypes.string,
   hover: PropTypes.bool,
+  wide: PropTypes.bool,
+  showText: PropTypes.bool,
 };
 
 MediaCard.defaultProps = {
-  size: 'small',
   airDate: null,
   hover: true,
   posterPath: null,
   stillPath: null,
+  wide: false,
+  showText: false,
   files: [
     {
       totalDuration: 0,

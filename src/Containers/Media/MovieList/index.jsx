@@ -1,16 +1,17 @@
 import React from 'react';
-import FetchMovieList from 'Queries/fetchMovieList';
-import Empty from 'Components/Media/Card/Empty';
 
+import Empty from 'Components/Media/Card/Empty';
 import ContentWrap from 'Containers/ContentWrap';
 import LibraryHeader from 'Components/Media/LibraryHeader';
-import LibraryListWrap from '../Styles';
+import RenderMoviesList from './RenderMovieList';
+
+import { LibraryListWrap } from '../Styles';
 
 const MovieList = () => (
   <ContentWrap>
     <LibraryListWrap>
       <LibraryHeader type="movies" button="Manage Movies" />
-      <FetchMovieList />
+      <RenderMoviesList />
       <Empty />
     </LibraryListWrap>
   </ContentWrap>

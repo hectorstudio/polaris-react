@@ -2,8 +2,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const InputWrap = styled.div`
-    background: ${props => (props.hasFocus ? '#FFF' : 'rgba(255,255,255, .1)')};
-    box-shadow: ${props => (props.hasFocus ? '0 10px 15px rgba(0,0,0, .3)' : 'none')};
+    background: ${props => (props.hasFocus ? '#FFF' : 'rgba(0,0,0, .1)')};
     margin:0;
     height: 5rem;
     width: ${props => props.theme.layout.search};
@@ -11,6 +10,7 @@ export const InputWrap = styled.div`
     transition: .2s all;
     position:relative;
     position:relative;
+    margin:1.5rem;
 `;
 export const LoadingIcon = styled(FontAwesomeIcon)`
     color: ${props => props.theme.dark};

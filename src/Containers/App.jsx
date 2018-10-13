@@ -1,7 +1,7 @@
 import React from 'react';
 import { Auth, checkAuth } from 'Client/Auth';
-import Sidebar from 'Components/Sidebar';
 import Header from 'Components/Header';
+import Sidebar from 'Components/Sidebar';
 import Routes from 'Routes';
 
 import { AppWrap, PageWrap } from './Styles';
@@ -11,8 +11,8 @@ const App = () => {
 
   const LoggedIn = () => (
     <React.Fragment>
-      <Sidebar />
       <Header />
+      <Sidebar />
       <PageWrap>
         <Routes />
       </PageWrap>

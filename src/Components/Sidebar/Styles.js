@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { transparentize } from 'polished';
 
 export const SidebarWrap = styled.nav`
     width: ${props => props.theme.layout.sidebar};
@@ -7,7 +8,7 @@ export const SidebarWrap = styled.nav`
     top: 0;
     left: 0;
     height: 100vh;
-    background-image: linear-gradient(to bottom, rgba(0,0,0, .3) 0%, rgba(0,0,0, .2) 100%);
+    background:${props => props.theme.background && transparentize(0.3, props.theme.background)};
     z-index:2;
 `;
 

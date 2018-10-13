@@ -53,7 +53,7 @@ export const FetchEpisode = ({ uuid }) => (
       if (loading) return <Loading />;
       if (error) return `Error! ${error.message}`;
 
-      return (<MediaItem {...data.episode} />);
+      return <MediaItem wide {...data.episode} />;
     }}
 
   </Query>

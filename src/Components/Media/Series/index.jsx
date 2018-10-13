@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import { getBaseUrl } from 'Helpers';
 
-import Empty from 'Components/Media/Card/Empty';
 import Media from 'Components/Media/Card';
 
 import {
@@ -22,12 +21,11 @@ const Series = (props) => {
   const {
     name,
     posterPath,
-    seasons,
     overview,
     firstAirDate,
+    children,
   } = props;
 
-  const seasonList = seasons.map((s => <Media key={s.uuid} {...s} />));
   const releaseYear = firstAirDate.split('-')[0];
 
   return (
@@ -48,8 +46,7 @@ const Series = (props) => {
         <MediaOverview>{overview}</MediaOverview>
         <SubTitle>Seasons</SubTitle>
         <SeasonsWrap>
-          {seasonList}
-          <Empty />
+          {children}
         </SeasonsWrap>
       </MediaRightCol>
     </MediaFullWrap>

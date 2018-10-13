@@ -2,16 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const EmptyArticle = styled.article`
+const EmptyArticle = styled.div`
     flex: 1 0 auto;
-    width: ${props => props.theme.card[props.size].width};
-    max-width: ${props => props.theme.card[props.size].maxWidth};
-    min-width: ${props => props.theme.card[props.size].minWidth};
-    margin:0 1rem;
+    width: ${props => props.wide ? props.theme.wideCard.width : props.theme.card.width};
+    max-width: ${props => props.wide ? props.theme.wideCard.maxWidth : props.theme.card.maxWidth};
+    margin: ${props => props.wide ? props.theme.wideCard.margin : props.theme.card.margin};
+    margin-bottom:0;
+    margin-top:0;
 `;
 
-const EmptyArticles = ({ size, length }) => {
-  const EmptyList = [...Array(length)].map(() => <EmptyArticle size={size} key={Math.random()} />);
+const EmptyArticles = ({ length, wide }) => {
+  const EmptyList = [...Array(length)].map(() => <EmptyArticle wide={wide} key={Math.random()} />);
 
   return (
     <React.Fragment>
@@ -21,13 +22,13 @@ const EmptyArticles = ({ size, length }) => {
 };
 
 EmptyArticles.propTypes = {
-  size: PropTypes.string,
   length: PropTypes.number,
+  wide: PropTypes.bool,
 };
 
 EmptyArticles.defaultProps = {
-  size: 'small',
-  length: 10,
+  length: 20,
+  wide: false,
 };
 
 export default EmptyArticles;

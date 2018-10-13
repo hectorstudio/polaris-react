@@ -4,11 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 /* eslint no-confusing-arrow: ["off"] */
 export const CardWrap = styled.article`
-  flex: 1 0 auto;
-  width: ${props => props.theme.card[props.size].width};
-  max-width: ${props => props.theme.card[props.size].maxWidth};
-  min-width: ${props => props.theme.card[props.size].minWidth};
-  margin: ${props => props.theme.card[props.size].margin};
+  width:100%;
   position:relative;
   animation: ${`.4s ${aFadeIn} alternate`};
   z-index:1;
@@ -17,8 +13,8 @@ export const CardWrap = styled.article`
 export const PosterWrap = styled.div`
   overflow:hidden;
   position:relative;
-  border-radius: .3rem;
   background: #00000015;
+  box-shadow:0 15px 25px rgba(0,0,0, .1);
 `;
 
 export const CardPoster = styled.span`
@@ -28,7 +24,7 @@ export const CardPoster = styled.span`
   background-repeat:no-repeat;
   background-size:cover;
   background-position:center;
-  padding-top: ${props => props.theme.card[props.size].paddingTop};
+  padding-top: ${props => props.wide ? props.theme.wideCard.paddingTop : props.theme.card.paddingTop};
   position:relative;
   z-index:1;
   opacity:0;
@@ -140,10 +136,10 @@ export const PlayState = styled.span`
 export const CardPopup = styled.div`
   content:'';
   position:absolute;
-  top:0;
-  left:0;
-  width:calc(100% + 0.5px);
-  height:calc(100% + 0.5px);
+  top:-1.25px;
+  left:-1.25px;
+  width:calc(100% + 2.5px);
+  height:calc(100% + 2.5px);
   z-index: 1;
   opacity:0;
   pointer-events:none;

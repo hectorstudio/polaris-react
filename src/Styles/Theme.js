@@ -4,9 +4,9 @@ const Theme = {
   primary: '#FF9B3D',
   secondary: '#C9CCD1',
   text: '#556488',
-  dark: '#000F32',
+  dark: '#2a3853',
   light: '#F5F7FA',
-  background: '#191927',
+  background: '#1D2D43',
 
   darken: {
     primary: darken(0.2, '#FF9B3D'),
@@ -21,7 +21,7 @@ const Theme = {
     info: '#4C6EAC',
   },
   layout: {
-    header: '8.1rem',
+    header: '8rem',
     sidebar: '25rem',
     search: '30rem',
   },
@@ -30,34 +30,16 @@ const Theme = {
     muli: '"Muli", sans-serif',
   },
   card: {
-    small: {
-      width: '14rem',
-      maxWidth: '100%',
-      minWidth: '14rem',
-      margin: '0 1rem 1.5rem',
-      paddingTop: 'calc(513 / 342 * 100%)',
-    },
-    large: {
-      width: '100%',
-      maxWidth: '100%',
-      minWidth: '100%',
-      margin: '0',
-      paddingTop: 'calc(513 / 342 * 100%)',
-    },
-    wide: {
-      width: '20rem',
-      maxWidth: '100%',
-      minWidth: '16rem',
-      margin: '0 1rem 1.5rem',
-      paddingTop: '12rem',
-    },
-    largeWide: {
-      width: '26rem',
-      maxWidth: '100%',
-      minWidth: '20rem',
-      margin: '0',
-      paddingTop: '15rem',
-    },
+    width: '14rem',
+    maxWidth: '18rem',
+    margin: '0 1.5rem 3rem',
+    paddingTop: 'calc(513 / 342 * 100%)',
+  },
+  wideCard: {
+    width: '20rem',
+    maxWidth: '24rem',
+    margin: '0 1.5rem 3rem',
+    paddingTop: '15rem',
   },
 };
 

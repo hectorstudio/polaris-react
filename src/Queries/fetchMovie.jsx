@@ -51,7 +51,7 @@ const FetchMovie = ({ uuid }) => (
 
       const m = { ...data.movies[0] };
 
-      return (<MediaItem {...m} />);
+      return <MediaItem {...m} />;
     }}
 
   </Query>

@@ -11,7 +11,7 @@ import {
 } from 'Helpers';
 
 import REQUEST_STREAM from 'Mutations/requestStream';
-import Media from 'Components/Media/Card';
+import MediaCard from 'Components/Media/Card';
 import MediaInfo from './MediaInfo';
 import MediaFiles from './MediaFiles';
 import MediaSubtitles from './MediaSubtitles';
@@ -140,11 +140,12 @@ class MediaItem extends Component {
           <MediaBackground bgimg={`${getBaseUrl()}/m/images/tmdb/w342/${background}`} />
           <MediaFull>
             <MediaLeftCol>
-              <Media
+              <MediaCard
                 size={(type === 'Episode' ? 'largeWide' : 'large')}
                 resumeMedia={this.resumeMedia}
                 onClick={() => { this.playMedia(); }}
                 internalCard
+                text
                 {...mediaInfo}
               />
             </MediaLeftCol>
