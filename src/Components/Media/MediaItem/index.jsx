@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { compose } from 'lodash/fp';
 import { graphql } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
+import { isIOS } from 'react-device-detect';
 import { faTimes } from '@fortawesome/pro-regular-svg-icons';
 
 import {
-  generateMimeTypes,
+  getPlayableCodecs,
   getBaseUrl,
   generateFileList,
 } from 'Helpers';
@@ -32,6 +33,7 @@ class MediaItem extends Component {
       resume: false,
       files: [],
       selectedFile: {},
+      mimeType: '',
     }
 
     componentWillMount() {
@@ -84,19 +86,17 @@ class MediaItem extends Component {
         variables: { uuid: files[selectedFile.value].uuid },
       })
         .then(({ data }) => {
-          const mimeTypes = generateMimeTypes(files[selectedFile.value].streams);
+          const codecs = getPlayableCodecs(files[selectedFile.value].streams);
 
-          // NOTE(Leon Handreke): This is quite an ugly hack, ideally there should be a better compatibility check to
-          // decide on DASH vs HLS and Chromecast should always get a DASH stream.
-          // From https://stackoverflow.com/questions/9038625/detect-if-device-is-ios
-          var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+          const streamPath = (isIOS
+            ? data.createStreamingTicket.hlsStreamingPath
+            : data.createStreamingTicket.dashStreamingPath);
 
-          const streamPath = isIOS ? data.createStreamingTicket.hlsStreamingPath : data.createStreamingTicket.dashStreamingPath;
           const mimeType = isIOS ? 'application/x-mpegURL' : 'application/dash+xml';
 
           this.setState({
-            source: `${getBaseUrl()}${streamPath}?${mimeTypes}`,
-            mimeType: mimeType,
+            source: `${getBaseUrl()}${streamPath}?${codecs}`,
+            mimeType,
           });
         })
         .catch((error) => {
