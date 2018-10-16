@@ -1,2 +1,3 @@
-## Olaris
-Start Of Readme
+## Olaris ChromeCast Reciever
+ 
+Run `yarn start` to start local server
