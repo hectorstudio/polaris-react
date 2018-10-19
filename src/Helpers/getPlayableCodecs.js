@@ -11,7 +11,7 @@ const isCodecCompatible = (codec) => {
  * @param {Array} streams List of streams
  * @return {String} Query Parameters to append to stream url
  */
-const generateMimeTypes = (streams) => {
+const getPlayableCodecs = (streams) => {
   const staticCodecs = ['mp4a.40.2', 'avc1.64001e', 'avc1.64001f', 'avc1.640028'];
 
 
@@ -31,4 +31,4 @@ const generateMimeTypes = (streams) => {
   return queryParams;
 };
 
-export default generateMimeTypes;
+export default getPlayableCodecs;

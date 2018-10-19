@@ -31,6 +31,7 @@
         "react-autosuggest": "^9.3.4",
         "react-blur": "^0.6.0",
         "react-custom-scrollbars": "^4.2.1",
+        "react-device-detect": "^1.6.1",
         "react-dom": "^16.4.0",
         "react-lazyload": "^2.3.0",
         "react-modal": "^3.5.1",

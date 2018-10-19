@@ -82,9 +82,9 @@ export const CardInfo = styled.span`
 export const Unwatched = styled.span`
   position:absolute;
   top:-2.5rem;
-  left:-0.25rem;
+  left:-0.75rem;
   width: 1rem;
-  height: 5rem;
+  height: 7rem;
   z-index:6;
   transform: rotate(45deg);
   transition:.2s all;
@@ -141,8 +141,7 @@ export const PlayState = styled.span`
   }
 
   ${PosterWrap}:hover & { 
-    transform: scale(0);
-    opacity:0;
+    transform: translateY(2rem);
   }
 `;
 
