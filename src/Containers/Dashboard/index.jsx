@@ -1,15 +1,27 @@
 import React from 'react';
 
-import { PageHeading } from 'Styles';
-import RecentlyAddedSeriesSlider from 'Queries/fetchRecentlyAddedSeries';
 import ContentWrap from 'Containers/ContentWrap';
-import DashboardWrap from './Styles';
+import RenderRecentMovies from './RenderRecentMovies';
+import RenderRecentEpisodes from './RenderRecentEpisodes';
+import RenderUpNext from './RenderUpNext';
+
+import { DashboardWrap, CarouselWrap } from './Styles';
 
 const Dashboard = () => (
   <ContentWrap>
     <DashboardWrap>
-      <PageHeading>Dashboard</PageHeading>
-      <RecentlyAddedSeriesSlider />
+      <CarouselWrap>
+        <h4>Currently Watching</h4>
+        <RenderUpNext />
+      </CarouselWrap>
+      <CarouselWrap>
+        <h4>Recently Added Movies</h4>
+        <RenderRecentMovies />
+      </CarouselWrap>
+      <CarouselWrap>
+        <h4>Recently Added TV Series</h4>
+        <RenderRecentEpisodes />
+      </CarouselWrap>
     </DashboardWrap>
   </ContentWrap>
 );

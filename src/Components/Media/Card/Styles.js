@@ -46,7 +46,7 @@ export const CardTitle = styled.h3`
   width: 100%;
   float: left;
   text-align: left;
-  margin:1rem 0 0;
+  margin:1.5rem 0 0;
   font-size:1.4rem;
   color: #FFF;
   font-weight:600;
@@ -63,13 +63,20 @@ export const CardTitle = styled.h3`
   }
 `;
 
-export const CardEpisodeCount = styled.span`
-  float:left;
-  width:100%;
+export const CardInfo = styled.span`
   font-size:1.2rem;
-  font-weight:600;
-  margin-top:.5rem;
+  margin-top:.4rem;
+  width: 100%;
+  float: left;
+  text-align: left;
   color: #FFFFFF75;
+  font-weight:600;
+  cursor:pointer;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding-right: 2rem;
+  line-height: 1.2rem;
 `;
 
 export const Unwatched = styled.span`

@@ -53,7 +53,7 @@ class MediaCard extends Component {
     if (!hover) return false;
 
     if (showPlayStatus) {
-      if (e.target.tagName === 'DIV' && !internalCard) {
+      if ((e.target.tagName === 'DIV' || e.target.tagName === 'H3') && !internalCard) {
         history.push(url);
       }
 
@@ -88,10 +88,13 @@ class MediaCard extends Component {
       hover,
       playState,
       resumeMedia,
+      season,
+      year,
     } = this.props;
     const { url, modalOpen } = this.state;
 
     const showPlayStatus = (type === 'Movie' || type === 'Episode');
+    const info = (season ? season.series.name : year);
     const bgImage = (posterPath || stillPath
       ? `${getBaseUrl()}/m/images/tmdb/w342/${(posterPath || stillPath)}`
       : '/images/placeholder.png'
@@ -120,7 +123,9 @@ class MediaCard extends Component {
               )
             }
           </PosterWrap>
-          {showText && <MediaName name={name} episodes={episodes} />}
+          {showText
+            && <MediaName name={name} episodes={episodes} info={info} />
+          }
         </CardWrap>
 
         <ResumeModal

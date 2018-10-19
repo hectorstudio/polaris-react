@@ -4,7 +4,7 @@ export const LibraryListWrap = styled.section`
     width: 100%;
     display: flex;
     flex-flow: row wrap;
-    padding:3rem 2rem 1.5rem; 
+    padding:3rem 3rem 1.5rem; 
     align-items: center;
     justify-content: center;
 `;
