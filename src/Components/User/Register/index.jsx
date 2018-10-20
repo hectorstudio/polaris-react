@@ -21,7 +21,7 @@ const RegisterForm = ({
     <FormWrap error={error}>
       <LogoIcon alt="Olaris" height="30" />
       <Title heading="Sign Up" sub="Account Registration" />
-      { console.log(inviteCode) }
+
       {!initialSetup
           && <Input type="text" value={(inviteCode || undefined)} name="invite_code" autocomplete="invite_code" placeholder="Enter Invite Code" handleChange={handleChange} uniqueCode />
       }

@@ -7,6 +7,7 @@ import generateFileList from './generateFileList';
 import isInitialSetup from './isInitialSetup';
 import convertFloatMs from './convertFloatMs';
 import streamFilter from './streamFilter';
+import copyToClipboard from './copyToClipboard';
 
 export {
   getUrlParameter,
@@ -18,4 +19,5 @@ export {
   generateFileList,
   convertFloatMs,
   streamFilter,
+  copyToClipboard,
 };

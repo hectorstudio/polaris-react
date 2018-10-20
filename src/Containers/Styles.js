@@ -20,3 +20,16 @@ export const PageWrap = styled.div`
   margin: 0 0 0 ${props => props.theme.layout.sidebar};
   overflow-x: hidden;
 `;
+
+export const InnerContent = styled.section`
+  width:100%;
+  float:left;
+  padding:5rem;
+`;
+
+export const PageHeading = styled.h1`
+  color:#FFF;
+  font-weight: 700;
+  font-size:2.4rem;
+  margin:0 0 3rem;
+`;

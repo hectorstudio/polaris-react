@@ -4,7 +4,10 @@ import { graphql } from 'react-apollo';
 
 import DELETE_USER from 'Mutations/deleteUser';
 
-class UserListItem extends Component {
+import { faTrash } from '@fortawesome/pro-regular-svg-icons';
+import { UserListItem, DeleteUser } from './Styles';
+
+class UserItem extends Component {
   state = {
     deleted: false,
   }
@@ -26,39 +29,31 @@ class UserListItem extends Component {
   }
 
   render() {
-    const { user, id, inviteCode } = this.props;
+    const { username, id } = this.props;
     const { deleted } = this.state;
+
+    const deletedMessage = `Successfully Deleted ${username}`;
 
     if (!deleted) {
       return (
-        <li>
-          <p>
-            Name:
-            {(user || 'Not Yet Redeemed')}
-          </p>
-          <p>
-            Invite:
-            {inviteCode}
-          </p>
-          <button type="submit" onClick={() => this.deleteUser(id)}>Delete User</button>
-        </li>
+        <UserListItem>
+          {username}
+          <DeleteUser icon={faTrash} onClick={() => this.deleteUser(id)} />
+        </UserListItem>
       );
     }
-    return (
-      <li>User Deleted</li>
-    );
+    return <UserListItem success>{deletedMessage}</UserListItem>;
   }
 }
 
-UserListItem.propTypes = {
-  user: PropTypes.string.isRequired,
-  inviteCode: PropTypes.string.isRequired,
-  id: PropTypes.string,
+UserItem.propTypes = {
+  username: PropTypes.string.isRequired,
+  id: PropTypes.number,
   mutate: PropTypes.func.isRequired,
 };
 
-UserListItem.defaultProps = {
+UserItem.defaultProps = {
   id: '',
 };
 
-export default UserListItem = graphql(DELETE_USER)(UserListItem);
+export default UserItem = graphql(DELETE_USER)(UserItem);

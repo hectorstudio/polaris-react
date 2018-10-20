@@ -22,11 +22,17 @@ const Carousel = (props) => {
     infinite: false,
     lazyLoad: true,
     speed: 500,
-    slidesToShow: 6,
+    slidesToShow: 8,
     slidesToScroll: 1,
     nextArrow: <RenderNextArrow />,
     prevArrow: <RenderPrevArrow />,
     responsive: [
+      {
+        breakpoint: 1600,
+        settings: {
+          slidesToShow: 6,
+        },
+      },
       {
         breakpoint: 1200,
         settings: {
