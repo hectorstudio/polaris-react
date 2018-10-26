@@ -13,6 +13,7 @@ import {
 
 import REQUEST_STREAM from 'Mutations/requestStream';
 import MediaCard from 'Components/Media/Card';
+import MediaActions from './MediaActions';
 import MediaInfo from './MediaInfo';
 import MediaFiles from './MediaFiles';
 import MediaSubtitles from './MediaSubtitles';
@@ -162,6 +163,7 @@ class MediaItem extends Component {
             </MediaLeftCol>
             <MediaRightCol>
               <MediaInfo {...mediaInfo} selectedFile={selectedFile} />
+              <MediaActions uuid={uuid} />
               <MediaFiles
                 files={files}
                 selectedFile={selectedFile}

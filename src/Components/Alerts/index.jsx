@@ -7,7 +7,6 @@ import AlertInline from './AlertInline';
 import {
   AlertWrap,
   AlertMessage,
-  AlertType,
   IconWrap,
   Close,
 } from './Styles';
@@ -26,8 +25,6 @@ const AlertTemplate = ({
 }) => (
   <AlertWrap>
     <AlertMessage>
-      <AlertType type={options.type}>{options.type}</AlertType>
-      {' '}
       {message}
     </AlertMessage>
 

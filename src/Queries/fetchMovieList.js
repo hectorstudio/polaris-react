@@ -7,6 +7,7 @@ const FETCH_MOVIES = gql`
       name
       posterPath
       uuid
+      year
 
       playState {
         finished

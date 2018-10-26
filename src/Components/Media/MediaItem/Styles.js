@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import DropdownMenu from 'Components/DropdownMenu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { aFadeIn } from 'Styles/Animations';
@@ -184,4 +185,11 @@ export const MediaDetails = styled.ul`
       color: ${props => props.watched ? props.theme.secondary : props.theme.primary};
     }
   }
+`;
+
+// Media Actions
+export const MediaActionsDropdown = styled(DropdownMenu)`
+  position:absolute;
+  top:0;
+  right:0;
 `;
