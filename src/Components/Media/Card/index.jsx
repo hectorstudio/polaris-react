@@ -45,7 +45,7 @@ class MediaCard extends Component {
   cardClick = (e, url, history, showPlayStatus) => {
     const {
       playState,
-      onClick,
+      playMedia,
       internalCard,
       hover,
     } = this.props;
@@ -60,7 +60,7 @@ class MediaCard extends Component {
       if (playState.playtime > 0 && !playState.finished) {
         this.toggleModal();
       } else if (internalCard) {
-        onClick();
+        playMedia();
       } else {
         history.push({
           pathname: url,
@@ -87,7 +87,7 @@ class MediaCard extends Component {
       files,
       hover,
       playState,
-      resumeMedia,
+      playMedia,
       season,
       year,
     } = this.props;
@@ -134,7 +134,7 @@ class MediaCard extends Component {
           contentLabel="Resume Media"
           isOpen={modalOpen}
           onClose={() => (this.toggleModal(modalOpen))}
-          internalRequest={resumeMedia}
+          playMedia={playMedia}
           playState={playState}
         />
       </React.Fragment>

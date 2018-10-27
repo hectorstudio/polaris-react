@@ -9,7 +9,7 @@ import {
   DropdownIcon,
   FileName,
   MediaInfoSubhead,
-} from './Styles';
+} from '../Styles';
 
 // eslint-disable-next-line
 const DropdownIndicator = (props) => {

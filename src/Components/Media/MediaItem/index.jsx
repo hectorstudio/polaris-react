@@ -13,11 +13,8 @@ import {
 
 import REQUEST_STREAM from 'Mutations/requestStream';
 import MediaCard from 'Components/Media/Card';
-import MediaActions from './MediaActions';
-import MediaInfo from './MediaInfo';
-import MediaFiles from './MediaFiles';
-import MediaSubtitles from './MediaSubtitles';
-import MediaAudio from './MediaAudio';
+import MediaDropdown from './MediaDropdown';
+import MediaOverview from './MediaOverview';
 import Video from './Video';
 
 import { VideoWrap, MediaFull, CloseVideo } from './Styles';
@@ -73,15 +70,11 @@ class MediaItem extends Component {
       });
     }
 
-    resumeMedia = (resume) => {
-      this.setState({ resume });
-
-      this.playMedia();
-    }
-
-    playMedia = () => {
+    playMedia = (resume) => {
       const { mutate, files } = this.props;
       const { selectedFile } = this.state;
+
+      this.setState({ resume });
 
       mutate({
         variables: { uuid: files[selectedFile.value].uuid },
@@ -154,23 +147,21 @@ class MediaItem extends Component {
             <MediaLeftCol>
               <MediaCard
                 size={(type === 'Episode' ? 'largeWide' : 'large')}
-                resumeMedia={this.resumeMedia}
-                onClick={() => { this.playMedia(); }}
+                playMedia={this.playMedia}
                 internalCard
                 text
                 {...mediaInfo}
               />
             </MediaLeftCol>
             <MediaRightCol>
-              <MediaInfo {...mediaInfo} selectedFile={selectedFile} />
-              <MediaActions uuid={uuid} />
-              <MediaFiles
-                files={files}
+              <MediaDropdown uuid={uuid} />
+              <MediaOverview
+                mediaInfo={mediaInfo}
                 selectedFile={selectedFile}
+                files={files}
                 fileChange={this.fileChange}
+                playMedia={this.playMedia}
               />
-              <MediaSubtitles selectedFile={selectedFile} />
-              <MediaAudio selectedFile={selectedFile} />
             </MediaRightCol>
           </MediaFull>
 

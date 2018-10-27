@@ -6,15 +6,15 @@ import { MediaActionsDropdown } from '../Styles';
 
 import RefreshMetadata from './RefreshMetadata';
 
-const MediaActions = ({ uuid }) => (
+const MediaDropdown = ({ uuid }) => (
   <MediaActionsDropdown icon={faEllipsisH}>
     <RefreshMetadata uuid={uuid} />
     <span>Coming Soon</span>
   </MediaActionsDropdown>
 );
 
-MediaActions.propTypes = {
+MediaDropdown.propTypes = {
   uuid: PropTypes.string.isRequired,
 };
 
-export default MediaActions;
+export default MediaDropdown;

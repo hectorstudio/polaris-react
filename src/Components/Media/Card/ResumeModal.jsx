@@ -11,15 +11,15 @@ const ResumeModal = (props) => {
     contentLabel,
     onClose,
     isOpen,
-    internalRequest,
+    playMedia,
     url,
     history,
     playState,
   } = props;
 
   const handlePlayRequest = (resume, autoplay) => {
-    if (internalRequest) {
-      internalRequest(resume);
+    if (playMedia) {
+      playMedia(resume);
       onClose();
     } else {
       history.push({
@@ -69,7 +69,7 @@ ResumeModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
   url: PropTypes.string,
-  internalRequest: PropTypes.func,
+  playMedia: PropTypes.func,
   history: ReactRouterPropTypes.history,
   playState: PropTypes.shape({
     finished: PropTypes.bool,
@@ -78,7 +78,7 @@ ResumeModal.propTypes = {
 };
 
 ResumeModal.defaultProps = {
-  internalRequest: null,
+  playMedia: null,
   history: null,
   url: '',
   playState: {

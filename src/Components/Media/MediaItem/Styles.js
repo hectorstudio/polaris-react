@@ -114,6 +114,7 @@ export const SelectStyle = {
     cursor: 'pointer',
     color: '#FF9B3D',
     position: 'relative',
+    float: 'left',
   }),
   menu: base => ({
     ...base,

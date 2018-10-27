@@ -5,7 +5,7 @@ import { graphql } from 'react-apollo';
 import videojs from 'video.js';
 
 import UPDATE_PLAYSTATE from 'Mutations/updatePlaystate';
-import { mutatePlayStateEpisode, mutatePlayStateMovie } from './mutatePlayState';
+import { updatePlayStateEpisode, updatePlayStateMovie } from 'Components/Media/Actions/updatePlayState';
 
 require('@silvermine/videojs-chromecast')(videojs);
 
@@ -55,9 +55,9 @@ class Video extends Component {
     const finished = playtime * (100 / length) > 98;
 
     if (type === 'Episode') {
-      mutatePlayStateEpisode(mutate, uuid, playtime, finished);
+      updatePlayStateEpisode(mutate, uuid, playtime, finished);
     } else {
-      mutatePlayStateMovie(mutate, uuid, playtime, finished);
+      updatePlayStateMovie(mutate, uuid, playtime, finished);
     }
   }
 

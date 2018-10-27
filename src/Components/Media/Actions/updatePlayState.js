@@ -1,7 +1,7 @@
 import FETCH_EPISODE from 'Queries/fetchEpisode';
 import FETCH_MOVIE from 'Queries/fetchMovie';
 
-export const mutatePlayStateEpisode = (mutate, uuid, playtime, finished) => {
+export const updatePlayStateEpisode = (mutate, uuid, playtime, finished) => {
   mutate({
     variables: { uuid, playtime: (!finished ? playtime : 0), finished },
     update: (store, { data: { createPlayState } }) => {
@@ -29,7 +29,7 @@ export const mutatePlayStateEpisode = (mutate, uuid, playtime, finished) => {
     });
 };
 
-export const mutatePlayStateMovie = (mutate, uuid, playtime, finished) => {
+export const updatePlayStateMovie = (mutate, uuid, playtime, finished) => {
   mutate({
     variables: { uuid, playtime: (!finished ? playtime : 0), finished },
     update: (store, { data: { createPlayState } }) => {

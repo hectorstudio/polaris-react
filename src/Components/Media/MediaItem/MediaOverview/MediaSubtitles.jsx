@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { streamFilter } from 'Helpers';
-import { MediaInfoSubhead, MediaInfo, MediaInfoList } from './Styles';
+import { MediaInfoSubhead, MediaInfo, MediaInfoList } from '../Styles';
 
 const MediaSubtitles = ({ selectedFile }) => {
   const subtitlesArr = streamFilter(selectedFile, 'subtitle', 'language');
