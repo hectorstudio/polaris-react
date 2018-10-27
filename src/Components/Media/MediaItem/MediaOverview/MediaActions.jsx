@@ -8,16 +8,16 @@ import { updatePlayStateEpisode, updatePlayStateMovie } from 'Components/Media/A
 class MediaActions extends Component {
   toggleWatchedState = () => {
     const {
-      finished,
+      playState,
       type,
       uuid,
       mutate,
     } = this.props;
 
     if (type === 'Episode') {
-      updatePlayStateEpisode(mutate, uuid, 0, !finished);
+      updatePlayStateEpisode(mutate, uuid, 0, !playState.finished);
     } else {
-      updatePlayStateMovie(mutate, uuid, 0, !finished);
+      updatePlayStateMovie(mutate, uuid, 0, !playState.finished);
     }
   }
 
