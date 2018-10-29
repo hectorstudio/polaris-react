@@ -23,7 +23,17 @@ const RegisterForm = ({
       <Title heading="Sign Up" sub="Account Registration" />
 
       {!initialSetup
-          && <Input type="text" value={(inviteCode || undefined)} name="invite_code" autocomplete="invite_code" placeholder="Enter Invite Code" handleChange={handleChange} uniqueCode />
+        && (
+          <Input
+            type="text"
+            value={(inviteCode || undefined)}
+            name="invite_code"
+            autocomplete="invite_code"
+            placeholder="Enter Invite Code"
+            handleChange={handleChange}
+            uniqueCode
+          />
+        )
       }
       <Input type="text" name="username" autocomplete="new-username" placeholder="Enter Username" handleChange={handleChange} />
       <Input type="password" name="password" autocomplete="new-password" placeholder="Enter Password" handleChange={handleChange} />

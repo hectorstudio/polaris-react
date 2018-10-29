@@ -1,6 +1,6 @@
 import React from 'react';
 import { Query } from 'react-apollo';
-
+import { orderBy } from 'lodash';
 import FETCH_MOVIES from 'Queries/fetchMovieList';
 
 import Loading from 'Components/Loading';
@@ -17,7 +17,7 @@ const RenderMovieList = () => (
       if (loading) return <Loading />;
       if (error) return `Error! ${error.message}`;
 
-      return data.movies.map(m => (
+      return orderBy(data.movies, ['name'], ['asc']).map(m => (
         <LibraryListItem key={m.uuid}>
           <MediaCard {...m} />
         </LibraryListItem>
