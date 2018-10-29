@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { faPlus } from '@fortawesome/pro-regular-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import { AddLibraryWrap, AddLibraryInput, SubmitLibrary } from './Styles';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { faTimes } from '@fortawesome/pro-regular-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import { ModalCloseButton } from './Styles';
 

@@ -3,7 +3,7 @@ import ReactRouterPropTypes from 'react-router-prop-types';
 import Cookies from 'universal-cookie';
 import { withRouter } from 'react-router-dom';
 
-import { faSignOut } from '@fortawesome/pro-regular-svg-icons';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { Auth } from 'Client/Auth';
 import { LogoutButton, LogoutIcon } from './Styles';
@@ -22,7 +22,7 @@ class Logout extends Component {
   render() {
     return (
       <LogoutButton onClick={this.handleLogout}>
-        <LogoutIcon icon={faSignOut} />
+        <LogoutIcon icon={faSignOutAlt} />
       </LogoutButton>
     );
   }

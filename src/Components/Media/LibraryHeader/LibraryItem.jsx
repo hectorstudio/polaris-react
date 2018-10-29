@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'react-apollo';
 
-import { faTrash } from '@fortawesome/pro-regular-svg-icons';
+import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
 import { AlertInline } from 'Components/Alerts';
 import { FETCH_LIBRARIES } from 'Queries/fetchLibraries';
 import { DELETE_LIBRARY } from 'Mutations/manageLibraries';
@@ -52,7 +52,7 @@ class LibraryItem extends Component {
       <LibraryItemWrap>
         { error && <AlertInline type="error">{errorMessage}</AlertInline> }
         <LibraryItemFilePath>{filePath}</LibraryItemFilePath>
-        <LibraryItemDelete icon={faTrash} onClick={() => this.deleteLibrary(id)} />
+        <LibraryItemDelete icon={faTrashAlt} onClick={() => this.deleteLibrary(id)} />
       </LibraryItemWrap>
     );
   }

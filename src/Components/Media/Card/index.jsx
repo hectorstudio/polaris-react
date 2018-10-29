@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import LazyLoad from 'react-lazyload';
-import { faPlay, faSearch } from '@fortawesome/pro-solid-svg-icons';
+import { faPlay, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { getBaseUrl, generateMediaUrl } from 'Helpers';
 
 import MediaInfo from './MediaInfo';

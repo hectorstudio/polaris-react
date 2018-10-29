@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { faPlus } from '@fortawesome/pro-regular-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { GenerateInvite } from './Styles';
 
 const CreateInvite = (props) => {

@@ -3,7 +3,7 @@ import { compose } from 'lodash/fp';
 import { graphql } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import { isIOS } from 'react-device-detect';
-import { faTimes } from '@fortawesome/pro-regular-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import {
   getPlayableCodecs,

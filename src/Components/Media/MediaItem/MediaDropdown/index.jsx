@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { faEllipsisH } from '@fortawesome/pro-regular-svg-icons';
+import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import { MediaActionsDropdown } from '../Styles';
 
 import RefreshMetadata from './RefreshMetadata';

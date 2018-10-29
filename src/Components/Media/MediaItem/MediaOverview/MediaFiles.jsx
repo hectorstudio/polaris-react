@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Select, { components } from 'react-select';
-import { faAngleDown } from '@fortawesome/pro-regular-svg-icons';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 import {
   SelectStyle,

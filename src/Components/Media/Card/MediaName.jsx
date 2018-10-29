@@ -9,7 +9,7 @@ const MediaName = ({
   type,
   name,
   episodeNumber,
- }) => {
+}) => {
   const info = () => {
     let infoValue = 'test';
 

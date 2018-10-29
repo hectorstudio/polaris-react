@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { withRouter } from 'react-router-dom';
 
-import { faSearch, faSpinner } from '@fortawesome/pro-regular-svg-icons';
+import { faSpinner, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import {
   InputWrap,

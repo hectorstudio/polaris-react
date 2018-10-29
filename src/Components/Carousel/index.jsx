@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Slider from 'react-slick';
 
-import { faAngleLeft, faAngleRight } from '@fortawesome/pro-regular-svg-icons';
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { NextArrow, PrevArrow } from './Styles';
 
 const RenderNextArrow = (props) => {

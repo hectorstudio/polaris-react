@@ -4,7 +4,7 @@ import { graphql } from 'react-apollo';
 
 import DELETE_USER from 'Mutations/deleteUser';
 
-import { faTrash } from '@fortawesome/pro-regular-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { UserListItem, DeleteUser } from './Styles';
 
 class UserItem extends Component {
