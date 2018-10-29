@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { throttle } from 'lodash';
 import { graphql } from 'react-apollo';
@@ -63,11 +63,11 @@ class Video extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <Fragment>
         <div data-vjs-player>
           <video ref={(node) => { this.videoNode = node; }} className="video-js" />
         </div>
-      </React.Fragment>
+      </Fragment>
     );
   }
 }

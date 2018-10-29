@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import LogoIcon from 'Components/Logo/LogoIcon';
@@ -17,7 +17,7 @@ const RegisterForm = ({
   initialSetup,
   inviteCode,
 }) => (
-  <React.Fragment>
+  <Fragment>
     <FormWrap error={error}>
       <LogoIcon alt="Olaris" height="30" />
       <Title heading="Sign Up" sub="Account Registration" />
@@ -41,7 +41,7 @@ const RegisterForm = ({
 
       <FormLink to="/login" strapline="Have An Account?" value="Log In" setup={false} />
     </FormWrap>
-  </React.Fragment>
+  </Fragment>
 );
 
 RegisterForm.propTypes = {

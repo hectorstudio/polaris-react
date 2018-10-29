@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import { CardTitle, CardInfo } from './Styles';
@@ -32,10 +32,10 @@ const MediaName = ({
   };
 
   return (
-    <React.Fragment>
+    <Fragment>
       <CardTitle>{name}</CardTitle>
       <CardInfo>{info()}</CardInfo>
-    </React.Fragment>
+    </Fragment>
   );
 };
 

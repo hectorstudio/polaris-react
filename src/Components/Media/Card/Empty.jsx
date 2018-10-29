@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -15,9 +15,9 @@ const EmptyArticles = ({ length, wide }) => {
   const EmptyList = [...Array(length)].map(() => <EmptyArticle wide={wide} key={Math.random()} />);
 
   return (
-    <React.Fragment>
+    <Fragment>
       {EmptyList}
-    </React.Fragment>
+    </Fragment>
   );
 };
 

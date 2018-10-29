@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import { Heading, SubHeading } from '../Styles';
 
 const Title = ({ heading, sub }) => (
-  <React.Fragment>
+  <Fragment>
     <Heading>{heading}</Heading>
     <SubHeading>{sub}</SubHeading>
-  </React.Fragment>
+  </Fragment>
 );
 
 Title.propTypes = {

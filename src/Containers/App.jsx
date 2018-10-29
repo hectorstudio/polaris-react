@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Auth, checkAuth } from 'Client/Auth';
 import Header from 'Components/Header';
 import Sidebar from 'Components/Sidebar';
@@ -10,13 +10,13 @@ const App = () => {
   checkAuth();
 
   const LoggedIn = () => (
-    <React.Fragment>
+    <Fragment>
       <Header />
       <Sidebar />
       <PageWrap>
         <Routes />
       </PageWrap>
-    </React.Fragment>
+    </Fragment>
   );
 
   return (

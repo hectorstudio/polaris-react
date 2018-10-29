@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'react-apollo';
 
@@ -26,7 +26,7 @@ class MediaActions extends Component {
     const resume = (playState.playtime > 0);
 
     return (
-      <React.Fragment>
+      <Fragment>
         <button type="button" onClick={() => this.toggleWatchedState()}>
           {(playState.finished ? 'Mark As Unwatched' : 'Mark As Watched')}
         </button>
@@ -38,7 +38,7 @@ class MediaActions extends Component {
             Resume
           </button>
         )}
-      </React.Fragment>
+      </Fragment>
     );
   }
 }

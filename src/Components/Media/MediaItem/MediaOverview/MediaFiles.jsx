@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Select, { components } from 'react-select';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
@@ -21,7 +21,7 @@ const DropdownIndicator = (props) => {
 };
 
 const MediaFiles = ({ files, selectedFile, fileChange }) => (
-  <React.Fragment>
+  <Fragment>
     <MediaInfo>
       <MediaInfoSubhead>{(files.length > 1 ? 'Select File:' : 'File Name:')}</MediaInfoSubhead>
       {files.length > 1
@@ -40,7 +40,7 @@ const MediaFiles = ({ files, selectedFile, fileChange }) => (
         )
       }
     </MediaInfo>
-  </React.Fragment>
+  </Fragment>
 );
 
 MediaFiles.propTypes = {

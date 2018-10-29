@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import MediaInfo from './MediaInfo';
 import MediaFiles from './MediaFiles';
@@ -19,7 +19,7 @@ const MediaOverview = (props) => {
   const { type, uuid, playState } = mediaInfo;
 
   return (
-    <React.Fragment>
+    <Fragment>
       <MediaInfo {...mediaInfo} selectedFile={selectedFile} />
       <MediaFiles files={files} selectedFile={selectedFile} fileChange={fileChange} />
       <MediaSubtitles selectedFile={selectedFile} />
@@ -31,7 +31,7 @@ const MediaOverview = (props) => {
         playMedia={playMedia}
         resumeMedia={resumeMedia}
       />
-    </React.Fragment>
+    </Fragment>
   );
 };
 

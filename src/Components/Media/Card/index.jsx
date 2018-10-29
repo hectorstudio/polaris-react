@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
@@ -97,7 +97,7 @@ class MediaCard extends Component {
     );
 
     return (
-      <React.Fragment>
+      <Fragment>
         <CardWrap onClick={e => (this.cardClick(e, url, history, showPlayStatus))}>
           <PosterWrap>
             <LazyLoad height={(type === 'Episode' ? 125 : 230)} debounce={100} overflow resize>
@@ -133,7 +133,7 @@ class MediaCard extends Component {
           playMedia={playMedia}
           playState={playState}
         />
-      </React.Fragment>
+      </Fragment>
     );
   }
 }

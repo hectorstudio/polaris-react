@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import LogoIcon from 'Components/Logo/LogoIcon';
@@ -16,7 +16,7 @@ const LoginForm = ({
   handleLogin,
   disabled,
 }) => (
-  <React.Fragment>
+  <Fragment>
     <FormWrap error={error}>
       <LogoIcon alt="Olaris" height="35" />
       <Title heading="Welcome Back!" sub="Login to get started" />
@@ -29,7 +29,7 @@ const LoginForm = ({
     </FormWrap>
 
     <ForgotPassword to="/forgot" value="Forgot Password?" />
-  </React.Fragment>
+  </Fragment>
 );
 
 LoginForm.propTypes = {

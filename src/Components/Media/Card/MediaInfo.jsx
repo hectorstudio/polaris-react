@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -22,12 +22,12 @@ export default class MediaInfo extends Component {
     const watchStatus = () => {
       if (showPlayStatus) {
         return (
-          <React.Fragment>
+          <Fragment>
             { !playState.finished && <Unwatched /> }
             { !playState.finished && playState.playtime > 0
               && <PlayState percent={this.playPosition(length, playState.playtime)} />
             }
-          </React.Fragment>
+          </Fragment>
         );
       }
 
@@ -39,17 +39,17 @@ export default class MediaInfo extends Component {
     };
 
     return (
-      <React.Fragment>
+      <Fragment>
         { watchStatus() }
-      </React.Fragment>
+      </Fragment>
     );
   };
 
   render() {
     return (
-      <React.Fragment>
+      <Fragment>
         { this.mediaState() }
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
