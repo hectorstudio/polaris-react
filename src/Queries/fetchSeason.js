@@ -21,6 +21,7 @@ const FETCH_SEASON = uuid => gql`
         name
         uuid
         stillPath
+        episodeNumber
         id: tmdbID
         
         playState {

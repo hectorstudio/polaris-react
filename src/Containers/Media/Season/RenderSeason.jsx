@@ -1,6 +1,6 @@
 import React from 'react';
 import { Query } from 'react-apollo';
-
+import { orderBy } from 'lodash';
 import FETCH_SEASON from 'Queries/fetchSeason';
 
 import Empty from 'Components/Media/Card/Empty';
@@ -19,7 +19,7 @@ const RenderSeason = ({ uuid }) => (
       if (loading) return <Loading />;
       if (error) return `Error! ${error.message}`;
 
-      const episodeList = data.season.episodes.map(s => (
+      const episodeList = orderBy(data.season.episodes, ['episodeNumber'], ['asc']).map(s => (
         <LibraryListItemWide key={s.uuid}>
           <MediaCard {...s} wide showText />
         </LibraryListItemWide>

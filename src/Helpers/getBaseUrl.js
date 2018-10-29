@@ -13,7 +13,7 @@ const getBaseUrl = () => {
     console.log('Cant Find Base Url');
   }
 
-  return path;
+  return 'http://atalanta.bysh.me:8080';
 };
 
 export default getBaseUrl;

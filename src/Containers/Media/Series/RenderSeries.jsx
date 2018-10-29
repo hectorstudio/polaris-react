@@ -1,6 +1,6 @@
 import React from 'react';
 import { Query } from 'react-apollo';
-
+import { orderBy } from 'lodash';
 import FETCH_SERIES from 'Queries/fetchSeries';
 
 import Loading from 'Components/Loading';
@@ -19,7 +19,8 @@ const RenderSeries = ({ uuid }) => (
       if (error) return `Error! ${error.message}`;
 
       const series = { ...data.series[0] };
-      const seasonList = series.seasons.map(s => (
+
+      const seasonList = orderBy(series.seasons, ['seasonNumber'], ['asc']).map(s => (
         <LibraryListItem key={s.uuid}>
           <MediaCard {...s} showText />
         </LibraryListItem>

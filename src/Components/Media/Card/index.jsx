@@ -80,7 +80,6 @@ class MediaCard extends Component {
       showText,
       history,
       name,
-      episodes,
       posterPath,
       stillPath,
       type,
@@ -88,13 +87,10 @@ class MediaCard extends Component {
       hover,
       playState,
       playMedia,
-      season,
-      year,
     } = this.props;
     const { url, modalOpen } = this.state;
 
     const showPlayStatus = (type === 'Movie' || type === 'Episode');
-    const info = (season ? season.series.name : year);
     const bgImage = (posterPath || stillPath
       ? `${getBaseUrl()}/m/images/tmdb/w342/${(posterPath || stillPath)}`
       : '/images/placeholder.png'
@@ -124,7 +120,7 @@ class MediaCard extends Component {
             }
           </PosterWrap>
           {showText
-            && <MediaName name={name} episodes={episodes} info={info} />
+            && <MediaName name={name} {...this.props} />
           }
         </CardWrap>
 
