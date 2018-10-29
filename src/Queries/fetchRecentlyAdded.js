@@ -23,6 +23,7 @@ const RECENTLY_ADDED = gql`
         type: __typename
         uuid
         name
+        episodeNumber
         
         season {
           series {

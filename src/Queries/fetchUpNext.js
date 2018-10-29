@@ -23,6 +23,7 @@ const UP_NEXT = gql`
         type: __typename
         uuid
         name
+        episodeNumber
         
         season {
           series {
