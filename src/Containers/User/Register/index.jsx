@@ -19,9 +19,11 @@ class Register extends Component {
     }
 
     componentWillMount() {
+      const { initialSetup } = this.props;
+
       this.setState({
         inviteCode: getUrlParameter('invite_code'),
-        initialSetup: isInitialSetup(),
+        initialSetup,
       });
     }
 

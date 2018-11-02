@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
+import Loading from 'Components/Loading';
+
 // Auth
 import Login from 'Containers/User/Login';
 import ForgotPassword from 'Containers/User/ForgotPassword';
@@ -32,16 +34,29 @@ import AdminRoute from './Helper/AdminRoute';
 import PrivateRoute from './Helper/PrivateRoute';
 
 export default class Routes extends Component {
+  state = {
+    initialSetup: false,
+    loading: true,
+  };
+
   componentWillMount() {
     checkAuth();
+    isInitialSetup().then((res) => {
+      this.setState({
+        initialSetup: res.data,
+        loading: false,
+      });
+    });
   }
 
   initialRender = () => {
+    const { initialSetup } = this.state;
+
     if (Auth.isAuthenticated) {
       return <Redirect to="/dashboard" />;
     }
 
-    if (isInitialSetup()) {
+    if (initialSetup) {
       return <Redirect to="/register" />;
     }
 
@@ -49,13 +64,25 @@ export default class Routes extends Component {
   };
 
   render() {
+    const { loading, initialSetup } = this.state;
+
+    if (loading) {
+      return <Loading />;
+    }
+
     return (
       <Switch>
         <Route exact path="/" render={this.initialRender} />
 
         <Route exact path="/login" component={Login} />
         <Route exact path="/forgot" component={ForgotPassword} />
-        <Route exact path="/register" component={Register} />
+        <Route
+          exact
+          path="/register"
+          render={routeProps => (
+            <Register {...routeProps} initialSetup={initialSetup} />
+          )}
+        />
 
         <AdminRoute exact path="/users" component={Users} />
 

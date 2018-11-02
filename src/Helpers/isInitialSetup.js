@@ -3,11 +3,8 @@ import getBaseUrl from './getBaseUrl';
 
 const isInitialSetup = () => {
   const url = `${getBaseUrl()}/m/v1/user/setup`;
-  let initialSetup = false;
 
-  axios.post(url).then((response) => { initialSetup = response.data; });
-
-  return initialSetup;
+  return axios.post(url);
 };
 
 export default isInitialSetup;
