@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withAlert } from 'react-alert';
 import { Redirect } from 'react-router';
-import { getUrlParameter, isInitialSetup } from 'Helpers';
+import { getUrlParameter } from 'Helpers';
 
 import CREATE_USER from 'Mutations/createUser';
 import RegisterForm from 'Components/User/Register';
