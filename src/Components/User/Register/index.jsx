@@ -16,33 +16,38 @@ const RegisterForm = ({
   disabled,
   initialSetup,
   inviteCode,
-}) => (
-  <Fragment>
-    <FormWrap error={error}>
-      <LogoIcon alt="Olaris" height="30" />
-      <Title heading="Sign Up" sub="Account Registration" />
+}) => {
+  const heading = (initialSetup ? 'Welcome To Olaris' : 'Olaris');
+  const title = (initialSetup ? 'Setup your admin account' : 'Register Account');
 
-      {!initialSetup
-        && (
-          <Input
-            type="text"
-            value={(inviteCode || undefined)}
-            name="invite_code"
-            autocomplete="invite_code"
-            placeholder="Enter Invite Code"
-            handleChange={handleChange}
-            uniqueCode
-          />
-        )
-      }
-      <Input type="text" name="username" autocomplete="new-username" placeholder="Enter Username" handleChange={handleChange} />
-      <Input type="password" name="password" autocomplete="new-password" placeholder="Enter Password" handleChange={handleChange} />
-      <Button handleSubmit={handleRegister} value="Register" disabled={disabled} />
+  return (
+    <Fragment>
+      <FormWrap error={error}>
+        <LogoIcon alt="Olaris" height="30" />
+        <Title heading={heading} sub={title} />
 
-      <FormLink to="/login" strapline="Have An Account?" value="Log In" setup={false} />
-    </FormWrap>
-  </Fragment>
-);
+        {!initialSetup
+          && (
+            <Input
+              type="text"
+              value={(inviteCode || undefined)}
+              name="invite_code"
+              autocomplete="invite_code"
+              placeholder="Enter Invite Code"
+              handleChange={handleChange}
+              uniqueCode
+            />
+          )
+        }
+        <Input type="text" name="username" autocomplete="new-username" placeholder="Username" handleChange={handleChange} />
+        <Input type="password" name="password" autocomplete="new-password" placeholder="Password" handleChange={handleChange} />
+        <Button handleSubmit={handleRegister} value="Create Account" disabled={disabled} />
+
+        {!initialSetup && <FormLink to="/login" strapline="Have An Account?" value="Log In" setup={false} />}
+      </FormWrap>
+    </Fragment>
+  );
+};
 
 RegisterForm.propTypes = {
   error: PropTypes.bool.isRequired,

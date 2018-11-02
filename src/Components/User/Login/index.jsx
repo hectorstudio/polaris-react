@@ -8,7 +8,6 @@ import Title from '../Components/Title';
 import Input from '../Components/Input';
 import Button from '../Components/Button';
 import FormLink from '../Components/FormLink';
-import ForgotPassword from '../Components/ForgotPassword';
 
 const LoginForm = ({
   error,
@@ -27,8 +26,6 @@ const LoginForm = ({
 
       <FormLink to="/register" strapline="Don't Have An Account?" value="Sign Up" setup={false} />
     </FormWrap>
-
-    <ForgotPassword to="/forgot" value="Forgot Password?" />
   </Fragment>
 );
 

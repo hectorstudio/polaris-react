@@ -37,12 +37,12 @@ export const InputWrap = styled.div`
     position:relative;
     padding-bottom: .2rem;
     margin:0 0 2rem;
-    border: 1px solid #EEE;
+    border: 1px solid #DDD;
 
     &:after, &:before {
         content:'';
         position:absolute;
-        height: .2rem;
+        height: .1rem;
         bottom:0;
         left:0;
         z-index:3;
@@ -114,7 +114,7 @@ export const UniqueInput = styled.input`
 
 export const FormButton = styled.button`
     height: 6rem;
-    margin: 3rem 0;
+    margin: 2rem 0;
     color: #FFF;
     width:100%;
     text-align:center;
@@ -122,7 +122,7 @@ export const FormButton = styled.button`
     background: ${props => props.theme.primary};
     font-size:2rem;
     font-family: ${props => props.theme.fonts.muli};
-    font-weight:800;
+    font-weight:700;
     box-shadow:0 10px 15px rgba(0,0,0, .1);
     transition:.2s all;
     cursor: pointer;

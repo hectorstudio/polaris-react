@@ -15,7 +15,7 @@ class Register extends Component {
       username: '',
       password: '',
       inviteCode: '',
-      initialSetup: false,
+      initialSetup: true,
     }
 
     componentWillMount() {
