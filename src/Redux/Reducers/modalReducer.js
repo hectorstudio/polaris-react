@@ -1,3 +1,4 @@
+import { LOCATION_CHANGE } from 'connected-react-router';
 import { SHOW_MODAL, HIDE_MODAL } from '../Constants/actionTypes';
 
 const initialState = {
@@ -14,6 +15,8 @@ const modal = (state = initialState, action) => {
         props: action.payload.props,
       };
     case HIDE_MODAL:
+      return initialState;
+    case LOCATION_CHANGE:
       return initialState;
     default:
       return state;

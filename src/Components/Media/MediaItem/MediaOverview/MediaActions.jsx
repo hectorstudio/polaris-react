@@ -1,9 +1,11 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'react-apollo';
 
 import UPDATE_PLAYSTATE from 'Mutations/updatePlaystate';
 import { updatePlayStateEpisode, updatePlayStateMovie } from 'Components/Media/Actions/updatePlayState';
+
+import { MediaActionsWrap } from '../Styles';
 
 class MediaActions extends Component {
   toggleWatchedState = () => {
@@ -26,19 +28,21 @@ class MediaActions extends Component {
     const resume = (playState.playtime > 0);
 
     return (
-      <Fragment>
-        <button type="button" onClick={() => this.toggleWatchedState()}>
-          {(playState.finished ? 'Mark As Unwatched' : 'Mark As Watched')}
-        </button>
+      <MediaActionsWrap>
         <button type="button" onClick={() => playMedia(false)}>
           {(resume ? 'Play From Start' : 'Play')}
         </button>
+
         {resume && (
           <button type="button" onClick={() => playMedia(true)}>
             Resume
           </button>
         )}
-      </Fragment>
+
+        <button type="button" onClick={() => this.toggleWatchedState()}>
+          {(playState.finished ? 'Mark As Unwatched' : 'Mark As Watched')}
+        </button>
+      </MediaActionsWrap>
     );
   }
 }

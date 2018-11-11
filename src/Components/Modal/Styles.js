@@ -1,48 +1,38 @@
 import styled, { keyframes } from 'styled-components';
-import ReactModal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import { aFadeIn } from 'Styles/Animations';
 
 const fadeInZoom = keyframes`
   from { 
+    opacity:0;
     transform: scale(.9);
   }
   to { 
+    opacity:1;
     transform: scale(1);
    }
 `;
 
-export const StyledModal = styled(ReactModal)`
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+export const Modal = styled.div`
+  position:fixed;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100vh;
+  background: #000000ab;
+  z-index:9999;
   display: flex;
-  align-items: ${({ tall }) => (tall ? 'flex-start' : 'center')};
   justify-content: center;
-  background: rgba(0,0,0, .85);
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  padding: 1.2rem;
-  z-index: 1031;
-  opacity:0;
-  animation:.2s ${aFadeIn} forwards;
+  align-items: center;
 `;
-StyledModal.displayName = 'StyledModal';
 
-export const Container = styled.div`
-  background-color: ${props => props.theme.background};
+export const ModalWrap = styled.div`
+  opacity:0;
   max-width: 50rem;
-  padding: 0;
-  position: relative;
+  box-shadow:0 0 25px rgba(0,0,0, .4);
   animation: ${`.3s ${fadeInZoom} forwards`};
   border-radius:.3rem;
-  box-shadow:0 0 25px rgba(0,0,0, .7);
+  background: radial-gradient(ellipse at center, #1d2638 0%, #111d2e 100%);
 `;
-Container.displayName = 'Container';
 
 export const ModalCloseButton = styled(FontAwesomeIcon)`
   position:absolute;

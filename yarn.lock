@@ -382,7 +382,7 @@ apollo-link-http@^1.5.4:
     apollo-link "^1.2.3"
     apollo-link-http-common "^0.2.5"
 
-apollo-link@^1.0.0, apollo-link@^1.0.7, apollo-link@^1.2.3:
+apollo-link@^1.0.0, apollo-link@^1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/apollo-link/-/apollo-link-1.2.3.tgz#9bd8d5fe1d88d31dc91dae9ecc22474d451fb70d"
   dependencies:
@@ -1723,10 +1723,6 @@ chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.4.1:
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
-change-emitter@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/change-emitter/-/change-emitter-0.1.6.tgz#e8b2fe3d7f1ab7d69a32199aff91ea6931409515"
-
 chardet@^0.4.0:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.4.2.tgz#b5473b33dc97c424e5d98dc87d55d4d8a29c8bf2"
@@ -2030,6 +2026,13 @@ configstore@^3.0.0:
 connect-history-api-fallback@^1.3.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/connect-history-api-fallback/-/connect-history-api-fallback-1.5.0.tgz#b06873934bc5e344fef611a196a6faae0aee015a"
+
+connected-react-router@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/connected-react-router/-/connected-react-router-5.0.1.tgz#8379854fad7e027b1e27652c00ad534f8ad244b3"
+  dependencies:
+    immutable "^3.8.1"
+    seamless-immutable "^7.1.3"
 
 console-browserify@^1.1.0:
   version "1.1.0"
@@ -4229,6 +4232,10 @@ ignore@^4.0.6:
 immutable-tuple@^0.4.9:
   version "0.4.9"
   resolved "https://registry.yarnpkg.com/immutable-tuple/-/immutable-tuple-0.4.9.tgz#473ebdd6c169c461913a454bf87ef8f601a20ff0"
+
+immutable@^3.8.1:
+  version "3.8.2"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
 
 import-lazy@^2.1.0:
   version "2.1.0"
@@ -7250,14 +7257,6 @@ react-animations@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-animations/-/react-animations-1.0.0.tgz#d96222920dfeabec8984d9b2ef2c5a5aadb40f06"
 
-react-apollo-network-status@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-apollo-network-status/-/react-apollo-network-status-1.1.0.tgz#5b7174353b5ee378ab5fa3330a385fd836a06134"
-  dependencies:
-    apollo-link "^1.0.7"
-    change-emitter "^0.1.6"
-    prop-types "^15.6.0"
-
 react-apollo@^2.1.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-2.2.4.tgz#05b2a91deb4d5f30d2511fc663abc465b219435e"
@@ -7284,12 +7283,6 @@ react-autowhatever@^10.1.2:
     prop-types "^15.5.8"
     react-themeable "^1.1.0"
     section-iterator "^2.0.0"
-
-react-blur@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/react-blur/-/react-blur-0.6.0.tgz#01565e7bf03ef73eb644fb9a77656c15e3b37c70"
-  dependencies:
-    prop-types "^15.5.10"
 
 react-custom-scrollbars@^4.2.1:
   version "4.2.1"
@@ -7388,10 +7381,6 @@ react-router-dom@^4.2.2:
     prop-types "^15.6.1"
     react-router "^4.3.1"
     warning "^4.0.1"
-
-react-router-last-location@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-router-last-location/-/react-router-last-location-1.1.0.tgz#cfa1958d7b1fbb22ace38f35b1d12b8ac5ef0326"
 
 react-router-prop-types@^1.0.4:
   version "1.0.4"
@@ -8018,6 +8007,10 @@ scss-tokenizer@^0.2.3:
   dependencies:
     js-base64 "^2.1.8"
     source-map "^0.4.2"
+
+seamless-immutable@^7.1.3:
+  version "7.1.4"
+  resolved "https://registry.yarnpkg.com/seamless-immutable/-/seamless-immutable-7.1.4.tgz#6e9536def083ddc4dea0207d722e0e80d0f372f8"
 
 section-iterator@^2.0.0:
   version "2.0.0"

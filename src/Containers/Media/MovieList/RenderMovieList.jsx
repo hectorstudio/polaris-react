@@ -17,7 +17,8 @@ class RenderMovieList extends Component {
     const { showModal } = this.props;
 
     showModal(LIBRARY_MODAL, {
-      title: 'Library Modal',
+      title: 'Add Movie Library',
+      type: 'movies',
     });
   };
 

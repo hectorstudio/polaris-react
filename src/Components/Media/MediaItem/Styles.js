@@ -194,3 +194,27 @@ export const MediaActionsDropdown = styled(DropdownMenu)`
   top:0;
   right:0;
 `;
+
+export const MediaActionsWrap = styled.div`
+  float:left;
+  width:100%;
+  padding-top:2rem;
+  margin-top:1rem;
+  border-top:1px solid rgba(0,0,0, .2);
+
+  button {
+    margin:0 1rem 0 0;
+    border:0;
+    line-height:4rem;
+    padding:0 1.5rem;
+    border-radius:.2rem;
+    color:#FFF;
+    font-weight:600;
+    background: rgba(0,0,0, .5);
+    transition:.2s all;
+
+    &:hover {
+      background: rgba(0,0,0, .8);
+    }
+  }
+`;

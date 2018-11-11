@@ -30,8 +30,18 @@ export const NoResults = styled.span`
   line-height: 4rem;
   font-size: 1.4rem;
   text-align: center;
-  background: rgba(0,0,0, .2);
   color: #FFF;
   width: calc(100% - 2rem);
   margin:0 1rem;
+
+  button {
+    background:none;
+    border:none;
+    color:${props => props.theme.primary};
+    font-weight:600;
+
+    &:hover {
+      text-decoration:underline;
+    }
+  }
 `;

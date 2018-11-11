@@ -10,7 +10,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 
 import 'App.css';
 
-import store from 'Redux/store';
+import { store } from 'Redux/store';
 import Client from 'Client';
 import Theme from 'Styles/Theme';
 import App from 'Containers/App';

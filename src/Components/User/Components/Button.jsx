@@ -8,23 +8,8 @@ export default class Button extends Component {
     super(props);
 
     this.state = {
-      disabled: props.disabled,
       throttle: false,
     };
-  }
-
-  componentDidMount() {
-    const { disabled } = this.props;
-
-    this.setState({ disabled });
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { disabled } = this.props;
-
-    if (nextProps.disabled !== disabled) {
-      this.setState({ disabled: nextProps.disabled });
-    }
   }
 
   componentWillUnmount() {
@@ -34,10 +19,10 @@ export default class Button extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const { disabled } = this.state;
+    const { throttle } = this.state;
     const { handleSubmit } = this.props;
 
-    if (!disabled) {
+    if (!throttle) {
       handleSubmit();
 
       this.setState({ throttle: true });
@@ -49,16 +34,14 @@ export default class Button extends Component {
   }
 
   render() {
-    const { throttle, disabled } = this.state;
+    const { throttle } = this.state;
     const { value } = this.props;
-
-    console.log(throttle, disabled)
 
     return (
       <FormButton
         type="submit"
         onClick={this.handleSubmit}
-        disabled={(!!(throttle || disabled))}
+        disabled={throttle}
       >
         {value}
       </FormButton>
@@ -69,5 +52,4 @@ export default class Button extends Component {
 Button.propTypes = {
   value: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  disabled: PropTypes.bool.isRequired,
 };

@@ -5,7 +5,7 @@ import { Query } from 'react-apollo';
 
 import Loading from 'Components/Loading';
 import { AlertInline } from 'Components/Alerts';
-import LibraryItem from 'Components/Media/LibraryHeader/LibraryItem';
+import LibraryItem from 'Components/Modal/AddLibraryModal/LibraryItem';
 
 const FETCH_LIBRARIES = gql`
   {

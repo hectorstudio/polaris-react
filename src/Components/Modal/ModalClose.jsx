@@ -8,8 +8,8 @@ const ModalClose = ({ onClick }) => (
   <ModalCloseButton icon={faTimes} onClick={onClick}>Close</ModalCloseButton>
 );
 
+export default ModalClose;
+
 ModalClose.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
-
-export default ModalClose;

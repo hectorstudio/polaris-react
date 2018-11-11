@@ -13,7 +13,6 @@ const LoginForm = ({
   error,
   handleChange,
   handleLogin,
-  validForm,
 }) => (
   <Fragment>
     <FormWrap error={error}>
@@ -22,7 +21,7 @@ const LoginForm = ({
 
       <Input type="text" name="username" autocomplete="username" placeholder="Enter Username" handleChange={handleChange} />
       <Input type="password" name="password" autocomplete="password" placeholder="Enter Password" handleChange={handleChange} />
-      <Button handleSubmit={handleLogin} value="Login" disabled={!validForm} />
+      <Button handleSubmit={handleLogin} value="Login" />
 
       <FormLink to="/register" strapline="Don't Have An Account?" value="Sign Up" setup={false} />
     </FormWrap>

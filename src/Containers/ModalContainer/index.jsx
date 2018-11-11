@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import LibraryModal from 'Components/Modal/LibraryModal';
-import ResumeModal from 'Components/Modal/ResumeModal';
+import AddLibraryModal from 'Components/Modal/AddLibraryModal';
+import ResumeMediaModal from 'Components/Modal/ResumeMediaModal';
 
 import { LIBRARY_MODAL, RESUME_MODAL } from 'Redux/Constants/modalTypes';
 
 const MODAL_COMPONENTS = {
-  [LIBRARY_MODAL]: LibraryModal,
-  [RESUME_MODAL]: ResumeModal,
+  [LIBRARY_MODAL]: AddLibraryModal,
+  [RESUME_MODAL]: ResumeMediaModal,
 };
 
 const ModalContainer = ({ type, props }) => {

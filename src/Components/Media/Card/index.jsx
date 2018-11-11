@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'lodash/fp';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
@@ -6,9 +8,11 @@ import LazyLoad from 'react-lazyload';
 import { faPlay, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { getBaseUrl, generateMediaUrl } from 'Helpers';
 
+import { showModal } from 'Redux/Actions/modalActions';
+import { RESUME_MODAL } from 'Redux/Constants/modalTypes';
+
 import MediaInfo from './MediaInfo';
 import MediaName from './MediaName';
-import ResumeModal from './ResumeModal';
 
 import {
   CardPoster,
@@ -22,7 +26,6 @@ import {
 class MediaCard extends Component {
   state = {
     url: '',
-    modalOpen: false,
   }
 
   componentDidMount() {
@@ -36,11 +39,23 @@ class MediaCard extends Component {
     });
   }
 
-  toggleModal = (modalOpen) => {
-    this.setState({
-      modalOpen: !modalOpen,
+  resumeModal = () => {
+    const { url } = this.state;
+    const {
+      showModal,
+      history,
+      playMedia,
+      playState,
+    } = this.props;
+
+    showModal(RESUME_MODAL, {
+      title: 'Resume Media',
+      url,
+      history,
+      playMedia,
+      playState,
     });
-  }
+  };
 
   cardClick = (e, url, history, showPlayStatus) => {
     const {
@@ -55,10 +70,11 @@ class MediaCard extends Component {
     if (showPlayStatus) {
       if ((e.target.tagName === 'DIV' || e.target.tagName === 'H3') && !internalCard) {
         history.push(url);
+        return true;
       }
 
       if (playState.playtime > 0 && !playState.finished) {
-        this.toggleModal();
+        this.resumeModal();
       } else if (internalCard) {
         playMedia();
       } else {
@@ -85,10 +101,8 @@ class MediaCard extends Component {
       type,
       files,
       hover,
-      playState,
-      playMedia,
     } = this.props;
-    const { url, modalOpen } = this.state;
+    const { url } = this.state;
 
     const showPlayStatus = (type === 'Movie' || type === 'Episode');
     const bgImage = (posterPath || stillPath
@@ -123,16 +137,6 @@ class MediaCard extends Component {
             && <MediaName name={name} {...this.props} />
           }
         </CardWrap>
-
-        <ResumeModal
-          url={url}
-          history={history}
-          contentLabel="Resume Media"
-          isOpen={modalOpen}
-          onClose={() => (this.toggleModal(modalOpen))}
-          playMedia={playMedia}
-          playState={playState}
-        />
       </Fragment>
     );
   }
@@ -146,6 +150,10 @@ const requiredPropsCheck = (props, componentName) => {
 
   return null;
 };
+
+const mapDispatchToProps = dispatch => ({
+  showModal: (type, props) => dispatch(showModal(type, props)),
+});
 
 MediaCard.propTypes = {
   name: PropTypes.string.isRequired,
@@ -177,4 +185,7 @@ MediaCard.defaultProps = {
   ],
 };
 
-export default withRouter(MediaCard);
+export default compose(
+  connect(null, mapDispatchToProps),
+  withRouter,
+)(MediaCard);

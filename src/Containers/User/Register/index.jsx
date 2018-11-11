@@ -41,9 +41,15 @@ class Register extends Component {
       this.setState({ validForm: (username.length > 3 && password.length > 3) });
     }
 
-    handleRegister = () => {
+    formError = (message) => {
       const { alert } = this.props;
 
+      this.setState({ error: true }, () => {
+        alert.error(`There was a problem with your request: ${message}`);
+      });
+    }
+
+    handleRegister = () => {
       const {
         username,
         password,
@@ -67,11 +73,11 @@ class Register extends Component {
 
         CREATE_USER(registerInfo).then(() => {
           this.setState({ redirectToDashboard: true });
-        }).catch(() => {
-          this.setState({ error: true }, () => {
-            alert.error('Looks like there was an error, Please Try Again');
-          });
+        }).catch((error) => {
+          this.formError(error.response.data.message);
         });
+      } else {
+        this.formError('Please complete the form');
       }
     }
 

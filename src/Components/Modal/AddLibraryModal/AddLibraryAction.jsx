@@ -4,7 +4,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import { AddLibraryWrap, AddLibraryInput, SubmitLibrary } from './Styles';
 
-export default class AddLibrary extends Component {
+export default class AddLibraryAction extends Component {
   constructor(props) {
     super(props);
 
@@ -29,13 +29,13 @@ export default class AddLibrary extends Component {
 
     return (
       <AddLibraryWrap>
-        <AddLibraryInput autoFocus="true" placeholder="Enter Filepath" type="text" onChange={e => this.handleChange(e)} />
+        <AddLibraryInput autoFocus placeholder="Enter Filepath" type="text" onChange={e => this.handleChange(e)} />
         <SubmitLibrary disabled={disabled} icon={faPlus} onClick={() => addLibrary(filePath)} />
       </AddLibraryWrap>
     );
   }
 }
 
-AddLibrary.propTypes = {
+AddLibraryAction.propTypes = {
   addLibrary: PropTypes.func.isRequired,
 };

@@ -26,10 +26,16 @@ class Login extends Component {
       this.setState({ isMounted: false });
     }
 
-    handleLogin = () => {
-      const { username, password, validForm } = this.state;
+    formError = (message) => {
       const { alert } = this.props;
 
+      this.setState({ error: true }, () => {
+        alert.error(`There was a problem with your request: ${message}`);
+      });
+    }
+
+    handleLogin = () => {
+      const { username, password, validForm } = this.state;
       if (validForm) {
         AUTH_REQUEST(username, password).then(() => {
           this.setState({ success: true });
@@ -37,11 +43,11 @@ class Login extends Component {
           setTimeout(() => {
             this.setState({ redirectToDashboard: true });
           }, 750);
-        }).catch(() => {
-          this.setState({ error: true }, () => {
-            alert.error('Looks like your Username and Password dont match, Please Try Again');
-          });
+        }).catch((error) => {
+          this.formError(error.response.data.message);
         });
+      } else {
+        this.formError('Invalid username or password');
       }
     }
 

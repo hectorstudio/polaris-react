@@ -1,14 +1,25 @@
 import React, { Component } from 'react';
+import { compose } from 'lodash/fp';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { graphql } from 'react-apollo';
 
 import { FetchLibraryList, FETCH_LIBRARIES } from 'Queries/fetchLibraries';
 import { ADD_LIBRARY } from 'Mutations/manageLibraries';
 
+import { hideModal } from 'Redux/Actions/modalActions';
+
 import { AlertInline } from 'Components/Alerts';
-import Modal from 'Components/Modal';
-import { ModalHeader, ModalHeading, ModalBody } from 'Components/Modal/Styles';
-import AddLibrary from './AddLibrary';
+
+import {
+  Modal,
+  ModalWrap,
+  ModalHeader,
+  ModalHeading,
+  ModalBody,
+} from 'Components/Modal/Styles';
+import ModalClose from '../ModalClose';
+import AddLibraryAction from './AddLibraryAction';
 
 class AddLibraryModal extends Component {
   constructor(props) {
@@ -26,6 +37,16 @@ class AddLibraryModal extends Component {
     this.setState({
       kind: (type === 'movies' ? 0 : 1),
     });
+  }
+
+  closeModal = () => {
+    const { hideModal } = this.props;
+
+    hideModal();
+  };
+
+  modalClick = (e) => {
+    if (e.target.id === 'modal-container') this.closeModal();
   }
 
   addLibrary = (filePath) => {
@@ -59,28 +80,24 @@ class AddLibraryModal extends Component {
   }
 
   render() {
-    const {
-      contentLabel,
-      onClose,
-      type,
-      isOpen,
-    } = this.props;
+    const { title } = this.props;
     const { error, errorMessage, kind } = this.state;
 
-    const Heading = `Manage ${type} folders`;
-
     return (
-      <Modal contentLabel={contentLabel} isOpen={isOpen} onClose={() => (onClose(isOpen))}>
-        <ModalHeader>
-          <ModalHeading>
-            {Heading}
-          </ModalHeading>
-        </ModalHeader>
-        <ModalBody>
-          {error && <AlertInline type="error">{errorMessage}</AlertInline>}
-          <FetchLibraryList kind={kind} />
-          <AddLibrary addLibrary={this.addLibrary} />
-        </ModalBody>
+      <Modal id="modal-container" onClick={e => this.modalClick(e)}>
+        <ModalWrap>
+          <ModalHeader>
+            <ModalHeading>
+              {title}
+              <ModalClose onClick={() => this.closeModal()} />
+            </ModalHeading>
+          </ModalHeader>
+          <ModalBody>
+            {error && <AlertInline type="error">{errorMessage}</AlertInline>}
+            <FetchLibraryList kind={kind} />
+            <AddLibraryAction addLibrary={this.addLibrary} />
+          </ModalBody>
+        </ModalWrap>
       </Modal>
     );
   }
@@ -88,10 +105,16 @@ class AddLibraryModal extends Component {
 
 AddLibraryModal.propTypes = {
   type: PropTypes.string.isRequired,
-  contentLabel: PropTypes.string.isRequired,
-  onClose: PropTypes.func.isRequired,
-  isOpen: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
   mutate: PropTypes.func.isRequired,
+  hideModal: PropTypes.func.isRequired,
 };
 
-export default AddLibraryModal = graphql(ADD_LIBRARY)(AddLibraryModal);
+const mapDispatchToProps = dispatch => ({
+  hideModal: () => dispatch(hideModal()),
+});
+
+export default compose(
+  connect(null, mapDispatchToProps),
+  graphql(ADD_LIBRARY),
+)(AddLibraryModal);
