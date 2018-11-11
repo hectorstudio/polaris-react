@@ -7,6 +7,7 @@ import RenderUpNext from './RenderUpNext';
 
 import { DashboardWrap, CarouselWrap } from './Styles';
 
+
 const Dashboard = () => (
   <ContentWrap>
     <DashboardWrap>

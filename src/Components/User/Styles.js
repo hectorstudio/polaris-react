@@ -9,6 +9,7 @@ export const FormWrap = styled.form`
     box-shadow: 0 10px 60px rgba(0,0,0, 0.3);
     margin:3rem 0;
     transition: .2s border;
+    border-radius:.2rem;
     border:1px solid;
     border-color: ${(props => (props.error ? props.theme.alerts.error : 'transparent'))};
     animation: ${(props => (props.error ? `.5s ${aHeadShake} alternate` : 'none'))};
@@ -37,7 +38,8 @@ export const InputWrap = styled.div`
     position:relative;
     padding-bottom: .2rem;
     margin:0 0 2rem;
-    border: 1px solid #DDD;
+    border: 1px solid;
+    border-color: ${(props => (!props.isValid ? '#DDD' : props.theme.alerts.error))}
 
     &:after, &:before {
         content:'';
@@ -114,31 +116,34 @@ export const UniqueInput = styled.input`
 
 export const FormButton = styled.button`
     height: 6rem;
-    margin: 2rem 0;
+    margin: 2rem 0 0;
     color: #FFF;
     width:100%;
     text-align:center;
     border:0;
-    background: ${props => props.theme.primary};
-    font-size:2rem;
-    font-family: ${props => props.theme.fonts.muli};
+    background: ${props => props.theme.background};
+    font-size:1.4rem;
+    font-family: ${props => props.theme.fonts.opensans};
     font-weight:700;
-    box-shadow:0 10px 15px rgba(0,0,0, .1);
+    letter-spacing:.1rem;
+
     transition:.2s all;
+    text-transform:uppercase;
     cursor: pointer;
+    border-radius:.2rem;
 
     &:disabled {
-        filter: grayscale(75%);
-        opacity:.5;
+        filter: grayscale(100%);
+        opacity:.2;
         cursor: initial;
 
         &:hover {
-            box-shadow:0 10px 15px rgba(0,0,0, .1);
+            background: ${props => props.theme.background};
         }
     }
 
     &:hover {
-        box-shadow:0 10px 15px rgba(0,0,0, .25);
+        background: ${props => props.theme.lighten.background};
     }
 
     &:focus {
@@ -152,6 +157,7 @@ export const FormLinkPara = styled.p`
     color: ${props => props.theme.text}
     font-weight:600;
     text-align:center;
+    margin: 2rem 0 0;
 `;
 
 export const Links = styled(Link)`

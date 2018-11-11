@@ -13,7 +13,7 @@ const LoginForm = ({
   error,
   handleChange,
   handleLogin,
-  disabled,
+  validForm,
 }) => (
   <Fragment>
     <FormWrap error={error}>
@@ -22,7 +22,7 @@ const LoginForm = ({
 
       <Input type="text" name="username" autocomplete="username" placeholder="Enter Username" handleChange={handleChange} />
       <Input type="password" name="password" autocomplete="password" placeholder="Enter Password" handleChange={handleChange} />
-      <Button handleSubmit={handleLogin} value="Login" disabled={disabled} />
+      <Button handleSubmit={handleLogin} value="Login" disabled={!validForm} />
 
       <FormLink to="/register" strapline="Don't Have An Account?" value="Sign Up" setup={false} />
     </FormWrap>
@@ -33,11 +33,11 @@ LoginForm.propTypes = {
   error: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
-  disabled: PropTypes.bool,
+  validForm: PropTypes.bool,
 };
 
 LoginForm.defaultProps = {
-  disabled: false,
+  validForm: false,
 };
 
 export default LoginForm;

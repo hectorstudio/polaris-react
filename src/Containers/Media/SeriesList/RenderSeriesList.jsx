@@ -6,7 +6,7 @@ import FETCH_SERIES_LIST from 'Queries/fetchSeriesList';
 import Loading from 'Components/Loading';
 import MediaCard from 'Components/Media/Card';
 
-import { LibraryListItem } from '../Styles';
+import { LibraryListItem, NoResults } from '../Styles';
 
 const RenderSeriesList = () => (
   <Query
@@ -17,11 +17,19 @@ const RenderSeriesList = () => (
       if (loading) return <Loading />;
       if (error) return `Error! ${error.message}`;
 
-      return orderBy(data.series, ['name'], ['asc']).map(s => (
-        <LibraryListItem key={s.uuid}>
-          <MediaCard {...s} />
-        </LibraryListItem>
-      ));
+      if (data.series.length > 0) {
+        return orderBy(data.series, ['name'], ['asc']).map(s => (
+          <LibraryListItem key={s.uuid}>
+            <MediaCard {...s} />
+          </LibraryListItem>
+        ));
+      }
+
+      return (
+        <NoResults>
+          You currently have no Series or have not added a folder to your Series library.
+        </NoResults>
+      );
     }}
   </Query>
 );

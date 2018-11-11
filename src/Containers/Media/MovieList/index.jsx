@@ -10,7 +10,7 @@ import { LibraryListWrap } from '../Styles';
 const MovieList = () => (
   <ContentWrap>
     <LibraryListWrap>
-      <LibraryHeader type="movies" button="Manage Movies" />
+      <LibraryHeader type="movies" button="Add Library Folder" />
       <RenderMoviesList />
       <Empty />
     </LibraryListWrap>

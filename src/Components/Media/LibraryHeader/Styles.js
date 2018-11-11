@@ -19,6 +19,11 @@ export const AddLibraryButton = styled.button`
   border-radius: .3rem;
   line-height: 4.5rem;
   letter-spacing: .1rem;
+  transition:.2s all;
+
+  &:hover {
+    background: #111728;
+  }
 `;
 
 export const AddLibraryWrap = styled.article`

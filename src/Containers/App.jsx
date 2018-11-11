@@ -3,6 +3,7 @@ import { Auth, checkAuth } from 'Client/Auth';
 import Header from 'Components/Header';
 import Sidebar from 'Components/Sidebar';
 import Routes from 'Routes';
+import ModalContainer from 'Containers/ModalContainer';
 
 import { AppWrap, PageWrap } from './Styles';
 
@@ -16,6 +17,7 @@ const App = () => {
       <PageWrap>
         <Routes />
       </PageWrap>
+      <ModalContainer />
     </Fragment>
   );
 

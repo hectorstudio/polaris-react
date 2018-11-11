@@ -16,6 +16,7 @@
     "rules": {
        "no-class-assign": "off",
        "no-console": "off",
+       "no-shadow": "off",
        "linebreak-style": "off",
        "jsx-a11y/media-has-caption": "off",
        "no-confusing-arrow": "off",

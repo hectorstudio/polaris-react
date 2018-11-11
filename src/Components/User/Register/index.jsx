@@ -13,7 +13,7 @@ const RegisterForm = ({
   error,
   handleChange,
   handleRegister,
-  disabled,
+  validForm,
   initialSetup,
   inviteCode,
 }) => {
@@ -39,9 +39,9 @@ const RegisterForm = ({
             />
           )
         }
-        <Input type="text" name="username" autocomplete="new-username" placeholder="Username" handleChange={handleChange} />
-        <Input type="password" name="password" autocomplete="new-password" placeholder="Password" handleChange={handleChange} />
-        <Button handleSubmit={handleRegister} value="Create Account" disabled={disabled} />
+        <Input type="text" name="username" autocomplete="new-username" placeholder="Username" required handleChange={handleChange} />
+        <Input type="password" name="password" autocomplete="new-password" placeholder="Password" required handleChange={handleChange} />
+        <Button handleSubmit={handleRegister} value="Create Account" disabled={!validForm} />
 
         {!initialSetup && <FormLink to="/login" strapline="Have An Account?" value="Log In" setup={false} />}
       </FormWrap>
@@ -54,12 +54,11 @@ RegisterForm.propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleRegister: PropTypes.func.isRequired,
   initialSetup: PropTypes.bool.isRequired,
-  disabled: PropTypes.bool,
+  validForm: PropTypes.bool.isRequired,
   inviteCode: PropTypes.string,
 };
 
 RegisterForm.defaultProps = {
-  disabled: false,
   inviteCode: '',
 };
 

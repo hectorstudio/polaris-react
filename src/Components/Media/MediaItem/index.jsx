@@ -26,165 +26,165 @@ import {
 } from '../Styles';
 
 class MediaItem extends Component {
-    state = {
+  state = {
+    source: '',
+    resume: false,
+    files: [],
+    selectedFile: {},
+    mimeType: '',
+  }
+
+  componentWillMount() {
+    const { files, location } = this.props;
+    const fileList = generateFileList(files);
+
+    this.setState({
+      files: fileList,
+      selectedFile: fileList[0],
+      resume: (location.state ? location.state.resume : false),
+    });
+  }
+
+  componentDidMount() {
+    const { location } = this.props;
+    if (location.state && location.state.autoplay === true) this.playMedia();
+
+    document.addEventListener('keydown', this.escapeClose, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.escapeClose, false);
+  }
+
+  escapeClose = e => e.key === 'Escape' && this.closeMedia();
+
+  fileChange = (selectedFile) => {
+    this.setState({
+      selectedFile,
+    });
+  }
+
+  closeMedia = () => {
+    this.setState({
       source: '',
-      resume: false,
-      files: [],
-      selectedFile: {},
-      mimeType: '',
-    }
+    });
+  }
 
-    componentWillMount() {
-      const { files, location } = this.props;
-      const fileList = generateFileList(files);
+  playMedia = (resume) => {
+    const { mutate, files } = this.props;
+    const { selectedFile } = this.state;
 
-      this.setState({
-        files: fileList,
-        selectedFile: fileList[0],
-        resume: (location.state ? location.state.resume : false),
-      });
-    }
+    this.setState({ resume });
 
-    componentDidMount() {
-      const { location } = this.props;
-      if (location.state && location.state.autoplay === true) this.playMedia();
+    mutate({
+      variables: { uuid: files[selectedFile.value].uuid },
+    })
+      .then(({ data }) => {
+        const codecs = getPlayableCodecs(files[selectedFile.value].streams);
 
-      document.addEventListener('keydown', this.escapeClose, false);
-    }
+        const streamPath = (isIOS
+          ? data.createStreamingTicket.hlsStreamingPath
+          : data.createStreamingTicket.dashStreamingPath);
 
-    componentWillUnmount() {
-      document.removeEventListener('keydown', this.escapeClose, false);
-    }
+        const mimeType = isIOS ? 'application/x-mpegURL' : 'application/dash+xml';
 
-    escapeClose = e => e.key === 'Escape' && this.closeMedia();
-
-    fileChange = (selectedFile) => {
-      this.setState({
-        selectedFile,
-      });
-    }
-
-    closeMedia = () => {
-      this.setState({
-        source: '',
-      });
-    }
-
-    playMedia = (resume) => {
-      const { mutate, files } = this.props;
-      const { selectedFile } = this.state;
-
-      this.setState({ resume });
-
-      mutate({
-        variables: { uuid: files[selectedFile.value].uuid },
-      })
-        .then(({ data }) => {
-          const codecs = getPlayableCodecs(files[selectedFile.value].streams);
-
-          const streamPath = (isIOS
-            ? data.createStreamingTicket.hlsStreamingPath
-            : data.createStreamingTicket.dashStreamingPath);
-
-          const mimeType = isIOS ? 'application/x-mpegURL' : 'application/dash+xml';
-
-          this.setState({
-            source: `${getBaseUrl()}${streamPath}?${codecs}`,
-            mimeType,
-          });
-        })
-        .catch((error) => {
-          console.log('there was an error Playing the Movie', error);
+        this.setState({
+          source: `${getBaseUrl()}${streamPath}?${codecs}`,
+          mimeType,
         });
-    }
+      })
+      .catch((error) => {
+        console.log('there was an error Playing the Movie', error);
+      });
+  }
 
-    render() {
-      const {
+  render() {
+    const {
+      name,
+      posterPath,
+      season,
+      type,
+      uuid,
+      playState,
+    } = this.props;
+    const {
+      source,
+      mimeType,
+      files,
+      selectedFile,
+      resume,
+    } = this.state;
+    const background = (posterPath || season.series.posterPath);
+
+    const videoJsOptions = {
+      autoplay: true,
+      techOrder: ['chromecast', 'html5'],
+      enableLowInitialPlaylist: true,
+
+      sources: [{
+        src: source,
+        type: mimeType,
+        // Set one GBit initially and drop down if required to make it choose transmuxed first
+        bandwidth: 1000000000,
         name,
-        posterPath,
-        season,
-        type,
-        uuid,
-        playState,
-      } = this.props;
-      const {
-        source,
-        mimeType,
-        files,
-        selectedFile,
-        resume,
-      } = this.state;
-      const background = (posterPath || season.series.posterPath);
-
-      const videoJsOptions = {
-        autoplay: true,
-        techOrder: ['chromecast', 'html5'],
-        enableLowInitialPlaylist: true,
-
-        sources: [{
-          src: source,
-          type: mimeType,
-          // Set one GBit initially and drop down if required to make it choose transmuxed first
-          bandwidth: 1000000000,
-          name,
-        }],
-        plugins: {
-          chromecast: {
-            receiverAppID: '3CCE45F7',
-          },
+      }],
+      plugins: {
+        chromecast: {
+          receiverAppID: '3CCE45F7',
         },
-      };
+      },
+    };
 
-      const mediaInfo = {
-        ...this.props,
-        playState,
-      };
+    const mediaInfo = {
+      ...this.props,
+      playState,
+    };
 
-      return (
-        <MediaFullWrap>
-          <MediaBackground bgimg={`${getBaseUrl()}/m/images/tmdb/w342/${background}`} />
-          <MediaFull>
-            <MediaLeftCol>
-              <MediaCard
-                size={(type === 'Episode' ? 'largeWide' : 'large')}
-                playMedia={this.playMedia}
-                internalCard
-                text
-                {...mediaInfo}
+    return (
+      <MediaFullWrap>
+        <MediaBackground bgimg={`${getBaseUrl()}/m/images/tmdb/w342/${background}`} />
+        <MediaFull>
+          <MediaLeftCol>
+            <MediaCard
+              size={(type === 'Episode' ? 'largeWide' : 'large')}
+              playMedia={this.playMedia}
+              internalCard
+              text
+              {...mediaInfo}
+            />
+          </MediaLeftCol>
+          <MediaRightCol>
+            <MediaDropdown uuid={uuid} />
+            <MediaOverview
+              mediaInfo={mediaInfo}
+              selectedFile={selectedFile}
+              files={files}
+              fileChange={this.fileChange}
+              playMedia={this.playMedia}
+            />
+          </MediaRightCol>
+        </MediaFull>
+
+        {source !== ''
+          ? (
+            <VideoWrap>
+              <CloseVideo icon={faTimes} onClick={this.closeMedia} />
+              <Video
+                {...videoJsOptions}
+                resume={resume}
+                playState={playState}
+                uuid={uuid}
+                length={selectedFile.totalDuration}
+                type={type}
               />
-            </MediaLeftCol>
-            <MediaRightCol>
-              <MediaDropdown uuid={uuid} />
-              <MediaOverview
-                mediaInfo={mediaInfo}
-                selectedFile={selectedFile}
-                files={files}
-                fileChange={this.fileChange}
-                playMedia={this.playMedia}
-              />
-            </MediaRightCol>
-          </MediaFull>
+            </VideoWrap>
+          )
+          : null
+        }
 
-          {source !== ''
-            ? (
-              <VideoWrap>
-                <CloseVideo icon={faTimes} onClick={this.closeMedia} />
-                <Video
-                  {...videoJsOptions}
-                  resume={resume}
-                  playState={playState}
-                  uuid={uuid}
-                  length={selectedFile.totalDuration}
-                  type={type}
-                />
-              </VideoWrap>
-            )
-            : null
-          }
-
-        </MediaFullWrap>
-      );
-    }
+      </MediaFullWrap>
+    );
+  }
 }
 
 export default compose(

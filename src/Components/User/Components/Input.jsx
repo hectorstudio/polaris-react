@@ -5,6 +5,7 @@ import { InputWrap, TextInput, UniqueInput } from '../Styles';
 export default class Input extends Component {
   state = {
     isFocused: false,
+    hasError: false,
   }
 
   handleFocus = () => {
@@ -24,6 +25,7 @@ export default class Input extends Component {
       uniqueCode,
       autocomplete,
       value,
+      required,
     } = this.props;
 
     const { isFocused } = this.state;
@@ -37,16 +39,17 @@ export default class Input extends Component {
       onChange: handleChange,
       onFocus: this.handleFocus,
       onBlur: this.handleBlur,
+      required,
     };
+
+    const inputType = (!uniqueCode
+      ? <TextInput {...inputProps} />
+      : <UniqueInput {...inputProps} />
+    );
 
     return (
       <InputWrap isFocused={isFocused} uniqueCode={uniqueCode}>
-        { uniqueCode
-            && <UniqueInput {...inputProps} />
-        }
-        {!uniqueCode
-            && <TextInput {...inputProps} />
-        }
+        {inputType}
       </InputWrap>
     );
   }
