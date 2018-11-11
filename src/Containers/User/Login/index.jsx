@@ -14,6 +14,7 @@ class Login extends Component {
       isMounted: false,
       username: '',
       password: '',
+      validForm: false,
     }
 
     componentWillMount() {
@@ -26,20 +27,22 @@ class Login extends Component {
     }
 
     handleLogin = () => {
-      const { username, password } = this.state;
+      const { username, password, validForm } = this.state;
       const { alert } = this.props;
 
-      AUTH_REQUEST(username, password).then(() => {
-        this.setState({ success: true });
+      if (validForm) {
+        AUTH_REQUEST(username, password).then(() => {
+          this.setState({ success: true });
 
-        setTimeout(() => {
-          this.setState({ redirectToDashboard: true });
-        }, 750);
-      }).catch(() => {
-        this.setState({ error: true }, () => {
-          alert.error('Looks like your Username and Password dont match, Please Try Again');
+          setTimeout(() => {
+            this.setState({ redirectToDashboard: true });
+          }, 750);
+        }).catch(() => {
+          this.setState({ error: true }, () => {
+            alert.error('Looks like your Username and Password dont match, Please Try Again');
+          });
         });
-      });
+      }
     }
 
     handleChange = (e) => {
@@ -48,12 +51,19 @@ class Login extends Component {
       if (isMounted) {
         this.setState({
           [e.target.name]: e.target.value,
+        }, () => {
+          this.validateForm();
         });
       }
     }
 
+    validateForm = () => {
+      const { username, password } = this.state;
+      this.setState({ validForm: (username.length > 3 && password.length > 3) });
+    }
+
     render() {
-      const { error, success } = this.state;
+      const { error, success, validForm } = this.state;
       const { location } = this.props;
 
       const { from } = location.state || { from: { pathname: '/dashboard' } };
@@ -65,6 +75,7 @@ class Login extends Component {
         handleLogin: this.handleLogin,
         handleChange: this.handleChange,
         error,
+        validForm,
       };
 
       return (

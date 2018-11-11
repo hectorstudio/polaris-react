@@ -15,6 +15,7 @@ class Register extends Component {
       username: '',
       password: '',
       inviteCode: '',
+      validForm: false,
       initialSetup: true,
     }
 
@@ -27,35 +28,51 @@ class Register extends Component {
       });
     }
 
-    handleChange = (e) => {
+    handleChange = ({ target: { name, value } }) => {
       this.setState({
-        [e.target.name]: e.target.value,
+        [name]: value,
+      }, () => {
+        this.validateForm();
       });
+    }
+
+    validateForm = () => {
+      const { username, password } = this.state;
+      this.setState({ validForm: (username.length > 3 && password.length > 3) });
     }
 
     handleRegister = () => {
       const { alert } = this.props;
-      const { username, password, invite_code: inviteCode } = this.state;
 
-      let registerInfo = {
+      const {
         username,
         password,
-      };
+        invite_code: inviteCode,
+        validForm,
+        inviteCodeValid,
+      } = this.state;
 
-      if (inviteCode.length > 0) {
-        registerInfo = {
-          ...registerInfo,
-          code: inviteCode,
+      if (validForm) {
+        let registerInfo = {
+          username,
+          password,
         };
-      }
 
-      CREATE_USER(registerInfo).then(() => {
-        this.setState({ redirectToDashboard: true });
-      }).catch(() => {
-        this.setState({ error: true }, () => {
-          alert.error('Looks like there was an error, Please Try Again');
+        if (inviteCode && inviteCodeValid) {
+          registerInfo = {
+            ...registerInfo,
+            code: inviteCode,
+          };
+        }
+
+        CREATE_USER(registerInfo).then(() => {
+          this.setState({ redirectToDashboard: true });
+        }).catch(() => {
+          this.setState({ error: true }, () => {
+            alert.error('Looks like there was an error, Please Try Again');
+          });
         });
-      });
+      }
     }
 
     render() {
@@ -65,6 +82,7 @@ class Register extends Component {
         error,
         inviteCode,
         initialSetup,
+        validForm,
       } = this.state;
 
       const { from } = location.state || { from: { pathname: '/dashboard' } };
@@ -76,6 +94,7 @@ class Register extends Component {
         error,
         inviteCode,
         initialSetup,
+        validForm,
       };
 
       return (

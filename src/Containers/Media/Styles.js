@@ -22,3 +22,16 @@ export const LibraryListItemWide = styled.div`
   max-width: ${props => props.theme.wideCard.maxWidth};
   margin: ${props => props.theme.wideCard.margin};
 `;
+
+export const NoResults = styled.span`
+  float: left;
+  width: 100%;
+  font-weight: 600;
+  line-height: 4rem;
+  font-size: 1.4rem;
+  text-align: center;
+  background: rgba(0,0,0, .2);
+  color: #FFF;
+  width: calc(100% - 2rem);
+  margin:0 1rem;
+`;

@@ -35,7 +35,6 @@ export default class LibraryHeader extends Component {
   }
 }
 
-
 LibraryHeader.propTypes = {
   button: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,

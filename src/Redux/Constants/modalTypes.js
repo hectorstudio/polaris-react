@@ -1,0 +1,2 @@
+export const LIBRARY_MODAL = 'LIBRARY_MODAL';
+export const RESUME_MODAL = 'RESUME_MODAL';
