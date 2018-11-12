@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { ConnectedRouter } from 'connected-react-router';
-
-import { store, history } from 'Redux/store';
 
 import Loading from 'Components/Loading';
 
@@ -75,37 +71,33 @@ export default class Routes extends Component {
     }
 
     return (
-      <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <Switch>
-            <Route exact path="/" render={this.initialRender} />
+      <Switch>
+        <Route exact path="/" render={this.initialRender} />
 
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/forgot" component={ForgotPassword} />
-            <Route
-              exact
-              path="/register"
-              render={routeProps => (
-                <Register {...routeProps} initialSetup={initialSetup} />
-              )}
-            />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/forgot" component={ForgotPassword} />
+        <Route
+          exact
+          path="/register"
+          render={routeProps => (
+            <Register {...routeProps} initialSetup={initialSetup} />
+          )}
+        />
 
-            <AdminRoute exact path="/users" component={Users} />
+        <AdminRoute exact path="/users" component={Users} />
 
-            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+        <PrivateRoute exact path="/dashboard" component={Dashboard} />
 
-            <PrivateRoute exact path="/movies" component={MovieList} />
-            <PrivateRoute exact path="/movie/:uuid" component={Movie} />
+        <PrivateRoute exact path="/movies" component={MovieList} />
+        <PrivateRoute exact path="/movie/:uuid" component={Movie} />
 
-            <PrivateRoute exact path="/series" component={SeriesList} />
-            <PrivateRoute exact path="/series/:uuid" component={Series} />
-            <PrivateRoute exact path="/season/:uuid" component={Season} />
-            <PrivateRoute exact path="/episode/:uuid" component={Episode} />
+        <PrivateRoute exact path="/series" component={SeriesList} />
+        <PrivateRoute exact path="/series/:uuid" component={Series} />
+        <PrivateRoute exact path="/season/:uuid" component={Season} />
+        <PrivateRoute exact path="/episode/:uuid" component={Episode} />
 
-            <PrivateRoute exact path="/search/:value" component={Search} />
-          </Switch>
-        </ConnectedRouter>
-      </Provider>
+        <PrivateRoute exact path="/search/:value" component={Search} />
+      </Switch>
     );
   }
 }
