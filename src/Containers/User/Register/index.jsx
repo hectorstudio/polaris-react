@@ -55,7 +55,6 @@ class Register extends Component {
         password,
         invite_code: inviteCode,
         validForm,
-        inviteCodeValid,
       } = this.state;
 
       if (validForm) {
@@ -64,7 +63,7 @@ class Register extends Component {
           password,
         };
 
-        if (inviteCode && inviteCodeValid) {
+        if (inviteCode) {
           registerInfo = {
             ...registerInfo,
             code: inviteCode,
