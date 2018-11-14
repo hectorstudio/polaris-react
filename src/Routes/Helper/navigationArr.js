@@ -4,6 +4,11 @@ const navigationArr = [
     id: 'libraries',
     links: [
       {
+        name: 'Dashboard',
+        to: '/dashboard',
+        id: 'dashboard',
+      },
+      {
         name: 'Movies',
         to: '/movies',
         id: 'movies',

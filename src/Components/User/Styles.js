@@ -121,7 +121,7 @@ export const FormButton = styled.button`
     width:100%;
     text-align:center;
     border:0;
-    background: ${props => props.theme.background};
+    background: ${props => props.theme.dark};
     font-size:1.4rem;
     font-family: ${props => props.theme.fonts.opensans};
     font-weight:700;
@@ -138,7 +138,7 @@ export const FormButton = styled.button`
         cursor: initial;
 
         &:hover {
-            background: ${props => props.theme.background};
+            background: ${props => props.theme.dark};
         }
     }
 
@@ -181,4 +181,20 @@ export const ForgotPasswordLink = styled(Link)`
     &:hover {
         color: ${props => props.theme.primary};
     }
+`;
+
+export const Help = styled.form`
+    padding:1.5rem;
+    background:#FFF;
+    box-shadow: 0 10px 60px rgba(0,0,0, 0.3);
+    margin:0 0 1rem;
+    transition: .2s border;
+    border-radius:.2rem;
+    border:1px solid;
+    text-align:left;
+    color: ${props => props.theme.alerts.error};
+    font-size:1.4rem;
+    font-weight:600;
+    line-height:2rem;
+    border: 1px solid ${props => props.theme.alerts.error};
 `;

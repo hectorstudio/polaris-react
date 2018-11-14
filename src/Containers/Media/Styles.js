@@ -22,26 +22,3 @@ export const LibraryListItemWide = styled.div`
   max-width: ${props => props.theme.wideCard.maxWidth};
   margin: ${props => props.theme.wideCard.margin};
 `;
-
-export const NoResults = styled.span`
-  float: left;
-  width: 100%;
-  font-weight: 600;
-  line-height: 4rem;
-  font-size: 1.4rem;
-  text-align: center;
-  color: #FFF;
-  width: calc(100% - 2rem);
-  margin:0 1rem;
-
-  button {
-    background:none;
-    border:none;
-    color:${props => props.theme.primary};
-    font-weight:600;
-
-    &:hover {
-      text-decoration:underline;
-    }
-  }
-`;

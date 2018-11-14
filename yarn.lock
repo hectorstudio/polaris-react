@@ -22,7 +22,7 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@babel/runtime@^7.1.2":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2":
   version "7.1.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.1.5.tgz#4170907641cf1f61508f563ece3725150cc6fe39"
   dependencies:
@@ -137,6 +137,18 @@
     global "^4.3.0"
     m3u8-parser "4.2.0"
     mpd-parser "0.6.1"
+    mux.js "4.5.1"
+    url-toolkit "^2.1.3"
+    video.js "^6.8.0 || ^7.0.0"
+
+"@videojs/http-streaming@1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@videojs/http-streaming/-/http-streaming-1.4.1.tgz#0b9c5d1a271d72546ec77e9c3f3b75995102032f"
+  dependencies:
+    aes-decrypter "3.0.0"
+    global "^4.3.0"
+    m3u8-parser "4.2.0"
+    mpd-parser "0.7.0"
     mux.js "4.5.1"
     url-toolkit "^2.1.3"
     video.js "^6.8.0 || ^7.0.0"
@@ -5727,6 +5739,13 @@ mpd-parser@0.6.1:
     global "^4.3.0"
     url-toolkit "^2.1.1"
 
+mpd-parser@0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/mpd-parser/-/mpd-parser-0.7.0.tgz#d36e3322579fce23d657f71a3c2f3e6cc5ce4002"
+  dependencies:
+    global "^4.3.2"
+    url-toolkit "^2.1.1"
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -9151,6 +9170,19 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
+"video.js@^6 || ^7", video.js@^7.0.0:
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/video.js/-/video.js-7.3.0.tgz#780de68a163b4ee16dfcacd78971680f18c9a68d"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    "@videojs/http-streaming" "1.4.1"
+    global "4.3.2"
+    safe-json-parse "4.0.0"
+    tsml "1.0.1"
+    videojs-font "3.1.0"
+    videojs-vtt.js "0.14.1"
+    xhr "2.4.0"
+
 "video.js@^6.8.0 || ^7.0.0", video.js@^7.1.0:
   version "7.2.4"
   resolved "https://registry.yarnpkg.com/video.js/-/video.js-7.2.4.tgz#d1f9768947ef1c2288cec787ecc4d617a9e8956c"
@@ -9164,9 +9196,28 @@ verror@1.10.0:
     videojs-vtt.js "0.14.1"
     xhr "2.4.0"
 
+videojs-contrib-quality-levels@^2.0.4:
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/videojs-contrib-quality-levels/-/videojs-contrib-quality-levels-2.0.9.tgz#b5d533d5092a6fc7d29eae1b43e4597d89bd527b"
+  dependencies:
+    global "^4.3.2"
+    video.js "^6 || ^7"
+
 videojs-font@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/videojs-font/-/videojs-font-3.0.0.tgz#90eafddcf26b407448c833523f5ca4ad8d5cc1af"
+
+videojs-font@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/videojs-font/-/videojs-font-3.1.0.tgz#ac33be9b517fe19299f61cccd2b3c7d75a1c6960"
+
+videojs-http-source-selector@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/videojs-http-source-selector/-/videojs-http-source-selector-1.0.3.tgz#95e5c787a99ed946353dcd6a2b175cd134b6b6da"
+  dependencies:
+    global "^4.3.2"
+    video.js "^7.0.0"
+    videojs-contrib-quality-levels "^2.0.4"
 
 videojs-vtt.js@0.14.1:
   version "0.14.1"

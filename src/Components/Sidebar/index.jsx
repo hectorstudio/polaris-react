@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 
 import Scroll from 'Components/Scroll';
-import Navigation from './Navigation';
 import LogoIcon from 'Components/Logo/LogoIcon';
+import Navigation from './Navigation';
 
 import { SidebarWrap, DashboardLink } from './Styles';
 

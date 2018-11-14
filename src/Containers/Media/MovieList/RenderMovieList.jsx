@@ -10,7 +10,8 @@ import { LIBRARY_MODAL } from 'Redux/Constants/modalTypes';
 import Loading from 'Components/Loading';
 import MediaCard from 'Components/Media/Card';
 
-import { LibraryListItem, NoResults } from '../Styles';
+import { NoResults } from 'Containers/Styles';
+import { LibraryListItem } from '../Styles';
 
 class RenderMovieList extends Component {
   toggleModal = () => {
@@ -32,20 +33,20 @@ class RenderMovieList extends Component {
           if (loading) return <Loading />;
           if (error) return `Error! ${error.message}`;
 
-          if (data.movies.length > 0) {
-            return orderBy(data.movies, ['name'], ['asc']).map(m => (
-              <LibraryListItem key={m.uuid}>
-                <MediaCard {...m} />
-              </LibraryListItem>
-            ));
+          if (data.movies.length === 0) {
+            return (
+              <NoResults>
+                You currently have no Movies.
+                <button type="button" onClick={() => this.toggleModal()}>Add Movies</button>
+              </NoResults>
+            );
           }
 
-          return (
-            <NoResults>
-              You currently have no Movies.
-              <button type="button" onClick={() => this.toggleModal()}>Add Movies</button>
-            </NoResults>
-          );
+          return orderBy(data.movies, ['name'], ['asc']).map(m => (
+            <LibraryListItem key={m.uuid}>
+              <MediaCard {...m} />
+            </LibraryListItem>
+          ));
         }}
 
       </Query>

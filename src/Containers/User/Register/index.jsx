@@ -76,7 +76,7 @@ class Register extends Component {
           this.formError(error.response.data.message);
         });
       } else {
-        this.formError('Please complete the form');
+        this.formError('Please recheck your form');
       }
     }
 

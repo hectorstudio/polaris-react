@@ -20,13 +20,6 @@ export const HomeLink = styled(NavLink)`
     margin: auto;
 `;
 
-export const DashboardLink = styled(NavLink)`
-  float:left;
-  padding:1rem 2rem 0 0;
-  margin:3rem 3rem 0;
-  position:relative;
-`;
-
 export const NavItemWrap = styled.section`
   float:left;
   width:100%;
@@ -55,6 +48,26 @@ export const NavItemLink = styled(NavLink)`
     margin:0 0 1rem;
     color: ${props => props.theme.light};
     opacity:.6;
+    float:left;
+    width:100%;
+    transition:.2s all;
+
+    &.active {
+      opacity:1;
+      color: ${props => props.theme.primary};
+    }
+
+    &:hover {
+        opacity: 1;
+    }
+`;
+
+export const DashboardLink = styled(NavLink)`
+    font-size:1.4rem;
+    letter-spacing: .1rem;
+    line-height: 1.5;
+    font-weight:400;
+    margin:3rem 3rem 0;
     float:left;
     width:100%;
     transition:.2s all;

@@ -10,7 +10,8 @@ import { LIBRARY_MODAL } from 'Redux/Constants/modalTypes';
 import Loading from 'Components/Loading';
 import MediaCard from 'Components/Media/Card';
 
-import { LibraryListItem, NoResults } from '../Styles';
+import { NoResults } from 'Containers/Styles';
+import { LibraryListItem } from '../Styles';
 
 class RenderSeriesList extends Component {
   toggleModal = () => {

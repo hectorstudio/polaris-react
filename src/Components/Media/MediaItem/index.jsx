@@ -129,7 +129,7 @@ class MediaItem extends Component {
         name,
       }],
       plugins: {
-        chromecast: {
+        chromeCast: {
           receiverAppID: '3CCE45F7',
         },
       },

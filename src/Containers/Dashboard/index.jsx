@@ -12,7 +12,7 @@ const Dashboard = () => (
   <ContentWrap>
     <DashboardWrap>
       <CarouselWrap>
-        <h4>Currently Watching</h4>
+        <h4>Continue Watching</h4>
         <RenderUpNext />
       </CarouselWrap>
       <CarouselWrap>

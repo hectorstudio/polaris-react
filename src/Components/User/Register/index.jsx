@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import LogoIcon from 'Components/Logo/LogoIcon';
-import { FormWrap } from '../Styles';
+import { FormWrap, Help } from '../Styles';
 
 import Title from '../Components/Title';
 import Input from '../Components/Input';
@@ -22,6 +22,11 @@ const RegisterForm = ({
 
   return (
     <Fragment>
+      {initialSetup
+        && (
+          <Help>You are currently creating your admin account ensure you remember your details.</Help>
+        )
+      }
       <FormWrap error={error}>
         <LogoIcon alt="Olaris" height="30" />
         <Title heading={heading} sub={title} />
