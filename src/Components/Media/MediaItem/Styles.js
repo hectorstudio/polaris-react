@@ -208,6 +208,7 @@ export const MediaActionsWrap = styled.div`
     line-height:4rem;
     padding:0 1.5rem;
     border-radius:.2rem;
+    font-size:1.4rem;
     color:#FFF;
     font-weight:600;
     background: rgba(0,0,0, .5);

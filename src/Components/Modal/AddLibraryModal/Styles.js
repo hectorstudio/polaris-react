@@ -71,7 +71,7 @@ export const LibraryItemFilePath = styled.span`
   flex:1;
   overflow:hidden;
   text-overflow:ellipsis; 
-  whitespace:no-wrap;
+  white-space:nowrap;
   max-width: calc(100% - 5rem);
 `;
 

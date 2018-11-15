@@ -24,6 +24,8 @@ import AddLibraryAction from './AddLibraryAction';
 class AddLibraryModal extends Component {
   constructor(props) {
     super(props);
+    this.timeout = null;
+
     this.state = {
       error: false,
       errorMessage: '',
@@ -49,7 +51,19 @@ class AddLibraryModal extends Component {
     if (e.target.id === 'modal-container') this.closeModal();
   }
 
-  addLibrary = (filePath) => {
+  clearError = () => {
+    this.timeout = setTimeout(() => {
+      if (this.mounted) {
+        this.setState({
+          error: false,
+          errorMessage: '',
+        });
+      }
+      this.timeout = null;
+    }, 2000);
+  }
+
+  addLibrary = async (filePath) => {
     const { type, mutate } = this.props;
     const { kind } = this.state;
 
@@ -68,6 +82,8 @@ class AddLibraryModal extends Component {
           this.setState({
             error: true,
             errorMessage: error.message,
+          }, async () => {
+            this.clearError();
           });
         }
       })
@@ -75,6 +91,8 @@ class AddLibraryModal extends Component {
         this.setState({
           error: true,
           errorMessage: error.message,
+        }, async () => {
+          this.clearError();
         });
       });
   }

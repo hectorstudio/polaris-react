@@ -13,6 +13,7 @@ import { MediaCardWrap } from './Styles';
 const RenderUpNext = () => (
   <Query
     query={UP_NEXT}
+    no-cache
   >
 
     {({ loading, error, data }) => {

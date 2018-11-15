@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
+import { convertFloatMs } from 'Helpers';
 
 import { hideModal } from 'Redux/Actions/modalActions';
 
@@ -36,22 +37,6 @@ class ResumeModal extends Component {
     }
   };
 
-  convertPlaystate = () => {
-    const { playState } = this.props;
-
-    const date = new Date(null);
-    date.setHours(0, 0, 0);
-    date.setSeconds(playState.playtime);
-
-    const hours = (date.getHours() > 0 ? `${date.getHours()} Hrs` : '');
-    const minutes = (date.getMinutes() > 0 ? `${date.getMinutes()} Mins` : '');
-    const seconds = (date.getSeconds() > 0 ? `${date.getSeconds()} Secs` : '');
-
-    const resumeTimeStamp = `${hours} ${minutes} ${seconds}`;
-
-    return `Resume video from ${resumeTimeStamp}`;
-  };
-
   render() {
     const { playState, title } = this.props;
 
@@ -66,7 +51,7 @@ class ResumeModal extends Component {
           </ModalHeader>
           <ModalBody>
             <ResumeOption type="submit" href="#" onClick={() => (this.handlePlayRequest(true, true))}>
-              {playState && this.convertPlaystate()}
+              {playState && `Resume video from ${convertFloatMs(playState.playtime)}`}
             </ResumeOption>
             <ResumeOption type="submit" onClick={() => (this.handlePlayRequest(false, true))}>From Start</ResumeOption>
           </ModalBody>

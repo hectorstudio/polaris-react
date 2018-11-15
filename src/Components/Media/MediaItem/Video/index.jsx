@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 import { throttle } from 'lodash';
 import { graphql } from 'react-apollo';
 import videojs from 'video.js';
-import chromeCast from '@silvermine/videojs-chromecast';
+import chromecast from '@silvermine/videojs-chromecast';
 
 import UPDATE_PLAYSTATE from 'Mutations/updatePlaystate';
 import { updatePlayStateEpisode, updatePlayStateMovie } from 'Components/Media/Actions/updatePlayState';
+
+chromecast(videojs);
 
 class Video extends Component {
   t = throttle(() => this.playStateMutation(Math.floor(this.player.currentTime())), 2000);
 
   componentDidMount() {
     const { resume, playState } = this.props;
-
-    videojs.registerPlugin(chromeCast);
 
     this.player = videojs(this.videoNode, {
       ...this.props,
