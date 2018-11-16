@@ -26,6 +26,7 @@ export const AlertInlineWrap = styled.span`
   text-align:center;
   font-weight:600;
   margin:0 0 2rem;
+  text-transform:capitalize;
 `;
 
 export const AlertWrap = styled.div`

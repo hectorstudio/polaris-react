@@ -2,7 +2,7 @@ import styled, { keyframes } from 'styled-components';
 
 const fadeInLow = keyframes`
   from { opacity: 0 }
-  to { opacity: .2 }
+  to { opacity: .15 }
 `;
 
 export const MediaFullWrap = styled.section`

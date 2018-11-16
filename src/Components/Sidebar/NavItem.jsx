@@ -16,7 +16,7 @@ import {
 class NavItem extends Component {
   handleClick = (e, type) => {
     const { showModal } = this.props;
-    const linkDisabled = (e.target.nodeName === 'SPAN');
+    const linkDisabled = (e.target.nodeName === 'svg' || e.target.nodeName === 'path');
 
     if (linkDisabled) {
       e.preventDefault();

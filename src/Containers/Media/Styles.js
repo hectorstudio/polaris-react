@@ -4,14 +4,14 @@ export const LibraryListWrap = styled.section`
     width: 100%;
     display: flex;
     flex-flow: row wrap;
-    padding:3rem 3rem 1.5rem; 
+    padding:4rem 3rem 1.5rem; 
     align-items: center;
     justify-content: center;
 `;
 
 export const LibraryListItem = styled.div`
   flex: 1 0 auto;
-  width: ${props => props.theme.card.width};
+  min-width: ${props => props.theme.card.width};
   max-width: ${props => props.theme.card.maxWidth};
   margin: ${props => props.theme.card.margin};
 `;

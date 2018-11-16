@@ -4,7 +4,7 @@ import { withAlert } from 'react-alert';
 
 import { AUTH_REQUEST, Auth } from 'Client/Auth';
 import LoginForm from 'Components/User/Login';
-import LoginWrap from './Styles';
+import UserFormWrap from '../Styles';
 
 class Login extends Component {
     state = {
@@ -20,6 +20,14 @@ class Login extends Component {
     componentWillMount() {
       this.setState({ isMounted: true });
       if (Auth.isAuthenticated) this.setState({ redirectToDashboard: true });
+    }
+
+    componentDidMount() {
+      const { history, alert } = this.props;
+
+      if (history.location.state) {
+        if (history.location.state.registered === true) alert.success('Account Successfully Created, login with your details above');
+      }
     }
 
     componentWillUnmount() {
@@ -68,11 +76,15 @@ class Login extends Component {
     }
 
     render() {
-      const { error, success, validForm } = this.state;
+      const {
+        error,
+        success,
+        validForm,
+        redirectToDashboard,
+      } = this.state;
       const { location } = this.props;
 
       const { from } = location.state || { from: { pathname: '/dashboard' } };
-      const { redirectToDashboard } = this.state;
 
       if (redirectToDashboard) return <Redirect to={from} />;
 
@@ -84,9 +96,9 @@ class Login extends Component {
       };
 
       return (
-        <LoginWrap success={success}>
+        <UserFormWrap success={success}>
           <LoginForm {...LoginProps} />
-        </LoginWrap>
+        </UserFormWrap>
       );
     }
 }

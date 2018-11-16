@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
+import LogoIcon from 'Components/Logo/LogoIcon';
 import Logout from './Logout';
 import Search from './Search';
 
-import { HeaderWrap } from './Styles';
+import { HeaderWrap, DashboardHeader } from './Styles';
 
 export default class Header extends Component {
     state = {
@@ -21,6 +22,9 @@ export default class Header extends Component {
 
       return (
         <HeaderWrap>
+          <DashboardHeader>
+            <LogoIcon height="30" />
+          </DashboardHeader>
           <Search value={value} updateSearch={this.updateSearch} />
           <Logout />
         </HeaderWrap>

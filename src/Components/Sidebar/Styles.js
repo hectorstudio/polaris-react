@@ -6,10 +6,10 @@ import { transparentize } from 'polished';
 export const SidebarWrap = styled.nav`
   width: ${props => props.theme.layout.sidebar};
   position: fixed;
-  top: 0;
+  top: ${props => props.theme.layout.header};
   left: 0;
   height: 100vh;
-  background:${props => props.theme.background && transparentize(0.5, props.theme.background)};
+  background:${props => props.theme.background && transparentize(0.4, props.theme.background)};
   z-index:2;
 `;
 
@@ -85,25 +85,5 @@ export const NavItemLink = styled(NavLink)`
         opacity:1;
       }
     }
-  }
-`;
-
-export const DashboardLink = styled(NavLink)`
-  font-size:1.4rem;
-  letter-spacing: .1rem;
-  line-height: 1.5;
-  font-weight:400;
-  padding:3rem 3rem 0;
-  float:left;
-  width:100%;
-  transition:.2s all;
-
-  &.active {
-    opacity:1;
-    color: ${props => props.theme.primary};
-  }
-
-  &:hover {
-      opacity: 1;
   }
 `;

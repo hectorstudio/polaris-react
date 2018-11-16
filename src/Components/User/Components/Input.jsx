@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { InputWrap, TextInput, UniqueInput } from '../Styles';
+import { InputWrap, TextInput } from '../Styles';
 
 export default class Input extends Component {
   state = {
     isFocused: false,
-    hasError: false,
   }
 
   handleFocus = () => {
@@ -42,14 +41,9 @@ export default class Input extends Component {
       required,
     };
 
-    const inputType = (!uniqueCode
-      ? <TextInput {...inputProps} />
-      : <UniqueInput {...inputProps} />
-    );
-
     return (
       <InputWrap isFocused={isFocused} uniqueCode={uniqueCode}>
-        {inputType}
+        <TextInput {...inputProps} />
       </InputWrap>
     );
   }

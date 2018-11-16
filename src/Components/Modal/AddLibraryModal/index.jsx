@@ -30,7 +30,12 @@ class AddLibraryModal extends Component {
       error: false,
       errorMessage: '',
       kind: 0,
+      isMounted: false,
     };
+  }
+
+  componentWillMount() {
+    this.setState({ isMounted: true });
   }
 
   componentDidMount() {
@@ -42,6 +47,7 @@ class AddLibraryModal extends Component {
   }
 
   componentWillUnmount() {
+    this.setState({ isMounted: false });
     clearTimeout(this.timeout);
   }
 
@@ -56,8 +62,10 @@ class AddLibraryModal extends Component {
   }
 
   clearError = () => {
+    const { isMounted } = this.state;
+
     this.timeout = setTimeout(() => {
-      if (this.mounted) {
+      if (isMounted) {
         this.setState({
           error: false,
           errorMessage: '',

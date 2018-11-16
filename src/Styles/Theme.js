@@ -32,14 +32,14 @@ const Theme = {
     muli: '"Muli", sans-serif',
   },
   card: {
-    width: '14rem',
-    maxWidth: '18rem',
+    width: '18rem',
+    maxWidth: '22rem',
     margin: '0 1.5rem 3rem',
     paddingTop: 'calc(513 / 342 * 100%)',
   },
   wideCard: {
-    width: '20rem',
-    maxWidth: '24rem',
+    width: '16rem',
+    maxWidth: '20rem',
     margin: '0 1.5rem 3rem',
     paddingTop: '15rem',
   },

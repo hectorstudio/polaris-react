@@ -1,18 +1,24 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { aHeadShake } from 'Styles/Animations';
+import { media } from 'Styles/Utils';
 
 // Containers
 export const FormWrap = styled.form`
-    padding:5rem;
+    padding:3rem;
     background:#FFF;
-    box-shadow: 0 10px 60px rgba(0,0,0, 0.3);
-    margin:3rem 0;
+    margin:1rem;
     transition: .2s border;
     border-radius:.2rem;
     border:1px solid;
     border-color: ${(props => (props.error ? props.theme.alerts.error : 'transparent'))};
     animation: ${(props => (props.error ? `.5s ${aHeadShake} alternate` : 'none'))};
+
+    ${media.tablet`
+      padding:5rem;
+      margin:3rem;
+      box-shadow: 0 10px 60px rgba(0,0,0, 0.3);
+    `};
 `;
 
 // Heading
@@ -50,7 +56,6 @@ export const InputWrap = styled.div`
         z-index:3;
         width:100%;
         transition:.3s width;
-        display: ${(props => (props.uniqueCode ? 'none' : 'block'))};
     }
 
     &:after {
@@ -60,7 +65,7 @@ export const InputWrap = styled.div`
     &:before {
         z-index:4;
         width:${props => (props.isFocused ? 100 : 0)}%;
-        background-image: linear-gradient(-135deg, #FFF 0%, ${props => props.theme.darken.primary} 50%, #FFF 100%);
+        background: ${props => props.theme.primary};
     }    
 `;
 
@@ -85,28 +90,7 @@ export const TextInput = styled.input`
 
     &::placeholder {
         color: ${props => props.theme.text};
-        opacity: .25;
-    }
-
-    &:focus {
-        outline:none;
-    }
-`;
-
-export const UniqueInput = styled.input`
-    height: 5rem;
-    border:0;
-    width:100%;
-    float:left;
-    font-size:1.8rem;
-    font-weight:600;
-    background: #FFF;
-    border:2px solid ${props => props.theme.darken.primary};
-    text-align:center;
-    color: ${props => props.theme.darken.primary};
-
-    &::placeholder {
-        color: ${props => props.theme.text};
+        opacity: .5;
     }
 
     &:focus {
@@ -183,11 +167,11 @@ export const ForgotPasswordLink = styled(Link)`
     }
 `;
 
-export const Help = styled.form`
+export const Help = styled.span`
     padding:1.5rem;
     background:#FFF;
     box-shadow: 0 10px 60px rgba(0,0,0, 0.3);
-    margin:0 0 1rem;
+    margin: 0 3rem;
     transition: .2s border;
     border-radius:.2rem;
     border:1px solid;

@@ -7,7 +7,7 @@ import { Auth } from 'Client/Auth';
 import CREATE_USER from 'Mutations/createUser';
 import RegisterForm from 'Components/User/Register';
 
-import RegisterWrap from './Styles';
+import UserFormWrap from '../Styles';
 
 class Register extends Component {
     state = {
@@ -18,6 +18,7 @@ class Register extends Component {
       inviteCode: '',
       validForm: false,
       initialSetup: true,
+      registeredSuccessful: false,
     }
 
     componentWillMount() {
@@ -74,9 +75,7 @@ class Register extends Component {
         }
 
         CREATE_USER(registerInfo).then(() => {
-          return (
-            <Redirect to={{ pathname: '/user/profile', state: { registered: true } }} />
-          );
+          this.setState({ registeredSuccessful: true })
         }).catch((error) => {
           this.formError(error.response.data.message);
         });
@@ -93,7 +92,10 @@ class Register extends Component {
         inviteCode,
         initialSetup,
         validForm,
+        registeredSuccessful,
       } = this.state;
+
+      if (registeredSuccessful) return <Redirect to={{ pathname: '/login', state: { registered: true } }} />;
 
       const { from } = location.state || { from: { pathname: '/dashboard' } };
       if (redirectToDashboard) return <Redirect to={from} />;
@@ -108,9 +110,9 @@ class Register extends Component {
       };
 
       return (
-        <RegisterWrap>
+        <UserFormWrap>
           <RegisterForm {...RegisterProps} />
-        </RegisterWrap>
+        </UserFormWrap>
       );
     }
 }
