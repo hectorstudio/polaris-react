@@ -41,6 +41,10 @@ class AddLibraryModal extends Component {
     });
   }
 
+  componentWillUnmount() {
+    clearTimeout(this.timeout);
+  }
+
   closeModal = () => {
     const { hideModal } = this.props;
 

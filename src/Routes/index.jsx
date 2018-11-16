@@ -5,7 +5,6 @@ import Loading from 'Components/Loading';
 
 // Auth
 import Login from 'Containers/User/Login';
-import ForgotPassword from 'Containers/User/ForgotPassword';
 import Register from 'Containers/User/Register';
 
 // App
@@ -33,7 +32,7 @@ import { isInitialSetup } from 'Helpers';
 import AdminRoute from './Helper/AdminRoute';
 import PrivateRoute from './Helper/PrivateRoute';
 
-export default class Routes extends Component {
+class Routes extends Component {
   state = {
     initialSetup: false,
     loading: true,
@@ -41,6 +40,7 @@ export default class Routes extends Component {
 
   componentWillMount() {
     checkAuth();
+
     isInitialSetup().then((res) => {
       this.setState({
         initialSetup: res.data,
@@ -73,9 +73,7 @@ export default class Routes extends Component {
     return (
       <Switch>
         <Route exact path="/" render={this.initialRender} />
-
         <Route exact path="/login" component={Login} />
-        <Route exact path="/forgot" component={ForgotPassword} />
         <Route
           exact
           path="/register"
@@ -101,3 +99,5 @@ export default class Routes extends Component {
     );
   }
 }
+
+export default Routes;

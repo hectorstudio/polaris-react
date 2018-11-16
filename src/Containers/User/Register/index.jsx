@@ -3,6 +3,7 @@ import { withAlert } from 'react-alert';
 import { Redirect } from 'react-router';
 import { getUrlParameter } from 'Helpers';
 
+import { Auth } from 'Client/Auth';
 import CREATE_USER from 'Mutations/createUser';
 import RegisterForm from 'Components/User/Register';
 
@@ -21,6 +22,8 @@ class Register extends Component {
 
     componentWillMount() {
       const { initialSetup } = this.props;
+
+      if (Auth.isAuthenticated) this.setState({ redirectToDashboard: true });
 
       this.setState({
         inviteCode: getUrlParameter('invite_code'),
@@ -71,7 +74,9 @@ class Register extends Component {
         }
 
         CREATE_USER(registerInfo).then(() => {
-          this.setState({ redirectToDashboard: true });
+          return (
+            <Redirect to={{ pathname: '/user/profile', state: { registered: true } }} />
+          );
         }).catch((error) => {
           this.formError(error.response.data.message);
         });

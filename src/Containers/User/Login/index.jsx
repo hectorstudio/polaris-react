@@ -18,8 +18,8 @@ class Login extends Component {
     }
 
     componentWillMount() {
-      if (Auth.isAuthenticated) this.setState({ redirectToDashboard: true });
       this.setState({ isMounted: true });
+      if (Auth.isAuthenticated) this.setState({ redirectToDashboard: true });
     }
 
     componentWillUnmount() {
@@ -39,7 +39,6 @@ class Login extends Component {
       if (validForm) {
         AUTH_REQUEST(username, password).then(() => {
           this.setState({ success: true });
-
           setTimeout(() => {
             this.setState({ redirectToDashboard: true });
           }, 750);
