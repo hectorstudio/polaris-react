@@ -1,8 +1,19 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { transparentize } from 'polished';
+
+export const SearchIcon = styled(FontAwesomeIcon)`
+    font-size:1.6rem;
+    transition:.2s all;
+    border-radius:50%;
+    height:${props => props.theme.layout.header};
+    width:${props => props.theme.layout.header} !important;
+    padding:1.75rem;
+    color:${props => (props.hasFocus ? 'rgba(255,255,255,.8)' : 'rgba(255,255,255,.5)')};
+`;
 
 export const InputWrap = styled.div`
-    background: ${props => (props.hasFocus ? '#FFF' : 'rgba(0,0,0, .1)')};
+    background: transparent;
     margin:0;
     height: 5rem;
     width: ${props => props.theme.layout.search};
@@ -10,10 +21,18 @@ export const InputWrap = styled.div`
     transition: .2s all;
     position:relative;
     position:relative;
-    margin:1.5rem;
+    margin:0 0 0 1rem;
+    float:left;
+    background:${props => (props.hasFocus ? props.theme.background : transparentize(0.5, props.theme.text))};
+    border-radius:5rem;
+
+    ${SearchIcon} {
+      background:${props => (props.hasFocus ? 'rgba(0,0,0, .2)' : 'rgba(0,0,0, 0)')};
+    }
 `;
+
 export const LoadingIcon = styled(FontAwesomeIcon)`
-    color: ${props => props.theme.dark};
+    color:rgba(255,255,255,.3);
     font-size:1.6rem;
     transition:.2s all;
     position:absolute;
@@ -43,17 +62,6 @@ export const ErrorAlert = styled.span`
     position:absolute;
     top:6rem;
     left:0;
-`;
-
-
-export const SearchIcon = styled(FontAwesomeIcon)`
-    font-size:1.6rem;
-    transition:.2s all;
-    position:absolute;
-    top:50%;
-    margin-top: -.8rem;
-    left:1.7rem;
-    transition: .2s color;
 `;
 
 export const Title = styled.h4`

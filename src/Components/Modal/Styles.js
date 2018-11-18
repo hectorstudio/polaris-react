@@ -31,7 +31,7 @@ export const ModalWrap = styled.div`
   box-shadow:0 0 25px rgba(0,0,0, .4);
   animation: ${`.3s ${fadeInZoom} forwards`};
   border-radius:.3rem;
-  background: radial-gradient(ellipse at center, #1d2638 0%, #111d2e 100%);
+  background: ${props => props.theme.background};
 `;
 
 export const ModalCloseButton = styled(FontAwesomeIcon)`

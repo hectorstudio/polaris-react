@@ -1,6 +1,7 @@
 .react-autosuggest__container {
   position:relative;
   z-index:5;
+  float: left;
 }
 
 .react-autosuggest {
@@ -12,7 +13,7 @@
         position:absolute;
         top:6rem;
         left:0;
-        margin: 1.5rem;
+        margin: 1rem 0;
         z-index: 999;
     }
 
@@ -46,32 +47,34 @@
     }
 
     &__input {
-        color: color(dark);
-        background:none;
-        border:0;
-        line-height:5rem;
-        color:#FFF;
-        width:100%;
-        position:absolute;
-        top:0;
-        left:0;
-        padding:0 5rem;
-        font-size:1.6rem;
-        overflow:hidden;
-        font-weight: 600;
+      background:none;
+      border:0;
+      line-height:5rem;
+      color:#FFF;
+      width:100%;
+      position:absolute;
+      top:0;
+      left:0;
+      padding:0 5rem 0 6rem;
+      font-size:1.6rem;
+      overflow:hidden;
+      font-weight:600;
+      transition:.2s all;
 
-        &::-webkit-input-placeholder {
-            color: rgba(255,255,255, .2);
-        }
+      &::-webkit-input-placeholder {
+        color: rgba(255,255,255, .2);
+        transition:.2s all;
+      }
 
-        &:focus {
-            outline:none;
-            color: color(dark);
-        }
+      &:focus {
+        outline:none;
+        color: rgba(255, 255, 255, .8);
+      }
     }
 
     &__section-container {
         width: 35rem;
+        margin-left: 1rem;
         background:#FFF;
         border-radius:0 0 .2rem .2rem;
         box-shadow: 0 10px 15px rgba(0,0,0, .3);

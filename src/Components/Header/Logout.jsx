@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { Auth } from 'Client/Auth';
-import { LogoutButton, LogoutIcon } from './Styles';
+import { NavButton, NavIcon } from './Styles';
 
 class Logout extends Component {
   handleLogout = () => {
@@ -21,9 +21,9 @@ class Logout extends Component {
 
   render() {
     return (
-      <LogoutButton onClick={this.handleLogout}>
-        <LogoutIcon icon={faSignOutAlt} />
-      </LogoutButton>
+      <NavButton onClick={this.handleLogout}>
+        <NavIcon icon={faSignOutAlt} />
+      </NavButton>
     );
   }
 }

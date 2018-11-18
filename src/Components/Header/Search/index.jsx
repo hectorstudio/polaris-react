@@ -92,7 +92,7 @@ class Search extends Component {
     const checkSuggestions = (typeof suggestions === 'undefined' ? [] : suggestions);
 
     const inputProps = {
-      placeholder: 'Search...',
+      placeholder: 'Search Your Media...',
       value,
       onChange: this.onChange,
     };

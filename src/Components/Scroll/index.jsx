@@ -31,7 +31,7 @@ const Scroll = ({ children }) => (
   <Scrollbars
     autoHeight
     autoHide
-    autoHeightMin="calc(100vh - 81px)"
+    autoHeightMin="100vh"
     renderThumbVertical={renderThumb}
     renderTrackVertical={renderTrack}
   >

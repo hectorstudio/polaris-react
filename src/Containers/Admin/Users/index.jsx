@@ -5,7 +5,6 @@ import { graphql } from 'react-apollo';
 import CREATE_USER_INVITE from 'Mutations/createUserInvite';
 import FETCH_INVITES from 'Queries/fetchInvites';
 
-import ContentWrap from 'Containers/ContentWrap';
 import { InnerContent, PageHeading } from 'Containers/Styles';
 import CreateInvite from 'Components/Admin/Users/CreateInvite';
 import RenderUsers from './RenderUsers';
@@ -27,20 +26,18 @@ class Users extends Component {
 
   render() {
     return (
-      <ContentWrap>
-        <InnerContent>
-          <PageHeading>User Management</PageHeading>
-          <List>
-            <ListHeading>Userlist</ListHeading>
-            <RenderUsers />
-          </List>
-          <List>
-            <ListHeading>Invites</ListHeading>
-            <RenderInvites />
-            <CreateInvite generateInvite={() => this.generateUserInvite()} />
-          </List>
-        </InnerContent>
-      </ContentWrap>
+      <InnerContent>
+        <PageHeading>User Management</PageHeading>
+        <List>
+          <ListHeading>Userlist</ListHeading>
+          <RenderUsers />
+        </List>
+        <List>
+          <ListHeading>Invites</ListHeading>
+          <RenderInvites />
+          <CreateInvite generateInvite={() => this.generateUserInvite()} />
+        </List>
+      </InnerContent>
     );
   }
 }

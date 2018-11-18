@@ -35,7 +35,7 @@ export const CardPoster = styled.span`
   animation: ${`.3s ${aFadeIn} forwards`};
   animation-delay: .3s;
   filter: grayscale(0) saturate(125%);
-  transition: .5s all;
+  
 
   ${PosterWrap}:hover & { 
     filter: ${props => props.hover ? 'grayscale(25%) saturate(75%)' : 'grayscale(0) saturate(125%)'};

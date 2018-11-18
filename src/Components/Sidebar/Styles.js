@@ -6,28 +6,30 @@ import { transparentize } from 'polished';
 export const SidebarWrap = styled.nav`
   width: ${props => props.theme.layout.sidebar};
   position: fixed;
-  top: ${props => props.theme.layout.header};
+  top 0;
   left: 0;
   height: 100vh;
-  background:${props => props.theme.background && transparentize(0.4, props.theme.background)};
+  background:${props => props.theme.background && transparentize(0.1, props.theme.background)};
   z-index:2;
+  transition:.2s all;
+  transform: translateX(${props => (props.navHidden ? `-${props.theme.layout.sidebar}` : '0')});
 `;
 
 export const HomeLink = styled(NavLink)`
-  width: 6rem;
-  height:6rem;
+  width:5rem;
+  height:5rem;
   padding:1.5rem;
-  align-self: center;
-  margin: auto;
+  align-self:center;
+  margin:auto;
 `;
 
 export const NavItemWrap = styled.section`
   float:left;
   width:100%;
-  margin:0 0 3rem;
-  padding:0 3rem;
+  margin:0 0 4rem;
+  padding:0 3rem 0 0;
   &:first-of-type {
-    margin-top: 4rem;
+    margin-top: 5rem;
   }
 `;
 
@@ -39,6 +41,7 @@ export const NavItemHeading = styled.h5`
     text-transform:uppercase;
     color: ${props => props.theme.secondary};
     opacity: .25;
+    padding-left:3rem;
 `;
 
 export const AddFolder = styled(FontAwesomeIcon)`
@@ -52,7 +55,16 @@ export const AddFolder = styled(FontAwesomeIcon)`
   height:3rem;
   transition:.2s all;
   padding:.9rem;
-  transform:translateY(.5rem);
+  border-radius:3rem 0 0 3rem;
+  background: ${props => props.theme.dark};
+  transform:translateX(-.5rem);
+`;
+
+export const DashboardLink = styled(NavLink)`
+  float:left;
+  padding:1rem 2rem 0 0;
+  margin:3rem 3rem 0;
+  position:relative;
 `;
 
 export const NavItemLink = styled(NavLink)`
@@ -68,7 +80,9 @@ export const NavItemLink = styled(NavLink)`
   transition:.2s all;
   position:relative;
   overflow:hidden;
-
+  padding-left: 3rem;
+  border-radius: 0 3rem 3rem 0;
+  
   &.active {
     opacity:1;
     color: ${props => props.theme.primary};
@@ -76,10 +90,12 @@ export const NavItemLink = styled(NavLink)`
 
   &:hover {
     opacity: 1;
+    background: rgba(0,0,0, .1);
      
     ${AddFolder} {
       opacity:.4;
-      transform: translateY(0);
+      transform: translateX(0);
+      background: rgba(0,0,0, .3);
 
       &:hover {
         opacity:1;

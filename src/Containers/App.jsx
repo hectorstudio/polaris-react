@@ -1,22 +1,26 @@
 import React, { Fragment } from 'react';
 import { Auth, checkAuth } from 'Client/Auth';
+
+import ContentWrap from 'Containers/ContentWrap';
 import Header from 'Components/Header';
 import Sidebar from 'Components/Sidebar';
 import Routes from 'Routes';
 import ModalContainer from 'Containers/ModalContainer';
 
-import { AppWrap, PageWrap } from './Styles';
+import { AppWrap } from './Styles';
 
 const App = () => {
   checkAuth();
 
   const LoggedIn = () => (
     <Fragment>
-      <Header />
       <Sidebar />
-      <PageWrap>
-        <Routes />
-      </PageWrap>
+      <ContentWrap>
+        <Fragment>
+          <Header />
+          <Routes />
+        </Fragment>
+      </ContentWrap>
       <ModalContainer />
     </Fragment>
   );

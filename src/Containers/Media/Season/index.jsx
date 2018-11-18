@@ -1,14 +1,9 @@
 import React from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
-import ContentWrap from 'Containers/ContentWrap';
 import RenderSeason from './RenderSeason';
 
-const Season = ({ match }) => (
-  <ContentWrap>
-    <RenderSeason uuid={match.params.uuid} />
-  </ContentWrap>
-);
+const Season = ({ match }) => <RenderSeason uuid={match.params.uuid} />;
 
 Season.propTypes = {
   match: ReactRouterPropTypes.match.isRequired,
