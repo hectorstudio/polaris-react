@@ -6,5 +6,9 @@
                 "root": ["./src"]
             }
         ]
+    ],
+    "presets": [
+      "react-app"
     ]
 }
+

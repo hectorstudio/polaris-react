@@ -20,6 +20,10 @@
        "linebreak-style": "off",
        "jsx-a11y/media-has-caption": "off",
        "no-confusing-arrow": "off",
-       "import/no-cycle": "off"
+       "import/no-cycle": "off",
+       "no-trailing-spaces": "off",
+       "semi": "off",
+       "react/no-unused-prop-types": "off",
+       "max-len": "off"
     }
 }
