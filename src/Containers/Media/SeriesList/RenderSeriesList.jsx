@@ -27,6 +27,7 @@ class RenderSeriesList extends Component {
     return (
       <Query
         query={FETCH_SERIES_LIST}
+        pollInterval={5000}
       >
 
         {({ loading, error, data }) => {

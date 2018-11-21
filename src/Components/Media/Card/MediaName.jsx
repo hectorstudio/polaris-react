@@ -19,7 +19,7 @@ const MediaName = ({
         infoValue = `${episodes.length} Episodes`;
         break;
       case 'Episode':
-        infoValue = `Espiode ${episodeNumber}`;
+        infoValue = `Episode ${episodeNumber}`;
         break;
       case 'Movie':
         infoValue = year;
