@@ -47,6 +47,7 @@ class Video extends Component {
     this.player.on('timeupdate', () => {
       this.t();
     });
+    // this.player.on('loadedmetadata', this.enableQualityLevels);
 
     if (resume) {
       this.player.currentTime(playState.playtime - 5);
@@ -77,7 +78,11 @@ class Video extends Component {
     } else {
       updatePlayStateMovie(mutate, uuid, playtime, finished);
     }
-  }
+  };
+
+  enableQualityLevels= () => {
+    console.lol('lol');
+  };
 
   render() {
     return (

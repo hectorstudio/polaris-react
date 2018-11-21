@@ -6,7 +6,7 @@ import { isIOS } from 'react-device-detect';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import {
-  getPlayableCodecs,
+  canPlayCodec,
   getBaseUrl,
   generateFileList,
 } from 'Helpers';
@@ -80,7 +80,14 @@ class MediaItem extends Component {
       variables: { uuid: files[selectedFile.value].uuid },
     })
       .then(({ data }) => {
-        const codecs = getPlayableCodecs(files[selectedFile.value].streams);
+        const streamCodecs = files[selectedFile.value].streams
+          .filter(s => s.streamType !== 'subtitle')
+          .map(s => s.codecMime);
+        // Ideally, we would ask the server for a list of codecs that it could transcode to. For the moment,
+        // this is the pragmatic solution though.
+        const standardTranscodedCodecs = ['mp4a.40.2', 'avc1.64001e', 'avc1.64001f', 'avc1.640028'];
+        const playableCodecs = streamCodecs.concat(standardTranscodedCodecs)
+          .filter(canPlayCodec);
 
         const streamPath = (isIOS
           ? data.createStreamingTicket.hlsStreamingPath
@@ -88,8 +95,11 @@ class MediaItem extends Component {
 
         const mimeType = isIOS ? 'application/x-mpegURL' : 'application/dash+xml';
 
+        const queryParams = playableCodecs
+          .map(c => `playableCodecs=${encodeURIComponent(c)}`)
+          .join('&');
         this.setState({
-          source: `${getBaseUrl()}${streamPath}?${codecs}`,
+          source: `${getBaseUrl()}${streamPath}?${queryParams}`,
           mimeType,
         });
       })
