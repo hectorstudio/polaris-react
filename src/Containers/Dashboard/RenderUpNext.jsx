@@ -13,8 +13,7 @@ import { MediaCardWrap } from './Styles';
 const RenderUpNext = () => (
   <Query
     query={UP_NEXT}
-    pollInterval={5000}
-    no-cache
+    fetchPolicy="no-cache"
   >
 
     {({ loading, error, data }) => {
