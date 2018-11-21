@@ -11878,10 +11878,9 @@ videojs-font@3.1.0:
   resolved "https://registry.yarnpkg.com/videojs-font/-/videojs-font-3.1.0.tgz#ac33be9b517fe19299f61cccd2b3c7d75a1c6960"
   integrity sha512-rxB68SVgbHD+kSwoNWNCHicKJuR2ga3bGfvGxmB+8fupsiLbnyCwTBVtrZUq4bZnD64mrKP1DxHiutxwrs59pQ==
 
-videojs-http-source-selector@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/videojs-http-source-selector/-/videojs-http-source-selector-1.0.3.tgz#95e5c787a99ed946353dcd6a2b175cd134b6b6da"
-  integrity sha512-n7TAW4tJqxo8CAPbb7V8xiFHqIU8ARU+8tpCNu94nVqwfTeE7IUZocbv5UXQHhdOora785Q/eLBIOTnJnTDDhw==
+"videojs-http-source-selector@git+ssh://git@gitlab.com/olaris/videojs-http-source-selector.git#semver:^1.0.2":
+  version "1.0.2"
+  resolved "git+ssh://git@gitlab.com/olaris/videojs-http-source-selector.git#d67a04014c3ac8a0be04e4efc65b6f5d340adcdb"
   dependencies:
     global "^4.3.2"
     video.js "^7.0.0"
