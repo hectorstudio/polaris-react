@@ -91,6 +91,7 @@
     "universal-cookie": "^2.1.5",
     "url-loader": "1.1.1",
     "video.js": "^7.1.0",
+    "videojs-contrib-quality-levels": "^2.0.9",
     "videojs-http-source-selector": "^1.0.3",
     "webpack": "4.19.1",
     "webpack-dev-server": "3.1.9",
