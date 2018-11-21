@@ -117,10 +117,6 @@ class MediaItem extends Component {
     const background = (posterPath || season.series.posterPath);
 
     const videoJsOptions = {
-      autoplay: true,
-      techOrder: ['chromecast', 'html5'],
-      enableLowInitialPlaylist: true,
-
       sources: [{
         src: source,
         type: mimeType,
@@ -128,11 +124,6 @@ class MediaItem extends Component {
         bandwidth: 1000000000,
         name,
       }],
-      plugins: {
-        chromecast: {
-          receiverAppID: '3CCE45F7',
-        },
-      },
     };
 
     const mediaInfo = {

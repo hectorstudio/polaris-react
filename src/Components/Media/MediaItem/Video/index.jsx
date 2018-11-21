@@ -4,6 +4,11 @@ import { throttle } from 'lodash';
 import { graphql } from 'react-apollo';
 import videojs from 'video.js';
 import chromecast from '@silvermine/videojs-chromecast';
+// NOTE(Leon Handreke): Ideally this should be imported from videojs-http-source-selector because the fact that it
+// relies on this plugin is an implementation detail. However, the compilation setup for that plugin is a bit wonky,
+// so it's easier to just do the plugin registration here here.
+import 'videojs-contrib-quality-levels';
+import 'videojs-http-source-selector';
 
 import UPDATE_PLAYSTATE from 'Mutations/updatePlaystate';
 import { updatePlayStateEpisode, updatePlayStateMovie } from 'Components/Media/Actions/updatePlayState';
@@ -18,6 +23,16 @@ class Video extends Component {
 
     this.player = videojs(this.videoNode, {
       ...this.props,
+      autoplay: true,
+      techOrder: ['chromecast', 'html5'],
+      enableLowInitialPlaylist: true,
+      plugins: {
+        chromecast: {
+          receiverAppID: '3CCE45F7',
+        },
+        httpSourceSelector: {},
+      },
+
       controls: true,
       html5: {
         nativeAudioTracks: false,
@@ -25,6 +40,8 @@ class Video extends Component {
     },
     function onPlayerReady() {
       this.chromecast();
+      this.qualityLevels();
+      this.httpSourceSelector();
     });
 
     this.player.on('timeupdate', () => {
