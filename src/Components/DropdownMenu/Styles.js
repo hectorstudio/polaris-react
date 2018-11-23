@@ -81,7 +81,7 @@ export const DropdownIcon = styled(FontAwesomeIcon)`
   font-size:2rem;
   z-index:11;
   transition:.2s all;
-  color: ${props => props.isOpen ? props.theme.primary : '#FFF'};
+  color: ${props => (props.isOpen ? props.theme.primary : '#FFF')};
   
   &:hover {
     color: ${props => props.theme.primary};

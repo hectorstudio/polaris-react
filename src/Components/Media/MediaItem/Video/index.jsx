@@ -4,9 +4,9 @@ import { throttle } from 'lodash';
 import { graphql } from 'react-apollo';
 import videojs from 'video.js';
 import chromecast from '@silvermine/videojs-chromecast';
-// NOTE(Leon Handreke): Ideally this should be imported from videojs-http-source-selector because the fact that it
-// relies on this plugin is an implementation detail. However, the compilation setup for that plugin is a bit wonky,
-// so it's easier to just do the plugin registration here here.
+// NOTE(Leon Handreke): Ideally this should be imported from videojs-http-source-selector because
+// the fact that it relies on this plugin is an implementation detail. However, the compilation
+// setup for that plugin is a bit wonky, so it's easier to just do the plugin registration here.
 import 'videojs-contrib-quality-levels';
 import 'videojs-http-source-selector';
 
