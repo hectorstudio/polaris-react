@@ -1,9 +1,14 @@
 import styled from 'styled-components';
+import { media } from 'Styles/Utils';
 
 export const DashboardWrap = styled.section`
   width:100%;
   float:left;
-  padding:5rem;
+  padding:5rem 3rem;
+
+  ${media.desktop`
+    padding:5rem;
+  `}
 `;
 
 export const MediaCardWrap = styled.div`
@@ -18,7 +23,7 @@ export const MediaCardWrap = styled.div`
 export const CarouselWrap = styled.section`
   float:left;
   width:100%;
-  margin:0 0 5rem -1.5rem;
+  margin:0 0 5rem;
 
   h4 {  
     font-size:1.8rem;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { media } from 'Styles/Utils';
 
 export const AppWrap = styled.main`
   display: flex;
@@ -6,12 +7,17 @@ export const AppWrap = styled.main`
   flex-wrap: nowrap;
   flex-direction: column;
   justify-content: ${props => (props.authed ? 'initial' : 'center')};
+  overflow:hidden;
 `;
 
 export const InnerContent = styled.section`
   width:100%;
   float:left;
-  padding:5rem;
+  padding:3rem;
+
+  ${media.desktop`
+    padding:5rem;
+  `}
 `;
 
 export const PageHeading = styled.h1`

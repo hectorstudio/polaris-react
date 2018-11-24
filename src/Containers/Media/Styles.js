@@ -1,12 +1,17 @@
 import styled from 'styled-components';
+import { media } from 'Styles/Utils';
 
 export const LibraryListWrap = styled.section`
-    width: 100%;
-    display: flex;
-    flex-flow: row wrap;
-    padding:5rem 3.5rem 2rem; 
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  padding:5rem 3rem;
+
+  ${media.desktop`
+    padding:5rem 5rem 2rem;
+  `}
 `;
 
 export const LibraryListItem = styled.div`

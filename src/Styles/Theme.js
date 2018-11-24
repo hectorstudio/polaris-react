@@ -25,7 +25,7 @@ const Theme = {
   },
   layout: {
     header: '5rem',
-    sidebar: '25rem',
+    sidebar: '27.5rem',
     search: '30rem',
   },
   fonts: {

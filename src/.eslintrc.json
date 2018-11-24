@@ -1,5 +1,5 @@
 {
-    "extends": "airbnb",
+    "extends": "react-app",
     "parser": "babel-eslint",
     "settings": {
         "import/resolver": {
