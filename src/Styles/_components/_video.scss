@@ -1,6 +1,10 @@
 .video-js {
   width:100%;
   height:calc(100vh - 2rem);
+
+  @include breakpoint(xxs) {
+    height:30rem;
+  }
 }
 
 .vjs-text-track-display div {
