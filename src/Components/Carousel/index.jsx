@@ -30,19 +30,19 @@ const Carousel = (props) => {
       {
         breakpoint: 1800,
         settings: {
-          slidesToShow: 5,
+          slidesToShow: 6,
         },
       },
       {
         breakpoint: 1600,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 5,
         },
       },
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 4,
         },
       },
       {
@@ -54,7 +54,7 @@ const Carousel = (props) => {
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 4,
         },
       },
       {

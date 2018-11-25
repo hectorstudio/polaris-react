@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { aFadeIn } from 'Styles/Animations';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { media } from 'Styles/Utils';
 
 /* eslint no-confusing-arrow: ["off"] */
 export const CardWrap = styled.article`
@@ -15,7 +16,7 @@ export const PosterWrap = styled.div`
   position:relative;
   background: #00000025;
   box-shadow:0 15px 25px rgba(0,0,0, .3);
-  float:left;
+  float:left;\
   width:100%;
   overflow:hidden;
 `;
@@ -28,7 +29,7 @@ export const CardPoster = styled.span`
   background-repeat:no-repeat;
   background-size:cover;
   background-position:center;
-  padding-top: ${props => props.wide ? props.theme.wideCard.paddingTop : props.theme.card.paddingTop};
+  padding-top: ${props => props.wide ? '16rem' : props.theme.card.paddingTop};
   position:relative;
   z-index:1;
   opacity:0;
@@ -40,6 +41,14 @@ export const CardPoster = styled.span`
   ${PosterWrap}:hover & { 
     filter: ${props => props.hover ? 'grayscale(25%) saturate(75%)' : 'grayscale(0) saturate(125%)'};
   }
+
+  ${media.tablet`
+    padding-top: ${props => props.wide ? '13rem' : props.theme.card.paddingTop};
+  `}
+
+  ${media.desktop`
+    padding-top: ${props => props.wide ? props.theme.wideCard.paddingTop : props.theme.card.paddingTop};
+  `}
 `;
 
 export const CardTitle = styled.h3`

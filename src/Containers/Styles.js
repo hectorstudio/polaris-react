@@ -13,7 +13,7 @@ export const AppWrap = styled.main`
 export const InnerContent = styled.section`
   width:100%;
   float:left;
-  padding:3rem;
+  padding:2rem;
 
   ${media.desktop`
     padding:5rem;

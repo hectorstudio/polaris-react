@@ -1,12 +1,22 @@
 import styled from 'styled-components';
 import { transparentize } from 'polished';
+import { media } from 'Styles/Utils';
 
 export const List = styled.ul`
-  width:55%;
+  width:100%;
   background:${props => props.theme.text};
-  margin:0 0 3rem;
+  margin:0 0 2rem;
   overflow:hidden;
   position:relative;
+
+  ${media.desktop`
+    width:55%;
+    margin:0 0 3rem;
+  `}
+
+  &:last-child {
+    margin:0;
+  }
 `;
 
 export const ListHeading = styled.li`

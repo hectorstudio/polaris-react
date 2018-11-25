@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 import DropdownMenu from 'Components/DropdownMenu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import { media } from 'Styles/Utils';
 import { aFadeIn } from 'Styles/Animations';
 
 export const CloseVideo = styled(FontAwesomeIcon)`
   position:absolute;
   top:1.2rem;
-  right:1.2rem;
+  right:1.5rem;
   color: #FFF;
-  font-size:2rem;
+  font-size:1.6rem;
   cursor:pointer;
   z-index:11;
   transition:.2s all;
@@ -22,11 +22,11 @@ export const CloseVideo = styled(FontAwesomeIcon)`
 
 export const VideoWrap = styled.article`
     position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    z-index:10;
+    top:1rem;
+    left:1rem;
+    right:1rem;
+    bottom:1rem;
+    z-index:999;
     background:#00000090;
     animation: ${`.4s ${aFadeIn} alternate`};
 `;
@@ -42,9 +42,13 @@ export const MediaFull = styled.article`
 export const MediaInfo = styled.div`
   float:left;
   width:100%;
-  display:flex;
+  display:block;
   position:relative;
   margin:0 0 1rem;
+
+  ${media.mobile`
+    display:flex;
+  `}
 `;
 
 export const MediaInfoList = styled.ul`
@@ -78,7 +82,14 @@ export const MediaInfoSubhead = styled.span`
   font-weight:600;
   line-height:2rem
   letter-spacing:.1rem;
-  margin-right:1.5rem;
+  float:left;
+  width:100%;
+
+  ${media.mobile`
+    float:none;
+    margin-right:1.5rem;
+    width:auto;
+  `}
 `;
 
 export const DropdownIcon = styled(FontAwesomeIcon)`
@@ -203,7 +214,8 @@ export const MediaActionsWrap = styled.div`
   border-top:1px solid rgba(0,0,0, .2);
 
   button {
-    margin:0 1rem 0 0;
+    margin:0 1rem 1rem 0;
+    width:100%;
     border:0;
     line-height:4rem;
     padding:0 1.5rem;
@@ -217,5 +229,10 @@ export const MediaActionsWrap = styled.div`
     &:hover {
       background: rgba(0,0,0, .8);
     }
+
+    ${media.mobile`
+      width:auto;
+      margin:0 1rem 0 0;
+    `}
   }
 `;

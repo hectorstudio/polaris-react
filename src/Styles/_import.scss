@@ -1,6 +1,7 @@
 @import '../node_modules/video.js/dist/video-js.css',
         '../node_modules/@silvermine/videojs-chromecast/dist/silvermine-videojs-chromecast.css',
         '_base/variables',
+        '_mixins/mixins',
         '_mixins/functions';
 
 @import '_base/reset',

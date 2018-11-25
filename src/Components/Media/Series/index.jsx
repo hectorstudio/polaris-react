@@ -24,10 +24,12 @@ const Series = (props) => {
     overview,
     firstAirDate,
     children,
+    series,
   } = props;
 
   const releaseYear = firstAirDate.split('-')[0];
-
+  const overviewCheck = (overview.length > 0 ? overview : series.overview);
+  
   return (
     <MediaFullWrap>
       <MediaBackground bgimg={`${getBaseUrl()}/m/images/tmdb/w342/${posterPath}`} />
@@ -43,7 +45,7 @@ const Series = (props) => {
             )
           </MediaRelease>
         </MediaName>
-        <MediaOverview>{overview}</MediaOverview>
+        <MediaOverview>{(overviewCheck.length > 255 ? `${overviewCheck.substring(0, 255)}...` : overviewCheck)}</MediaOverview>
         <SubTitle>Seasons</SubTitle>
         <SeasonsWrap>
           {children}

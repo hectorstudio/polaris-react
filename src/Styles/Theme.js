@@ -33,16 +33,16 @@ const Theme = {
     muli: '"Muli", sans-serif',
   },
   card: {
-    width: '15.5rem',
-    maxWidth: '20rem',
+    width: '14rem',
+    maxWidth: '18rem',
     margin: '0 1.5rem 3rem',
     paddingTop: 'calc(513 / 342 * 100%)',
   },
   wideCard: {
-    width: '22rem',
+    width: '20rem',
     maxWidth: '30rem',
     margin: '0 1.5rem 3rem',
-    paddingTop: '15rem',
+    paddingTop: '12rem',
   },
 };
 

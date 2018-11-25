@@ -4,10 +4,18 @@ import { media } from 'Styles/Utils';
 export const DashboardWrap = styled.section`
   width:100%;
   float:left;
-  padding:5rem 3rem;
+  padding:3rem .5rem;
+
+  section:last-child {
+    margin:0;
+  }
+
+  ${media.tablet`
+    padding:4rem 1rem;
+  `}
 
   ${media.desktop`
-    padding:5rem;
+    padding:5rem 4rem;
   `}
 `;
 

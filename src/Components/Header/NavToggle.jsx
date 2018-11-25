@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { faBars, faTimes, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { hideNavigation, showNavigation } from 'Redux/Actions/navigationActions';
 
 import { 
@@ -44,7 +44,7 @@ class NavToggle extends Component {
       <Fragment>
         { browser.lessThan.large && !navHidden && 
           <ContentOverlay onClick={this.toggleNav}>
-            <HideNavIcon icon={faAngleLeft} />
+            <HideNavIcon icon={faTimes} />
           </ContentOverlay> 
         }
         <NavButton onClick={this.toggleNav} alignLeft>

@@ -8,10 +8,19 @@ export const HeaderWrap = styled.header`
     float:left;
     width: 100%;
     z-index:5;
-    padding:3rem 3rem 0;
+    padding:3rem .5rem 0;
+    display:flex;
+
+    button:last-child {
+      margin-left: auto;
+    }
 
     ${media.desktop`
-      padding:4rem 4.5rem 0;
+      padding:4rem 2rem 0;
+    `}
+
+    ${media.large`
+      padding:4rem 3rem 0;
     `}
 `;
 
@@ -27,8 +36,8 @@ export const HideNavIcon = styled(FontAwesomeIcon)`
     transition:.2s all;
     width: 5rem !Important;
     height: 5rem;
-    margin:3rem;
-    padding:1.25rem;
+    margin:3rem .5rem;
+    padding:1.75rem;
     cursor:pointer;
 `;
 

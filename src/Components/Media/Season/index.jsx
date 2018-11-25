@@ -12,6 +12,7 @@ import {
   MediaName,
   MediaOverview,
   MediaRelease,
+  SeasonNumber,
   SubTitle,
   MediaBackground,
 } from '../Styles';
@@ -24,9 +25,11 @@ const Season = (props) => {
     airDate,
     overview,
     children,
+    series
   } = props;
 
   const releaseYear = airDate.split('-')[0];
+  const overviewCheck = (overview.length > 0 ? overview : series.overview);
 
   return (
     <MediaFullWrap>
@@ -36,14 +39,17 @@ const Season = (props) => {
       </MediaLeftCol>
       <MediaRightCol>
         <MediaName>
+          { series.name }
+        </MediaName>
+        <SeasonNumber>
           { name }
           <MediaRelease>
             (
             {(releaseYear)}
             )
           </MediaRelease>
-        </MediaName>
-        <MediaOverview>{overview}</MediaOverview>
+        </SeasonNumber>
+        <MediaOverview>{(overviewCheck.length > 255 ? `${overviewCheck.substring(0, 255)}...` : overviewCheck)}</MediaOverview>
         <SubTitle>Episodes</SubTitle>
         <SeasonsWrap>
           { children }

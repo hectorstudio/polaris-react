@@ -8,7 +8,7 @@ import navigation from './navigationReducer';
 const responsiveBreakpoints = {
   extraSmall: 500,
   small: 768,
-  medium: 1024,
+  medium: 1023,
   large: 1280,
 };
 

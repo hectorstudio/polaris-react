@@ -72,7 +72,7 @@ export const DropdownToggle = styled.span`
   display: block;
   width: 4rem;
   height: 4rem;
-  line-height: 4rem;
+  line-height: 3rem;
   text-align: center;
   cursor:pointer;
 `;
