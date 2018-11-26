@@ -7,9 +7,7 @@ const EmptyArticle = styled.div`
     flex: 1 0 auto;
     width: ${props => props.wide ? props.theme.wideCard.width : 'calc(50% - 3rem)'};
     max-width: ${props => props.wide ? props.theme.wideCard.maxWidth : 'calc(50% - 3rem)'};
-    margin: ${props => props.wide ? props.theme.wideCard.margin : '0 1rem 2rem'};
-    margin-bottom:0;
-    margin-top:0;
+    margin: 0 1rem;
 
   ${media.mobile`
     width:calc(33.3333% - 3rem);
