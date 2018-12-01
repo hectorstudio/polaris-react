@@ -112,21 +112,35 @@ export const MediaRelease = styled.span`
   color:${props => props.theme.secondary};
   opacity:.5;
   font-weight:400;
-  margin-left:1rem;
-
+  float:left;
+  width:100%;
+  
   ${media.large`
     font-size:1.6rem;
+    margin-left:1rem;
+    float:none;
+    width:auto;
   `}
 `;
 
 export const MediaOverview = styled.p`
   font-size:1.4rem;
   line-height:2.6rem;
-  color:${props => props.theme.secondary};
+  color:rgba(255,255,255, .5);
   font-weight:400;
   float:left;
   width:100%;
-  margin:0 0 1rem;
+  margin:0 0 2rem;
+
+  span {
+    color: ${props => props.theme.primary};
+    margin-left:1rem;
+    cursor:pointer;
+
+    &:hover {
+      text-decoration:underline;
+    }
+  }
 `;
 
 export const MediaBackground = styled.span`

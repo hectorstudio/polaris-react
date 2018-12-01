@@ -9,7 +9,6 @@ import RefreshMetadata from './RefreshMetadata';
 const MediaDropdown = ({ uuid }) => (
   <MediaActionsDropdown icon={faEllipsisH}>
     <RefreshMetadata uuid={uuid} />
-    <span>Coming Soon</span>
   </MediaActionsDropdown>
 );
 

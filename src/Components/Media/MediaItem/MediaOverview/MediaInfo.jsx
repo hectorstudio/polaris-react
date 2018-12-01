@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { convertFloatMs } from 'Helpers';
+import { convertToMinutes } from 'Helpers';
 
+import MediaDescription from './MediaDescription';
 import { MediaInfoWrap, MediaDetails } from '../Styles';
-import { MediaName, MediaRelease, MediaOverview } from '../../Styles';
+import { MediaName, MediaRelease } from '../../Styles';
 
 const MediaInfo = (props) => {
   const {
@@ -23,7 +24,7 @@ const MediaInfo = (props) => {
     } else if (playState.playtime < 60 && playState.playtime > 0) {
       renderedState = '< 1 minute watched';
     } else if (!playState.finished && playState.playtime > 0) {
-      renderedState = `${convertFloatMs(playState.playtime)} watched`;
+      renderedState = `${convertToMinutes(playState.playtime)} watched`;
     } else {
       renderedState = 'Unwatched';
     }
@@ -43,7 +44,7 @@ const MediaInfo = (props) => {
   const renderTotalD = () => {
     if (!selectedFile.totalDuration > 0) return 'Unknown Length';
 
-    return convertFloatMs(selectedFile.totalDuration);
+    return convertToMinutes(selectedFile.totalDuration);
   };
 
   const releaseDate = `(${(year || airDate)})`;
@@ -62,7 +63,7 @@ const MediaInfo = (props) => {
         <li>{renderPlayState()}</li>
         <li>{renderResolution()}</li>
       </MediaDetails>
-      <MediaOverview>{overview}</MediaOverview>
+      <MediaDescription overview={overview} />
     </MediaInfoWrap>
   );
 };

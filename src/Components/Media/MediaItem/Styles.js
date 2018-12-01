@@ -84,10 +84,11 @@ export const MediaInfoSubhead = styled.span`
   letter-spacing:.1rem;
   float:left;
   width:100%;
+  margin:0 0 .5rem 0;
 
   ${media.mobile`
     float:none;
-    margin-right:1.5rem;
+    margin:0 1.5rem 0 0;
     width:auto;
   `}
 `;
@@ -104,6 +105,8 @@ export const FileName = styled.p`
   font-size: 1.4rem;
   line-height: 2rem;
   transform: translateY(-.05rem);
+  white-space: pre-wrap;
+  word-break: break-all;
 `;
 
 export const SelectStyle = {

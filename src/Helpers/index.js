@@ -5,7 +5,7 @@ import canPlayCodec from './canPlayCodec';
 import generateMediaUrl from './generateMediaUrl';
 import generateFileList from './generateFileList';
 import isInitialSetup from './isInitialSetup';
-import convertFloatMs from './convertFloatMs';
+import { convertToMinutes, convertToMinutesSeconds } from './convertTime';
 import streamFilter from './streamFilter';
 import copyToClipboard from './copyToClipboard';
 
@@ -17,7 +17,8 @@ export {
   updateSuggestions,
   isInitialSetup,
   generateFileList,
-  convertFloatMs,
+  convertToMinutes,
+  convertToMinutesSeconds,
   streamFilter,
   copyToClipboard,
 };

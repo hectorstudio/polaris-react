@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
-import { convertFloatMs } from 'Helpers';
+import { convertToMinutesSeconds } from 'Helpers';
 
 import { hideModal } from 'Redux/Actions/modalActions';
 
@@ -51,7 +51,7 @@ class ResumeModal extends Component {
           </ModalHeader>
           <ModalBody>
             <ResumeOption type="submit" href="#" onClick={() => (this.handlePlayRequest(true, true))}>
-              {playState && `Resume video from ${convertFloatMs(playState.playtime)}`}
+              {playState && `Resume video from ${convertToMinutesSeconds(playState.playtime)}`}
             </ResumeOption>
             <ResumeOption type="submit" onClick={() => (this.handlePlayRequest(false, true))}>From Start</ResumeOption>
           </ModalBody>
