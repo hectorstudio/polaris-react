@@ -7,7 +7,7 @@ export const LibraryListWrap = styled.section`
   flex-flow: row wrap;
   align-items: center;
   justify-content: center;
-  padding:3rem .5rem 0;
+  padding:3rem .5rem 0rem;
 
   ${media.desktop`
     padding:4rem 3rem 0;

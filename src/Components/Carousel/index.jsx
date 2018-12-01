@@ -28,6 +28,18 @@ const Carousel = (props) => {
     prevArrow: <RenderPrevArrow />,
     responsive: [
       {
+        breakpoint: 9999,
+        settings: {
+          slidesToShow: 10,
+        },
+      },
+      {
+        breakpoint: 2200,
+        settings: {
+          slidesToShow: 8,
+        },
+      },
+      {
         breakpoint: 1800,
         settings: {
           slidesToShow: 7,
