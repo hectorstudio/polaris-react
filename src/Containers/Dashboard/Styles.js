@@ -32,6 +32,8 @@ export const CarouselWrap = styled.section`
   float:left;
   width:100%;
   margin:0 0 5rem;
+  min-height: 12.5rem;
+  position:relative;
 
   h4 {  
     font-size:1.8rem;

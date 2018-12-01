@@ -40,8 +40,8 @@ class RenderRecentEpisodes extends Component {
           if (episodes.length === 0) {
             return (
               <NoResults alignLeft>
-                You currently have no TV Series.
-                <button type="button" onClick={() => this.toggleModal()}>Add folder to library</button>
+                You currently have no Series.
+                <button type="button" onClick={() => this.toggleModal()}>Add a Series folder</button>
               </NoResults>
             );
           }

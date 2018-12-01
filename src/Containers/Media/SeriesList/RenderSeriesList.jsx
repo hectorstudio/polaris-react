@@ -45,7 +45,7 @@ class RenderSeriesList extends Component {
           return (
             <NoResults>
               You currently have no Series.
-              <button type="button" onClick={() => this.toggleModal()}>Add Series</button>
+              <button type="button" onClick={() => this.toggleModal()}>Add a Series folder</button>
             </NoResults>
           );
         }}

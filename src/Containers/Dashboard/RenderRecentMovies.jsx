@@ -40,7 +40,7 @@ class RenderRecentMovies extends Component {
             return (
               <NoResults alignLeft>
                 You currently have no Movies.
-                <button type="button" onClick={() => this.toggleModal()}>Add folder to library</button>
+                <button type="button" onClick={() => this.toggleModal()}>Add a Movies folder</button>
               </NoResults>
             );
           }
