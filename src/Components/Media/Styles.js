@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import  { media } from 'Styles/Utils';
+import { NavLink } from 'react-router-dom';
 
 const fadeInLow = keyframes`
   from { opacity: 0 }
@@ -49,6 +50,7 @@ export const MediaLeftCol = styled.div`
 export const MediaRightCol = styled.div`
   float:left;
   flex: 1;
+  position:relative;
 
   ${media.tablet`
     padding-left: 2.5rem;
@@ -66,7 +68,34 @@ export const MediaName = styled.h1`
   padding-right: 5rem;
   
   ${media.mobile`
-    margin:0 0 1rem;
+    margin:0 0 2rem;
+  `}
+
+  ${media.tablet`
+    font-size:2.2rem;
+  `}
+
+  ${media.large`
+    font-size:3rem;
+  `}
+`;
+
+export const MediaNameLink = styled(NavLink)`
+  font-size:1.8rem;
+  color:#FFF;
+  float:left;
+  width:100%;
+  margin:0 0 1.5rem;
+  line-height:2.6rem;
+  padding-right: 5rem;
+  font-weight:600;
+  
+  &:hover {
+    text-decoration:underline;
+  }
+  
+  ${media.mobile`
+    margin:0 0 2rem;
   `}
 
   ${media.tablet`
@@ -87,6 +116,12 @@ export const SeasonNumber = styled.h3`
   line-height:2rem;
   font-weight:600;
 
+  span {
+    float:none !important;
+    width:auto !important;
+    margin-left: 1rem !important;
+  }
+
   ${media.tablet`
     margin:-1rem 0 2rem;
   `}
@@ -102,7 +137,7 @@ export const SubTitle = styled.h3`
   color:#FFF;
   float:left;
   width:100%;
-  margin: 2rem 0;
+  margin: 0 0 2rem;
   padding: 0 0 2rem;
   border-bottom: 1px solid #ffffff25;
 `;

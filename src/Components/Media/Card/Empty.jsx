@@ -4,31 +4,26 @@ import styled from 'styled-components';
 import { media } from 'Styles/Utils';
 
 const EmptyArticle = styled.div`
-    flex: 1 0 auto;
-    width: ${props => props.wide ? props.theme.wideCard.width : 'calc(50% - 3rem)'};
-    max-width: ${props => props.wide ? props.theme.wideCard.maxWidth : 'calc(50% - 3rem)'};
-    margin: 0 1rem;
+  flex: 1 0 auto;
+  width: ${props => props.wide ? props.theme.wideCard.width : 'calc(50% - 3rem)'};
+  max-width: ${props => props.wide ? props.theme.wideCard.maxWidth : 'calc(50% - 3rem)'};
+  margin: 0 1.5rem;
 
-  ${media.mobile`
-    width:calc(33.3333% - 3rem);
-    max-width:calc(33.3333% - 3rem);
-    margin: ${props => props.theme.card.margin};
-  `}
 
   ${media.tablet`
-    width:calc(25% - 3rem);
-    max-width:calc(25% - 3rem);
-    margin: ${props => props.theme.card.margin};
+    width: ${props => props.wide ? 'calc(50% - 3rem)' : 'calc(25% - 3rem)'};
+    max-width: ${props => props.wide ? 'calc(50% - 3rem)' : 'calc(25% - 3rem)'};
   `}
 
   ${media.desktop`
-    width:calc(25% - 3rem);
-    max-width:calc(25% - 3rem);;
+    width: ${props => props.wide ? 'calc(33.3333% - 3rem)' : 'calc(25% - 3rem)'};
+    max-width: ${props => props.wide ? 'calc(33.3333% - 3rem)' : 'calc(25% - 3rem)'};
   `}
 
   ${media.large`
-    width: ${props => props.theme.card.width};
-    max-width: ${props => props.theme.card.maxWidth};
+    width: ${props => props.wide ? props.theme.wideCard.width : props => props.theme.card.width};
+    max-width: ${props => props.wide ? props.theme.wideCard.maxWidth : props => props.theme.card.maxWidth};
+    margin:0 1.5rem;
   `}
 `;
 

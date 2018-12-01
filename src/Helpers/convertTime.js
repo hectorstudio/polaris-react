@@ -15,5 +15,5 @@ export const convertToMinutesSeconds = (time) => {
   var mins = ~~(time / 60);
   var secs = ~~time % 60;
 
-  return `${mins} Minutes ${secs} Seconds`
+  return `${(mins > 0 ? `${mins} Minutes` : '')} ${secs} Seconds`
 }

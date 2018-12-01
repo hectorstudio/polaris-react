@@ -85,6 +85,7 @@ export const MediaInfoSubhead = styled.span`
   float:left;
   width:100%;
   margin:0 0 .5rem 0;
+  min-width: 7.2rem;
 
   ${media.mobile`
     float:none;
@@ -107,12 +108,18 @@ export const FileName = styled.p`
   transform: translateY(-.05rem);
   white-space: pre-wrap;
   word-break: break-all;
+  float:left;
+  width:100%;
+  height:2rem;
+  overflow: hidden;
 `;
 
 export const SelectStyle = {
   container: base => ({
     ...base,
     flex: 1,
+    width: '100%',
+    float: 'left'
   }),
   option: (base, { isDisabled, isFocused, isSelected }) => ({
     ...base,
@@ -168,6 +175,10 @@ export const SelectStyle = {
   singleValue: () => ({
     color: '#FFF',
     margin: 0,
+    whiteSpace: 'pre-wrap',
+    wordBreak: 'break-all',
+    overflow: 'hidden',
+    height: '2rem'
   }),
 };
 

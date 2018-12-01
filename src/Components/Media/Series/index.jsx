@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { getBaseUrl } from 'Helpers';
 
 import Media from 'Components/Media/Card';
+import MediaDescription from 'Components/Media/MediaItem/MediaOverview/MediaDescription';
 
 import {
   MediaFullWrap,
@@ -12,7 +13,6 @@ import {
   MediaName,
   SubTitle,
   MediaRelease,
-  MediaOverview,
   MediaBackground,
 } from '../Styles';
 import SeasonsWrap from './Styles';
@@ -24,11 +24,9 @@ const Series = (props) => {
     overview,
     firstAirDate,
     children,
-    series,
   } = props;
 
   const releaseYear = firstAirDate.split('-')[0];
-  const overviewCheck = (overview.length > 0 ? overview : series.overview);
   
   return (
     <MediaFullWrap>
@@ -45,7 +43,7 @@ const Series = (props) => {
             )
           </MediaRelease>
         </MediaName>
-        <MediaOverview>{(overviewCheck.length > 255 ? `${overviewCheck.substring(0, 255)}...` : overviewCheck)}</MediaOverview>
+        {overview.length > 0 && <MediaDescription overview={overview} />}
         <SubTitle>Seasons</SubTitle>
         <SeasonsWrap>
           {children}

@@ -16,6 +16,7 @@ const FETCH_SEASON = uuid => gql`
         posterPath
         name
         overview
+        uuid
       }
 
       episodes {

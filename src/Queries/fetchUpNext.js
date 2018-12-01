@@ -26,6 +26,7 @@ const UP_NEXT = gql`
         episodeNumber
         
         season {
+          seasonNumber
           series {
             name
             posterPath

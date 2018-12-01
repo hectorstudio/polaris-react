@@ -26,6 +26,7 @@ const RECENTLY_ADDED = gql`
         episodeNumber
         
         season {
+          seasonNumber
           series {
             name
             posterPath

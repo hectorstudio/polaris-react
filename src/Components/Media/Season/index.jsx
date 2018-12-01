@@ -1,22 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { getBaseUrl } from 'Helpers';
+import { getBaseUrl, generateMediaUrl } from 'Helpers';
 
 import Media from 'Components/Media/Card';
+import MediaDescription from 'Components/Media/MediaItem/MediaOverview/MediaDescription';
 
 import {
   MediaFullWrap,
   MediaLeftCol,
   MediaRightCol,
-  MediaName,
-  MediaOverview,
+  MediaNameLink,
   MediaRelease,
   SeasonNumber,
   SubTitle,
   MediaBackground,
 } from '../Styles';
-import SeasonsWrap from './Styles';
+import EpisodesWrap from './Styles';
 
 const Season = (props) => {
   const {
@@ -25,11 +25,10 @@ const Season = (props) => {
     airDate,
     overview,
     children,
-    series
+    series,
   } = props;
 
   const releaseYear = airDate.split('-')[0];
-  const overviewCheck = (overview.length > 0 ? overview : series.overview);
 
   return (
     <MediaFullWrap>
@@ -38,9 +37,9 @@ const Season = (props) => {
         <Media size="large" {...props} hover={false} />
       </MediaLeftCol>
       <MediaRightCol>
-        <MediaName>
+        <MediaNameLink to={generateMediaUrl('series', series.uuid)}>
           { series.name }
-        </MediaName>
+        </MediaNameLink>
         <SeasonNumber>
           { name }
           <MediaRelease>
@@ -49,11 +48,14 @@ const Season = (props) => {
             )
           </MediaRelease>
         </SeasonNumber>
-        <MediaOverview>{(overviewCheck.length > 255 ? `${overviewCheck.substring(0, 255)}...` : overviewCheck)}</MediaOverview>
-        <SubTitle>Episodes</SubTitle>
-        <SeasonsWrap>
+        {overview.length > 0 && <MediaDescription overview={overview} />}
+        <SubTitle>
+          Episodes
+        </SubTitle>
+        
+        <EpisodesWrap>
           { children }
-        </SeasonsWrap>
+        </EpisodesWrap>
       </MediaRightCol>
     </MediaFullWrap>
   );
