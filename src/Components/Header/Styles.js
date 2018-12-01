@@ -1,7 +1,20 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { media } from 'Styles/Utils';
-import { aFadeIn } from 'Styles/Animations';
+
+const fadeInLeft = keyframes`
+  from { 
+    opacity:0;
+    left:0;
+  }
+  to { 
+    opacity:1;
+    left: ${props => props.theme.layout.sidebar};
+    ${media.desktop`
+      left:0;
+    `}
+   }
+`;
 
 export const HeaderWrap = styled.header`
     height: auto;
@@ -59,10 +72,15 @@ export const NavButton = styled.button`
 export const ContentOverlay = styled.div`
     position:fixed;
     top:0;
-    left:0;
+    left: ${props => props.theme.layout.sidebar};
     width:100%;
     height:100%;
     background:rgba(13, 14, 26, 0.8);
     z-index:6;
-    animation: ${`.2s ${aFadeIn} alternate`};
+    animation: ${`.2s ${fadeInLeft} alternate`};
+    transition:.2s all;
+
+    ${media.desktop`
+      left: 0;
+    `}
 `;

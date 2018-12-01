@@ -4,12 +4,12 @@ import { media } from 'Styles/Utils';
 
 const Content = styled.div`
   flex: 1 1 auto;
-  max-width:100%;
+  max-width:calc(100% + ${props => props.theme.layout.sidebar});
   height:100vh;
   float:left;
   animation: ${`.5s ${aFadeIn} alternate`};
-  transform: translateX(${props => (!props.navHidden ? `${props.theme.layout.sidebar}` : '0')});
-  margin:0;
+  margin:0 0 0 ${props => (!props.navHidden ? `${props.theme.layout.sidebar}` : '0')};
+  width: 100%;
   transition:.2s all;
 
   ${media.desktop`

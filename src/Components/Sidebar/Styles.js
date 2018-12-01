@@ -10,7 +10,6 @@ export const SidebarWrap = styled.nav`
   left: 0;
   height: 100vh;
   background:${props => props.theme.background && transparentize(0.5, props.theme.background)};
-  z-index:2;
   transition:.2s all;
   transform: translateX(${props => (props.navHidden ? `-${props.theme.layout.sidebar}` : '0')});
 `;

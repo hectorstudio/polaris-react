@@ -6,14 +6,17 @@ import { aFadeIn } from 'Styles/Animations';
 
 export const CloseVideo = styled(FontAwesomeIcon)`
   position:absolute;
-  top:1.2rem;
-  right:1.5rem;
+  top:0;
+  right:.5rem;
   color: #FFF;
   font-size:1.6rem;
   cursor:pointer;
   z-index:11;
   transition:.2s all;
-  opacity:.4;
+  opacity:.9;
+  width:5rem !important;
+  height:5rem;
+  padding:1.5rem;
   
   &:hover {
     opacity:1;
@@ -21,14 +24,16 @@ export const CloseVideo = styled(FontAwesomeIcon)`
 `;
 
 export const VideoWrap = styled.article`
-    position:fixed;
-    top:1rem;
-    left:1rem;
-    right:1rem;
-    bottom:1rem;
-    z-index:999;
-    background:#00000090;
-    animation: ${`.4s ${aFadeIn} alternate`};
+  position:fixed;
+  padding:1rem;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:999;
+  background:#00000090;
+  width:100%;
+  animation: ${`.4s ${aFadeIn} alternate`};
 `;
 
 export const MediaFull = styled.article`
