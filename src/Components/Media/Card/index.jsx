@@ -109,6 +109,7 @@ class MediaCard extends Component {
       ? `${getBaseUrl()}/m/images/tmdb/w342/${(posterPath || stillPath)}`
       : '/images/placeholder.png'
     );
+    const length = (files ? 0 : files[0].totalDuration);
 
     return (
       <Fragment>
@@ -118,7 +119,7 @@ class MediaCard extends Component {
               <CardPoster hover={hover} wide={wide} bgimg={bgImage}>
                 <MediaInfo
                   {...this.props}
-                  length={files[0].totalDuration}
+                  length={length}
                   showPlayStatus={showPlayStatus}
                 />
               </CardPoster>
