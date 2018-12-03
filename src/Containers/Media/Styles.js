@@ -14,7 +14,7 @@ export const LibraryListWrap = styled.section`
   `}
 
   ${media.large`
-    padding:5rem 4rem 2rem;
+    padding:5rem 3.5rem 2rem;
   `}
 `;
 

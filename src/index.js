@@ -3,7 +3,6 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { ApolloProvider } from 'react-apollo';
-import { HashRouter as Router } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import { ThemeProvider } from 'styled-components';
 import { Provider as AlertProvider } from 'react-alert';

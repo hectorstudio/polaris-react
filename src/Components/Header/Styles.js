@@ -39,7 +39,13 @@ export const HeaderWrap = styled.header`
 
 export const NavIcon = styled(FontAwesomeIcon)`
     color: rgba(255,255,255, .5);
-    font-size:1.6rem;
+    font-size:2rem;
+    transition:.2s all;
+`;
+
+export const BackIcon = styled(FontAwesomeIcon)`
+    color: rgba(255,255,255, .5);
+    font-size:2rem;
     transition:.2s all;
 `;
 
@@ -52,6 +58,22 @@ export const HideNavIcon = styled(FontAwesomeIcon)`
     margin:3rem .5rem;
     padding:1.75rem;
     cursor:pointer;
+`;
+
+export const BackButton = styled.button`
+    float:${props => (props.alignLeft ? 'left' : 'right')};
+    background:none;
+    border:none;
+    transition:.2s background;
+    width:${props => props.theme.layout.header};
+    height:${props => props.theme.layout.header};
+    margin-right:.5rem;
+    
+    &:hover {
+      ${BackIcon}{
+        color:#FFF;
+      }
+    }
 `;
 
 export const NavButton = styled.button`

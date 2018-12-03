@@ -15,7 +15,7 @@ export const DashboardWrap = styled.section`
   `}
 
   ${media.desktop`
-    padding:5rem 4rem;
+    padding:5rem 3.5rem;
   `}
 `;
 

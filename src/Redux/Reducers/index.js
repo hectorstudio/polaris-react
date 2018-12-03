@@ -4,6 +4,7 @@ import { createResponsiveStateReducer } from 'redux-responsive'
 
 import modal from './modalReducer';
 import navigation from './navigationReducer';
+import historyLocation from './historyReducer';
 
 const responsiveBreakpoints = {
   extraSmall: 500,
@@ -17,4 +18,5 @@ export default history => combineReducers({
   browser: createResponsiveStateReducer(responsiveBreakpoints),
   modal,
   navigation,
+  historyLocation,
 });

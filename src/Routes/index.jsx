@@ -38,25 +38,28 @@ class Routes extends Component {
     loading: true,
   };
 
-  componentWillMount() {
+  componentDidMount() {
     checkAuth();
+    this.setState({ loading: false });
+  }
+
+
+  initialSetup = () => {
+    let initialSetupValue = false;
 
     isInitialSetup().then((res) => {
-      this.setState({
-        initialSetup: res.data,
-        loading: false,
-      });
+      isInitialSetup = res.data;
     });
+
+    return initialSetupValue;
   }
 
   initialRender = () => {
-    const { initialSetup } = this.state;
-
     if (Auth.isAuthenticated) {
       return <Redirect to="/dashboard" />;
     }
 
-    if (initialSetup) {
+    if (this.initialSetup) {
       return <Redirect to="/register" />;
     }
 

@@ -1,31 +1,57 @@
 import React, { Component } from 'react';
+import { compose } from 'lodash/fp';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 import Logout from './Logout';
 import NavToggle from './NavToggle';
 import Search from './Search';
 
-import { HeaderWrap } from './Styles';
+import { HeaderWrap, BackButton, BackIcon } from './Styles';
 
-export default class Header extends Component {
-    state = {
-      value: '',
-    }
+class Header extends Component {
+  state = {
+    value: '',
+  }
 
-    updateSearch = (value) => {
-      this.setState({
-        value,
-      });
-    };
+  updateSearch = (value) => {
+    this.setState({
+      value,
+    });
+  };
 
-    render() {
-      const { value } = this.state;
+  render() {
+    const { value } = this.state;
+    const { history, previousLocation, currentLocation } = this.props;
+    
+    return (
+      <HeaderWrap>
+        <NavToggle />
+        { previousLocation !== null && currentLocation !== '/dashboard'
+          && (
+            <BackButton onClick={() => history.goBack()}>
+              <BackIcon icon={faArrowLeft} />
+            </BackButton>
+          )
+        }
 
-      return (
-        <HeaderWrap>
-          <NavToggle />
-          <Search value={value} updateSearch={this.updateSearch} />
-          <Logout />
-        </HeaderWrap>
-      );
-    }
+        <Search value={value} updateSearch={this.updateSearch} />
+        <Logout />
+      </HeaderWrap>
+    );
+  }
 }
+
+const mapStateToProps = (state) => {
+  const { historyLocation } = state;
+  return {
+    previousLocation: historyLocation.previousLocation,
+    currentLocation: historyLocation.currentLocation
+  };
+};
+
+export default compose(
+  withRouter,
+  connect(mapStateToProps, null)
+)(Header);
