@@ -76,7 +76,7 @@
     "url-loader": "1.1.1",
     "video.js": "^7.1.0",
     "videojs-contrib-quality-levels": "^2.0.9",
-    "videojs-http-source-selector": "git+https://gitlab.com/olaris/videojs-http-source-selector.git#semver:^1.0.2"
+    "videojs-http-source-selector": "git+https://gitlab.com/olaris/videojs-http-source-selector.git#semver:^1.1.0"
   },
   "devDependencies": {
     "@babel/core": "7.1.0",

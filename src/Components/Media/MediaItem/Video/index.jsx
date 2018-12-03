@@ -19,34 +19,52 @@ class Video extends Component {
   t = throttle(() => this.playStateMutation(Math.floor(this.player.currentTime())), 2000);
 
   componentDidMount() {
-    const { resume, playState } = this.props;
+    const { resume, playState, source, transmuxed } = this.props;
 
-    this.player = videojs(this.videoNode, {
-      ...this.props,
+    const videoJsOptions = {
+      sources: [source],
       autoplay: true,
       techOrder: ['chromecast', 'html5'],
-      enableLowInitialPlaylist: true,
       plugins: {
         chromecast: {
           receiverAppID: '3CCE45F7',
         },
-        httpSourceSelector: {},
+        httpSourceSelector: {
+          showAutoItem: true,
+        },
       },
 
       controls: true,
       html5: {
+        hls: {
+          enableLowInitialPlaylist: true,
+          // TODO(Leon Handreke): Investigate whether this really makes switching via the quality
+          // selector more reliable in the transmuxed->transcoded switch case
+          smoothQualityChange: false,
+        },
         nativeAudioTracks: false,
       },
-    },
-    function onPlayerReady() {
-      this.chromecast();
-      this.qualityLevels();
-      this.httpSourceSelector();
-    });
+    };
+    if (transmuxed) {
+      // If transmuxed, all non-transmuxed representations are manually disabled in the
+      // loadedmetadata handler to disable adaptive bitrate switching.
+      videoJsOptions.plugins.httpSourceSelector.showAutoItem = false;
+      videoJsOptions.html5.hls.enableLowInitialPlaylist = false;
+      // Choose the transmuxed (= highest-bandwidth) version initially.
+      videoJsOptions.html5.hls.bandwidth = 1e12;
+    }
+    this.player = videojs(this.videoNode,
+      videoJsOptions,
+      function onPlayerReady() {
+        this.chromecast();
+        this.qualityLevels();
+        this.httpSourceSelector();
+      });
 
     this.player.on('timeupdate', () => {
       this.t();
     });
+    this.player.on('loadedmetadata', this.enableQualityLevels);
 
     if (resume) {
       this.player.currentTime(playState.playtime - 3);
@@ -80,7 +98,21 @@ class Video extends Component {
   };
 
   enableQualityLevels= () => {
-    console.lol('lol');
+    const { transmuxed } = this.props;
+    if (transmuxed) {
+      for (let i = 1; i < this.player.qualityLevels().length; i += 1) {
+        this.player.qualityLevels()[i].enabled = false;
+        console.log("disable");
+        console.log(this.player.qualityLevels()[i]);
+      }
+      // TODO(Leon Handreke): This relies on transmuxed always being first in the playlist. See
+      // comment below for more background on this hack.
+      this.player.qualityLevels()[0].enabled = true;
+      console.log("enable");
+      console.log(this.player.qualityLevels()[0]);
+    }
+    console.log(this.player.hls.representations());
+    this.player.play();
   };
 
   render() {
@@ -95,6 +127,10 @@ class Video extends Component {
 }
 
 Video.propTypes = {
+  // Video source, opaque as it gets passed directly to video.js
+  // TODO(Leon Handreke): It should not be opaque to us, our caller should not need to know about video.js
+  // eslint-disable-next-line
+  source: PropTypes.object.isRequired,
   uuid: PropTypes.string.isRequired,
   length: PropTypes.number.isRequired,
   mutate: PropTypes.func.isRequired,
@@ -104,6 +140,10 @@ Video.propTypes = {
     playtime: PropTypes.number,
   }).isRequired,
   resume: PropTypes.bool,
+  // TODO(Leon Handreke): This is an ugly hack. We'd like to change our quality switching behavior based on whether the
+  // stream is transmuxed or not. However, we don't have a way to detect this from this.player.representations()
+  // because videojs/http-streaming doesn't pass through any metadata. To avoid forking for now, do this.
+  transmuxed: PropTypes.bool.isRequired,
 };
 
 Video.defaultProps = {
