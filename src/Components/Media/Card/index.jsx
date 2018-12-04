@@ -109,8 +109,14 @@ class MediaCard extends Component {
       ? `${getBaseUrl()}/m/images/tmdb/w342/${(posterPath || stillPath)}`
       : '/images/placeholder.png'
     );
-    const length = (files ? 0 : files[0].totalDuration);
-
+    
+    let length;
+    if (typeof files == "undefined" || !(files instanceof Array)) {
+      length = 0;
+    } else {
+      length = files[0].totalDuration;
+    }
+    
     return (
       <Fragment>
         <CardWrap onClick={e => (this.cardClick(e, url, history, showPlayStatus))}>
