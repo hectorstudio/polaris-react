@@ -15,9 +15,9 @@ export const SubmitLibrary = styled(FontAwesomeIcon)`
   width: 5rem !important;
   padding: 0 1.8rem;
   color:#FFF;
-  pointer-events: ${(props => props.disabled ? 'none' : 'initial')};
-  background: ${(props => props.disabled ? '#000' : props.theme.alerts.success)};
-  opacity: ${(props => props.disabled ? '.2' : 1)};
+  pointer-events: ${(props => (props.disabled ? 'none' : 'initial'))};
+  background: ${(props => (props.disabled ? '#000' : props.theme.alerts.success))};
+  opacity: ${(props => (props.disabled ? '.2' : 1))};
 `;
 
 export const AddLibraryWrap = styled.article`

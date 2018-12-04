@@ -218,7 +218,7 @@ export const MediaDetails = styled.ul`
     }
 
     &:nth-child(2) {
-      color: ${props => props.watched ? props.theme.secondary : props.theme.primary};
+      color: ${props => (props.watched ? props.theme.secondary : props.theme.primary)};
     }
   }
 `;

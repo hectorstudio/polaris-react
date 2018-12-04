@@ -13,6 +13,6 @@ export const media = Object.keys(sizes).reduce((accumulator, label) => {
     @media (min-width: ${emSize}em) {
       ${css(...args)};
     }
-  `
+  `;
   return accumulator;
 }, {});

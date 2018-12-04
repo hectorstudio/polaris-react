@@ -110,7 +110,6 @@ class MediaItem extends Component {
 
   render() {
     const {
-      name,
       posterPath,
       season,
       type,
@@ -126,15 +125,15 @@ class MediaItem extends Component {
     } = this.state;
     const background = (posterPath || season.series.posterPath);
 
-    const videoJsOptions = {
-      sources: [{
-        src: source,
-        type: mimeType,
-        // Set one GBit initially and drop down if required to make it choose transmuxed first
-        bandwidth: 1000000000,
-        name,
-      }],
+    const videoCodec = files[selectedFile.value].streams
+      .filter(s => s.streamType === 'video')
+      .map(s => s.codecMime)[0];
+
+    const videoSource = {
+      src: source,
+      type: mimeType,
     };
+    const transmuxed = canPlayCodec(videoCodec);
 
     const mediaInfo = {
       ...this.props,
@@ -171,7 +170,8 @@ class MediaItem extends Component {
             <VideoWrap>
               <CloseVideo icon={faTimes} onClick={this.closeMedia} />
               <Video
-                {...videoJsOptions}
+                source={videoSource}
+                transmuxed={transmuxed}
                 resume={resume}
                 playState={playState}
                 uuid={uuid}
