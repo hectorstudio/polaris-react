@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { throttle } from 'lodash';
 import { graphql } from 'react-apollo';
 import videojs from 'video.js';
+import '@videojs/http-streaming'
 import chromecast from '@silvermine/videojs-chromecast';
 // NOTE(Leon Handreke): Ideally this should be imported from videojs-http-source-selector because
 // the fact that it relies on this plugin is an implementation detail. However, the compilation
