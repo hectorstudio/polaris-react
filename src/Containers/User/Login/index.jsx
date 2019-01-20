@@ -51,7 +51,11 @@ class Login extends Component {
             this.setState({ redirectToDashboard: true });
           }, 750);
         }).catch((error) => {
-          this.formError(error.response.data.message);
+          if (error.response === undefined) {
+            this.formError(error.message);
+          } else {
+            this.formError(error.response.data.message);
+          }
         });
       } else {
         this.formError('Invalid username or password');
