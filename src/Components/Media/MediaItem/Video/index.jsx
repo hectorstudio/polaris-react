@@ -103,16 +103,16 @@ class Video extends Component {
     if (transmuxed) {
       for (let i = 1; i < this.player.qualityLevels().length; i += 1) {
         this.player.qualityLevels()[i].enabled = false;
-        console.log("disable");
-        console.log(this.player.qualityLevels()[i]);
+        // console.log("disable");
+        // console.log(this.player.qualityLevels()[i]);
       }
       // TODO(Leon Handreke): This relies on transmuxed always being first in the playlist. See
       // comment below for more background on this hack.
       this.player.qualityLevels()[0].enabled = true;
-      console.log("enable");
-      console.log(this.player.qualityLevels()[0]);
+      // console.log("enable");
+      // console.log(this.player.qualityLevels()[0]);
     }
-    console.log(this.player.hls.representations());
+    // console.log(this.player.hls.representations());
     this.player.play();
   };
 

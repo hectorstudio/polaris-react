@@ -20,8 +20,6 @@ export default class MediaInfo extends Component {
     } = this.props;
 
     const watchStatus = () => {
-      console.log(playState.playtime);
-      console.log(length)
       if (showPlayStatus) {
         return (
           <Fragment>

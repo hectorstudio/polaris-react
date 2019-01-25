@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
-import { createResponsiveStateReducer } from 'redux-responsive'
+import { createResponsiveStateReducer } from 'redux-responsive';
 
 import modal from './modalReducer';
 import navigation from './navigationReducer';
@@ -18,5 +18,5 @@ export default history => combineReducers({
   browser: createResponsiveStateReducer(responsiveBreakpoints),
   modal,
   navigation,
-  historyLocation,
+  historyLocation
 });

@@ -41,13 +41,14 @@ class MediaCard extends Component {
 
   resumeModal = () => {
     const { url } = this.state;
+    
     const {
       showModal,
       history,
       playMedia,
       playState,
-    } = this.props;
-
+    } = this.props; 
+    
     showModal(RESUME_MODAL, {
       title: 'Resume Media',
       url,
