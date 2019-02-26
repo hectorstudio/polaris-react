@@ -72,6 +72,7 @@ class Video extends Component {
     } else {
       this.player.currentTime(0);
     }
+    window.player = this.player;
   }
 
   componentWillUnmount() {
