@@ -39,9 +39,7 @@ class Video extends Component {
       html5: {
         hls: {
           enableLowInitialPlaylist: true,
-          // TODO(Leon Handreke): Investigate whether this really makes switching via the quality
-          // selector more reliable in the transmuxed->transcoded switch case
-          smoothQualityChange: false,
+          smoothQualityChange: true,
         },
         nativeAudioTracks: false,
       },
