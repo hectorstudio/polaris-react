@@ -22,6 +22,8 @@ class Video extends Component {
   componentDidMount() {
     const { resume, playState, source, transmuxed } = this.props;
 
+    videojs.log.level('debug');
+
     const videoJsOptions = {
       sources: [source],
       autoplay: true,
