@@ -5,6 +5,8 @@ import { graphql } from 'react-apollo';
 import videojs from 'video.js';
 import '@videojs/http-streaming'
 import chromecast from '@silvermine/videojs-chromecast';
+import './DebugOverlay'
+
 // NOTE(Leon Handreke): Ideally this should be imported from videojs-http-source-selector because
 // the fact that it relies on this plugin is an implementation detail. However, the compilation
 // setup for that plugin is a bit wonky, so it's easier to just do the plugin registration here.
@@ -57,6 +59,7 @@ class Video extends Component {
     this.player = videojs(this.videoNode,
       videoJsOptions,
       function onPlayerReady() {
+        this.debugOverlay();
         this.chromecast();
         this.qualityLevels();
         this.httpSourceSelector();
