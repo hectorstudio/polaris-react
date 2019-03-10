@@ -108,9 +108,12 @@ class Video extends Component {
       for (let i = 1; i < this.player.qualityLevels().length; i += 1) {
         this.player.qualityLevels()[i].enabled = false;
       }
-      // TODO(Leon Handreke): This relies on transmuxed always being first in the playlist. See
-      // comment below for more background on this hack.
-      this.player.qualityLevels()[0].enabled = true;
+      // On iOS, qualityLevels is empty.
+      if (this.player.qualityLevels().length > 0) {
+        // TODO(Leon Handreke): This relies on transmuxed always being first in the playlist. See
+        // comment below for more background on this hack.
+        this.player.qualityLevels()[0].enabled = true;
+      }
     }
   };
 
