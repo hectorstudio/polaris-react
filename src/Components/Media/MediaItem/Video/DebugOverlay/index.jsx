@@ -150,7 +150,7 @@ class ShowDebugOverlayButton extends VjsButton {
   }
 
   disposeDebugOverlay() {
-    this.player_.overlay();
+    this.player_.overlay({overlays: []});
   }
 
   showDebugOverlay() {
