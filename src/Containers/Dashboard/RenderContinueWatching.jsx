@@ -1,7 +1,7 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 
-import UP_NEXT from 'Queries/fetchUpNext';
+import CONTINUE_WATCHING from 'Queries/fetchContinueWatching';
 
 import Carousel from 'Components/Carousel';
 import Loading from 'Components/Loading';
@@ -10,10 +10,10 @@ import MediaCard from 'Components/Media/Card';
 import { NoResults } from 'Containers/Styles';
 import { MediaCardWrap } from './Styles';
 
-const RenderUpNext = () => (
+const RenderContinueWatching = () => (
   <Query
-    query={UP_NEXT}
-    fetchPolicy="cache-and-network"
+    query={CONTINUE_WATCHING}
+    no-cache
   >
 
     {({ loading, error, data }) => {
@@ -28,7 +28,7 @@ const RenderUpNext = () => (
         );
       }
 
-      const upNext = data.upNext.map((un) => {
+      const continueWatching = data.upNext.map((un) => {
         const posterPath = un.posterPath || un.season.series.posterPath;
         return (
           <MediaCardWrap key={un.uuid}>
@@ -39,7 +39,7 @@ const RenderUpNext = () => (
 
       return (
         <Carousel>
-          { upNext }
+          { continueWatching }
         </Carousel>
       );
     }}
@@ -47,4 +47,4 @@ const RenderUpNext = () => (
   </Query>
 );
 
-export default RenderUpNext;
+export default RenderContinueWatching;

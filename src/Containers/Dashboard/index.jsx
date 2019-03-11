@@ -2,7 +2,7 @@ import React from 'react';
 
 import RenderRecentMovies from './RenderRecentMovies';
 import RenderRecentEpisodes from './RenderRecentEpisodes';
-import RenderUpNext from './RenderUpNext';
+import RenderContinueWatching from './RenderContinueWatching';
 
 import { DashboardWrap, CarouselWrap } from './Styles';
 
@@ -11,7 +11,7 @@ const Dashboard = () => (
   <DashboardWrap>
     <CarouselWrap>
       <h4>Continue Watching</h4>
-      <RenderUpNext />
+      <RenderContinueWatching />
     </CarouselWrap>
     <CarouselWrap>
       <h4>Recently Added Movies</h4>

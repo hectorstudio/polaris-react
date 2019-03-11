@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-const UP_NEXT = gql`
+const CONTINUE_WATCHING = gql`
   {
     upNext {
       ...on Movie {
@@ -9,12 +9,12 @@ const UP_NEXT = gql`
         name
         year
         posterPath
-        
+
         playState {
           finished
           playtime
         }
-        
+
         files {
           totalDuration
         }
@@ -24,7 +24,7 @@ const UP_NEXT = gql`
         uuid
         name
         episodeNumber
-        
+
         season {
           seasonNumber
           series {
@@ -32,12 +32,12 @@ const UP_NEXT = gql`
             posterPath
           }
         }
-        
+
         playState {
           finished
           playtime
         }
-        
+
         files {
           totalDuration
         }
@@ -46,4 +46,4 @@ const UP_NEXT = gql`
   }
 `;
 
-export default UP_NEXT;
+export default CONTINUE_WATCHING;

@@ -9,7 +9,7 @@ const FETCH_SEARCH_RESULTS = gql`
         posterPath
         year
         uuid
-        
+
         playState {
           finished
           playtime
