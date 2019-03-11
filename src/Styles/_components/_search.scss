@@ -1,6 +1,5 @@
 .react-autosuggest__container {
   position:relative;
-  z-index:5;
   float: left;
   flex:1;
   max-width:30rem;
@@ -11,7 +10,6 @@
         border-radius: .2rem;
         overflow: hidden;
         box-shadow: 0 10px 15px rgba(0, 0, 0, .1);
-        position: relative;
         position:absolute;
         top:6rem;
         left:0;
@@ -33,7 +31,7 @@
         max-width: 30rem;
         overflow: hidden;
         border-bottom:.1rem solid color(light);
-        
+
         &:last-of-type {
             border-bottom:0;
         }

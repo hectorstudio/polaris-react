@@ -13,6 +13,7 @@ export const MediaFullWrap = styled.section`
   padding:3rem 2.5rem;
   position:relative;
   display:flex;
+  z-index:4;
 
   &:after {
     content:'';
@@ -23,6 +24,7 @@ export const MediaFullWrap = styled.section`
     height:100%;
     opacity:.2;
     z-index: -1;
+    pointer-events: none;
   }
 
   ${media.desktop`
@@ -66,7 +68,7 @@ export const MediaName = styled.h1`
   margin:0 0 1.5rem;
   line-height:2.6rem;
   padding-right: 5rem;
-  
+
   ${media.mobile`
     margin:0 0 2rem;
   `}
@@ -89,11 +91,11 @@ export const MediaNameLink = styled(NavLink)`
   line-height:2.6rem;
   padding-right: 5rem;
   font-weight:600;
-  
+
   &:hover {
     text-decoration:underline;
   }
-  
+
   ${media.mobile`
     margin:0 0 2rem;
   `}
@@ -149,7 +151,7 @@ export const MediaRelease = styled.span`
   font-weight:400;
   float:left;
   width:100%;
-  
+
   ${media.large`
     font-size:1.6rem;
     margin-left:1rem;
@@ -192,6 +194,7 @@ export const MediaBackground = styled.span`
   animation: ${`.3s ${fadeInLow} forwards`};
   animation-delay: .3s;
   display:none;
+  pointer-events: none;
 
   ${media.mobile`
     display:block;

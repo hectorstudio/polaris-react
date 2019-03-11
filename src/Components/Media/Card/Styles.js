@@ -36,9 +36,9 @@ export const CardPoster = styled.span`
   animation: ${`.3s ${aFadeIn} forwards`};
   animation-delay: .3s;
   filter: grayscale(0) saturate(125%);
-  
+  pointer-events: none;
 
-  ${PosterWrap}:hover & { 
+  ${PosterWrap}:hover & {
     filter: ${props => props.hover ? 'grayscale(25%) saturate(75%)' : 'grayscale(0) saturate(125%)'};
   }
 
@@ -100,8 +100,8 @@ export const Unwatched = styled.span`
   background: ${props => props.theme.playbar};
   animation: ${`.3s ${aFadeIn} forwards`};
   box-shadow:0 0 15px rgba(0,0,0 .8);
-  
-  ${PosterWrap}:hover & { 
+
+  ${PosterWrap}:hover & {
     transform: translateY(-5rem) translateX(-5rem);
   }
 `;
@@ -120,7 +120,7 @@ export const UnwatchedCount = styled.span`
   transition:.2s all;
   font-weight:900;
 
-  ${PosterWrap}:hover & { 
+  ${PosterWrap}:hover & {
     transform: translateY(-5rem) translateX(5rem);
   }
 `;
@@ -149,7 +149,7 @@ export const PlayState = styled.span`
     background:${props => props.theme.playbar};
   }
 
-  ${PosterWrap}:hover & { 
+  ${PosterWrap}:hover & {
     transform: translateY(2rem);
   }
 `;
@@ -166,7 +166,7 @@ export const CardPopup = styled.div`
   pointer-events:none;
   transition:.2s opacity;
   overflow:hidden;
-  
+
   &:before {
     content:'';
     position:absolute;
@@ -197,12 +197,12 @@ export const PopupLink = styled.span`
   z-index:10;
   transition:.2s all;
   background:#00000080;
-  border:2px solid #FFF; 
+  border:2px solid #FFF;
 
-  ${PosterWrap}:hover & { 
+  ${PosterWrap}:hover & {
     transform: translateY(-50%) translateX(-50%) scale(1);
   }
-  
+
   &:hover {
     border-color: ${props => props.theme.primary};
   }

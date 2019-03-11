@@ -81,7 +81,7 @@ export const NavItemLink = styled(NavLink)`
   overflow:hidden;
   padding-left: 3rem;
   border-radius: 0 3rem 3rem 0;
-  
+
   &.active {
     opacity:1;
     color: ${props => props.theme.primary};
@@ -90,7 +90,7 @@ export const NavItemLink = styled(NavLink)`
   &:hover {
     opacity: 1;
     background: rgba(0,0,0, .1);
-     
+
     ${AddFolder} {
       opacity:.4;
       transform: translateX(0);
