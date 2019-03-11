@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { withApollo } from 'react-apollo';
+import { compose } from 'lodash/fp';
+
 import ReactRouterPropTypes from 'react-router-prop-types';
 import Cookies from 'universal-cookie';
 import { withRouter } from 'react-router-dom';
@@ -10,13 +13,16 @@ import { NavButton, NavIcon } from './Styles';
 
 class Logout extends Component {
   handleLogout = () => {
-    const { history } = this.props;
+    const { history, client } = this.props;
 
     const cookies = new Cookies();
-    cookies.remove('jwt', { path: '/' });
 
-    Auth.logout();
-    history.push('/login');
+    Auth.logout()
+      .then(() => {
+        cookies.remove('jwt', { path: '/' });
+        client.resetStore();
+        history.push('/login');
+      });
   }
 
   render() {
@@ -32,4 +38,8 @@ Logout.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
 };
 
-export default withRouter(Logout);
+export default compose(
+  withRouter,
+  withApollo,
+)(Logout);
+

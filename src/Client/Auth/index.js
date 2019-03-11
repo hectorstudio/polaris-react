@@ -15,6 +15,7 @@ const propTypes = {
 
 export const Auth = {
   isAuthenticated: false,
+
   authenticate() {
     this.isAuthenticated = true;
   },
@@ -22,9 +23,13 @@ export const Auth = {
     this.admin = jwtDecode(Token.jwt).admin;
   },
   logout() {
-    this.isAuthenticated = false;
+    return new Promise((resolve, reject) => {
+      this.isAuthenticated = false;
+      resolve(true);
+    });
   },
 };
+
 
 export const checkAuth = () => {
   if (cookies.get('jwt') == null) return false;
