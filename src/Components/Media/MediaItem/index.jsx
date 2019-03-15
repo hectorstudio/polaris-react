@@ -80,33 +80,33 @@ class MediaItem extends Component {
       variables: { uuid: files[selectedFile.value].uuid },
     })
       .then(({ data }) => {
-        const streamCodecs = files[selectedFile.value].streams
-          .filter(s => s.streamType !== 'subtitle')
-          .map(s => s.codecMime);
-        // Ideally, we would ask the server for a list of codecs that it could transcode to. For the moment,
-        // this is the pragmatic solution though.
-        const standardTranscodedCodecs = ['mp4a.40.2', 'avc1.64001e', 'avc1.64001f', 'avc1.640028'];
-        const playableCodecs = streamCodecs.concat(standardTranscodedCodecs)
-          .filter(canPlayCodec);
+        fetch(getBaseUrl() + data.createStreamingTicket.metadataPath)
+          .then(response => response.json())
+          .then(response => {
+            const playableCodecs = response.checkCodecs.filter(canPlayCodec);
 
-        const streamPath = (isIOS
-          ? data.createStreamingTicket.hlsStreamingPath
-          : data.createStreamingTicket.dashStreamingPath);
+            const streamPath = (isIOS
+              ? data.createStreamingTicket.hlsStreamingPath
+              : data.createStreamingTicket.dashStreamingPath);
 
-        const mimeType = isIOS ? 'application/x-mpegURL' : 'application/dash+xml';
+            const mimeType = isIOS ? 'application/x-mpegURL' : 'application/dash+xml';
 
-        const queryParams = playableCodecs
-          .map(c => `playableCodecs=${encodeURIComponent(c)}`)
-          .join('&');
-        this.setState({
-          source: `${getBaseUrl()}${streamPath}?${queryParams}`,
-          mimeType,
-        });
+            const queryParams = playableCodecs
+              .map(c => `playableCodecs=${encodeURIComponent(c)}`)
+              .join('&');
+            this.setState({
+              source: `${getBaseUrl()}${streamPath}?${queryParams}`,
+              mimeType,
+            });
+          })
+          .catch(error => {
+            console.error('Error requesting media file codecs', error)
+          });
       })
-      .catch((error) => {
-        console.log('there was an error Playing the Movie', error);
+      .catch(error => {
+        console.error('Error requesting media file details', error);
       });
-  }
+  };
 
   render() {
     const {
