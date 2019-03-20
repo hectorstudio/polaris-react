@@ -24,7 +24,16 @@ class Video extends Component {
   componentDidMount() {
     const { resume, playState, source, transmuxed } = this.props;
 
+    // Put videojs in scope for debugging
+    this.videojs = videojs;
+
     videojs.log.level('debug');
+    // NOTE(Leon Handreke): This is an ugly hack because otherwise our SourceBuffer becomes full
+    // with very large videos and starts throwing errors. Ideally, video.js would properly
+    // handle this case and reduce its buffer by itself. See
+    // https://github.com/videojs/http-streaming/issues/192
+    videojs.Hls.GOAL_BUFFER_LENGTH = 30;
+    videojs.Hls.MAX_GOAL_BUFFER_LENGTH = 30;
 
     const videoJsOptions = {
       sources: [source],
