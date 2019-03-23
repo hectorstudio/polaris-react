@@ -77,13 +77,15 @@ class Video extends Component {
     this.player.on('timeupdate', () => {
       this.t();
     });
+
     this.player.on('loadedmetadata', this.enableQualityLevels);
 
     if (resume) {
-      this.player.currentTime(playState.playtime - 3);
+      this.player.currentTime(playState.playtime);
     } else {
       this.player.currentTime(0);
     }
+
     window.player = this.player;
   }
 

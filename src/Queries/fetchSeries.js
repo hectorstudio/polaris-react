@@ -20,6 +20,11 @@ const FETCH_SERIES = uuid => gql`
         
         episodes {
           uuid
+
+          playState {
+            finished
+            playtime
+          }
         }
       }
     }

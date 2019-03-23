@@ -7,7 +7,8 @@ const getBaseUrl = () => {
   let path;
 
   if (typeof window !== 'undefined') {
-    path = `${window.location.protocol}//${window.location.host}`;
+      path = "http://britomartis.bysh.me:8080";
+    // path = `${window.location.protocol}//${window.location.host}`;
   } else {
     console.log('Cant Find Base Url');
   }

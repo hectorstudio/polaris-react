@@ -3,6 +3,8 @@ import { aFadeIn } from 'Styles/Animations';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { media } from 'Styles/Utils';
 
+import placeholder from './placeholder.png';
+
 /* eslint no-confusing-arrow: ["off"] */
 export const CardWrap = styled.article`
   width:100%;
@@ -16,7 +18,7 @@ export const PosterWrap = styled.div`
   position:relative;
   background: #00000025;
   box-shadow:0 15px 25px rgba(0,0,0, .3);
-  float:left;\
+  float:left;
   width:100%;
   overflow:hidden;
 `;
@@ -25,7 +27,7 @@ export const CardPoster = styled.span`
   width: 100%;
   float: left;
   padding:.2rem;
-  background-image: url(${props => props.bgimg});
+  background-image: url(${props => (props.bgimg ? props.bgimg : placeholder)});
   background-repeat:no-repeat;
   background-size:cover;
   background-position:center;

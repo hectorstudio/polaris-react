@@ -169,14 +169,14 @@ export const ForgotPasswordLink = styled(Link)`
 
 export const Help = styled.span`
     padding:1.5rem;
-    background:#FFF;
+    background:${props => props.theme.alerts.error};
     box-shadow: 0 10px 60px rgba(0,0,0, 0.3);
     margin: 0 3rem;
     transition: .2s border;
     border-radius:.2rem;
     border:1px solid;
     text-align:left;
-    color: ${props => props.theme.alerts.error};
+    color: #FFF;
     font-size:1.4rem;
     font-weight:600;
     line-height:2rem;

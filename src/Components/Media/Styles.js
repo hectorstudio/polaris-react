@@ -140,8 +140,8 @@ export const SubTitle = styled.h3`
   float:left;
   width:100%;
   margin: 0 0 2rem;
-  padding: 0 0 2rem;
-  border-bottom: 1px solid #ffffff25;
+  padding: 2rem .5rem 0;
+  border-top: 1px solid rgba(255,255,255, .05);
 `;
 
 export const MediaRelease = styled.span`

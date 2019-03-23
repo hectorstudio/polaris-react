@@ -26,29 +26,33 @@ import {
 } from '../Styles';
 
 class MediaItem extends Component {
-  state = {
-    source: '',
-    resume: false,
-    files: [],
-    selectedFile: {},
-    mimeType: '',
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      source: '',
+      resume: false,
+      files: [],
+      selectedFile: {},
+      mimeType: '',
+    }
   }
 
   componentWillMount() {
-    const { files, location } = this.props;
+    const { files } = this.props;
     const fileList = generateFileList(files);
 
     this.setState({
       files: fileList,
-      selectedFile: fileList[0],
-      resume: (location.state ? location.state.resume : false),
+      selectedFile: fileList[0]
     });
   }
 
   componentDidMount() {
     const { location } = this.props;
-    if (location.state && location.state.autoplay === true) this.playMedia();
+    const resume = (location.state !== undefined ? location.state.resume : false);
 
+    if (location.state && location.state.autoplay === true) this.playMedia(resume);
     document.addEventListener('keydown', this.escapeClose, false);
   }
 

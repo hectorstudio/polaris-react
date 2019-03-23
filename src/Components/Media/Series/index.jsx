@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { getBaseUrl } from 'Helpers';
 
+import MediaListHeader from '../MediaListHeader';
 import Media from 'Components/Media/Card';
 import MediaDescription from 'Components/Media/MediaItem/MediaOverview/MediaDescription';
 
@@ -23,6 +24,7 @@ const Series = (props) => {
     posterPath,
     overview,
     firstAirDate,
+    seasons,
     children,
   } = props;
 
@@ -35,6 +37,7 @@ const Series = (props) => {
         <Media size="large" {...props} hover={false} />
       </MediaLeftCol>
       <MediaRightCol>
+        <MediaListHeader data={seasons} type='season' />
         <MediaName>
           {name}
           <MediaRelease>

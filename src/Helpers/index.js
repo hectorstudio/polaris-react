@@ -8,6 +8,7 @@ import isInitialSetup from './isInitialSetup';
 import { convertToMinutes, convertToMinutesSeconds } from './convertTime';
 import streamFilter from './streamFilter';
 import copyToClipboard from './copyToClipboard';
+import compileEpisodes from './compileEpisodes';
 
 export {
   getUrlParameter,
@@ -21,4 +22,5 @@ export {
   convertToMinutesSeconds,
   streamFilter,
   copyToClipboard,
+  compileEpisodes
 };

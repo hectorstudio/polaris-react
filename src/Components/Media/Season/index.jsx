@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { getBaseUrl, generateMediaUrl } from 'Helpers';
 
+import MediaListHeader from '../MediaListHeader';
 import Media from 'Components/Media/Card';
 import MediaDescription from 'Components/Media/MediaItem/MediaOverview/MediaDescription';
 
@@ -25,6 +26,7 @@ const Season = (props) => {
     airDate,
     overview,
     children,
+    episodes,
     series,
   } = props;
 
@@ -37,6 +39,7 @@ const Season = (props) => {
         <Media size="large" {...props} hover={false} />
       </MediaLeftCol>
       <MediaRightCol>
+        <MediaListHeader data={episodes} type='series' />
         <MediaNameLink to={generateMediaUrl('series', series.uuid)}>
           { series.name }
         </MediaNameLink>

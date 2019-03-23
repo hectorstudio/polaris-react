@@ -3,6 +3,7 @@ import { Query } from 'react-apollo';
 import { orderBy } from 'lodash';
 import FETCH_SERIES from 'Queries/fetchSeries';
 
+import Empty from 'Components/Media/Card/Empty';
 import Loading from 'Components/Loading';
 import Series from 'Components/Media/Series';
 import MediaCard from 'Components/Media/Card';
@@ -29,6 +30,7 @@ const RenderSeries = ({ uuid }) => (
       return (
         <Series {...series}>
           { seasonList }
+          <Empty />
         </Series>
       );
     }}

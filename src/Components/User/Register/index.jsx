@@ -22,7 +22,7 @@ const RegisterForm = ({
 
   return (
     <Fragment>
-      {initialSetup
+      {!initialSetup
         && (
           <Help>You are currently creating your admin account ensure you remember your details.</Help>
         )
@@ -31,7 +31,7 @@ const RegisterForm = ({
         <LogoIcon alt="Olaris" height="30" />
         <Title heading={heading} sub={title} />
 
-        {!initialSetup
+        {initialSetup
           && (
             <Input
               type="text"

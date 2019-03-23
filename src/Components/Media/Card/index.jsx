@@ -14,6 +14,8 @@ import { RESUME_MODAL } from 'Redux/Constants/modalTypes';
 import MediaInfo from './MediaInfo';
 import MediaName from './MediaName';
 
+import placeholder from "./placeholder.png";
+
 import {
   CardPoster,
   CardWrap,
@@ -108,7 +110,7 @@ class MediaCard extends Component {
     const showPlayStatus = (type === 'Movie' || type === 'Episode');
     const bgImage = (posterPath || stillPath
       ? `${getBaseUrl()}/m/images/tmdb/w342/${(posterPath || stillPath)}`
-      : '/images/placeholder.png'
+      : placeholder
     );
     
     let length;
