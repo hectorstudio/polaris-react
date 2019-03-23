@@ -3,12 +3,18 @@ import { connect } from 'react-redux';
 
 import AddLibraryModal from 'Components/Modal/AddLibraryModal';
 import ResumeMediaModal from 'Components/Modal/ResumeMediaModal';
+import WarningModal from 'Components/Modal/WarningModal';
 
-import { LIBRARY_MODAL, RESUME_MODAL } from 'Redux/Constants/modalTypes';
+import {
+  LIBRARY_MODAL,
+  RESUME_MODAL,
+  WARNING_MODAL,
+} from 'Redux/Constants/modalTypes';
 
 const MODAL_COMPONENTS = {
   [LIBRARY_MODAL]: AddLibraryModal,
   [RESUME_MODAL]: ResumeMediaModal,
+  [WARNING_MODAL]: WarningModal,
 };
 
 const ModalContainer = ({ type, props }) => {

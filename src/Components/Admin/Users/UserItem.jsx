@@ -23,9 +23,7 @@ class UserItem extends Component {
           deleted: true,
         });
       })
-      .catch((error) => {
-        console.error('There was an error deleting that user', error);
-      });
+      .catch(err => err);
   }
 
   render() {

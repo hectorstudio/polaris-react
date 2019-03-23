@@ -19,9 +19,7 @@ class Users extends Component {
     mutate({
       refetchQueries: [{ query: FETCH_INVITES }],
     })
-      .catch((error) => {
-        console.log('There was an error generating your invite code', error);
-      });
+      .catch(err => err);
   }
 
   render() {

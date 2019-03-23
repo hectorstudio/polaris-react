@@ -1,12 +1,42 @@
+import FETCH_SERIES from 'Queries/fetchSeries';
+import FETCH_SEASON from 'Queries/fetchSeason';
 import FETCH_EPISODE from 'Queries/fetchEpisode';
 import FETCH_MOVIE from 'Queries/fetchMovie';
+
+export const updatePlayStateSeries = (mutate, seriesUuid, uuid, finished) => {
+  mutate({
+    variables: { uuid, playtime: 0, finished },
+    refetchQueries: [
+      {
+        query: FETCH_SERIES,
+        variables: { uuid: seriesUuid },
+      },
+    ],
+  })
+    .catch(err => err);
+};
+
+export const updatePlayStateSeason = (mutate, seasonUuid, uuid, finished) => {
+  mutate({
+    variables: { uuid, playtime: 0, finished },
+    refetchQueries: [
+      {
+        query: FETCH_SEASON,
+        variables: { uuid: seasonUuid },
+      },
+    ],
+  }).catch(err => err);
+};
 
 export const updatePlayStateEpisode = (mutate, uuid, playtime, finished) => {
   mutate({
     variables: { uuid, playtime: (!finished ? playtime : 0), finished },
     update: (store, { data: { createPlayState } }) => {
       const { playState } = createPlayState;
-      const data = store.readQuery({ query: FETCH_EPISODE, variables: { uuid } });
+      const data = store.readQuery({
+        query: FETCH_EPISODE,
+        variables: { uuid },
+      });
 
       store.writeQuery({
         query: FETCH_EPISODE,
@@ -24,9 +54,7 @@ export const updatePlayStateEpisode = (mutate, uuid, playtime, finished) => {
       });
     },
   })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch(err => err);
 };
 
 export const updatePlayStateMovie = (mutate, uuid, playtime, finished) => {
@@ -52,7 +80,5 @@ export const updatePlayStateMovie = (mutate, uuid, playtime, finished) => {
       });
     },
   })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch(err => err);
 };

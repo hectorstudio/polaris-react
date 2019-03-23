@@ -29,9 +29,7 @@ class RefreshMetadata extends Component {
 
         alert.success('Refreshing Metadata, this may take a while');
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch(err => err);
   };
 
   render() {

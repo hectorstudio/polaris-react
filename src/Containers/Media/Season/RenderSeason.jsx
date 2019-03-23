@@ -12,7 +12,8 @@ import { LibraryListItemWide } from '../Styles';
 
 const RenderSeason = ({ uuid }) => (
   <Query
-    query={FETCH_SEASON(uuid)}
+    query={FETCH_SEASON}
+    variables={{ uuid }}
   >
 
     {({ loading, error, data }) => {

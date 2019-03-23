@@ -22,5 +22,5 @@ export {
   convertToMinutesSeconds,
   streamFilter,
   copyToClipboard,
-  compileEpisodes
+  compileEpisodes,
 };

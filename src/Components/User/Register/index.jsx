@@ -24,7 +24,9 @@ const RegisterForm = ({
     <Fragment>
       {!initialSetup
         && (
-          <Help>You are currently creating your admin account ensure you remember your details.</Help>
+          <Help>
+            You are currently creating your admin account ensure you remember your details.
+          </Help>
         )
       }
       <FormWrap error={error}>

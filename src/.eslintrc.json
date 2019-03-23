@@ -1,5 +1,5 @@
 {
-    "extends": "react-app",
+    "extends": ["airbnb", "react-app"],
     "parser": "babel-eslint",
     "settings": {
         "import/resolver": {
@@ -15,9 +15,18 @@
     },
     "rules": {
        "no-class-assign": "off",
-       "no-console": "off",
+       "no-console": "warn",
        "no-shadow": "off",
        "jsx-a11y/media-has-caption": "off",
-       "react/no-unused-prop-types": "off"
+       "react/no-unused-prop-types": "off",
+       "no-confusing-arrow": "off",
+       "no-bitwise": [
+          "error",
+          {
+            "allow": [
+              "~"
+            ]
+          }
+       ]
     }
 }

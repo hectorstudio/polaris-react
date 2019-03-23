@@ -1,7 +1,8 @@
+/* eslint-disable */
 import React from 'react';
 
 const getter = (item, player) => {
-  let value; 
+  let value;
 
   if (item.getter) {
     value = item.getter(player);

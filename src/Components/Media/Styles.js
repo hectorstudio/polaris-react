@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import  { media } from 'Styles/Utils';
+import { media } from 'Styles/Utils';
 import { NavLink } from 'react-router-dom';
 
 const fadeInLow = keyframes`
@@ -25,6 +25,7 @@ export const MediaFullWrap = styled.section`
     opacity:.2;
     z-index: -1;
     pointer-events: none;
+    background:#000;
   }
 
   ${media.desktop`

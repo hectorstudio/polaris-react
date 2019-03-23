@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withApollo } from 'react-apollo';
 import { compose } from 'lodash/fp';
+import PropTypes from 'prop-types';
 
 import ReactRouterPropTypes from 'react-router-prop-types';
 import Cookies from 'universal-cookie';
@@ -36,10 +37,13 @@ class Logout extends Component {
 
 Logout.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
+  client: PropTypes.shape({
+    resetStore: PropTypes.func.isRequired,
+  }).isRequired,
 };
+
 
 export default compose(
   withRouter,
   withApollo,
 )(Logout);
-

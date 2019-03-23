@@ -45,13 +45,19 @@ MediaName.propTypes = {
   type: PropTypes.string.isRequired,
   year: PropTypes.string,
   episodeNumber: PropTypes.number,
-  episodes: PropTypes.arrayOf(PropTypes.shape({
-    uuid: PropTypes.string,
-  })),
+  season: PropTypes.shape({
+    seasonNumber: PropTypes.number,
+  }),
+  episodes: PropTypes.arrayOf(
+    PropTypes.shape({
+      uuid: PropTypes.string,
+    }),
+  ),
 };
 
 MediaName.defaultProps = {
   episodes: [],
+  season: {},
   episodeNumber: null,
   year: null,
 };

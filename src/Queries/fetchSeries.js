@@ -1,15 +1,15 @@
 import gql from 'graphql-tag';
 
-const FETCH_SERIES = uuid => gql`
-  {
-    series(uuid: "${uuid}") {
+const FETCH_SERIES = gql`
+  query series($uuid: String!) {
+    series(uuid: $uuid) {
       type: __typename
       name
       uuid
       overview
       posterPath
       firstAirDate
-      
+
       seasons {
         type: __typename
         name
@@ -17,7 +17,7 @@ const FETCH_SERIES = uuid => gql`
         posterPath
         uuid
         unwatchedEpisodesCount
-        
+
         episodes {
           uuid
 

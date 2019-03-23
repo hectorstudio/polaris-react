@@ -14,7 +14,7 @@ import { RESUME_MODAL } from 'Redux/Constants/modalTypes';
 import MediaInfo from './MediaInfo';
 import MediaName from './MediaName';
 
-import placeholder from "./placeholder.png";
+import placeholder from './placeholder.png';
 
 import {
   CardPoster,
@@ -28,13 +28,10 @@ import {
 class MediaCard extends Component {
   state = {
     url: '',
-  }
+  };
 
   componentDidMount() {
-    const {
-      type,
-      uuid,
-    } = this.props;
+    const { type, uuid } = this.props;
 
     this.setState({
       url: generateMediaUrl(type, uuid),
@@ -43,14 +40,14 @@ class MediaCard extends Component {
 
   resumeModal = () => {
     const { url } = this.state;
-    
+
     const {
       showModal,
       history,
       playMedia,
       playState,
-    } = this.props; 
-    
+    } = this.props;
+
     showModal(RESUME_MODAL, {
       title: 'Resume Media',
       url,
@@ -91,7 +88,7 @@ class MediaCard extends Component {
     }
 
     return false;
-  }
+  };
 
   render() {
     const {
@@ -107,24 +104,30 @@ class MediaCard extends Component {
     } = this.props;
     const { url } = this.state;
 
-    const showPlayStatus = (type === 'Movie' || type === 'Episode');
-    const bgImage = (posterPath || stillPath
-      ? `${getBaseUrl()}/m/images/tmdb/w342/${(posterPath || stillPath)}`
-      : placeholder
-    );
-    
+    const showPlayStatus = type === 'Movie' || type === 'Episode';
+    const bgImage = posterPath || stillPath
+      ? `${getBaseUrl()}/m/images/tmdb/w342/${posterPath || stillPath}`
+      : placeholder;
+
     let length;
-    if (typeof files == "undefined" || !(files instanceof Array)) {
+    if (typeof files == 'undefined' || !(files instanceof Array)) {
       length = 0;
     } else {
       length = files[0].totalDuration;
     }
-    
+
     return (
       <Fragment>
-        <CardWrap onClick={e => (this.cardClick(e, url, history, showPlayStatus))}>
+        <CardWrap
+          onClick={e => this.cardClick(e, url, history, showPlayStatus)}
+        >
           <PosterWrap>
-            <LazyLoad height={(type === 'Episode' ? 125 : 230)} debounce={100} overflow resize>
+            <LazyLoad
+              height={type === 'Episode' ? 125 : 230}
+              debounce={100}
+              overflow
+              resize
+            >
               <CardPoster hover={hover} wide={wide} bgimg={bgImage}>
                 <MediaInfo
                   {...this.props}
@@ -133,19 +136,15 @@ class MediaCard extends Component {
                 />
               </CardPoster>
             </LazyLoad>
-            {hover
-              && (
-                <CardPopup>
-                  <PopupLink>
-                    <PopupIcon icon={(showPlayStatus ? faPlay : faSearch)} />
-                  </PopupLink>
-                </CardPopup>
-              )
-            }
+            {hover && (
+              <CardPopup>
+                <PopupLink>
+                  <PopupIcon icon={showPlayStatus ? faPlay : faSearch} />
+                </PopupLink>
+              </CardPopup>
+            )}
           </PosterWrap>
-          {showText
-            && <MediaName name={name} {...this.props} />
-          }
+          {showText && <MediaName name={name} {...this.props} />}
         </CardWrap>
       </Fragment>
     );
@@ -155,7 +154,9 @@ class MediaCard extends Component {
 const requiredPropsCheck = (props, componentName) => {
   const { posterPath, stillPath } = props;
   if (!posterPath && !stillPath) {
-    return new Error(`One of 'posterPath' or 'stillPath' is required by '${componentName}' component.`);
+    return new Error(
+      `One of 'posterPath' or 'stillPath' is required by '${componentName}' component.`,
+    );
   }
 
   return null;
@@ -172,9 +173,11 @@ MediaCard.propTypes = {
   stillPath: requiredPropsCheck,
   type: PropTypes.string.isRequired,
   uuid: PropTypes.string.isRequired,
-  files: PropTypes.arrayOf(PropTypes.shape({
-    totalDuration: PropTypes.number,
-  })),
+  files: PropTypes.arrayOf(
+    PropTypes.shape({
+      totalDuration: PropTypes.number,
+    }),
+  ),
   history: ReactRouterPropTypes.history.isRequired,
   hover: PropTypes.bool,
   wide: PropTypes.bool,
@@ -196,6 +199,9 @@ MediaCard.defaultProps = {
 };
 
 export default compose(
-  connect(null, mapDispatchToProps),
+  connect(
+    null,
+    mapDispatchToProps,
+  ),
   withRouter,
 )(MediaCard);

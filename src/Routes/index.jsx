@@ -44,7 +44,7 @@ class Routes extends Component {
       .then((res) => {
         this.setState({
           loading: false,
-          initialSetup: res.data
+          initialSetup: res.data,
         });
       });
   }

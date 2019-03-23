@@ -4,32 +4,26 @@ import { connect } from 'react-redux';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { hideNavigation, showNavigation } from 'Redux/Actions/navigationActions';
 
-import { 
+import {
   NavButton,
   NavIcon,
   ContentOverlay,
   HideNavIcon,
 } from './Styles';
 
-class NavToggle extends Component {  
-  responsiveTrigger() {
-    const { hideNavigation, browser } = this.props;
-
-    if (browser.lessThan.large) hideNavigation();
-  }
-
+class NavToggle extends Component {
   componentDidMount() {
-    window.addEventListener("resize", this.responsiveTrigger.bind(this));
+    window.addEventListener('resize', this.responsiveTrigger.bind(this));
     this.responsiveTrigger();
   }
 
   componentWillUnmount() {
-    window.removeEventListener("resize", this.responsiveTrigger.bind(this));
+    window.removeEventListener('resize', this.responsiveTrigger.bind(this));
   }
 
   toggleNav = () => {
     const { showNavigation, hideNavigation, navHidden } = this.props;
-    
+
     if (navHidden) {
       showNavigation();
     } else {
@@ -37,16 +31,23 @@ class NavToggle extends Component {
     }
   }
 
+  responsiveTrigger() {
+    const { hideNavigation, browser } = this.props;
+
+    if (browser.lessThan.large) hideNavigation();
+  }
+
   render() {
     const { navHidden, browser } = this.props;
-    
+
     return (
       <Fragment>
-        { browser.lessThan.large && !navHidden && 
+        { browser.lessThan.large && !navHidden && (
           <ContentOverlay onClick={this.toggleNav}>
             <HideNavIcon icon={faTimes} />
-          </ContentOverlay> 
-        }
+          </ContentOverlay>
+        )}
+
         <NavButton onClick={this.toggleNav} alignLeft>
           <NavIcon icon={(navHidden ? faBars : faTimes)} />
         </NavButton>
@@ -57,7 +58,7 @@ class NavToggle extends Component {
 
 const mapStateToProps = (state) => {
   const { navigation, browser } = state;
-  return { 
+  return {
     navHidden: navigation.hidden,
     browser,
   };
@@ -72,6 +73,11 @@ NavToggle.propTypes = {
   navHidden: PropTypes.bool.isRequired,
   showNavigation: PropTypes.func.isRequired,
   hideNavigation: PropTypes.func.isRequired,
+  browser: PropTypes.shape({
+    lessThan: PropTypes.shape({
+      large: PropTypes.bool.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavToggle);

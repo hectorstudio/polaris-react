@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
-const FETCH_SEASON = uuid => gql`
-  {
-    season(uuid: "${uuid}") {
+const FETCH_SEASON = gql`
+  query season($uuid: String!) {
+    season(uuid: $uuid) {
       type: __typename
       name
       overview
@@ -26,12 +26,12 @@ const FETCH_SEASON = uuid => gql`
         stillPath
         episodeNumber
         id: tmdbID
-        
+
         playState {
           finished
           playtime
         }
-        
+
         files {
           totalDuration
         }

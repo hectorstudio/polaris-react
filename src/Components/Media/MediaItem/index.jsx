@@ -27,7 +27,7 @@ import {
 
 class MediaItem extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       source: '',
@@ -35,7 +35,7 @@ class MediaItem extends Component {
       files: [],
       selectedFile: {},
       mimeType: '',
-    }
+    };
   }
 
   componentWillMount() {
@@ -44,7 +44,7 @@ class MediaItem extends Component {
 
     this.setState({
       files: fileList,
-      selectedFile: fileList[0]
+      selectedFile: fileList[0],
     });
   }
 
@@ -86,7 +86,7 @@ class MediaItem extends Component {
       .then(({ data }) => {
         fetch(getBaseUrl() + data.createStreamingTicket.metadataPath)
           .then(response => response.json())
-          .then(response => {
+          .then((response) => {
             const playableCodecs = response.checkCodecs.filter(canPlayCodec);
 
             const streamPath = (isIOS
@@ -103,13 +103,9 @@ class MediaItem extends Component {
               mimeType,
             });
           })
-          .catch(error => {
-            console.error('Error requesting media file codecs', error)
-          });
+          .catch(err => err);
       })
-      .catch(error => {
-        console.error('Error requesting media file details', error);
-      });
+      .catch(err => err);
   };
 
   render() {

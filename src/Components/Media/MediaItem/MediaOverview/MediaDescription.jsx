@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { MediaOverview } from '../../Styles';
 
 class MediaDescription extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       visible: true,
-    }
+    };
   }
 
   componentDidMount() {
@@ -19,7 +21,7 @@ class MediaDescription extends Component {
     const { visible } = this.state;
 
     this.setState({
-      visible: !visible
+      visible: !visible,
     });
   }
 
@@ -27,10 +29,10 @@ class MediaDescription extends Component {
     const { visible } = this.state;
 
     return (
-      <span onClick={() => this.toggleOverview()}>
+      <span tabIndex={0} role="button" onClick={() => {}} onKeyPress={this.toggleOverview}>
         {(visible ? 'Read Less' : 'Read More')}
       </span>
-    )
+    );
   }
 
   description = () => {
@@ -40,18 +42,23 @@ class MediaDescription extends Component {
     if (overview.length > 255) {
       return (
         <MediaOverview>
-          {(visible ? overview : overview.substring(0, 120))}...
-        {this.readMore()}
+          {(visible ? overview : overview.substring(0, 120))}
+          ...
+          {this.readMore()}
         </MediaOverview>
       );
-    } else {
-      return <MediaOverview>{overview}</MediaOverview>
     }
+
+    return <MediaOverview>{overview}</MediaOverview>;
   }
 
-  render() { 
+  render() {
     return this.description();
   }
 }
- 
+
+MediaDescription.propTypes = {
+  overview: PropTypes.string.isRequired,
+};
+
 export default MediaDescription;

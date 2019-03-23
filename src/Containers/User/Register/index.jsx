@@ -75,7 +75,7 @@ class Register extends Component {
         }
 
         CREATE_USER(registerInfo).then(() => {
-          this.setState({ registeredSuccessful: true })
+          this.setState({ registeredSuccessful: true });
         }).catch((error) => {
           this.formError(error.response.data.message);
         });

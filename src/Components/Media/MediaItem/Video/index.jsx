@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { throttle } from 'lodash';
 import { graphql } from 'react-apollo';
 import videojs from 'video.js';
-import '@videojs/http-streaming'
+import '@videojs/http-streaming';
 import chromecast from '@silvermine/videojs-chromecast';
-import './DebugOverlay'
+import './DebugOverlay';
 
 // NOTE(Leon Handreke): Ideally this should be imported from videojs-http-source-selector because
 // the fact that it relies on this plugin is an implementation detail. However, the compilation
@@ -22,7 +22,12 @@ class Video extends Component {
   t = throttle(() => this.playStateMutation(Math.floor(this.player.currentTime())), 2000);
 
   componentDidMount() {
-    const { resume, playState, source, transmuxed } = this.props;
+    const {
+      resume,
+      playState,
+      source,
+      transmuxed,
+    } = this.props;
 
     // Put videojs in scope for debugging
     this.videojs = videojs;
@@ -141,7 +146,8 @@ class Video extends Component {
 
 Video.propTypes = {
   // Video source, opaque as it gets passed directly to video.js
-  // TODO(Leon Handreke): It should not be opaque to us, our caller should not need to know about video.js
+  // TODO(Leon Handreke): It should not be opaque to us, our caller should
+  // not need to know about video.js
   // eslint-disable-next-line
   source: PropTypes.object.isRequired,
   uuid: PropTypes.string.isRequired,
@@ -153,9 +159,11 @@ Video.propTypes = {
     playtime: PropTypes.number,
   }).isRequired,
   resume: PropTypes.bool,
-  // TODO(Leon Handreke): This is an ugly hack. We'd like to change our quality switching behavior based on whether the
-  // stream is transmuxed or not. However, we don't have a way to detect this from this.player.representations()
-  // because videojs/http-streaming doesn't pass through any metadata. To avoid forking for now, do this.
+  // TODO(Leon Handreke): This is an ugly hack. We'd like to change our
+  // quality switching behavior based on whether the stream is transmuxed or not.
+  // However, we don't have a way to detect this from this.player.representations()
+  // because videojs/http-streaming doesn't pass through any metadata.
+  // To avoid forking for now, do this.
   transmuxed: PropTypes.bool.isRequired,
 };
 

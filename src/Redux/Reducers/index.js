@@ -18,5 +18,5 @@ export default history => combineReducers({
   browser: createResponsiveStateReducer(responsiveBreakpoints),
   modal,
   navigation,
-  historyLocation
+  historyLocation,
 });

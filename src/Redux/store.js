@@ -1,6 +1,6 @@
 import { applyMiddleware, compose, createStore } from 'redux';
 import { createHashHistory } from 'history';
-import { responsiveStoreEnhancer } from 'redux-responsive'
+import { responsiveStoreEnhancer } from 'redux-responsive';
 import { routerMiddleware } from 'connected-react-router';
 import rootReducer from './Reducers';
 

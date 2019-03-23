@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import { getBaseUrl } from 'Helpers';
 
-import MediaListHeader from '../MediaListHeader';
 import Media from 'Components/Media/Card';
 import MediaDescription from 'Components/Media/MediaItem/MediaOverview/MediaDescription';
+import MediaListHeader from '../MediaListHeader';
 
 import {
   MediaFullWrap,
@@ -21,6 +21,7 @@ import SeasonsWrap from './Styles';
 const Series = (props) => {
   const {
     name,
+    uuid,
     posterPath,
     overview,
     firstAirDate,
@@ -29,7 +30,7 @@ const Series = (props) => {
   } = props;
 
   const releaseYear = firstAirDate.split('-')[0];
-  
+
   return (
     <MediaFullWrap>
       <MediaBackground bgimg={`${getBaseUrl()}/m/images/tmdb/w342/${posterPath}`} />
@@ -37,7 +38,7 @@ const Series = (props) => {
         <Media size="large" {...props} hover={false} />
       </MediaLeftCol>
       <MediaRightCol>
-        <MediaListHeader data={seasons} type='season' />
+        <MediaListHeader data={seasons} uuid={uuid} type="series" />
         <MediaName>
           {name}
           <MediaRelease>

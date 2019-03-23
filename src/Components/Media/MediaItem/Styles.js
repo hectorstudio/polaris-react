@@ -17,7 +17,7 @@ export const CloseVideo = styled(FontAwesomeIcon)`
   width:5rem !important;
   height:5rem;
   padding:1.5rem;
-  
+
   &:hover {
     opacity:1;
   }
@@ -124,7 +124,7 @@ export const SelectStyle = {
     ...base,
     flex: 1,
     width: '100%',
-    float: 'left'
+    float: 'left',
   }),
   option: (base, { isDisabled, isFocused, isSelected }) => ({
     ...base,
@@ -188,7 +188,7 @@ export const SelectStyle = {
     whiteSpace: 'pre-wrap',
     wordBreak: 'break-all',
     overflow: 'hidden',
-    height: '2rem'
+    height: '2rem',
   }),
 };
 

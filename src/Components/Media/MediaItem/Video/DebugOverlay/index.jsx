@@ -1,3 +1,4 @@
+/* eslint-disable */
 import videojs from 'video.js';
 
 import React from 'react';

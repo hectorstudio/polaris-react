@@ -12,13 +12,13 @@ import { LibraryListItem } from '../Styles';
 
 const RenderSeries = ({ uuid }) => (
   <Query
-    query={FETCH_SERIES(uuid)}
+    query={FETCH_SERIES}
+    variables={{ uuid }}
   >
 
     {({ loading, error, data }) => {
       if (loading) return <Loading />;
       if (error) return `Error! ${error.message}`;
-
       const series = { ...data.series[0] };
 
       const seasonList = orderBy(series.seasons, ['seasonNumber'], ['asc']).map(s => (
