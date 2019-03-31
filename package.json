@@ -12,7 +12,7 @@
     "@silvermine/videojs-chromecast": "^1.1.2",
     "@videojs/http-streaming": "git+https://gitlab.com/olaris/videojs-http-streaming.git#olaris",
     "apollo-cache-inmemory": "^1.2.4",
-    "apollo-client": "^2.4.1",
+    "apollo-client": "^2.5.1",
     "apollo-link-context": "^1.0.8",
     "apollo-link-http": "^1.5.4",
     "axios": "^0.18.0",

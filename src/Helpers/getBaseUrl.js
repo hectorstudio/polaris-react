@@ -7,7 +7,8 @@ const getBaseUrl = () => {
   let path;
 
   if (typeof window !== 'undefined') {
-    path = `${window.location.protocol}//${window.location.host}`;
+    // path = `${window.location.protocol}//${window.location.host}`;
+    path = 'http://atalanta.bysh.me:8080';
   } else {
     return false;
   }

@@ -6,25 +6,58 @@ import FETCH_MOVIE from 'Queries/fetchMovie';
 export const updatePlayStateSeries = (mutate, seriesUuid, uuid, finished) => {
   mutate({
     variables: { uuid, playtime: 0, finished },
-    refetchQueries: [
-      {
+    update: (store, {
+      data: { createPlayState },
+    }) => {
+      const data = store.readQuery({
         query: FETCH_SERIES,
         variables: { uuid: seriesUuid },
-      },
-    ],
-  })
-    .catch(err => err);
+      });
+
+      data.series[0].seasons.forEach((s, i) => {
+        data.series[0].seasons[i] = {
+          ...s,
+          unwatchedEpisodesCount: (finished ? 0 : s.episodes.length),
+        };
+      });
+
+      store.writeQuery({
+        query: FETCH_SERIES,
+        variables: { uuid: seriesUuid },
+        data,
+      });
+    },
+  }).catch(err => err);
 };
 
 export const updatePlayStateSeason = (mutate, seasonUuid, uuid, finished) => {
   mutate({
     variables: { uuid, playtime: 0, finished },
-    refetchQueries: [
-      {
+    update: (store, {
+      data: { createPlayState },
+    }) => {
+      const { playState } = createPlayState;
+      const data = store.readQuery({
         query: FETCH_SEASON,
         variables: { uuid: seasonUuid },
-      },
-    ],
+      });
+
+      data.season.episodes.forEach((e, i) => {
+        data.season.episodes[i] = {
+          ...e,
+          playState: {
+            ...e.playState,
+            ...playState,
+          },
+        };
+      });
+
+      store.writeQuery({
+        query: FETCH_SEASON,
+        variables: { uuid: seasonUuid },
+        data,
+      });
+    },
   }).catch(err => err);
 };
 
@@ -46,8 +79,7 @@ export const updatePlayStateEpisode = (mutate, uuid, playtime, finished) => {
             ...data.episode,
             playState: {
               ...data.episode.playState,
-              finished: playState.finished,
-              playtime: playState.playtime,
+              ...playState,
             },
           },
         },
@@ -72,8 +104,7 @@ export const updatePlayStateMovie = (mutate, uuid, playtime, finished) => {
             ...data.movies[0],
             playState: {
               ...data.movies[0].playState,
-              finished: playState.finished,
-              playtime: playState.playtime,
+              ...playState,
             },
           }],
         },
