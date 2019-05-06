@@ -42,10 +42,9 @@ class Routes extends Component {
     checkAuth();
     isInitialSetup()
       .then((res) => {
-        console.log(res);
         this.setState({
-          loading: false,
           initialSetup: res.data,
+          loading: false,
         });
       });
   }
