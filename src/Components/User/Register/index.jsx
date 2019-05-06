@@ -22,7 +22,7 @@ const RegisterForm = ({
 
   return (
     <Fragment>
-      {!initialSetup
+      {initialSetup
         && (
           <Help>
             You are currently creating your admin account ensure you remember your details.
