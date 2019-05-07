@@ -33,7 +33,7 @@ const RegisterForm = ({
         <LogoIcon alt="Olaris" height="30" />
         <Title heading={heading} sub={title} />
 
-        {initialSetup
+        {!initialSetup
           && (
             <Input
               type="text"
