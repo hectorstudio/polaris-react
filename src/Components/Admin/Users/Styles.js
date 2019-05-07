@@ -6,13 +6,12 @@ export const UserListItem = styled.li`
   padding:0 0 0 2rem;
   border-bottom:1px solid rgba(0,0,0, .2);
   line-height:5rem;
-  text-transform:capitalize;
   color:rgba(255,255,255, .6);
   font-size:1.4rem;
   background: ${props => (props.success ? props.theme.alerts.success : 'center')};
   font-weight: ${props => (props.success ? '600' : '400')};
   text-align: ${props => (props.success ? 'center' : 'left')};
-  
+
   &:last-child {
     border:0;
   }
