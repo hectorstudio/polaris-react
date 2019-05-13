@@ -8,6 +8,7 @@ const Theme = {
   light: '#F5F7FA',
   background: '#191a28',
   playbar: '#FF9B3D',
+  sidebar: '#1f202f',
 
   darken: {
     primary: darken(0.2, '#FF9B3D'),
@@ -21,7 +22,7 @@ const Theme = {
   alerts: {
     success: '#81A35A',
     error: '#E83C50',
-    info: '#4C6EAC',
+    info: '#FFF',
   },
   layout: {
     header: '5rem',

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { getBaseUrl } from 'Helpers';
 
+import Breadcrumbs from 'Components/Breadcrumbs';
 import Media from 'Components/Media/Card';
 import MediaDescription from 'Components/Media/MediaItem/MediaOverview/MediaDescription';
 import MediaListHeader from '../MediaListHeader';
@@ -33,6 +34,7 @@ const Series = (props) => {
 
   return (
     <MediaFullWrap>
+      <Breadcrumbs props={props} />
       <MediaBackground bgimg={`${getBaseUrl()}/m/images/tmdb/w342/${posterPath}`} />
       <MediaLeftCol>
         <Media size="large" {...props} hover={false} />

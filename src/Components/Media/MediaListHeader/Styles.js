@@ -15,6 +15,7 @@ export const HeaderIconWrap = styled.div`
   text-align: center;
   border-right: 1px solid rgba(255, 255, 255, 0.05);
   cursor: pointer;
+  position: relative;
 
   &:hover {
     svg {
@@ -31,4 +32,15 @@ export const HeaderIcon = styled(FontAwesomeIcon)`
   height: 6rem;
   text-align: center;
   transition: 0.2s all;
+`;
+
+export const Hint = styled.span`
+  position: absolute;
+  top: -1rem;
+  left: 50%;
+  transform: translateY(-50%);
+  padding: .5rem;
+  font-weight: bold;
+  color: #ffffff;
+  background: ${props => props.theme.sidebar};
 `;

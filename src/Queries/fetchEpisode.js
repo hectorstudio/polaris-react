@@ -9,13 +9,17 @@ const FETCH_EPISODE = gql`
       airDate
       stillPath
       uuid
-      
+
       season {
+        uuid
+        name
         series {
+          uuid
+          name
           posterPath
         }
       }
-      
+
       playState {
         finished
         playtime

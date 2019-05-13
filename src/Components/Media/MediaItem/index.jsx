@@ -12,6 +12,7 @@ import {
 } from 'Helpers';
 
 import REQUEST_STREAM from 'Mutations/requestStream';
+import Breadcrumbs from 'Components/Breadcrumbs';
 import MediaCard from 'Components/Media/Card';
 import MediaDropdown from './MediaDropdown';
 import MediaOverview from './MediaOverview';
@@ -143,6 +144,7 @@ class MediaItem extends Component {
     return (
       <MediaFullWrap>
         <MediaBackground bgimg={`${getBaseUrl()}/m/images/tmdb/w342/${background}`} />
+        <Breadcrumbs props={this.props} />
         <MediaFull>
           <MediaLeftCol>
             <MediaCard

@@ -6,7 +6,7 @@ import { Auth } from 'Client/Auth';
 const AdminRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
-    render={props => (Auth.isAuthenticated && Auth.admin ? (
+    render={props => (Auth.isAuthenticated && Auth.isAdmin ? (
       <Component {...props} />
     ) : (
       <Redirect

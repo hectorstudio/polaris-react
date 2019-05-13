@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 const fadeInLow = keyframes`
   from { opacity: 0 }
-  to { opacity: .15 }
+  to { opacity: .05 }
 `;
 
 export const MediaFullWrap = styled.section`
@@ -14,18 +14,19 @@ export const MediaFullWrap = styled.section`
   position:relative;
   display:flex;
   z-index:4;
+  flex-wrap: wrap;
 
   &:after {
     content:'';
     position:fixed;
     top:0;
     left:0;
-    width:100%;
+    width:100vw;
     height:100%;
-    opacity:.2;
+    opacity:.3;
     z-index: -1;
     pointer-events: none;
-    background:#000;
+    background:#2e2f41;
   }
 
   ${media.desktop`
@@ -190,7 +191,7 @@ export const MediaBackground = styled.span`
   top:0;
   left:0;
   z-index: -1;
-  filter: blur(35px);
+  filter: blur(25px);
   opacity:0;
   animation: ${`.3s ${fadeInLow} forwards`};
   animation-delay: .3s;

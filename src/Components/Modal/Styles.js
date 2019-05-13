@@ -2,11 +2,11 @@ import styled, { keyframes } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const fadeInZoom = keyframes`
-  from { 
+  from {
     opacity:0;
     transform: scale(.9);
   }
-  to { 
+  to {
     opacity:1;
     transform: scale(1);
    }
@@ -19,7 +19,7 @@ export const Modal = styled.div`
   width: 100%;
   height: 100vh;
   background: #000000ab;
-  z-index:9999;
+  z-index:99;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,9 +43,14 @@ export const ModalCloseButton = styled(FontAwesomeIcon)`
   cursor:pointer;
   z-index:11;
   transition:.2s all;
-  width: 5.9rem !important;
-  height: 5.9rem;
+  width: 5.8rem !important;
+  height: 5.8rem;
   padding: 2rem;
+  transition: 0.2s all;
+
+  &:hover {
+    background: rgba(0, 0, 0, .1);
+  }
 `;
 
 export const ModalHeader = styled.header`
@@ -54,7 +59,6 @@ export const ModalHeader = styled.header`
   max-width:60rem;
   width:100%;
   padding:2rem;
-  border-bottom:1px solid rgba(0,0,0, .2);
   background: rgba(0,0,0, .1);
 `;
 
