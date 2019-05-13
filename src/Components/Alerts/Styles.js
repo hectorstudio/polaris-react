@@ -17,8 +17,8 @@ export const AlertInlineWrap = styled.span`
   float:left;
   width:100%;
   color: ${props => getColor(props)};
-  border:1px solid ${props => getColor(props)};
-  background:rgb(22, 22, 34);
+  border: ${props => (props.type === 'info' ? 'none' : `1px solid ${props => getColor(props)}`)};
+  background:${props => (props.type === 'info' ? 'rgb(21, 22, 35)' : 'rgb(22, 22, 34)')};
   line-height:4rem;
   font-size:1.4rem;
   padding:0 1.5rem;

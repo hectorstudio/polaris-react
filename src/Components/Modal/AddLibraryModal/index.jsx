@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { compose } from 'lodash/fp';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { graphql } from 'react-apollo';
+import { withAlert } from 'react-alert';
+import PropTypes from 'prop-types';
 
 import { FetchLibraryList, FETCH_LIBRARIES } from 'Queries/fetchLibraries';
 import { ADD_LIBRARY } from 'Mutations/manageLibraries';
@@ -76,7 +77,7 @@ class AddLibraryModal extends Component {
   }
 
   addLibrary = async (filePath) => {
-    const { type, mutate } = this.props;
+    const { type, mutate, alert } = this.props;
     const { kind } = this.state;
 
     mutate({
@@ -97,6 +98,8 @@ class AddLibraryModal extends Component {
           }, async () => {
             this.clearError();
           });
+        } else {
+          alert.success('Library Added');
         }
       })
       .catch((error) => {
@@ -147,4 +150,5 @@ const mapDispatchToProps = dispatch => ({
 export default compose(
   connect(null, mapDispatchToProps),
   graphql(ADD_LIBRARY),
+  withAlert,
 )(AddLibraryModal);

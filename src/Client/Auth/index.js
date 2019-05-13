@@ -6,7 +6,6 @@ import jwtDecode from 'jwt-decode';
 import { getBaseUrl } from 'Helpers';
 
 const cookies = new Cookies();
-const Token = cookies.get('jwt');
 
 const propTypes = {
   username: PropTypes.string.isRequired,
@@ -15,16 +14,17 @@ const propTypes = {
 
 export const Auth = {
   isAuthenticated: false,
+  isAdmin: false,
 
   authenticate() {
+    this.isAdmin = jwtDecode(cookies.get('jwt').jwt).admin;
     this.isAuthenticated = true;
-  },
-  admin() {
-    this.admin = jwtDecode(Token.jwt).admin;
   },
   logout() {
     return new Promise((resolve, reject) => {
       this.isAuthenticated = false;
+      this.isAdmin = false;
+
       resolve(true);
     });
   },

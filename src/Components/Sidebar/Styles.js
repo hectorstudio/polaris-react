@@ -12,6 +12,7 @@ export const SidebarWrap = styled.nav`
   background:${props => props.theme.background && transparentize(0.5, props.theme.background)};
   transition:.2s all;
   transform: translateX(${props => (props.navHidden ? `-${props.theme.layout.sidebar}` : '0')});
+  z-index: 5;
 `;
 
 export const HomeLink = styled(NavLink)`

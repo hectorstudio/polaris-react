@@ -2,6 +2,7 @@ const navigationArr = [
   {
     name: 'Libraries',
     id: 'libraries',
+    admin: false,
     links: [
       {
         name: 'Dashboard',
@@ -14,7 +15,7 @@ const navigationArr = [
         id: 'movies',
       },
       {
-        name: 'Series',
+        name: 'TV Shows',
         to: '/series',
         id: 'series',
       },
@@ -23,6 +24,7 @@ const navigationArr = [
   {
     name: 'Settings',
     id: 'settings',
+    admin: true,
     links: [
       {
         name: 'Users',

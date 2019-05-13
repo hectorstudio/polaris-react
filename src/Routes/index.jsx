@@ -27,7 +27,7 @@ import Episode from 'Containers/Media/Episode';
 import Search from 'Containers/Media/Search';
 
 // Auth
-import { Auth, checkAuth } from 'Client/Auth';
+import { Auth } from 'Client/Auth';
 import { isInitialSetup } from 'Helpers';
 import AdminRoute from './Helper/AdminRoute';
 import PrivateRoute from './Helper/PrivateRoute';
@@ -39,7 +39,6 @@ class Routes extends Component {
   };
 
   componentWillMount() {
-    checkAuth();
     isInitialSetup()
       .then((res) => {
         this.setState({

@@ -3,6 +3,7 @@ import { compose } from 'lodash/fp';
 import { graphql } from 'react-apollo';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import ReactToolTip from 'react-tooltip';
 import PropTypes from 'prop-types';
 
 import { compileEpisodes, generateMediaUrl } from 'Helpers';
@@ -111,18 +112,29 @@ class MediaListHeader extends Component {
 
   render() {
     const { finished } = this.state;
+    const { type } = this.props;
 
     return (
       <Header>
-        <HeaderIconWrap onClick={this.playSeries}>
+        <ReactToolTip effect="solid" place="bottom" className="tooltip" />
+        <HeaderIconWrap
+          onClick={this.playSeries}
+          data-tip={`Play ${(type === 'series' ? 'Series' : 'Season')}`}
+        >
           <HeaderIcon icon={faPlay} />
         </HeaderIconWrap>
 
-        <HeaderIconWrap onClick={this.playRandomEpisode}>
+        <HeaderIconWrap
+          onClick={this.playRandomEpisode}
+          data-tip="Play Random Episode"
+        >
           <HeaderIcon icon={faRandom} />
         </HeaderIconWrap>
 
-        <HeaderIconWrap onClick={this.markAsWatched}>
+        <HeaderIconWrap
+          onClick={this.markAsWatched}
+          data-tip={`Mark ${(type === 'series' ? 'Series' : 'Season')} As Watched`}
+        >
           <HeaderIcon
             icon={finished ? faCheckCircleSolid : faCheckCircle}
           />

@@ -19,14 +19,13 @@ const RegisterForm = ({
 }) => {
   const heading = (initialSetup ? 'Welcome To Olaris' : 'Olaris');
   const title = (initialSetup ? 'Setup your admin account' : 'Register Account');
+  const warning = 'You are currently creating your admin account ensure you remember your details';
 
   return (
     <Fragment>
       {initialSetup
         && (
-          <Help>
-            You are currently creating your admin account ensure you remember your details.
-          </Help>
+          <Help>{warning}</Help>
         )
       }
       <FormWrap error={error}>

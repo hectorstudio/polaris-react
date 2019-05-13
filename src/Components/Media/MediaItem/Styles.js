@@ -233,9 +233,7 @@ export const MediaActionsDropdown = styled(DropdownMenu)`
 export const MediaActionsWrap = styled.div`
   float:left;
   width:100%;
-  padding-top:2rem;
-  margin-top:1rem;
-  border-top:1px solid rgba(0,0,0, .2);
+  margin-top:2rem;
 
   button {
     margin:0 1rem 1rem 0;
@@ -247,11 +245,12 @@ export const MediaActionsWrap = styled.div`
     font-size:1.4rem;
     color:#FFF;
     font-weight:600;
-    background: rgba(0,0,0, .5);
+    background: ${props => props.theme.sidebar};
     transition:.2s all;
+    cursor:pointer;
 
     &:hover {
-      background: rgba(0,0,0, .8);
+      background: ${props => props.theme.darken.dark};
     }
 
     ${media.mobile`

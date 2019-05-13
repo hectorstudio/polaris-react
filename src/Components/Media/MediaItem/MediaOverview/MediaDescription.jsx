@@ -29,7 +29,7 @@ class MediaDescription extends Component {
     const { visible } = this.state;
 
     return (
-      <span tabIndex={0} role="button" onClick={() => {}} onKeyPress={this.toggleOverview}>
+      <span tabIndex={0} role="button" onClick={() => { this.toggleOverview(); }} onKeyPress={() => { this.toggleOverview(); }}>
         {(visible ? 'Read Less' : 'Read More')}
       </span>
     );
@@ -42,8 +42,7 @@ class MediaDescription extends Component {
     if (overview.length > 255) {
       return (
         <MediaOverview>
-          {(visible ? overview : overview.substring(0, 120))}
-          ...
+          {(visible ? overview : `${overview.substring(0, 120)}...`)}
           {this.readMore()}
         </MediaOverview>
       );

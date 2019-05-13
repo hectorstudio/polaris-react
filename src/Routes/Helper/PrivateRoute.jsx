@@ -16,7 +16,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
         }}
       />
     ))
-        }
+    }
   />
 );
 

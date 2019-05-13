@@ -21,8 +21,6 @@ export const SubmitLibrary = styled(FontAwesomeIcon)`
 `;
 
 export const AddLibraryWrap = styled.article`
-  padding-top: 1rem;
-  border-top:1px solid rgba(0,0,0, .2);
   float:left;
   width:100%;
   position:relative;
@@ -43,7 +41,7 @@ export const AddLibraryInput = styled.input`
   font-size:1.5rem;
 
   ${placeholder({ color: 'rgba(255,255,255,.1)' })}
-  
+
   &:focus {
     outline:none;
     background: rgba(0,0,0,.2);
@@ -70,7 +68,7 @@ export const LibraryItemFilePath = styled.span`
   font-weight:600;
   flex:1;
   overflow:hidden;
-  text-overflow:ellipsis; 
+  text-overflow:ellipsis;
   white-space:nowrap;
   max-width: calc(100% - 5rem);
 `;
