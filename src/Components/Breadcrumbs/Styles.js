@@ -11,6 +11,7 @@ export const ListItem = styled.li`
   color: #ffffff;
   font-size: 1.4rem;
   font-weight: 400;
+  line-height: 1.5;
   margin: 0 1rem 1rem 0;
   max-width: 30rem;
   overflow: hidden;
