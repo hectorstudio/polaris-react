@@ -15,7 +15,9 @@ const ContentWrap = ({ children, navHidden }) => (
 
 const mapStateToProps = (state) => {
   const { navigation } = state;
-  return { navHidden: navigation.hidden };
+  return {
+    navHidden: navigation.hidden,
+  };
 };
 
 ContentWrap.propTypes = {

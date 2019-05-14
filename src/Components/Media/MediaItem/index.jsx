@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { compose } from 'lodash/fp';
+import { connect } from 'react-redux';
 import { graphql } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import { isIOS } from 'react-device-detect';
@@ -10,6 +11,7 @@ import {
   getBaseUrl,
   generateFileList,
 } from 'Helpers';
+import { showVideo, hideVideo } from 'Redux/Actions/videoActions';
 
 import REQUEST_STREAM from 'Mutations/requestStream';
 import Breadcrumbs from 'Components/Breadcrumbs';
@@ -70,14 +72,20 @@ class MediaItem extends Component {
   }
 
   closeMedia = () => {
+    const { dispatch } = this.props;
+
+    dispatch(hideVideo());
+
     this.setState({
       source: '',
     });
   }
 
   playMedia = (resume) => {
-    const { mutate, files } = this.props;
+    const { mutate, files, dispatch } = this.props;
     const { selectedFile } = this.state;
+
+    dispatch(showVideo());
 
     this.setState({ resume });
 
@@ -193,4 +201,5 @@ class MediaItem extends Component {
 export default compose(
   withRouter,
   graphql(REQUEST_STREAM),
+  connect(),
 )(MediaItem);
